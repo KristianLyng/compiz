@@ -153,7 +153,7 @@ BUILT_SOURCES = $(nodist_libstaticswitcher_la_SOURCES)
 
 CLEANFILES = *_options.c *_options.h
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	@COMPIZ_CFLAGS@				\
 	@LIBPNG_CFLAGS@				\
 	@LIBRSVG_CFLAGS@			\

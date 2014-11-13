@@ -26,7 +26,7 @@ nodist_kde_window_decorator_SOURCES = $(BUILDSOURCES)
 
 kde_window_decorator_program = kde-window-decorator
 
-INCLUDES = -I$(top_srcdir)/include @KDE_WINDOW_DECORATOR_CFLAGS@ @KDE_CFLAGS@
+AM_CPPFLAGS = -I$(top_srcdir)/include @KDE_WINDOW_DECORATOR_CFLAGS@ @KDE_CFLAGS@
 
 bin_PROGRAMS = $(kde_window_decorator_program)
 
