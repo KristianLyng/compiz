@@ -1319,7 +1319,6 @@ zoomUpdateCursor (CompScreen * s, CursorTexture * cursor)
     int           i;
     Display       *dpy = s->display->display;
     ZOOM_SCREEN   (s);
-
     if (!cursor->isSet)
     {
 	cursor->isSet = TRUE;
@@ -2201,15 +2200,15 @@ static const CompMetadataOptionInfo zoomScreenOptionInfo[] = {
     { "sync_mouse", "bool", 0, 0, 0 },
     { "follow_focus_delay", "int", "<min>0</min>", 0, 0 },
     { "pan_factor", "float", "<min>0.001</min><default>0.1</default>", 0, 0 },
-    { "focus_fit_window", "bool", "<default>false</default>", 0, 0 },
+    { "focus_fit_window", "bool", "<default>true</default>", 0, 0 },
     { "always_focus_fit_window", "bool", "<default>false</default>", 0, 0 },
-    { "scale_mouse", "bool", "<default>false</default>", 0, 0 },
+    { "scale_mouse", "bool", "<default>true</default>", 0, 0 },
     { "scale_mouse_dynamic", "bool", "<default>true</default>", 0, 0 },
     { "scale_mouse_static", "float", "<default>0.8</default>", 0, 0 },
-    { "hide_original_mouse", "bool", "<default>false</default>", 0, 0 },
+    { "hide_original_mouse", "bool", "<default>true</default>", 0, 0 },
     { "restrain_mouse", "bool", "<default>false</default>", 0, 0 },
     { "restrain_margin", "int", "<default>5</default>", 0, 0 },
-    { "mouse_pan", "bool", "<default>false</default>", 0, 0 },
+    { "mouse_pan", "bool", "<default>true</default>", 0, 0 },
     { "minimum_zoom", "float", "<max>1.00</max>", 0, 0 },
     { "autoscale_min", "float", "<max>1.00</max>", 0, 0 }
 };
@@ -2314,13 +2313,11 @@ zoomInitDisplay (CompPlugin  *p,
 	XFixesQueryExtension(d->display, 
 			     &zd->fixesEventBase,
 			     &zd->fixesErrorBase);
-
     XFixesQueryVersion(d->display, &major, &minor);
     if (major >= 4)
 	zd->canHideCursor = TRUE;
     else
 	zd->canHideCursor = FALSE;
-
     WRAP (zd, d, handleEvent, zoomHandleEvent);
     d->base.privates[displayPrivateIndex].ptr = zd;
     return TRUE;
