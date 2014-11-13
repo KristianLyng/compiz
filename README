@@ -7,10 +7,11 @@ Compiz-components and make things easier for users and developers alike.
 Changes from OLD 0.8
 ====================
 
-- autogen.sh does NOT run configure now. Run it by hand.
-- bcop now included directly and built/distributed
-  (this still needs to be tuned so plugins that actually need bcop can be
-  built in one go)
+- autogen.sh does NOT run configure now. Run it by hand. (Tip:
+  ./autogen.sh; mkdir build; cd build; ../configure; make ... Now you have
+  out-of-tree building).
+- bcop now included directly and built/distributed. Plugins don't need the
+  bcop-binary, just the xslt. See staticswitcher in plugins/Makefile.am.
 - plugins-main imported to contrib/ but NOT integrated in the regular
   build. Will be integrated as time permits.
 - Silent building
