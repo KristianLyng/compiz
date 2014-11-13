@@ -10,6 +10,12 @@ librotate_la_SOURCES = rotate.c
 libzoom_la_LDFLAGS = -module -avoid-version -no-undefined
 libzoom_la_SOURCES = zoom.c
 
+libezoom_la_LDFLAGS = -module -avoid-version -no-undefined
+libezoom_la_SOURCES = ezoom.c
+
+libmousepoll_la_LDFLAGS = -module -avoid-version -no-undefined
+libmousepoll_la_SOURCES = mousepoll.c
+
 libscale_la_LDFLAGS = -module -avoid-version -no-undefined
 libscale_la_SOURCES = scale.c
 
@@ -162,6 +168,8 @@ module_LTLIBRARIES =		\
 	libfade.la		\
 	libminimize.la		\
 	libcube.la		\
+	libezoom.la		\
+	libmousepoll.la		\
 	librotate.la		\
 	libzoom.la		\
 	libscale.la		\
