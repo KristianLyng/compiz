@@ -1,34 +1,35 @@
 SUBDIRS = include src libdecoration plugins images gtk kde po metadata bcop
 
-EXTRA_DIST =		    \
-	COPYING		    \
-	COPYING.GPL	    \
-	COPYING.LGPL	    \
-	COPYING.MIT	    \
-	compiz.pc.in	    \
-	compiz-cube.pc.in   \
-	compiz-scale.pc.in  \
-	compiz-gconf.pc.in
+EXTRA_DIST = \
+	COPYING		       \
+	COPYING.GPL	       \
+	COPYING.LGPL	       \
+	COPYING.MIT	       \
+	pc/compiz.pc.in	       \
+	pc/compiz-cube.pc.in   \
+	pc/compiz-scale.pc.in  \
+	pc/compiz-gconf.pc.in  \
+	pc/bcop.pc
 
 DISTCLEANFILES =	 \
 	po/stamp-it	 \
 	po/.intltool-merge-cache
 
 if USE_GCONF
-gconfdata = compiz-gconf.pc
+gconfdata = pc/compiz-gconf.pc
 endif
 
 if USE_KCONFIG
-kconfigdata = compiz-kconfig.pc
+kconfigdata = pc/compiz-kconfig.pc
 endif
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA =	\
-	compiz.pc	\
-	compiz-cube.pc	\
-	compiz-scale.pc \
-	bcop.pc         \
-	$(gconfdata)	\
+pkgconfig_DATA =	    \
+	pc/compiz.pc	    \
+	pc/compiz-cube.pc   \
+	pc/compiz-scale.pc  \
+	pc/bcop.pc          \
+	$(gconfdata)	    \
 	$(kconfigdata)
 
 # Some custom targets to make it easier to release things.
@@ -119,3 +120,5 @@ release-publish-message: releases/$(sha1_file)
 release-publish: release-upload release-publish-message
 
 .PHONY: release-verify-even-micro release-verify-newer release-remove-old release-check release-upload release-publish docs-publish
+
+ACLOCAL_AMFLAGS = -I m4

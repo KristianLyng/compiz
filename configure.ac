@@ -1,4 +1,5 @@
 AC_PREREQ(2.57)
+#ACLOCAL_AMFLAGS = --install -I m4
 
 dnl compiz package version number
 dnl An odd micro number indicates in-progress development.
@@ -10,7 +11,7 @@ m4_define(compiz_version_micro, 9)
 AC_INIT([compiz],
 	[compiz_version_major().compiz_version_minor().compiz_version_micro()],
 	[davidr@novell.com])
-
+#AC_CONFIG_SRCDIR([src/main.c])
 COMPIZ_VERSION_MAJOR=compiz_version_major()
 COMPIZ_VERSION_MINOR=compiz_version_minor()
 COMPIZ_VERSION_MICRO=compiz_version_micro()
@@ -18,8 +19,9 @@ AC_SUBST(COMPIZ_VERSION_MAJOR)
 AC_SUBST(COMPIZ_VERSION_MINOR)
 AC_SUBST(COMPIZ_VERSION_MICRO)
 
-AM_INIT_AUTOMAKE([1.7])
+AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER([config.h])
 AC_PROG_INTLTOOL([0.23])
 AM_MAINTAINER_MODE
@@ -615,11 +617,12 @@ _EOF
 ])
 
 AC_OUTPUT([
-compiz.pc
-compiz-cube.pc
-compiz-scale.pc
-compiz-gconf.pc
-compiz-kconfig.pc
+pc/compiz.pc
+pc/compiz-cube.pc
+pc/compiz-scale.pc
+pc/compiz-gconf.pc
+pc/compiz-kconfig.pc
+pc/bcop.pc
 Makefile
 src/Makefile
 libdecoration/Makefile
@@ -628,7 +631,6 @@ include/Makefile
 plugins/Makefile
 bcop/Makefile
 bcop/bcop
-bcop.pc
 images/Makefile
 gtk/Makefile
 gtk/window-decorator/Makefile
