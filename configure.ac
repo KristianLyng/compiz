@@ -626,6 +626,9 @@ libdecoration/Makefile
 libdecoration/libdecoration.pc
 include/Makefile
 plugins/Makefile
+bcop/Makefile
+bcop/bcop
+bcop.pc
 images/Makefile
 gtk/Makefile
 gtk/window-decorator/Makefile

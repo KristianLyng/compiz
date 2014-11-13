@@ -1,4 +1,4 @@
-SUBDIRS = include src libdecoration plugins images gtk kde po metadata
+SUBDIRS = include src libdecoration plugins images gtk kde po metadata bcop
 
 EXTRA_DIST =		    \
 	COPYING		    \
@@ -27,6 +27,7 @@ pkgconfig_DATA =	\
 	compiz.pc	\
 	compiz-cube.pc	\
 	compiz-scale.pc \
+	bcop.pc         \
 	$(gconfdata)	\
 	$(kconfigdata)
 
