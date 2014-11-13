@@ -33,6 +33,7 @@ xml_in_files =		   \
 	wobbly.xml.in      \
 	mousepoll.xml.in   \
 	ezoom.xml.in       \
+	staticswitcher.xml.in \
 	zoom.xml.in
 xml_files    = $(xml_in_files:.xml.in=.xml)
 xml_DATA     = $(xml_files)

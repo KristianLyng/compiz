@@ -13,6 +13,11 @@ libzoom_la_SOURCES = zoom.c
 libezoom_la_LDFLAGS = -module -avoid-version -no-undefined
 libezoom_la_SOURCES = ezoom.c
 
+libstaticswitcher_la_LDFLAGS = -module -avoid-version -no-undefined
+nodist_libstaticswitcher_la_SOURCES = staticswitcher_options.c \
+			       staticswitcher_options.h
+dist_libstaticswitcher_la_SOURCES = staticswitcher.c
+
 libmousepoll_la_LDFLAGS = -module -avoid-version -no-undefined
 libmousepoll_la_SOURCES = mousepoll.c
 
@@ -138,6 +143,16 @@ libfs_la_SOURCES = fuse.c
 libfs_module = libfs.la
 endif
 
+staticswitcher_options.h: ../metadata/staticswitcher.xml.in
+	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
+staticswitcher_options.c: ../metadata/staticswitcher.xml.in staticswitcher_options.h
+	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
+BUILT_SOURCES = $(nodist_libstaticswitcher_la_SOURCES)
+
+CLEANFILES = *_options.c *_options.h
+
 INCLUDES =					\
 	@COMPIZ_CFLAGS@				\
 	@LIBPNG_CFLAGS@				\
@@ -170,6 +185,7 @@ module_LTLIBRARIES =		\
 	libcube.la		\
 	libezoom.la		\
 	libmousepoll.la		\
+	libstaticswitcher.la	\
 	librotate.la		\
 	libzoom.la		\
 	libscale.la		\
