@@ -3,21 +3,28 @@ compiz - OpenGL window and compositing manager
 This particular repository is a work in progress to merge various
 Compiz-components and make things easier for users and developers alike.
 
+This 0.8.11-based code-base is undergoing some significant changes. Changes
+between the 0.8.9-code(which is almost identical to the released 0.8.8) and
+0.8.11:
 
-Changes from OLD 0.8
-====================
-
-- autogen.sh does NOT run configure now. Run it by hand. (Tip:
-  ./autogen.sh; mkdir build; cd build; ../configure; make ... Now you have
-  out-of-tree building).
 - bcop now included directly and built/distributed. Plugins don't need the
   bcop-binary, just the xslt. See staticswitcher in plugins/Makefile.am.
-- plugins-main imported to contrib/ but NOT integrated in the regular
-  build. Will be integrated as time permits.
-- Silent building
+- plugins-main imported to contrib/ and some plugins moved from
+  contrib/plugins-main to plugins/ (ezoom, mousepoll, staticswitcher). The rest 
+  does NOT build automatically. All the plugins will be ported one at a
+  time.
 - At the moment I am asking people to file bug reports to
   https://github.com/KristianLyng/compiz . I will also accept pull requests
   if they make sense.
+- Silent building
+- autogen.sh does NOT run configure now. Run it by hand. (Tip:
+  ./autogen.sh; mkdir build; cd build; ../configure; make ... Now you have
+  out-of-tree building).
 - We will probably need to address versioning sooner or later.
+
+TODO:
+
+See https://github.com/KristianLyng/compiz and 'enhancements'.
+
 
 More information to come as it is available.

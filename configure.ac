@@ -6,11 +6,11 @@ dnl An odd micro number indicates in-progress development.
 dnl An even micro number indicates a released version.
 m4_define(compiz_version_major, 0)
 m4_define(compiz_version_minor, 8)
-m4_define(compiz_version_micro, 9)
+m4_define(compiz_version_micro, 11)
 
 AC_INIT([compiz],
 	[compiz_version_major().compiz_version_minor().compiz_version_micro()],
-	[davidr@novell.com])
+	[https://github.com/KristianLyng/compiz/issues])
 #AC_CONFIG_SRCDIR([src/main.c])
 COMPIZ_VERSION_MAJOR=compiz_version_major()
 COMPIZ_VERSION_MINOR=compiz_version_minor()
