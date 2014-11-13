@@ -6,6 +6,7 @@ EXTRA_DIST = \
 	COPYING.LGPL	       \
 	COPYING.MIT	       \
 	pc/compiz.pc.in	       \
+	pc/compiz-mousepoll.pc.in \
 	pc/compiz-cube.pc.in   \
 	pc/compiz-scale.pc.in  \
 	pc/compiz-gconf.pc.in  \
@@ -28,6 +29,7 @@ pkgconfig_DATA =	    \
 	pc/compiz.pc	    \
 	pc/compiz-cube.pc   \
 	pc/compiz-scale.pc  \
+	pc/compiz-mousepoll.pc \
 	pc/bcop.pc          \
 	$(gconfdata)	    \
 	$(kconfigdata)

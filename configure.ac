@@ -622,6 +622,7 @@ pc/compiz-cube.pc
 pc/compiz-scale.pc
 pc/compiz-gconf.pc
 pc/compiz-kconfig.pc
+pc/compiz-mousepoll.pc
 pc/bcop.pc
 Makefile
 src/Makefile
