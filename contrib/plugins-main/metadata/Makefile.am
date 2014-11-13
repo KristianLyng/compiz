@@ -24,10 +24,8 @@ xml_in_files = 	         \
 	animation.xml.in      \
 	colorfilter.xml.in    \
 	expo.xml.in           \
-	ezoom.xml.in          \
 	kdecompat.xml.in      \
 	mag.xml.in            \
-	mousepoll.xml.in      \
 	neg.xml.in            \
 	opacify.xml.in        \
 	put.xml.in            \
@@ -35,7 +33,6 @@ xml_in_files = 	         \
 	session.xml.in        \
 	shift.xml.in          \
 	snap.xml.in           \
-	staticswitcher.xml.in \
 	thumbnail.xml.in      \
 	titleinfo.xml.in      \
 	vpswitch.xml.in       \

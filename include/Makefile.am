@@ -5,6 +5,7 @@ compizinclude_HEADERS = \
 	compiz-core.h	\
 	compiz-cube.h   \
 	compiz-scale.h	\
+	compiz-mousepoll.h \
 	decoration.h
 
 nodist_compizinclude_HEADERS = \

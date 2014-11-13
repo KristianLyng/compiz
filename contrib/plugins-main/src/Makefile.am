@@ -3,11 +3,9 @@ SUBDIRS = \
     animation      \
     colorfilter    \
     expo           \
-    ezoom          \
     jpeg           \
     kdecompat      \
     mag            \
-    mousepoll      \
     neg            \
     opacify        \
     put            \
@@ -17,7 +15,6 @@ SUBDIRS = \
     session        \
     shift          \
     snap           \
-    staticswitcher \
     text           \
     thumbnail      \
     titleinfo      \
