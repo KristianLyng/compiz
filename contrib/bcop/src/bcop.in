@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+# 
+#  Compiz option code generator
+# 
+#  Copyright : (C) 2007 by Dennis Kasprzyk
+#  E-mail    : onestone@beryl-project.org
+# 
+# 
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
+# 
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+
+xsltdir=@prefix@/share/bcop
+
+function usage
+{
+    echo "Usage: $0 [options] <options file>"
+    echo "Options:"
+    echo "  -h, --help           display this help message"
+    echo "  -v, --version        print version information"
+    echo "      --source=<file>  source file name"
+    echo "      --header=<file>  header file name"
+    exit 1
+}
+
+srcfile=
+hdrfile=
+
+set -- `getopt -quo "hv" -l "help,version,source:,header:" -- "$@"`
+[ $# -lt 2 ] && usage
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        -h)         usage;;
+        --help)     usage;;
+        -v)         echo "@PACKAGE_STRING@"; exit 0;;
+        --version)  echo "@PACKAGE_STRING@"; exit 0;;
+        --source)   srcfile="$2"; shift;;
+        --header)   hdrfile="$2"; shift;;
+        --)         shift; break;;
+        -*)         usage;;
+        *)          break;;         # terminate while loop
+    esac
+    shift
+done
+
+xmlfile="$1"
+
+if [ -e $xmlfile ]; then
+    if [ -n "$hdrfile" ]; then
+        xsltproc --stringparam "header" "true" $xsltdir/bcop.xslt $xmlfile > "$hdrfile"
+	RETVAL=$?
+	if [ $RETVAL -ne 0 ]; then
+	    rm -f $hdrfile
+	    exit $RETVAL
+	fi
+    fi
+    if [ -n "$srcfile" ]; then
+        xsltproc --stringparam "source" "true" $xsltdir/bcop.xslt $xmlfile > "$srcfile"
+	RETVAL=$?
+	if [ $RETVAL -ne 0 ]; then
+	    rm -f $srcfile
+	    exit $RETVAL
+	fi
+    fi
+fi

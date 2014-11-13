@@ -1,0 +1,12 @@
+2007-08-04  cyberorg <cyberorg@cyberorg.info>
+
+        * Add zh_CN from Thruth <gubotruth@gmail.com>
+ 
+2007-06-28  Guillaume Seguin <guillaume@segu.in>
+
+	* Add initial fr.po (from Sylvain Debray, xsnake and I)
+
+2007-06-28  cyberorg <cyberorg@cyberorg.info>
+
+        * Initial internationalization of fusion plugins 
+	* Developers need to mark _() translatable strings

@@ -3,4 +3,17 @@ compiz - OpenGL window and compositing manager
 This particular repository is a work in progress to merge various
 Compiz-components and make things easier for users and developers alike.
 
+Some components are now added, but not integrated in the actual build yet.
+They can still be built, but require you to manually enter the relevant
+paths. So far, this includes:
+
+contrib/bcop/
+	Configuration-helper for plugins (used by some, but not all plugins)
+	
+contrib/plugins-main/
+	A set of known-good plugins originally from Beryl. Many of these
+	require bcop.
+
+
+
 More information to come as it is available.

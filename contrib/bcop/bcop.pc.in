@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+bin=@exec_prefix@/bin/bcop
+xsltpath=@prefix@/share/bcop
+
+Name: bcop
+Description: Compiz option code generator
+Version: @VERSION@
+Requires:
+
