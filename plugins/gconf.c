@@ -725,8 +725,6 @@ gconfInitCore (CompPlugin *p,
     if (!gc)
 	return FALSE;
 
-    g_type_init ();
-
     gc->client = gconf_client_get_default ();
 
     gconf_client_add_dir (gc->client, "/apps/" APP_NAME,
