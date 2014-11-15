@@ -264,7 +264,7 @@ convertToZoomed (CompScreen *s,
  * See comments in drawCursor.
  */
 
-static inline Bool 
+static Bool
 dontuseScreengrabExist (CompScreen * s, char * grab)
 {
     int i;
@@ -275,7 +275,7 @@ dontuseScreengrabExist (CompScreen * s, char * grab)
 }
 
 /* Check if the output is valid */
-static inline Bool
+static Bool
 outputIsZoomArea (CompScreen *s, int out)
 {
     ZOOM_SCREEN (s);
@@ -286,7 +286,7 @@ outputIsZoomArea (CompScreen *s, int out)
 }
 
 /* Check if zoom is active on the output specified */
-static inline Bool
+static Bool
 isActive (CompScreen *s, int out)
 {
     ZOOM_SCREEN (s);
@@ -301,7 +301,7 @@ isActive (CompScreen *s, int out)
 /* Check if we are zoomed out and not going anywhere
  * (similar to isActive but based on actual zoom, not grab)
  */
-static inline Bool
+static Bool
 isZoomed (CompScreen *s, int out)
 {
     ZOOM_SCREEN (s);
@@ -309,7 +309,7 @@ isZoomed (CompScreen *s, int out)
     if (!outputIsZoomArea (s, out))
 	return FALSE;
 
-    if (zs->zooms[out].currentZoom != 1.0f 
+    if (zs->zooms[out].currentZoom != 1.0f
 	|| zs->zooms[out].newZoom != 1.0f)
 	return TRUE;
 
@@ -332,7 +332,7 @@ distanceToEdge (CompScreen *s, int out, ZoomEdge edge)
 			   o->region.extents.y2, &x2, &y2);
     convertToZoomedTarget (s, out, o->region.extents.x1, 
 			   o->region.extents.y1, &x1, &y1);
-    switch (edge) 
+    switch (edge)
     {
 	case NORTH: return o->region.extents.y1 - y1;
 	case SOUTH: return y2 - o->region.extents.y2;
@@ -451,7 +451,7 @@ adjustXYVelocity (CompScreen *s, int out, float chunk)
 	    xamount = 1.0f;
     else if (xamount > 5.0) 
 	    xamount = 5.0f;
-    
+
     if (yamount < 1.0f) 
 	    yamount = 1.0f;
     else if (yamount > 5.0) 
@@ -533,7 +533,7 @@ zoomDonePaintScreen (CompScreen *s)
 	int out;
 	for (out = 0; out < zs->nZooms; out++)
 	{
-	    if (isInMovement (s, out) && isActive (s,out))
+	    if (isInMovement (s, out) && isActive (s, out))
 	    {
 		damageScreen (s);
 		break;
@@ -544,10 +544,11 @@ zoomDonePaintScreen (CompScreen *s)
     (*s->donePaintScreen) (s);
     WRAP (zs, s, donePaintScreen, zoomDonePaintScreen);
 }
+
 /* Draws a box from the screen coordinates inx1,iny1 to inx2,iny2 */
 static void
-drawBox (CompScreen          *s, 
-	 const CompTransform *transform, 
+drawBox (CompScreen          *s,
+	 const CompTransform *transform,
 	 CompOutput          *output,
 	 Box                 box)
 {
@@ -559,7 +560,7 @@ drawBox (CompScreen          *s,
     transformToScreenSpace (s, output, -DEFAULT_Z_CAMERA, &zTransform);
     convertToZoomed (s, out, box.x1, box.y1, &inx1, &iny1);
     convertToZoomed (s, out, box.x2, box.y2, &inx2, &iny2);
-    
+
     x1 = MIN (inx1, inx2);
     y1 = MIN (iny1, iny2);
     x2 = MAX (inx1, inx2);
@@ -582,6 +583,7 @@ drawBox (CompScreen          *s,
     glEnableClientState (GL_TEXTURE_COORD_ARRAY);
     glPopMatrix ();
 }
+
 /* Apply the zoom if we are grabbed.
  * Make sure to use the correct filter.
  */
@@ -596,7 +598,6 @@ zoomPaintOutput (CompScreen		 *s,
     Bool status;
     int	 out = output->id;
     ZOOM_SCREEN (s);
-    
 
     if (isActive (s, out))
     {
@@ -614,7 +615,7 @@ zoomPaintOutput (CompScreen		 *s,
 	matrixTranslate (&zTransform, 
 			 zs->zooms[out].xtrans,
 			 zs->zooms[out].ytrans,
-			 0); 
+			 0);
 
 	mask |= PAINT_SCREEN_TRANSFORMED_MASK;
 	saveFilter = s->filter[SCREEN_TRANS_FILTER];
@@ -717,11 +718,11 @@ setCenter (CompScreen *s, int x, int y, Bool instant)
 /* Zooms the area described.
  * The math could probably be cleaned up, but should be correct now. */
 static void
-setZoomArea (CompScreen *s, 
-	     int        x, 
-	     int        y, 
-	     int        width, 
-	     int        height, 
+setZoomArea (CompScreen *s,
+	     int        x,
+	     int        y,
+	     int        width,
+	     int        height,
 	     Bool       instant)
 {
     int         out = outputDeviceForGeometry (s, x, y, width, height, 0);
@@ -762,7 +763,7 @@ zoomAreaToWindow (CompWindow *w)
     int width = w->width + w->input.left + w->input.right;
     int top = w->serverY - w->input.top;
     int height = w->height + w->input.top + w->input.bottom;
-    
+
     setZoomArea (w->screen, left, top, width, height, FALSE);
 }
 
@@ -795,14 +796,14 @@ enableMousePolling (CompScreen *s)
 {
     ZOOM_SCREEN (s);
     ZOOM_DISPLAY (s->display);
-    zs->pollHandle = 
+    zs->pollHandle =
 	(*zd->mpFunc->addPositionPolling) (s, updateMouseInterval);
     zs->lastChange = time(NULL);
     (*zd->mpFunc->getCurrentPosition) (s, &zs->mouseX, &zs->mouseY);
 }
 
-/* Sets the zoom (or scale) level. 
- * Cleans up if we are suddenly zoomed out. 
+/* Sets the zoom (or scale) level.
+ * Cleans up if we are suddenly zoomed out.
  */
 static void
 setScale (CompScreen *s, int out, float value)
@@ -836,7 +837,7 @@ setScale (CompScreen *s, int out, float value)
     damageScreen(s);
 }
 
-/* Sets the zoom factor to the bigger of the two floats supplied. 
+/* Sets the zoom factor to the bigger of the two floats supplied.
  * Convenience function for setting the scale factor for an area.
  */
 static inline void
@@ -859,7 +860,7 @@ static void
 syncCenterToMouse (CompScreen *s)
 {
     int         x, y;
-    int         out; 
+    int         out;
     CompOutput  *o;
     ZOOM_SCREEN (s);
 
@@ -885,15 +886,15 @@ syncCenterToMouse (CompScreen *s)
 
 /* Convert the point X,Y to where it would be when zoomed.  */
 static void
-convertToZoomed (CompScreen *s, 
-		 int        out, 
-		 int        x, 
-		 int        y, 
-		 int        *resultX, 
+convertToZoomed (CompScreen *s,
+		 int        out,
+		 int        x,
+		 int        y,
+		 int        *resultX,
 		 int        *resultY)
 {
     CompOutput  *o = &s->outputDev[out];
-    ZoomArea    *za; 
+    ZoomArea    *za;
     ZOOM_SCREEN (s);
 
     za = &zs->zooms[out];
@@ -994,7 +995,7 @@ ensureVisibility (CompScreen *s, int x, int y, int margin)
  * priority if it isn't possible to fit all of it.
  */
 static void
-ensureVisibilityArea (CompScreen  *s, 
+ensureVisibilityArea (CompScreen  *s,
 		      int         x1,
 		      int         y1,
 		      int         x2,
@@ -1006,7 +1007,7 @@ ensureVisibilityArea (CompScreen  *s,
     int        out; 
     CompOutput *o; 
     ZOOM_SCREEN (s);
-    
+
     out = outputDeviceForPoint (s, x1 + (x2-x1/2), y1 + (y2-y1/2));
     o = &s->outputDev[out];
 
@@ -1025,13 +1026,13 @@ ensureVisibilityArea (CompScreen  *s,
 	case NORTHWEST:
 	    targetX = x1;
 	    targetY = y1;
-	    if (WIDTHOK) 
+	    if (WIDTHOK)
 		targetW = x2 - x1;
-	    else 
+	    else
 		targetW = o->width * zs->zooms[out].newZoom;
-	    if (HEIGHTOK) 
+	    if (HEIGHTOK)
 		targetH = y2 - y1;
-	    else 
+	    else
 		targetH = o->height * zs->zooms[out].newZoom;
 	    break;
 	case NORTHEAST:
@@ -1040,7 +1041,7 @@ ensureVisibilityArea (CompScreen  *s,
 	    {
 		targetX = x1;
 		targetW = x2-x1;
-	    } 
+	    }
 	    else
 	    {
 		targetX = x2 - o->width * zs->zooms[out].newZoom;
@@ -1049,7 +1050,7 @@ ensureVisibilityArea (CompScreen  *s,
 
 	    if (HEIGHTOK)
 		targetH = y2-y1;
-	    else 
+	    else
 		targetH = o->height * zs->zooms[out].newZoom;
 	    break;
 	case SOUTHWEST:
@@ -1062,7 +1063,7 @@ ensureVisibilityArea (CompScreen  *s,
 	    {
 		targetY = y1;
 		targetH = y2-y1;
-	    } 
+	    }
 	    else
 	    {
 		targetY = y2 - (o->width * zs->zooms[out].newZoom);
@@ -1074,13 +1075,13 @@ ensureVisibilityArea (CompScreen  *s,
 	    {
 		targetX = x1;
 		targetW = x2-x1;
-	    } 
-	    else 
+	    }
+	    else
 	    {
 		targetW = o->width * zs->zooms[out].newZoom;
 		targetX = x2 - targetW;
 	    }
-	    
+
 	    if (HEIGHTOK)
 	    {
 		targetY = y1;
@@ -1133,9 +1134,9 @@ restrainCursor (CompScreen *s, int out)
 
     convertToZoomedTarget (s, out, zs->mouseX - zs->cursor.hotX, 
 			   zs->mouseY - zs->cursor.hotY, &x1, &y1);
-    convertToZoomedTarget 
-	(s, out, 
-	 zs->mouseX - zs->cursor.hotX + zs->cursor.width, 
+    convertToZoomedTarget
+	(s, out,
+	 zs->mouseX - zs->cursor.hotX + zs->cursor.width,
 	 zs->mouseY - zs->cursor.hotY + zs->cursor.height,
 	 &x2, &y2);
 
@@ -1205,7 +1206,7 @@ static void
 updateMousePosition (CompScreen *s, int x, int y)
 {
     ZOOM_SCREEN(s);
-    int out; 
+    int out;
     zs->mouseX = x;
     zs->mouseY = y;
     out = outputDeviceForPoint (s, zs->mouseX, zs->mouseY);
@@ -1216,8 +1217,10 @@ updateMousePosition (CompScreen *s, int x, int y)
     damageScreen (s);
 }
 
-/* Timeout handler to poll the mouse. Returns false (and thereby does not
- * get re-added to the queue) when zoom is not active. */
+/*
+ * Timeout handler to poll the mouse. Unregisters from polling if we're now
+ * zoomed out.
+ */
 static void
 updateMouseInterval (CompScreen *s, int x, int y)
 {
@@ -1279,9 +1282,9 @@ drawCursor (CompScreen          *s,
         glPushMatrix ();
 	glLoadMatrixf (sTransform.m);
 	glTranslatef ((float) ax, (float) ay, 0.0f);
-	if (zs->opt[SOPT_SCALE_MOUSE_DYNAMIC].value.b) 
+	if (zs->opt[SOPT_SCALE_MOUSE_DYNAMIC].value.b)
 	    scaleFactor = 1.0f / zs->zooms[out].currentZoom;
-	else 
+	else
 	    scaleFactor = 1.0f / zs->opt[SOPT_SCALE_MOUSE_STATIC].value.f;
 	glScalef (scaleFactor,
 		  scaleFactor,
@@ -2358,7 +2361,11 @@ zoomInitScreen (CompPlugin *p,
     zs->zooms = malloc (sizeof (ZoomArea) * zs->nZooms);
     for (i = 0; i < zs->nZooms; i ++ )
     {
-	/* zs->grabbed is a mask ... Thus this limit */
+	/* zs->grabbed is a mask ... Thus this limit
+	 * XXX: This means we probably crash if we are dealing with more
+	 * than 64 monitors (assuming long int of 8 bytes) since I don't
+	 * think I test this everywhere I should. If this happens, take a
+	 * picture of your rig and attach it to the bug report please. */
 	if (i > sizeof (long int) * 8)
 	    break;
 	initialiseZoomArea (&zs->zooms[i], i);
