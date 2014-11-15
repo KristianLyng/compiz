@@ -16,14 +16,9 @@ if TEXT_PLUGIN
 textxml = text.xml.in
 endif
 
-if WALL_PLUGIN
-wallxml = wall.xml.in
-endif
-
 xml_in_files = 	         \
 	animation.xml.in      \
 	colorfilter.xml.in    \
-	expo.xml.in           \
 	kdecompat.xml.in      \
 	mag.xml.in            \
 	neg.xml.in            \
@@ -41,8 +36,7 @@ xml_in_files = 	         \
 	$(jpegxml)            \
 	$(resizeinfoxml)      \
 	$(scaleaddonxml)      \
-	$(textxml)            \
-	$(wallxml)
+	$(textxml)            
 
 xml_files    = $(xml_in_files:.xml.in=.xml)
 xml_DATA     = $(xml_files)

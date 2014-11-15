@@ -2,7 +2,6 @@
 SUBDIRS = \
     animation      \
     colorfilter    \
-    expo           \
     jpeg           \
     kdecompat      \
     mag            \
@@ -19,6 +18,5 @@ SUBDIRS = \
     thumbnail      \
     titleinfo      \
     vpswitch       \
-    wall           \
     winrules       \
     workarounds
