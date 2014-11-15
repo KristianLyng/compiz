@@ -25,6 +25,7 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER([config.h])
 AC_PROG_INTLTOOL([0.23])
 AM_MAINTAINER_MODE
+AM_GCONF_SOURCE_2
 
 dnl decorator interface version
 AC_DEFINE(DECOR_INTERFACE_VERSION, 20080529, [Decorator interface version])
@@ -107,6 +108,9 @@ fi
 
 AC_C_BIGENDIAN
 
+stylesheetdir=$datadir/compiz
+AC_SUBST(stylesheetdir)
+
 plugindir=$libdir/compiz
 AC_SUBST(plugindir)
 
@@ -171,115 +175,82 @@ if test -z "$XSLTPROC"; then
 fi
 
 PKG_CHECK_MODULES(LIBPNG, libpng)
+PKG_CHECK_MODULES(GLIB, glib-2.0,[have_glib=yes],[have_glib=no])
+PKG_CHECK_MODULES(GCONF, gconf-2.0, [have_gconf2=yes],[have_gconf2=no])
+PKG_CHECK_MODULES(DBUS, dbus-1 libxml-2.0, [have_dbus=yes], [have_dbus=no])
+AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
+PKG_CHECK_MODULES(FUSE, fuse, [have_fuse=yes], [have_fuse=no])
+PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrender=yes], [have_cairo_xlib_xrender=no])
+PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
 
+AC_ARG_ENABLE(annotate,
+  [  --disable-annotate      Disable annotate plugin],
+  [use_annotate=$enableval], [use_annotate=yes])
+AC_ARG_ENABLE(wall,
+  [  --disable-wall          Disable wall plugin],
+  [use_wall=$enableval], [use_wall=yes])
+AC_ARG_ENABLE(fuse,
+  [  --disable-fuse          Disable fuse plugin],
+  [use_fuse=$enableval], [use_fuse=yes])
+AC_ARG_ENABLE(inotify,
+  [  --disable-inotify       Disable inotify plugin],
+  [use_inotify=$enableval], [use_inotify=yes])
 AC_ARG_ENABLE(glib,
   [  --disable-glib          Disable glib plugin],
   [use_glib=$enableval], [use_glib=yes])
-
-if test "x$use_glib" = "xyes"; then
-  PKG_CHECK_MODULES(GLIB, glib-2.0)
-fi
-
-AM_CONDITIONAL(USE_GLIB, test "x$use_glib" = "xyes")
-if test "$use_glib" = yes; then
-  AC_DEFINE(USE_GLIB, 1, [Build glib plugin])
-fi
-
 AC_ARG_ENABLE(gconf,
   [  --disable-gconf         Disable gconf plugin],
   [use_gconf=$enableval], [use_gconf=yes])
+AC_ARG_ENABLE(dbus,
+  [  --disable-dbus          Disable dbus plugin],
+  [use_dbus=$enableval], [use_dbus=yes])
 
-if test "x$use_gconf" = "xyes"; then
-  PKG_CHECK_MODULES(GCONF, gconf-2.0)
+if test "x$have_glib" != "xyes"; then
+  use_glib="no"
+  missing_optional_deps="${missing_optional_deps} glib"
+fi
 
+if test "x$have_dbus" != "xyes"; then
+    use_dbus=no
+    missing_optional_deps="${missing_optional_deps} dbus"
+fi
+
+if test "x$have_inotify" != "xyes"; then
+   use_inotify="no"
+   missing_optional_deps="${missing_optional_deps} inotify"
+fi
+
+if test "x$have_fuse" != "xyes"; then
+   use_fuse="no"
+   missing_optional_deps="${missing_optional_deps} fuse"
+fi
+
+if test "x$have_cairo" != "xyes"; then
+    use_wall="no"
+    missing_optional_deps="${missing_optional_deps} cairo(wall plugin)"
+fi
+
+if test "x$have_cairo_xlib_xrender" != "xyes"; then
+    use_annotate="no"
+    missing_optional_deps="${missing_optional_deps} cairo_xlib_xrender(annotate plugin)"
+fi
+
+if test "x$have_gconf2" != "xyes"; then
+  use_gconf="no"
+  missing_optional_deps="${missing_optional_deps} gconf"
+else
   AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
   if test x"$GCONFTOOL" = xno; then
     AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
   fi
 fi
 
-AM_GCONF_SOURCE_2
 
+AM_CONDITIONAL(USE_GLIB, test "x$use_glib" = "xyes")
 AM_CONDITIONAL(USE_GCONF, test "x$use_gconf" = "xyes")
-if test "$use_gconf" = yes; then
-  AC_DEFINE(USE_GCONF, 1, [Build gconf plugin])
-fi
-
-stylesheetdir=$datadir/compiz
-AC_SUBST(stylesheetdir)
-
-AC_ARG_ENABLE(dbus,
-  [  --disable-dbus          Disable dbus plugin],
-  [use_dbus=$enableval], [use_dbus=yes])
-
-if test "x$use_dbus" = "xyes"; then
-  PKG_CHECK_MODULES(DBUS, dbus-1 libxml-2.0, [use_dbus=yes], [use_dbus=no])
-fi
-
-AM_CONDITIONAL(DBUS_PLUGIN, test "x$use_dbus" = "xyes")
-if test "$use_dbus" = yes; then
-  AC_DEFINE(USE_DBUS, 1, [Build dbus plugin])
-fi
-
-AC_ARG_ENABLE(dbus-glib,
-  [  --disable-dbus-glib     Disable dbus-glib support],
-  [use_dbus_glib=$enableval], [use_dbus_glib=yes])
-
-if test "x$use_dbus_glib" = "xyes"; then
-  PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1, [use_dbus_glib=yes], [use_dbus_glib=no])
-fi
-
-if test "$use_dbus" = yes; then
-  AC_DEFINE(USE_DBUS_GLIB, 1, [Build dbus glib support])
-fi
-
-AC_ARG_ENABLE(inotify,
-  [  --disable-inotify       Disable inotify plugin],
-  [use_inotify=$enableval], [use_inotify=yes])
-
-if test "x$use_inotify" = "xyes"; then
-  AC_CHECK_HEADERS([sys/inotify.h], [use_inotify=yes], [use_inotify=no])
-fi
-
-AM_CONDITIONAL(INOTIFY_PLUGIN, test "x$use_inotify" = "xyes")
-if test "$use_inotify" = yes; then
-  AC_DEFINE(USE_INOTIFY, 1, [Build inotify plugin])
-fi
-
-AC_ARG_ENABLE(fuse,
-  [  --disable-fuse          Disable fuse plugin],
-  [use_fuse=$enableval], [use_fuse=yes])
-
-if test "x$use_fuse" = "xyes"; then
-  PKG_CHECK_MODULES(FUSE, fuse, [use_fuse=yes], [use_fuse=no])
-fi
-
-AM_CONDITIONAL(FUSE_PLUGIN, test "x$use_fuse" = "xyes")
-if test "$use_fuse" = yes; then
-  AC_DEFINE(USE_FUSE, 1, [Build fuse plugin])
-fi
-
-
-AC_ARG_ENABLE(annotate,
-  [  --disable-annotate      Disable annotate plugin],
-  [use_annotate=$enableval], [use_annotate=yes])
-
-AC_ARG_ENABLE(wall,
-  [  --disable-wall          Disable wall plugin],
-  [use_wall=$enableval], [use_wall=yes])
-
-PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrender=yes], [have_cairo_xlib_xrender=no])
-PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
-
-if test "x$have_cairo" != "xyes"; then
-    use_wall="no"
-    missing_optional_deps="${missing_optional_deps} cairo(wall plugin)"
-fi
-if test "x$have_cairo_xlib_xrender" != "xyes"; then
-    use_annotate="no"
-    missing_optional_deps="${missing_optional_deps} cairo_xlib_xrender(annotate plugin)"
-fi
-
+AM_CONDITIONAL(USE_DBUS, test "x$use_dbus" = "xyes")
+AM_CONDITIONAL(USE_INOTIFY, test "x$use_inotify" = "xyes")
+AM_CONDITIONAL(USE_FUSE, test "x$use_fuse" = "xyes")
 AM_CONDITIONAL(USE_WALL, test "x$use_wall" = "xyes")
 AM_CONDITIONAL(USE_ANNOTATE, test "x$use_annotate" = "xyes")
 

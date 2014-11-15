@@ -139,20 +139,20 @@ libkconfig_la_SOURCES = kconfig.cpp
 libkconfig_module = libkconfig.la
 endif
 
-if DBUS_PLUGIN
+if USE_DBUS
 libdbus_la_LDFLAGS = -module -avoid-version -no-undefined
 libdbus_la_LIBADD = @DBUS_LIBS@
 libdbus_la_SOURCES = dbus.c
 libdbus_module = libdbus.la
 endif
 
-if INOTIFY_PLUGIN
+if USE_INOTIFY 
 libinotify_la_LDFLAGS = -module -avoid-version -no-undefined
 libinotify_la_SOURCES = inotify.c
 libinotify_module = libinotify.la
 endif
 
-if FUSE_PLUGIN
+if USE_FUSE
 libfs_la_LDFLAGS = -module -avoid-version -no-undefined
 libfs_la_LIBADD = @FUSE_LIBS@
 libfs_la_SOURCES = fuse.c
