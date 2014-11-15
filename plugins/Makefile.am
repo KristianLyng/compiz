@@ -159,22 +159,10 @@ libfs_la_SOURCES = fuse.c
 libfs_module = libfs.la
 endif
 
-staticswitcher_options.h: ../metadata/staticswitcher.xml.in
+
+%_options.h: ../metadata/%.xml.in
 	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
-
-staticswitcher_options.c: ../metadata/staticswitcher.xml.in staticswitcher_options.h
-	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
-
-wall_options.h: ../metadata/wall.xml.in
-	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
-
-wall_options.c: ../metadata/wall.xml.in wall_options.h
-	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
-
-expo_options.h: ../metadata/expo.xml.in
-	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
-
-expo_options.c: ../metadata/expo.xml.in expo_options.h
+%_options.c: ../metadata/%.xml.in %_options.h
 	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
 
 BUILT_SOURCES = $(nodist_libstaticswitcher_la_SOURCES)
