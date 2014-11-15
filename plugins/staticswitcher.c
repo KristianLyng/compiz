@@ -809,10 +809,10 @@ switchInitiateCommon (CompDisplay           *d,
 	    if (selection == Group)
 	    {
     		CompWindow *w;
-		Window     xid;
+		Window     xid2;
 
-		xid = getIntOptionNamed (option, nOption, "window", 0);
-    		w   = findWindowAtDisplay (d, xid);
+		xid2 = getIntOptionNamed (option, nOption, "window", 0);
+    		w   = findWindowAtDisplay (d, xid2);
     		if (w)
     		    ss->clientLeader = (w->clientLeader) ?
 			               w->clientLeader : w->id;

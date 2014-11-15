@@ -742,16 +742,16 @@ resizeHandleMotionEvent (CompScreen *s,
 
 	if (!rd->mask)
 	{
-	    CompWindow *w = rd->w;
+	    CompWindow *win = rd->w;
 	    int        xDist, yDist;
 	    int        minPointerOffsetX, minPointerOffsetY;
 
-	    xDist = xRoot - (w->serverX + (w->serverWidth / 2));
-	    yDist = yRoot - (w->serverY + (w->serverHeight / 2));
+	    xDist = xRoot - (win->serverX + (win->serverWidth / 2));
+	    yDist = yRoot - (win->serverY + (win->serverHeight / 2));
 
 	    /* decision threshold is 10% of window size */
-	    minPointerOffsetX = MIN (20, w->serverWidth / 10);
-	    minPointerOffsetY = MIN (20, w->serverHeight / 10);
+	    minPointerOffsetX = MIN (20, win->serverWidth / 10);
+	    minPointerOffsetY = MIN (20, win->serverHeight / 10);
 
 	    /* if we reached the threshold in one direction,
 	       make the threshold in the other direction smaller
@@ -784,28 +784,25 @@ resizeHandleMotionEvent (CompScreen *s,
 	    if (rd->mask)
 	    {
 		Cursor     cursor;
-		CompScreen *s = rd->w->screen;
 		CompAction *action;
 		int        pointerAdjustX = 0;
 		int        pointerAdjustY = 0;
 		int	   option = RESIZE_DISPLAY_OPTION_INITIATE_KEY;
 
-		RESIZE_SCREEN (s);
-
 		action = &rd->opt[option].value.action;
 		action->state |= CompActionStateTermButton;
 
 		if (rd->mask & ResizeRightMask)
-			pointerAdjustX = w->serverX + w->serverWidth +
-					 w->input.right - xRoot;
+			pointerAdjustX = win->serverX + win->serverWidth +
+					 win->input.right - xRoot;
 		else if (rd->mask & ResizeLeftMask)
-			pointerAdjustX = w->serverX - w->input.left - xRoot;
+			pointerAdjustX = win->serverX - win->input.left - xRoot;
 
 		if (rd->mask & ResizeDownMask)
-			pointerAdjustY = w->serverY + w->serverHeight +
-					 w->input.bottom - yRoot;
+			pointerAdjustY = win->serverY + win->serverHeight +
+					 win->input.bottom - yRoot;
 		else if (rd->mask & ResizeUpMask)
-			pointerAdjustY = w->serverY - w->input.top - yRoot;
+			pointerAdjustY = win->serverY - win->input.top - yRoot;
 
 		warpPointer (s, pointerAdjustX, pointerAdjustY);
 

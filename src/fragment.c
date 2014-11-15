@@ -761,12 +761,13 @@ copyData (CompHeaderOp *header,
 	  char	       *data)
 {
     char *copy, *needle, *haystack, *dst, *first;
-    int  i, index, length, prefixLength, count = 0;
+    int  i, index, prefixLength, count = 0;
 
     prefixLength = strlen (prefix);
 
     for (i = 0; i < nHeader; i++)
     {
+	int length;
 	length   = strlen (header[i].name);
 	haystack = data;
 

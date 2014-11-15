@@ -139,13 +139,13 @@ coreObjectRemove (CompObject *parent,
 }
 
 static void
-fileWatchAdded (CompCore      *core,
+fileWatchAdded (CompCore      *c,
 		CompFileWatch *fileWatch)
 {
 }
 
 static void
-fileWatchRemoved (CompCore      *core,
+fileWatchRemoved (CompCore      *c,
 		  CompFileWatch *fileWatch)
 {
 }

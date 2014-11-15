@@ -2349,7 +2349,6 @@ wobblyDamageWindowRect (CompWindow *w,
 	    int mapEffect;
 
 	    WOBBLY_WINDOW (w);
-	    WOBBLY_SCREEN (w->screen);
 
 	    mIndex    = WOBBLY_SCREEN_OPTION_MAP_WINDOW_MATCH;
 	    mapEffect = ws->opt[WOBBLY_SCREEN_OPTION_MAP_EFFECT].value.i;

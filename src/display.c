@@ -1354,6 +1354,27 @@ paintScreen (CompScreen   *s,
     }
 }
 
+static void
+removeDestroyedWindows(CompScreen *s)
+{
+    while (s->pendingDestroys)
+    {
+	CompWindow *w;
+
+	for (w = s->windows; w; w = w->next)
+	{
+	    if (w->destroyed)
+	    {
+		addWindowDamage (w);
+		removeWindow (w);
+		break;
+	    }
+	}
+
+	s->pendingDestroys--;
+    }
+}
+
 void
 eventLoop (void)
 {
@@ -1636,22 +1657,8 @@ eventLoop (void)
 			(*s->donePaintScreen) (s);
 
 			/* remove destroyed windows */
-			while (s->pendingDestroys)
-			{
-			    CompWindow *w;
-
-			    for (w = s->windows; w; w = w->next)
-			    {
-				if (w->destroyed)
-				{
-				    addWindowDamage (w);
-				    removeWindow (w);
-				    break;
-				}
-			    }
-
-			    s->pendingDestroys--;
-			}
+			
+			removeDestroyedWindows(s);
 
 			s->idle = FALSE;
 		    }

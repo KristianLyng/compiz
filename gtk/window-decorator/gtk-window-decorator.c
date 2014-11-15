@@ -6065,13 +6065,19 @@ meta_update_button_layout (const char *value)
 }
 #endif
 
+/*
+ * XXX: What is the deal with text_height here?
+ *
+ * It's obviously shadowing the global variant, so I'm re-naming it int_,
+ * but is it even needed? Hmm. - Kristian
+ */
 static void
-update_border_extents (gint text_height)
+update_border_extents (gint int_text_height)
 {
     _win_extents = _default_win_extents;
     _max_win_extents = _default_win_extents;
     max_titlebar_height = titlebar_height =
-	(text_height < 17) ? 17 : text_height;
+	(int_text_height < 17) ? 17 : int_text_height;
 }
 
 #ifdef USE_METACITY
@@ -6762,7 +6768,7 @@ init_settings (WnckScreen *screen)
 						    "/shadow_color");
     if (reply)
     {
-	DBusError error;
+	DBusError error2;
 	char      *str;
 
 	dbus_error_init (&error);
@@ -6783,7 +6789,7 @@ init_settings (WnckScreen *screen)
 	    }
 	}
 
-	dbus_error_free (&error);
+	dbus_error_free (&error2);
 
 	dbus_message_unref (reply);
     }

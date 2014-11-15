@@ -1147,9 +1147,9 @@ rotateEdgeFlip (CompScreen      *s,
     o[3].type	 = CompOptionTypeInt;
     o[3].name	 = "direction";
 
+    int flipTime = rd->opt[ROTATE_DISPLAY_OPTION_FLIPTIME].value.i;
     if (edge == SCREEN_EDGE_LEFT)
     {
-	int flipTime = rd->opt[ROTATE_DISPLAY_OPTION_FLIPTIME].value.i;
 
 	ROTATE_SCREEN (s);
 
@@ -1174,8 +1174,6 @@ rotateEdgeFlip (CompScreen      *s,
 	{
 	    if (!rs->rotateHandle)
 	    {
-		int flipTime = rd->opt[ROTATE_DISPLAY_OPTION_FLIPTIME].value.i;
-
 		rs->rotateHandle = compAddTimeout (flipTime,
 						   (float) flipTime * 1.2,
 						   rotateFlipLeft, s);
@@ -1196,7 +1194,6 @@ rotateEdgeFlip (CompScreen      *s,
     }
     else
     {
-	int flipTime = rd->opt[ROTATE_DISPLAY_OPTION_FLIPTIME].value.i;
 
 	ROTATE_SCREEN (s);
 
@@ -1221,7 +1218,6 @@ rotateEdgeFlip (CompScreen      *s,
 	{
 	    if (!rs->rotateHandle)
 	    {
-		int flipTime = rd->opt[ROTATE_DISPLAY_OPTION_FLIPTIME].value.i;
 
 		rs->rotateHandle =
 		    compAddTimeout (flipTime, (float) flipTime * 1.2,

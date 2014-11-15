@@ -105,7 +105,7 @@ if test "x$GCC" = "xyes"; then
   *) CXXFLAGS="$CXXFLAGS -D_FORTIFY_SOURCE=2" ;;
   esac
 fi
-
+CFLAGS="$CFLAGS -Wshadow -Werror"
 AC_C_BIGENDIAN
 
 stylesheetdir=$datadir/compiz

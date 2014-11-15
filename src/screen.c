@@ -1088,14 +1088,14 @@ updateScreenBackground (CompScreen  *screen,
 		Pixmap p;
 
 		memcpy (&p, prop, 4);
-
+		
 		if (p)
 		{
 		    unsigned int ui;
-		    int		 i;
+		    int		 j;
 		    Window	 w;
 
-		    if (XGetGeometry (dpy, p, &w, &i, &i,
+		    if (XGetGeometry (dpy, p, &w, &j, &j,
 				      &width, &height, &ui, &depth))
 		    {
 			if (depth == screen->attrib.depth)
