@@ -34,6 +34,8 @@ xml_in_files =		   \
 	mousepoll.xml.in   \
 	ezoom.xml.in       \
 	staticswitcher.xml.in \
+	wall.xml.in		\
+	expo.xml.in		\
 	zoom.xml.in
 xml_files    = $(xml_in_files:.xml.in=.xml)
 xml_DATA     = $(xml_files)

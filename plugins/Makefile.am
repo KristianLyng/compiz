@@ -18,6 +18,16 @@ nodist_libstaticswitcher_la_SOURCES = staticswitcher_options.c \
 			       staticswitcher_options.h
 dist_libstaticswitcher_la_SOURCES = staticswitcher.c
 
+libwall_la_LDFLAGS = -module -avoid-version -no-undefined
+nodist_libwall_la_SOURCES = wall_options.c \
+			       wall_options.h
+dist_libwall_la_SOURCES = wall.c
+
+libexpo_la_LDFLAGS = -module -avoid-version -no-undefined
+nodist_libexpo_la_SOURCES = expo_options.c \
+			       expo_options.h
+dist_libexpo_la_SOURCES = expo.c
+
 libmousepoll_la_LDFLAGS = -module -avoid-version -no-undefined
 libmousepoll_la_SOURCES = mousepoll.c
 
@@ -149,6 +159,18 @@ staticswitcher_options.h: ../metadata/staticswitcher.xml.in
 staticswitcher_options.c: ../metadata/staticswitcher.xml.in staticswitcher_options.h
 	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
 
+wall_options.h: ../metadata/wall.xml.in
+	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
+wall_options.c: ../metadata/wall.xml.in wall_options.h
+	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
+expo_options.h: ../metadata/expo.xml.in
+	xsltproc --stringparam "header" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
+expo_options.c: ../metadata/expo.xml.in expo_options.h
+	xsltproc --stringparam "source" "true" ${top_srcdir}/bcop/bcop.xslt $< > $@
+
 BUILT_SOURCES = $(nodist_libstaticswitcher_la_SOURCES)
 
 CLEANFILES = *_options.c *_options.h
@@ -186,6 +208,8 @@ module_LTLIBRARIES =		\
 	libezoom.la		\
 	libmousepoll.la		\
 	libstaticswitcher.la	\
+	libwall.la		\
+	libexpo.la		\
 	librotate.la		\
 	libzoom.la		\
 	libscale.la		\
