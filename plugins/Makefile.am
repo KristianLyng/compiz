@@ -109,6 +109,23 @@ nodist_libstaticswitcher_la_SOURCES = staticswitcher_options.c \
 			       staticswitcher_options.h
 dist_libstaticswitcher_la_SOURCES = staticswitcher.c
 
+nodist_libneg_la_SOURCES = neg_options.c \
+			       neg_options.h
+dist_libneg_la_SOURCES = neg.c
+
+nodist_libmag_la_SOURCES = mag_options.c \
+			       mag_options.h
+dist_libmag_la_SOURCES = mag.c
+
+if USE_JPEG
+libimgjpeg_la_CFLAGS = @JPEG_CFLAGS@
+libimgjpeg_la_LIBADD = @JPEG_LIBS@
+nodist_libimgjpeg_la_SOURCES = imgjpeg_options.c \
+			       imgjpeg_options.h
+dist_libimgjpeg_la_SOURCES = imgjpeg.c
+libimgjpeg_module = libimgjpeg.la
+endif
+
 nodist_libexpo_la_SOURCES = expo_options.c \
 			       expo_options.h
 dist_libexpo_la_SOURCES = expo.c
@@ -116,6 +133,9 @@ dist_libexpo_la_SOURCES = expo.c
 BUILT_SOURCES = \
 	$(nodist_libstaticswitcher_la_SOURCES)	\
 	$(nodist_libexpo_la_SOURCES)		\
+	$(nodist_libmag_la_SOURCES)		\
+	$(nodist_libneg_la_SOURCES)		\
+	$(nodist_libimgjpeg_la_SOURCES)		\
 	$(libwall_built_sources)
 
 CLEANFILES = *_options.c *_options.h
@@ -152,6 +172,9 @@ module_LTLIBRARIES =		\
 	libezoom.la		\
 	libmousepoll.la		\
 	libstaticswitcher.la	\
+	libneg.la		\
+	libmag.la		\
+	$(libimgjpeg_module)	\
 	$(libwall_module)	\
 	libexpo.la		\
 	librotate.la		\

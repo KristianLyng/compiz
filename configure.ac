@@ -179,7 +179,7 @@ PKG_CHECK_MODULES(GLIB, glib-2.0,[have_glib=yes],[have_glib=no])
 PKG_CHECK_MODULES(GCONF, gconf-2.0, [have_gconf2=yes],[have_gconf2=no])
 PKG_CHECK_MODULES(DBUS, dbus-1 libxml-2.0, [have_dbus=yes], [have_dbus=no])
 PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1, [have_dbus_glib=yes], [have_dbus_glib=no])
-
+PKG_CHECK_MODULES(JPEG, libjpeg, [have_jpeg=yes], [have_jpeg=no])
 
 AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
 PKG_CHECK_MODULES(FUSE, fuse, [have_fuse=yes], [have_fuse=no])
@@ -192,6 +192,9 @@ AC_ARG_ENABLE(dbus-glib,
 AC_ARG_ENABLE(annotate,
   [  --disable-annotate      Disable annotate plugin],
   [use_annotate=$enableval], [use_annotate=yes])
+AC_ARG_ENABLE(jpeg,
+  [  --disable-jpeg          Disable jpeg plugin],
+  [use_jpeg=$enableval], [use_jpeg=yes])
 AC_ARG_ENABLE(wall,
   [  --disable-wall          Disable wall plugin],
   [use_wall=$enableval], [use_wall=yes])
@@ -211,6 +214,10 @@ AC_ARG_ENABLE(dbus,
   [  --disable-dbus          Disable dbus plugin],
   [use_dbus=$enableval], [use_dbus=yes])
 
+if test "x$have_jpeg" != "xyes"; then
+  use_jpeg="no"
+  missing_optional_deps="${missing_optional_deps} libjpeg"
+fi
 if test "x$have_glib" != "xyes"; then
   use_glib="no"
   missing_optional_deps="${missing_optional_deps} glib"
@@ -268,6 +275,7 @@ AM_CONDITIONAL(USE_INOTIFY, test "x$use_inotify" = "xyes")
 AM_CONDITIONAL(USE_FUSE, test "x$use_fuse" = "xyes")
 AM_CONDITIONAL(USE_WALL, test "x$use_wall" = "xyes")
 AM_CONDITIONAL(USE_ANNOTATE, test "x$use_annotate" = "xyes")
+AM_CONDITIONAL(USE_JPEG, test "x$use_jpeg" = "xyes")
 
 AC_ARG_ENABLE(librsvg,
   [  --disable-librsvg       Disable svg support],
@@ -651,6 +659,7 @@ echo "  wall:     $use_wall"
 echo "  svg:      $use_librsvg"
 echo "  inotify:  $use_inotify"
 echo "  fuse:     $use_fuse"
+echo "  jpeg:     $use_jpeg"
 echo ""
 echo "and the following optional features will be compiled:"
 echo "  gtk:      $use_gtk"
