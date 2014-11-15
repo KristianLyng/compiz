@@ -2,10 +2,7 @@
 SUBDIRS = \
     animation      \
     colorfilter    \
-    jpeg           \
     kdecompat      \
-    mag            \
-    neg            \
     opacify        \
     put            \
     resizeinfo     \

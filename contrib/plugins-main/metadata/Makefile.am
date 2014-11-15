@@ -1,9 +1,5 @@
 xmldir       = $(metadatadir)
 
-if JPEG_PLUGIN
-jpegxml = imgjpeg.xml.in
-endif
-
 if RESIZEINFO_PLUGIN
 resizeinfoxml = resizeinfo.xml.in
 endif
@@ -20,8 +16,6 @@ xml_in_files = 	         \
 	animation.xml.in      \
 	colorfilter.xml.in    \
 	kdecompat.xml.in      \
-	mag.xml.in            \
-	neg.xml.in            \
 	opacify.xml.in        \
 	put.xml.in            \
 	ring.xml.in           \
@@ -33,7 +27,6 @@ xml_in_files = 	         \
 	vpswitch.xml.in       \
 	winrules.xml.in       \
 	workarounds.xml.in    \
-	$(jpegxml)            \
 	$(resizeinfoxml)      \
 	$(scaleaddonxml)      \
 	$(textxml)            
