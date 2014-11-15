@@ -178,11 +178,17 @@ PKG_CHECK_MODULES(LIBPNG, libpng)
 PKG_CHECK_MODULES(GLIB, glib-2.0,[have_glib=yes],[have_glib=no])
 PKG_CHECK_MODULES(GCONF, gconf-2.0, [have_gconf2=yes],[have_gconf2=no])
 PKG_CHECK_MODULES(DBUS, dbus-1 libxml-2.0, [have_dbus=yes], [have_dbus=no])
+PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1, [have_dbus_glib=yes], [have_dbus_glib=no])
+
+
 AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
 PKG_CHECK_MODULES(FUSE, fuse, [have_fuse=yes], [have_fuse=no])
 PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrender=yes], [have_cairo_xlib_xrender=no])
 PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
 
+AC_ARG_ENABLE(dbus-glib,
+  [  --disable-dbus-glib     Disable dbus-glib support in gtk-window-decorator],
+  [use_dbus_glib=$enableval], [use_dbus_glib=yes])
 AC_ARG_ENABLE(annotate,
   [  --disable-annotate      Disable annotate plugin],
   [use_annotate=$enableval], [use_annotate=yes])
@@ -245,7 +251,16 @@ else
   fi
 fi
 
+if test "x$have_dbus_glib" != "xyes"; then
+  use_dbus_glib="no"
+  missing_optional_deps="${missing_optional_deps} dbus-glib(gtk-window-decorator)"
+fi
 
+if test "x$use_dbus_glib" = "xyes"; then
+  AC_DEFINE(USE_DBUS_GLIB, 1, [Build dbus glib support])
+fi
+
+AM_CONDITIONAL(USE_DBUS_GLIB, test "x$use_dbus_glib" = "xyes")
 AM_CONDITIONAL(USE_GLIB, test "x$use_glib" = "xyes")
 AM_CONDITIONAL(USE_GCONF, test "x$use_gconf" = "xyes")
 AM_CONDITIONAL(USE_DBUS, test "x$use_dbus" = "xyes")
