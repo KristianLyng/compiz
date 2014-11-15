@@ -43,7 +43,7 @@ AM_GLIB_GNU_GETTEXT
 GETTEXT_PACKAGE=compiz
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
 AC_SUBST(GETTEXT_PACKAGE)
-
+missing_optional_deps=""
 if test "x$GCC" = "xyes"; then
   case " $CFLAGS " in
   *[[\ \	]]-Wall[[\ \	]]*) ;;
@@ -259,18 +259,29 @@ if test "$use_fuse" = yes; then
   AC_DEFINE(USE_FUSE, 1, [Build fuse plugin])
 fi
 
+
 AC_ARG_ENABLE(annotate,
   [  --disable-annotate      Disable annotate plugin],
   [use_annotate=$enableval], [use_annotate=yes])
 
-if test "x$use_annotate" = "xyes"; then
-  PKG_CHECK_MODULES(ANNOTATE, cairo-xlib-xrender, [use_annotate=yes], [use_annotate=no])
+AC_ARG_ENABLE(wall,
+  [  --disable-wall          Disable wall plugin],
+  [use_wall=$enableval], [use_wall=yes])
+
+PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrender=yes], [have_cairo_xlib_xrender=no])
+PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
+
+if test "x$have_cairo" != "xyes"; then
+    use_wall="no"
+    missing_optional_deps="${missing_optional_deps} cairo(wall plugin)"
+fi
+if test "x$have_cairo_xlib_xrender" != "xyes"; then
+    use_annotate="no"
+    missing_optional_deps="${missing_optional_deps} cairo_xlib_xrender(annotate plugin)"
 fi
 
-AM_CONDITIONAL(ANNOTATE_PLUGIN, test "x$use_annotate" = "xyes")
-if test "$use_annotate" = yes; then
-  AC_DEFINE(USE_ANNOTATE, 1, [Build annotate plugin])
-fi
+AM_CONDITIONAL(USE_WALL, test "x$use_wall" = "xyes")
+AM_CONDITIONAL(USE_ANNOTATE, test "x$use_annotate" = "xyes")
 
 AC_ARG_ENABLE(librsvg,
   [  --disable-librsvg       Disable svg support],
@@ -650,6 +661,7 @@ echo "  gconf:    $use_gconf"
 echo "  kconfig:  $use_kconfig"
 echo "  dbus:     $use_dbus"
 echo "  annotate: $use_annotate"
+echo "  wall:     $use_wall"
 echo "  svg:      $use_librsvg"
 echo "  inotify:  $use_inotify"
 echo "  fuse:     $use_fuse"
@@ -661,3 +673,4 @@ echo "  gnome:    $use_gnome"
 echo "  kde:      $use_kde"
 echo "  kde4:     $use_kde4"
 echo ""
+echo "Known missing optional dependencies: $missing_optional_deps"

@@ -18,10 +18,15 @@ nodist_libstaticswitcher_la_SOURCES = staticswitcher_options.c \
 			       staticswitcher_options.h
 dist_libstaticswitcher_la_SOURCES = staticswitcher.c
 
+if USE_WALL
 libwall_la_LDFLAGS = -module -avoid-version -no-undefined
+libwall_la_CFLAGS = @CAIRO_CFLAGS@
+libwall_la_LIBADD = @CAIRO_LIBS@
 nodist_libwall_la_SOURCES = wall_options.c \
 			       wall_options.h
 dist_libwall_la_SOURCES = wall.c
+libwall_module = libwall.la
+endif
 
 libexpo_la_LDFLAGS = -module -avoid-version -no-undefined
 nodist_libexpo_la_SOURCES = expo_options.c \
@@ -105,9 +110,10 @@ libsvg_la_SOURCES = svg.c
 libsvg_module = libsvg.la
 endif
 
-if ANNOTATE_PLUGIN
+if USE_ANNOTATE
 libannotate_la_LDFLAGS = -module -avoid-version -no-undefined
-libannotate_la_LIBADD = @ANNOTATE_LIBS@
+libannotate_la_CFLAGS = @CAIRO_XLIB_XRENDER_CFLAGS@
+libannotate_la_LIBADD = @CAIRO_XLIB_XRENDER_LIBS@
 libannotate_la_SOURCES = annotate.c
 libannotate_module = libannotate.la
 endif
@@ -179,7 +185,6 @@ AM_CPPFLAGS =					\
 	@COMPIZ_CFLAGS@				\
 	@LIBPNG_CFLAGS@				\
 	@LIBRSVG_CFLAGS@			\
-	@ANNOTATE_CFLAGS@			\
 	@GCONF_CFLAGS@				\
 	@KCONFIG_CFLAGS@			\
 	@DBUS_CFLAGS@				\
@@ -208,7 +213,7 @@ module_LTLIBRARIES =		\
 	libezoom.la		\
 	libmousepoll.la		\
 	libstaticswitcher.la	\
-	libwall.la		\
+	$(libwall_module)	\
 	libexpo.la		\
 	librotate.la		\
 	libzoom.la		\
