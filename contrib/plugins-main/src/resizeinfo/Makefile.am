@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 PFLAGS=-module -avoid-version -no-undefined
 
-if RESIZEINFO_PLUGIN
+if USE_RESIZEINFO
 libresizeinfo_la_LDFLAGS = $(PFLAGS)
 libresizeinfo_la_LIBADD = @COMPIZ_LIBS@ @PANGO_LIBS@
 nodist_libresizeinfo_la_SOURCES = resizeinfo_options.c \

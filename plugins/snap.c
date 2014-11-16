@@ -191,7 +191,7 @@ static void snapMoveWindow(CompWindow * w, int dx, int dy)
 	warpPointer(w->screen, dx, dy);
 	sw->skipNotify = FALSE;
 }
-
+/*
 static void snapResizeWindow(CompWindow * w, int dx, int dy, int dw, int dh)
 {
 	SNAP_WINDOW(w);
@@ -202,7 +202,7 @@ static void snapResizeWindow(CompWindow * w, int dx, int dy, int dw, int dh)
 				 w->attrib.border_width);
 	sw->skipNotify = FALSE;
 }
-
+*/
 static void snapFreeEdges(CompWindow * w)
 {
 	SNAP_WINDOW(w);
@@ -627,6 +627,7 @@ static void snapMoveCheckEdges(CompWindow * w)
 /*
  * Similar function for Snap on Resize
  */
+/*
 static void
 snapResizeCheckNearestEdge(CompWindow * w, int position, int start, int end,
 						   Bool before, EdgeType type, int snapDirection)
@@ -698,10 +699,11 @@ snapResizeCheckNearestEdge(CompWindow * w, int position, int start, int end,
 		}
 	}
 }
-
+*/
 /*
  * Call the previous function for each of the 4 sides of the window
  */
+/*
 static void snapResizeCheckEdges(CompWindow * w, int dx, int dy, int dw, int dh)
 {
 	int x, y, width, height;
@@ -719,7 +721,7 @@ static void snapResizeCheckEdges(CompWindow * w, int dx, int dy, int dw, int dh)
 	snapResizeCheckNearestEdge(w, y + height, x, x + width, FALSE, TopEdge,
 							   VerticalSnap);
 }
-
+*/
 // avoidSnap functions ---------------------------------------------------------
 
 static Bool
@@ -773,6 +775,7 @@ static void snapHandleEvent(CompDisplay * d, XEvent * event)
 
 // Events notifications --------------------------------------------------------
 
+/*
 static void
 snapWindowResizeNotify(CompWindow * w, int dx, int dy, int dw, int dh)
 {
@@ -867,6 +870,7 @@ snapWindowResizeNotify(CompWindow * w, int dx, int dy, int dw, int dh)
 	if (sw->snapDirection != (VerticalSnap | HorizontalSnap))
 		snapResizeCheckEdges(w, dx, dy, dw, dh);
 }
+*/
 
 static void
 snapWindowMoveNotify(CompWindow * w, int dx, int dy, Bool immediate)
@@ -1061,6 +1065,12 @@ static Bool snapInitScreen(CompPlugin * p, CompScreen * s)
 		return FALSE;
 	}
 
+	/*
+	 * XXX: WAT?
+	 * I don't know why it's commented out, but someone should figure
+	 * that out...
+	 *  - Kristian
+	 */
 	//WRAP(ss, s, windowResizeNotify, snapWindowResizeNotify);
 	WRAP(ss, s, windowMoveNotify, snapWindowMoveNotify);
 	WRAP(ss, s, windowGrabNotify, snapWindowGrabNotify);

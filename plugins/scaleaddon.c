@@ -372,20 +372,20 @@ scaleaddonPullWindow  (CompDisplay     *d,
 		if (scaleaddonGetExitAfterPull (s))
 		{
 		    int        opt;
-		    CompAction *action;
+		    CompAction *action2;
 		    CompOption o[1];
 
 		    SCALE_DISPLAY (d);
 
 		    opt = SCALE_DISPLAY_OPTION_INITIATE_KEY;
-		    action = &sd->opt[opt].value.action;
+		    action2 = &sd->opt[opt].value.action;
 
 		    o[0].type    = CompOptionTypeInt;
 		    o[0].name    = "root";
 		    o[0].value.i = s->root;
 
-		    if (action->terminate)
-			(*action->terminate) (d, action, 0, o, 1);
+		    if (action2->terminate)
+			(*action2->terminate) (d, action, 0, o, 1);
 		}
 		else
 		{
@@ -795,8 +795,6 @@ layoutOrganicFindBestHorizontalPosition (CompScreen *s,
 	{
 	    if (ss->slots[i].x1 - w >= 0)
 	    {
-		double overlap;
-		
 		overlap = layoutOrganicCalculateOverlap (s, win,
 		 					 ss->slots[i].x1 - w,
 							 y1);
@@ -809,8 +807,6 @@ layoutOrganicFindBestHorizontalPosition (CompScreen *s,
 	    }
 	    if (WIN_W (lw) * as->scale + ss->slots[i].x1 + w < areaWidth)
 	    {
-		double overlap;
-		
 		overlap = layoutOrganicCalculateOverlap (s, win,
 		 					 ss->slots[i].x1 +
 		 					 WIN_W (lw) * as->scale,
@@ -871,7 +867,6 @@ layoutOrganicFindBestVerticalPosition (CompScreen *s,
 	{
 	    if (ss->slots[i].y1 - h >= 0 && ss->slots[i].y1 < areaHeight)
 	    {
-		double overlap;
 		overlap = layoutOrganicCalculateOverlap (s, win, x1,
 	 						 ss->slots[i].y1 - h);
 		if (overlap < bestOverlap)
@@ -883,8 +878,6 @@ layoutOrganicFindBestVerticalPosition (CompScreen *s,
 	    if (WIN_H (w) * as->scale + ss->slots[i].y1 > 0 &&
 		WIN_H (w) * as->scale + h + ss->slots[i].y1 < areaHeight)
 	    {
-		double overlap;
-		
 		overlap = layoutOrganicCalculateOverlap (s, win, x1,
 		 					 WIN_H (w) * as->scale +
 							 ss->slots[i].y1);

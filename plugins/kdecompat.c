@@ -1031,17 +1031,17 @@ kdecompatUpdateBlurProperty (CompWindow *w)
 	    compizProp[1] = 0; /* filter */
 	    while (nBox--)
 	    {
-		int x, y, w, h;
+		int x, y, wi, h;
 		x = *data++;
 		y = *data++;
-		w = *data++;
+		wi = *data++;
 		h = *data++;
 
 		compizProp[i++] = GRAVITY_NORTH | GRAVITY_WEST; /* P1 gravity */
 		compizProp[i++] = x;                            /* P1 X */
 		compizProp[i++] = y;                            /* P1 Y */
 		compizProp[i++] = GRAVITY_NORTH | GRAVITY_WEST; /* P2 gravity */
-		compizProp[i++] = x + w;                        /* P2 X */
+		compizProp[i++] = x + wi;                        /* P2 X */
 		compizProp[i++] = y + h;                        /* P2 Y */
 	    }
 

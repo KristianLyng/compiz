@@ -1467,7 +1467,6 @@ ringHandleEvent (CompDisplay *d,
     case PropertyNotify:
 	if (event->xproperty.atom == XA_WM_NAME)
 	{
-	    CompWindow *w;
 	    w = findWindowAtDisplay (d, event->xproperty.window);
 	    if (w)
 	    {

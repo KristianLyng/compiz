@@ -344,13 +344,12 @@ shiftRenderWindowTitle (CompScreen *s)
 static void
 shiftDrawWindowTitle (CompScreen *s)
 {
-    float width, height, border = 10.0f;
+    float height, border = 10.0f;
     int ox1, ox2, oy1, oy2;
 
     SHIFT_SCREEN (s);
     SHIFT_DISPLAY (s->display);
 
-    width = ss->textData->width;
     height = ss->textData->height;
 
     if (shiftGetMultioutputMode (s) == MultioutputModeOneBigSwitcher)
@@ -1650,7 +1649,6 @@ static void
 shiftDonePaintScreen (CompScreen *s)
 {
     SHIFT_SCREEN (s);
-    CompWindow *w;
 
     if (ss->state != ShiftStateNone)
     {
@@ -1662,6 +1660,7 @@ shiftDonePaintScreen (CompScreen *s)
 	{
 	    if (ss->state == ShiftStateIn)
 	    {
+		CompWindow *w;
 		ss->state = ShiftStateNone;
 		shiftActivateEvent(s, FALSE);
 		for (w = s->windows; w; w = w->next)

@@ -3,10 +3,6 @@ PFLAGS=-module -avoid-version -no-undefined
 
 libthumbnail_la_LDFLAGS = $(PFLAGS)
 libthumbnail_la_LIBADD = @COMPIZ_LIBS@
-nodist_libthumbnail_la_SOURCES = thumbnail_options.c \
-			  thumbnail_options.h
-dist_libthumbnail_la_SOURCES = thumbnail.c \
-			  thumbnail_tex.h
 
 BUILT_SOURCES = $(nodist_libthumbnail_la_SOURCES)
 

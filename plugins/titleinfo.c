@@ -66,6 +66,7 @@ titleinfoUpdateVisibleName (CompWindow *w)
     CompDisplay *d = w->screen->display;
     char        *text = NULL, *machine = NULL;
     const char  *root = "", *title;
+    int ret = 1;
 
     TITLEINFO_DISPLAY (d);
     TITLEINFO_WINDOW (w);
@@ -84,10 +85,12 @@ titleinfoUpdateVisibleName (CompWindow *w)
     }
 
     if (machine)
-	asprintf (&text, "%s%s (@%s)", root, title, machine);
+	ret = asprintf (&text, "%s%s (@%s)", root, title, machine);
     else if (root[0])
-	asprintf (&text, "%s%s", root, title);
-
+	ret = asprintf (&text, "%s%s", root, title);
+    if (ret <= 0) {
+	fprintf(stderr, "Ooops, asprintf() failed. We're in trouble.\n");
+    }	
     if (text)
     {
 	XChangeProperty (d->display, w->id, td->visibleNameAtom,

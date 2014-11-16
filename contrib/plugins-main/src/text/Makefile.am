@@ -1,8 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 PFLAGS=-module -avoid-version -no-undefined
 
-if TEXT_PLUGIN
-libtext_la_LDFLAGS = $(PFLAGS)
+if USE_TEXT
 libtext_la_LIBADD = @COMPIZ_LIBS@ @PANGO_LIBS@
 nodist_libtext_la_SOURCES = text_options.c text_options.h
 dist_libtext_la_SOURCES = text.c

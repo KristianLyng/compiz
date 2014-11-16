@@ -8,6 +8,41 @@ AM_LDFLAGS = -module -avoid-version -no-undefined
 
 # Ugh, it's fugly. This is only because foo.c doesn't match libfoo.la. If we
 # used libfoo.c instead, then all this would be redundant.
+
+nodist_libthumbnail_la_SOURCES = thumbnail_options.c \
+			  thumbnail_options.h
+dist_libthumbnail_la_SOURCES = thumbnail.c \
+			  thumbnail_tex.h
+
+nodist_libscaleaddon_la_SOURCES = scaleaddon_options.c scaleaddon_options.h
+dist_libscaleaddon_la_SOURCES = scaleaddon.c
+
+nodist_libkdecompat_la_SOURCES = kdecompat_options.c kdecompat_options.h
+dist_libkdecompat_la_SOURCES = kdecompat.c
+
+nodist_libvpswitch_la_SOURCES = vpswitch_options.c vpswitch_options.h
+dist_libvpswitch_la_SOURCES = vpswitch.c
+
+nodist_libshift_la_SOURCES = shift_options.c shift_options.h
+dist_libshift_la_SOURCES = shift.c
+
+nodist_libtitleinfo_la_SOURCES = titleinfo_options.c titleinfo_options.h
+dist_libtitleinfo_la_SOURCES = titleinfo.c
+
+nodist_libput_la_SOURCES = put_options.c put_options.h
+dist_libput_la_SOURCES = put.c
+
+nodist_libsnap_la_SOURCES = snap_options.c snap_options.h
+dist_libsnap_la_SOURCES = snap.c
+
+nodist_libring_la_SOURCES = ring_options.c ring_options.h
+dist_libring_la_SOURCES = ring.c
+
+nodist_libopacify_la_SOURCES = opacify_options.c opacify_options.h
+dist_libopacify_la_SOURCES = opacify.c
+
+libsession_la_SOURCES = session.c
+libwinrules_la_SOURCES = winrules.c
 libfade_la_SOURCES = fade.c
 libcube_la_SOURCES = cube.c
 librotate_la_SOURCES = rotate.c
@@ -95,6 +130,23 @@ libfs_la_SOURCES = fuse.c
 libfs_module = libfs.la
 endif
 
+if USE_RESIZEINFO
+libresizeinfo_la_LIBADD = @COMPIZ_LIBS@ @PANGO_LIBS@
+libresizeinfo_la_CFLAGS = @COMPIZ_CFLAGS@ @PANGO_CFLAGS@
+nodist_libresizeinfo_la_SOURCES = resizeinfo_options.c \
+			   resizeinfo_options.h
+dist_libresizeinfo_la_SOURCES = resizeinfo.c
+resizeinfo_module = libresizeinfo.la
+endif
+
+if USE_TEXT
+libtext_la_LIBADD = @COMPIZ_LIBS@ @PANGO_LIBS@
+libtext_la_CFLAGS = @COMPIZ_CFLAGS@ @PANGO_CFLAGS@
+nodist_libtext_la_SOURCES = text_options.c text_options.h
+dist_libtext_la_SOURCES = text.c
+text_module = libtext.la
+endif
+
 if USE_WALL
 libwall_la_CFLAGS = @CAIRO_CFLAGS@
 libwall_la_LIBADD = @CAIRO_LIBS@
@@ -117,6 +169,10 @@ nodist_libmag_la_SOURCES = mag_options.c \
 			       mag_options.h
 dist_libmag_la_SOURCES = mag.c
 
+nodist_libworkarounds_la_SOURCES = workarounds_options.c \
+			    workarounds_options.h
+dist_libworkarounds_la_SOURCES = workarounds.c
+
 if USE_JPEG
 libimgjpeg_la_CFLAGS = @JPEG_CFLAGS@
 libimgjpeg_la_LIBADD = @JPEG_LIBS@
@@ -136,6 +192,11 @@ BUILT_SOURCES = \
 	$(nodist_libmag_la_SOURCES)		\
 	$(nodist_libneg_la_SOURCES)		\
 	$(nodist_libimgjpeg_la_SOURCES)		\
+	$(nodist_libsnap_la_SOURCES)		\
+	$(nodist_libshift_la_SOURCES)		\
+	$(nodist_libtitleinfo_la_SOURCES)	\
+	$(nodist_libscaleaddon_la_SOURCES)	\
+	$(nodist_libthumbnail_la_SOURCES)	\
 	$(libwall_built_sources)
 
 CLEANFILES = *_options.c *_options.h
@@ -165,6 +226,14 @@ module_LTLIBRARIES =		\
 	$(libgconf_module)	\
 	$(libkconfig_module)	\
 	libdecoration.la	\
+	libput.la		\
+	libopacify.la		\
+	libworkarounds.la	\
+	libwinrules.la		\
+	libtitleinfo.la		\
+	$(resizeinfo_module)    \
+	$(text_module)          \
+	libsession.la		\
 	libwobbly.la		\
 	libfade.la		\
 	libminimize.la		\
@@ -196,6 +265,13 @@ module_LTLIBRARIES =		\
 	libobs.la		\
 	libcommands.la		\
 	libgnomecompat.la	\
+	libring.la		\
+	libsnap.la		\
+	libshift.la		\
+	libvpswitch.la		\
+	libkdecompat.la		\
+	libscaleaddon.la	\
+	libthumbnail.la		\
 	$(libsvg_module)	\
 	$(libannotate_module)	\
 	$(libinotify_module)	\

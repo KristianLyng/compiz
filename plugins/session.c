@@ -838,7 +838,7 @@ static void
 sessionHandleEvent (CompDisplay *d,
 		    XEvent      *event)
 {
-    CompWindow   *w;
+    CompWindow   *w = NULL;
     unsigned int state;
 
     SESSION_DISPLAY (d);
@@ -934,14 +934,16 @@ sessionSessionEvent (CompCore         *c,
     WRAP (sc, c, sessionEvent, sessionSessionEvent);
 }
 
+/*
+ * Temporarily disabled
 static void
 sessionObjectAdd (CompObject *parent,
 		  CompObject *object)
 {
     static ObjectAddProc dispTab[] = {
-	(ObjectAddProc) 0, /* CoreAdd */
-	(ObjectAddProc) 0, /* DisplayAdd */
-	(ObjectAddProc) 0, /* ScreenAdd */
+	(ObjectAddProc) 0, // CoreAdd
+	(ObjectAddProc) 0, // DisplayAdd
+	(ObjectAddProc) 0, // ScreenAdd
 	(ObjectAddProc) sessionWindowAdd
     };
 
@@ -953,6 +955,7 @@ sessionObjectAdd (CompObject *parent,
 	
     DISPATCH (object, dispTab, ARRAY_SIZE (dispTab), (parent, object));
 }
+*/
 
 static Bool
 sessionWindowAddTimeout (void *closure)

@@ -185,7 +185,14 @@ AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
 PKG_CHECK_MODULES(FUSE, fuse, [have_fuse=yes], [have_fuse=no])
 PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrender=yes], [have_cairo_xlib_xrender=no])
 PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
+PKG_CHECK_MODULES(PANGO, pangocairo, [have_pango=yes], [have_pango=no])
 
+AC_ARG_ENABLE(text,
+  [  --disable-text          Disable text],
+  [use_text=$enableval], [use_text=yes])
+AC_ARG_ENABLE(resizeinfo,
+  [  --disable-resizeinfo    Disable resizeinfo],
+  [use_resizeinfo=$enableval], [use_resizeinfo=yes])
 AC_ARG_ENABLE(dbus-glib,
   [  --disable-dbus-glib     Disable dbus-glib support in gtk-window-decorator],
   [use_dbus_glib=$enableval], [use_dbus_glib=yes])
@@ -214,6 +221,11 @@ AC_ARG_ENABLE(dbus,
   [  --disable-dbus          Disable dbus plugin],
   [use_dbus=$enableval], [use_dbus=yes])
 
+if test "x$have_pango" != "xyes"; then
+  use_resizeinfo="no"
+  use_text="no"
+  missing_optional_deps="${missing_optional_deps} pango(text, resizeinfo)"
+fi
 if test "x$have_jpeg" != "xyes"; then
   use_jpeg="no"
   missing_optional_deps="${missing_optional_deps} libjpeg"
@@ -267,6 +279,8 @@ if test "x$use_dbus_glib" = "xyes"; then
   AC_DEFINE(USE_DBUS_GLIB, 1, [Build dbus glib support])
 fi
 
+AM_CONDITIONAL(USE_TEXT, test "x$use_text" = "xyes")
+AM_CONDITIONAL(USE_RESIZEINFO, test "x$use_resizeinfo" = "xyes")
 AM_CONDITIONAL(USE_DBUS_GLIB, test "x$use_dbus_glib" = "xyes")
 AM_CONDITIONAL(USE_GLIB, test "x$use_glib" = "xyes")
 AM_CONDITIONAL(USE_GCONF, test "x$use_gconf" = "xyes")
@@ -650,16 +664,18 @@ metadata/Makefile
 
 echo ""
 echo "the following optional plugins will be compiled:"
-echo "  glib:     $use_glib"
-echo "  gconf:    $use_gconf"
-echo "  kconfig:  $use_kconfig"
-echo "  dbus:     $use_dbus"
-echo "  annotate: $use_annotate"
-echo "  wall:     $use_wall"
-echo "  svg:      $use_librsvg"
-echo "  inotify:  $use_inotify"
-echo "  fuse:     $use_fuse"
-echo "  jpeg:     $use_jpeg"
+echo "  glib:        $use_glib"
+echo "  gconf:       $use_gconf"
+echo "  kconfig:     $use_kconfig"
+echo "  dbus:        $use_dbus"
+echo "  annotate:    $use_annotate"
+echo "  wall:        $use_wall"
+echo "  svg:         $use_librsvg"
+echo "  inotify:     $use_inotify"
+echo "  fuse:        $use_fuse"
+echo "  jpeg:        $use_jpeg"
+echo "  text:        $use_text"
+echo "  resizeinfo:  $use_resizeinfo"
 echo ""
 echo "and the following optional features will be compiled:"
 echo "  gtk:      $use_gtk"

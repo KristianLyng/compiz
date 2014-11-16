@@ -468,10 +468,16 @@ textRenderWindowTitle (CompScreen           *s,
 	    if (w)
 	    {
 		int vx, vy, viewport;
+		int ret;
 
 		defaultViewportForWindow (w, &vx, &vy);
 		viewport = vy * w->screen->hsize + vx + 1;
-		asprintf (&text, "%s -[%d]-", title, viewport);
+		ret = asprintf (&text, "%s -[%d]-", title, viewport);
+		if (ret<=0) {
+		    fprintf(stderr, "asprintf failed. This is ominous.\n");
+		    return NULL;
+		}
+
 		free (title);
 	    }
 	    else
