@@ -1,0 +1,550 @@
+# ccsm fi translation.
+# Copyright (C) 2008 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+# Birunthan Mohanathas <biru@inbox.com>.
+# Ilkka Tuohela <hile@iki.fi>, 2008.
+# Timo Jyrinki <timo.jyrinki@iki.fi>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-10-24 15:43+0200\n"
+"Last-Translator: Timo Jyrinki <timo.jyrinki@iki.fi>\n"
+"Language-Team: Finnish <laatu@lokalisointi.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Uusi sidoksen %(binding)s arvo lisäosan <b>%(plugin)s</b>  toiminnossa <b>%"
+"(action)s</b> on ristiriidassa lisäosan %(plugin_conflict)s</b> toiminnon <b>"
+"%(action_conflict)s</b> kanssa.\n"
+"Haluatko poistaa käytöstä toiminnon <b>%(action_conflict)s</b> lisäosassa <b>"
+"%(plugin_conflict)s</b>?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Poista %(action_conflict)s käytöstä"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Älä aseta toimintoa %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Aseta %(action)s joka tapauksessa"
+
+msgid "key"
+msgstr "näppäin"
+
+msgid "button"
+msgstr "painike"
+
+msgid "edge"
+msgstr "reuna"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Yrität käyttää toimintoa <b>%(feature)s</b>, jota yksikään lisäosa <b>ei</b> "
+"tarjoa.\n"
+"Haluatko silti käyttää tätä toimintoa?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Käytä %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Älä käytä %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Yrität käyttää toimintoa <b>%(feature)s</b>, jonka tarjoaa lisäosa <b>%"
+"(plugin)s</b>.\n"
+"Tämä lisäosa ei ole käytössä.\n"
+"Haluatko ottaa lisäosan <b>%(plugin)s</b> käyttöön, jotta voit käyttää tätä "
+"toimintoa?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Ota %(plugin)s käyttöön"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Älä ota %(feature)s käyttöön"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"Jotkin <b>%(plugin)s</b>-liitännäisen %(bindings)s-riippuvuudet ovat "
+"ristiriidassa muiden liitännäisten kanssa. Haluatko selvittää nämä "
+"ristiriidat?"
+
+msgid "Resolve conflicts"
+msgstr "Selvitä ristiriidat"
+
+msgid "Ignore conflicts"
+msgstr "Jätä ristiriidat huomiotta"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Lisäosa <b>%(plugin_conflict)s</b> tarjoaa toiminnon <b>%(feature)s</b>, "
+"jonka tarjoaa myös lisäosa <b>%(plugin)s</b>."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Poista %(plugin_conflict)s käytöstä"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Älä ota %(plugin)s käyttöön"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"Lisäosa <b>%(plugin_conflict)s</b> on ristiriidassa lisäosan <b>%(plugin)s</"
+"b> kanssa."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> vaatii toiminnon <b>%(feature)s</b>, jonka tarjoavat "
+"seuraavat lisäosat:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Ota nämä lisäosat käyttöön"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> vaatii lisäosan <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Ota %(require)s käyttöön"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> tarjoaa <b>%(feature)s</b> ominaisuuden, jota seuraavat "
+"lisäosat tarvitsevat: <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Poista nämä lisäosat käytöstä"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Älä poista lisäosaa %(plugin)s käytöstä"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"Lisäosa <b>%(plugin)s</b> vaativat seuraavat lisäosat:<b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Accessibility"
+msgstr "Esteettömyys"
+
+msgid "Desktop"
+msgstr "Työpöytä"
+
+msgid "Extras"
+msgstr "Ekstrat"
+
+msgid "Window Management"
+msgstr "Ikkunoiden hallinta"
+
+msgid "Effects"
+msgstr "Efektit"
+
+msgid "Image Loading"
+msgstr "Kuvien lataus"
+
+msgid "Utility"
+msgstr "Apuohjelmat"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "Uncategorized"
+msgstr "Luokittelematon"
+
+msgid "N/A"
+msgstr "–"
+
+msgid "Reset setting to the default value"
+msgstr "Palauta asetukset oletusarvoihin"
+
+msgid "Edit"
+msgstr "Muokkaa"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "Moniriviset asetukset. Muokkaa arvoja kaksoisnapsauttamalla riviä."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Muokkaa %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" ei ole kelvollinen pikavalinta"
+
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "Grab key combination"
+msgstr "Kaappaa näppäinyhdistelmä"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" ei ole kelvollinen nappi"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Ensijaisen painikkeen käyttö ilman lisävalitsimia voi estää kaikki "
+"ensijaisen painikkeen painallukset ja siten tehdä tietokoneen "
+"käyttökelvottomaksi. Haluatko varmasti liittää painikkeen \"%s\" "
+"ensisijaiseksi painikkeeksi?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" on kelvoton reunamaski"
+
+msgid "None"
+msgstr "Ei mitään"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Compiz-asetusten hallinta"
+
+msgid "Plugin"
+msgstr "Lisäosa"
+
+msgid "Please press the new key combination"
+msgstr "Anna uusi näppäinyhdistelmä"
+
+msgid "Window Title"
+msgstr "Ikkunan otsikko"
+
+msgid "Window Role"
+msgstr "Ikkunan rooli"
+
+msgid "Window Name"
+msgstr "Ikkunan nimi"
+
+msgid "Window Class"
+msgstr "Ikkunan luokka"
+
+msgid "Window Type"
+msgstr "Ikkunan tyyppi"
+
+msgid "Window ID"
+msgstr "Ikkunan ID"
+
+msgid "And"
+msgstr "ja"
+
+msgid "Or"
+msgstr "tai"
+
+msgid "Edit match"
+msgstr "Muokkaa osumaa"
+
+#. Type
+msgid "Type"
+msgstr "Tyyppi"
+
+#. Value
+msgid "Value"
+msgstr "Arvo"
+
+msgid "Grab"
+msgstr "Tartu"
+
+#. Relation
+msgid "Relation"
+msgstr "Suhde"
+
+#. Invert
+msgid "Invert"
+msgstr "Käännä"
+
+msgid "Browse..."
+msgstr "Selaa..."
+
+msgid "Images"
+msgstr "Kuvat"
+
+msgid "File"
+msgstr "Tiedosto"
+
+msgid "Open directory..."
+msgstr "Avaa hakemisto..."
+
+msgid "Open file..."
+msgstr "Avaa tiedosto..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Tämä on Compiz-asetusten hallintaohjelma"
+
+msgid "translator-credits"
+msgstr ""
+"Ilkka Tuohela, 2008\n"
+"Timo Jyrinki, 2008\n"
+"\n"
+"http://gnome.fi/"
+
+msgid "An error has occured"
+msgstr "Tapahtui virhe"
+
+msgid "Warning"
+msgstr "Varoitus"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Käytä %s"
+
+msgid "Filter"
+msgstr "Suodata"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Etsi lisäosavalintaa %s"
+
+msgid "Use This Plugin"
+msgstr "Käytä tätä lisäosaa"
+
+msgid "Search Compiz Core Options"
+msgstr "Etsi Compiz Core -asetuksista"
+
+msgid "Error"
+msgstr "Virhe"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Syötä suodatin.\n"
+"Napsauta kuvaa näppäimistöstä valitaksesi etsittävän näppäimen."
+
+msgid "Search in..."
+msgstr "Etsi kohteesta..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Lyhyt kuvaus ja nimi"
+
+msgid "Long description"
+msgstr "Pitkä kuvaus"
+
+msgid "Settings value"
+msgstr "Asetusten arvo"
+
+msgid "Group"
+msgstr "Ryhmä"
+
+msgid "Subgroup"
+msgstr "Alaryhmä"
+
+#. Notebook
+msgid "Settings"
+msgstr "Asetukset"
+
+msgid "Loading Advanced Search"
+msgstr "Ladataan tarkennettua hakua"
+
+msgid "Add a New Profile"
+msgstr "Lisää uusi profiili"
+
+msgid "Remove This Profile"
+msgstr "Poista tämä profiili"
+
+msgid "Default"
+msgstr "Oletus"
+
+msgid "Profile"
+msgstr "Profiili"
+
+msgid "Import"
+msgstr "Tuo"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Tuo Compizin asetusprofiili"
+
+msgid "Import as..."
+msgstr "Tuo nimellä..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Tuo Compizin asetusprofiili uutena profiilina"
+
+msgid "Export"
+msgstr "Vie"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Vie Compizin asetusprofiili"
+
+msgid "Reset to defaults"
+msgstr "Palauta oletusasetukset"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Palauta Compizin asetusprofiilin oletusasetukset"
+
+msgid "Backend"
+msgstr "Taustajärjestelmä"
+
+msgid "Integration"
+msgstr "Integrointi"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Ota työpöytäympäristöön sulautuminen käyttöön"
+
+msgid "Profiles (*.profile)"
+msgstr "Profiilit (*.profile)"
+
+msgid "All files"
+msgstr "Kaikki tiedostot"
+
+msgid "Save file.."
+msgstr "Tallenna tiedosto..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "Haluatko ohittaa oletusarvoiset valinnat profiilia vietäessä?"
+
+msgid "Open file.."
+msgstr "Avaa tiedosto..."
+
+msgid "Enter a profile name"
+msgstr "Anna profiilin nimi"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Anna uuden profiilin nimi:"
+
+msgid "Backend not found."
+msgstr "Taustajärjestelmää ei löytynyt."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Järjestä lisäosat automaattisesti"
+
+msgid "Disabled Plugins"
+msgstr "Poissa käytöstä olevat lisäosat"
+
+msgid "Enabled Plugins"
+msgstr "Käytössä olevat lisäosat"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Haluatko todella poistaa lisäosien automaattisen järjestämisen käytöstä? "
+"Tämä poistaa myös ristiriitojen käsittelyn käytöstä. Älä tee tätä, jos et "
+"tiedä varmasti mitä teet."
+
+msgid "Add plugin"
+msgstr "Lisää lisäosa"
+
+msgid "Plugin name:"
+msgstr "Lisäosan nimi:"
+
+msgid "Insert plugin name"
+msgstr "Anna lisäosan nimi"
+
+msgid "Preferences"
+msgstr "Asetukset"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Määrittele käytettävä taustajärjestelmä, profiili ja muita Compizin "
+"asetusjärjestelmän käyttämiä sisäisiä asetuksia."
+
+msgid "About"
+msgstr "Tietoja"
+
+msgid "About CCSM..."
+msgstr "Tietoja CCSM:sta..."
+
+msgid "Profile & Backend"
+msgstr "Profiili ja taustajärjestelmä"
+
+msgid "Plugin List"
+msgstr "Luettelo lisäosista"
+
+msgid "Filter your Plugin list"
+msgstr "Suodata lisäosaluetteloa"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Näyttö %i"
+
+msgid "Screen"
+msgstr "Näyttö"
+
+msgid "Category"
+msgstr "Luokka"
+
+msgid "Advanced Search"
+msgstr "Tarkennettu haku"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Ei hakutuloksia</b> </span><span>\n"
+"\n"
+"Suodattimesi <b>%s</b> ei vastaa mitään kohtia.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Compiz-asetusten tekeminen CompizConfigilla"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Käsitellään mahdollisia ristiriitoja, odota hetki"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Arvo (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Arvo (%(value)s) %(setting)slle"
+
+#~ msgid "Actions"
+#~ msgstr "Toimenpiteet"

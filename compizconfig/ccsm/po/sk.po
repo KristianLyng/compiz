@@ -1,0 +1,571 @@
+# Slovak translation of ccsm.
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+# PEPINO <sk.cfteam@gmail.com>, 2007.
+# Ivan Masár <helix84@centrum.sk>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm 0.5.2\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-12-14 10:57+0100\n"
+"Last-Translator: Brusnica P <pepino@pobox.sk>\n"
+"Language-Team: SLOVAK <sk.cfteam@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Nová hodnota pre %(binding)s väzby na operáciu <b>%(action)s</b> v zásuvnom "
+"module <b>%(plugin)s</b> je v konflikte s operáciou <b>%(action_conflict)s</"
+"b> zásuvného modulu <b>%(plugin_conflict)s</b>.\n"
+"Želáte si vypnúť <b>%(action_conflict)s</b> v zásuvnom module <b>%"
+"(plugin_conflict)s</b> plugin?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Vypnúť %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Nenastavovať %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Nastaviť %(action)s napriek tomu"
+
+msgid "key"
+msgstr "kľúč"
+
+msgid "button"
+msgstr "tlačidlo"
+
+msgid "edge"
+msgstr "okraj"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Práve sa pokúšate použiť funkciu <b>%(feature)s</b> ktorú neposkytuje "
+"<b>žiadny</b> zásuvný modul.\n"
+"Želáte si napriek tomu zapnúť túto funkciu?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Použiť %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Nepoužiť %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Práve sa pokúšate použiť funkciu <b>%(feature)s</b> ktorú poskytuje <b>%"
+"(plugin)s</b>.\n"
+"Tento zásuvný modul je momentálne vypnutý.\n"
+"Želáte si zapnúť <b>%(plugin)s</b> aby bola funkcia k dispozícii?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Zapnúť %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Nezapínať %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"Niektoré %(bindings)s väzby Pluginu <b>%(plugin)s</b> kolidujú s inými "
+"pluginmi. Prajete si vyriešiť tieto konflikty?"
+
+msgid "Resolve conflicts"
+msgstr "Vyriešiť konflikty"
+
+msgid "Ignore conflicts"
+msgstr "Ignorovať konflikty"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Zásuvný modul <b>%(plugin_conflict)s</b> poskytuje funkcionalitu <b>%"
+"(feature)s</b>, ktorú poskytuje aj <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Vypnúť %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Nezapínať %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"Zásuvný modul <b>%(plugin_conflict)s</b> je v konflikte s <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> vyžaduje funkcionalitu <b>%(feature)s</b>, ktorú posktujú "
+"nasledovné zásuvné moduly:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Zapnúť tieto zásuvné moduly"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> vyžaduje zásuvný modul <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Zapnúť %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> poskytuje funkcionalitu <b>%(feature)s</b>, ktorú vyžaduje "
+"zásuvný modul <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Vypnúť tieto zásuvné moduly"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Nevypínajte %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> vyžadujú zásuvné moduly <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Všeobecné"
+
+msgid "Accessibility"
+msgstr "Prístupnosť"
+
+msgid "Desktop"
+msgstr "Plocha"
+
+msgid "Extras"
+msgstr "Extra"
+
+msgid "Window Management"
+msgstr "Správa okien"
+
+msgid "Effects"
+msgstr "Efekty"
+
+msgid "Image Loading"
+msgstr "Načítavanie obrázka"
+
+msgid "Utility"
+msgstr "Nástroje"
+
+msgid "All"
+msgstr "Všetky"
+
+msgid "Uncategorized"
+msgstr "Nezaradené"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "Reset setting to the default value"
+msgstr "Vrátiť nastavenia na šatndardné hodnoty"
+
+msgid "Edit"
+msgstr "Upraviť"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Viac-zoznamové nastavenia. Hodnoty môžete upraviť potom ako dvakrát kliknete "
+"na riadok."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Upraviť %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" nie je platná skratka"
+
+msgid "Disabled"
+msgstr "Vypnutý"
+
+msgid "Enabled"
+msgstr "Zapnutý"
+
+msgid "Grab key combination"
+msgstr "Kombinácia kláves zachytenia"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" nie je platné tlačidlo"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Použitie Tlačidla1 bez modifikátorov môže zabrániť akémukoľvek kliknutiu "
+"ľavým tlačidlom a tak pokaziť vašu konfiguráciu. Skutočne si želáte nastaviť "
+"tlačidlo \"%s\" na Talčidlo1 ?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" nie je platná maska hrany"
+
+msgid "None"
+msgstr "Žiadne"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Správca nastavení CompizConfig"
+
+msgid "Plugin"
+msgstr "Zásuvný modul"
+
+msgid "Please press the new key combination"
+msgstr "Prosím stlačte novú kombináciu kláves"
+
+msgid "Window Title"
+msgstr "Nadpis okna"
+
+msgid "Window Role"
+msgstr "Rola okna"
+
+msgid "Window Name"
+msgstr "Názov okna"
+
+msgid "Window Class"
+msgstr "Trieda okna"
+
+msgid "Window Type"
+msgstr "Typ okna"
+
+msgid "Window ID"
+msgstr "ID okna"
+
+msgid "And"
+msgstr "Aj"
+
+msgid "Or"
+msgstr "Alebo"
+
+msgid "Edit match"
+msgstr "Upraviť zhodu"
+
+#. Type
+msgid "Type"
+msgstr "Typ"
+
+#. Value
+msgid "Value"
+msgstr "Hodnota"
+
+msgid "Grab"
+msgstr "Chytiť"
+
+#. Relation
+msgid "Relation"
+msgstr "Vzťah"
+
+#. Invert
+msgid "Invert"
+msgstr "Invertovať"
+
+msgid "Browse..."
+msgstr "Prechádzať..."
+
+msgid "Images"
+msgstr "Obrázky"
+
+msgid "File"
+msgstr "Súbor"
+
+msgid "Open directory..."
+msgstr "Otvoriť adresár..."
+
+msgid "Open file..."
+msgstr "Otvoriť súbor..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Toto je správca nastavení konfiguračného systému CompizConfig."
+
+msgid "translator-credits"
+msgstr ""
+"prekladatelia-zásluhy ivan masár &lt; helix84 at centrum.sk &lt; , 2008, "
+"pepino &lt; sk.cfteam at gmail.com &gt; , 2007"
+
+msgid "An error has occured"
+msgstr "Vyskytla sa chyba"
+
+msgid "Warning"
+msgstr "Upozornenie"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Zapnúť %s"
+
+msgid "Filter"
+msgstr "Sito"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Hťadať %s Možnosti zásuvného modulu"
+
+msgid "Use This Plugin"
+msgstr "Použiť tento zásuvný modul"
+
+msgid "Search Compiz Core Options"
+msgstr "Hľadať Nastavenia Compiz Core"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Zadajte filter.\n"
+"Kliknutím na obrázok klávesnice zachytíte kláves, ktorý sa má hľadať."
+
+msgid "Search in..."
+msgstr "Hľadať v..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Krátky popis a názov"
+
+msgid "Long description"
+msgstr "Dlhý popis"
+
+msgid "Settings value"
+msgstr "Hodnoty nastavení"
+
+msgid "Group"
+msgstr "Skupina"
+
+msgid "Subgroup"
+msgstr "Podskupina"
+
+#. Notebook
+msgid "Settings"
+msgstr "Nastavenia"
+
+msgid "Loading Advanced Search"
+msgstr "Načítava sa rozšírené vyhľadávanie"
+
+msgid "Add a New Profile"
+msgstr "Pridať nový profil"
+
+msgid "Remove This Profile"
+msgstr "Odstráňiť tento profil"
+
+msgid "Default"
+msgstr "Štandardné"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Import"
+msgstr "Importovať"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Importovať CompizConfig Profil"
+
+msgid "Import as..."
+msgstr "Importovať ako..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Importovať CompizConfig Profil ako nový profil"
+
+msgid "Export"
+msgstr "Exportovať"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Exportovať váš CompizConfig Profil"
+
+msgid "Reset to defaults"
+msgstr "Vrátiť štandardné hodnoty"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Prestaviť vaše CompizConfig Profil na štandardné globálne hodnoty"
+
+msgid "Backend"
+msgstr "Na pozadí"
+
+msgid "Integration"
+msgstr "Integrácia"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Zapnúť integráciu s pracovným prostredím"
+
+msgid "Profiles (*.profile)"
+msgstr "Profily (*.profile)"
+
+msgid "All files"
+msgstr "Všetky súbory"
+
+msgid "Save file.."
+msgstr "Uložiť súbor.."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "Prajete si preskočiť štandardné hodnoty volieb pri exporte profilu?"
+
+msgid "Open file.."
+msgstr "Otvoriť súbor.."
+
+msgid "Enter a profile name"
+msgstr "Zadajte názov profilu"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Zadajte prosím názov nového profilu:"
+
+msgid "Backend not found."
+msgstr "Backend nebol nájdený."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Automatické triedenie zásuvných modulov"
+
+msgid "Disabled Plugins"
+msgstr "Vypnuté zásuvné moduly"
+
+msgid "Enabled Plugins"
+msgstr "Zapnuté zásuvné moduly"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Naozaj si želáte vypnúť automatické zoraďovanie pluginov? Taktiež vypnete "
+"kontrolu konfliktov. Mali by ste to urobiť, iba ak ste si istí, čo robíte."
+
+msgid "Add plugin"
+msgstr "Pridať zásuvný modul"
+
+msgid "Plugin name:"
+msgstr "Názov zásuvného modulu:"
+
+msgid "Insert plugin name"
+msgstr "Zadajte názov zásuvného modulu"
+
+msgid "Preferences"
+msgstr "Nastavenia"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Konfigurovať backend, profil a ostatné vnútorné nastavenia, ktoré používa "
+"Systém na konfiguráciu Compiz-u."
+
+msgid "About"
+msgstr "O aplikácii"
+
+msgid "About CCSM..."
+msgstr "O CCSM..."
+
+msgid "Profile & Backend"
+msgstr "Profil a backend"
+
+msgid "Plugin List"
+msgstr "Zoznam zásuvných modulov"
+
+msgid "Filter your Plugin list"
+msgstr "Filtrovať váš zoznam zásuvných modulov"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Obrazovka %i"
+
+msgid "Screen"
+msgstr "Obrazovka"
+
+msgid "Category"
+msgstr "Kategória"
+
+msgid "Advanced Search"
+msgstr "Rozšírené vyhľadávanie"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Neboli nájdené žiadne zhody.</b> </span><span>\n"
+"\n"
+" Váš filter \"<b>%s</b>\" nesúhlasí so žiadnou položkou.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Nastav Compiz s pomocou CompizConfig"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Prebieha hľadanie možných konfliktov, prosím počkajte"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Hodnota (%s)"
+
+#, fuzzy
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Hodnota (%s) pre %s"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "Nezmenený zoznam typ %s pre %s"
+
+#~ msgid "Actions"
+#~ msgstr "Akcie"
+
+#~ msgid "Name"
+#~ msgstr "Meno"
+
+#~ msgid "Screen Edge"
+#~ msgstr "Kraj obrazovky"
+
+#~ msgid "Button %i"
+#~ msgstr "Tlačidlo %i"
+
+#~ msgid "Edge Button"
+#~ msgstr "Krajné Tlačidlo"
+
+#~ msgid "On System Bell"
+#~ msgstr "Na systémové upozornenie"
+
+#~ msgid "Edit Action: %s"
+#~ msgstr "Upravovacie Akcie: %s "
+
+#~ msgid "Screen Edges"
+#~ msgstr "Kraje Obrazovky"
+
+#~ msgid "Reset To Defaults"
+#~ msgstr "prestav na prednastavené"

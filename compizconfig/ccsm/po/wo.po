@@ -1,0 +1,571 @@
+# Wolof translation of ccsm                      
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR Werner Landgraf <werner@copaya.yi.org>, 2007-09-12
+# Algumas palavras não tenham tradução adequada, os quais no momento
+#   coloco em portugues, geralmente entendido no local
+#    iconv -t UTF-8 wo.pot > wo.po ;  msgfmt -cv wo.po  
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm 20070908\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2007-09-24 23:00+0200\n"
+"Last-Translator: Werner Landgraf <werner@copaya.yi.org>\n"
+"Language-Team: Wolof\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Defaay %(action)s u <b>%(binding)s</b> ci biir <b>%(plugin)s</b>def na jöffë-"
+"jöffë ak <b>%(action_conflict)s</b> ci biir <b>%(plugin_conflict)s</b>.\n"
+"Ndax nga bögge fayal <b>%(action_conflict)s</b> ci biir <b>%(plugin_conflict)"
+"s</b> ?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "fayal %(action_conflict)s ..."
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Bul ñörĩàl %(action)s !"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Ñörĩàlal %(action)s dê !"
+
+#, fuzzy
+msgid "key"
+msgstr "Botão u teclado"
+
+#, fuzzy
+msgid "button"
+msgstr "botão u jénnax"
+
+msgid "edge"
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Da nga jêem y ñöriñ  <b>%(feature)s</b> li  <b>%(plugin)s</b> indil na ko.\n"
+"Waaye loolu dafa fayal\n"
+"Ndax nga böggë  taxàl <b>%(plugin)s</b>  ngir ko ñöriñ ?"
+
+#, fuzzy, python-format
+msgid "Use %(feature)s"
+msgstr "Bul ñöriñàl %(feature)s !"
+
+#, fuzzy, python-format
+msgid "Don't use %(feature)s"
+msgstr "Bul ñöriñàl %(feature)s !"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Da nga jêem y ñöriñ  <b>%(feature)s</b> li  <b>%(plugin)s</b> indil na ko.\n"
+"Waaye loolu dafa fayal\n"
+"Ndax nga böggë  taxàl <b>%(plugin)s</b>  ngir ko ñöriñ ?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Ñöriñalal %(plugin)s !"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Bul ñöriñàl %(feature)s !"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+
+msgid "Resolve conflicts"
+msgstr ""
+
+msgid "Ignore conflicts"
+msgstr ""
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Def na jöffë-jöffë nä <b>%(plugin_conflict)s</b> waye <b>%(plugin)s</b> itam "
+"indil neñu  <b>%(feature)s</b> lá."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Fayal %(plugin_conflict)s !"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Bul taxal %(plugin)s !"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "<b>%(plugin_conflict)s</b> dafa döppu ak <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> soxla na <b>%(feature)s</b> li %(plugin_list)s mën nañu "
+"indilàl"
+
+msgid "Enable these plugins"
+msgstr "taxalal defaay yooyu !"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> soxla na <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Taxalal %(require)s  !"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> indil na defaay <b>%(feature)s</b> li <b>%(plugin_list)s</"
+"b> soxla neñu ko."
+
+msgid "Disable these plugins"
+msgstr "Fayal defukaay yoñu !"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Bul fay %(plugin)s !"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> dafa ñöriñu i <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "bu yoon"
+
+msgid "Accessibility"
+msgstr "çônêa"
+
+msgid "Desktop"
+msgstr "Taabal"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Window Management"
+msgstr "Gerênciador de Janélas"
+
+msgid "Effects"
+msgstr "luxus"
+
+msgid "Image Loading"
+msgstr "indil natal yi ..."
+
+msgid "Utility"
+msgstr "defekaay"
+
+msgid "All"
+msgstr "löppë"
+
+msgid "Uncategorized"
+msgstr "ñak xät"
+
+msgid "N/A"
+msgstr ""
+
+msgid "Reset setting to the default value"
+msgstr "Ñögal ñög gu wees gi"
+
+msgid "Edit"
+msgstr "binde ..."
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "Fí, mön nga tann dara ci, ngir nga mbinde ko"
+
+#, python-format
+msgid "Edit %s"
+msgstr "bindal %s !"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" du doxe"
+
+#
+msgid "Disabled"
+msgstr "dafa fayàl"
+
+#
+msgid "Enabled"
+msgstr "taxàl"
+
+msgid "Grab key combination"
+msgstr "taanal am mbootaay y butão !"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "Mënesul taan butão \"%s\"  !"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Ñörĩ Butão-1 fi, loolu mënna indil jöffe-jöffe ndaxte tere ñörĩ ko naka yoon."
+"Ndax nga bögge teg \"%s\" ngir  Butão-1 düggë-düggë ?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr " Hamul koĩ \"%s\" !"
+
+msgid "None"
+msgstr "du dara"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Tannay u  CompizConfig"
+
+#, fuzzy
+msgid "Plugin"
+msgstr "defëkaay yi"
+
+msgid "Please press the new key combination"
+msgstr "jänal mbootaay y butão mu taanoo !"
+
+msgid "Window Title"
+msgstr ""
+
+msgid "Window Role"
+msgstr ""
+
+#, fuzzy
+msgid "Window Name"
+msgstr "Gerênciador de Janélas"
+
+msgid "Window Class"
+msgstr ""
+
+msgid "Window Type"
+msgstr ""
+
+msgid "Window ID"
+msgstr ""
+
+msgid "And"
+msgstr ""
+
+msgid "Or"
+msgstr ""
+
+msgid "Edit match"
+msgstr ""
+
+#. Type
+msgid "Type"
+msgstr ""
+
+#. Value
+#, fuzzy
+msgid "Value"
+msgstr "Ñög gi (%s)"
+
+msgid "Grab"
+msgstr ""
+
+#. Relation
+#, fuzzy
+msgid "Relation"
+msgstr "Integração"
+
+#. Invert
+msgid "Invert"
+msgstr ""
+
+#, fuzzy
+msgid "Browse..."
+msgstr "Wuutë ngir : ... "
+
+msgid "Images"
+msgstr "Natal yi"
+
+msgid "File"
+msgstr "Binday"
+
+msgid "Open directory..."
+msgstr "hubbi ndaal y bindaay ..."
+
+msgid "Open file..."
+msgstr "Ubbi binday.."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Li dafa programa bu ogosu na CompizConfig bi. "
+
+msgid "translator-credits"
+msgstr "tekkimi: Werner Landgraf <werner@copaya.yi.org>"
+
+msgid "An error has occured"
+msgstr "Hamna ab njuumte !"
+
+msgid "Warning"
+msgstr "Möy tul !"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Taxalal %s !"
+
+msgid "Filter"
+msgstr "tannaay"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Wuut na ngir defëkaay %s -am mënnéel yi ..."
+
+msgid "Use This Plugin"
+msgstr "Ñöriñal defëkaay bii !"
+
+msgid "Search Compiz Core Options"
+msgstr "Wuut na ngir Compiz Core  mënnéel yi ..."
+
+msgid "Error"
+msgstr "njuumte !"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+
+msgid "Search in..."
+msgstr "wuutë ci biir ... :"
+
+#. Options
+msgid "Short description and name"
+msgstr "Tekke tey tudde:"
+
+msgid "Long description"
+msgstr "Tekke bu rey:"
+
+msgid "Settings value"
+msgstr "Ñeg ñu tegu:"
+
+msgid "Group"
+msgstr ""
+
+msgid "Subgroup"
+msgstr ""
+
+#. Notebook
+msgid "Settings"
+msgstr "Ñeg ñu"
+
+#, fuzzy
+msgid "Loading Advanced Search"
+msgstr "wut wu gönnë baax ..."
+
+msgid "Add a New Profile"
+msgstr "Tegal xät u lüggey bu bees ..."
+
+msgid "Remove This Profile"
+msgstr "Fayal xät u lüggey bii ..."
+
+msgid "Default"
+msgstr "bu yoon"
+
+msgid "Profile"
+msgstr "xät u lüggey"
+
+msgid "Import"
+msgstr "indil ..."
+
+msgid "Import a CompizConfig Profile"
+msgstr "indil ab xät u lüggey ngir CompizConfig ..."
+
+#
+msgid "Import as..."
+msgstr "indil naka ..."
+
+#
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "indil ab xät u lüggey u CompizConfig ngir ñeriñ ko lêegi ... "
+
+msgid "Export"
+msgstr "indal ..."
+
+msgid "Export your CompizConfig Profile"
+msgstr "indal sa xeet u  CompizConfig"
+
+#
+msgid "Reset to defaults"
+msgstr "Teg ñög-yu-jaad yi ... "
+
+#
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Teg ñög-yu-jaad yi ñöppë ngir CompizConfig -am xät u lüggey ... "
+
+msgid "Backend"
+msgstr "Programa ci biir"
+
+msgid "Integration"
+msgstr "Integração"
+
+msgid "Enable integration into the desktop environment"
+msgstr "defare integração ci taabal"
+
+msgid "Profiles (*.profile)"
+msgstr "xät i lüggey yi (*.profile)"
+
+msgid "All files"
+msgstr "mbinday yöpp"
+
+msgid "Save file.."
+msgstr "denc binday ..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+
+msgid "Open file.."
+msgstr "hubbi binday ..."
+
+msgid "Enter a profile name"
+msgstr "bindal tudde u lüggey -am xät ! "
+
+msgid "Please enter a name for the new profile:"
+msgstr "bindal ab tudde ngir xät bu bees bi, bü là nääxë"
+
+msgid "Backend not found."
+msgstr "hamul programa ci biir bi ...  :("
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "sèddàl defëkaay yi ..."
+
+msgid "Disabled Plugins"
+msgstr "defëkaay yu fay nañu:"
+
+msgid "Enabled Plugins"
+msgstr "defëkaay yu tann nañu:"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+
+msgid "Add plugin"
+msgstr "yookàl ab defukaay ..."
+
+msgid "Plugin name:"
+msgstr "tudde u defëkaay:"
+
+msgid "Insert plugin name"
+msgstr "bindal tudde u defekaay !"
+
+msgid "Preferences"
+msgstr "tanne yi"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"ogos na programa tey löpp ngir ogosu Compiz, tey xät yu lüggey i ñit ... "
+
+msgid "About"
+msgstr "Sobre"
+
+msgid "About CCSM..."
+msgstr "Sobre CCSM"
+
+msgid "Profile & Backend"
+msgstr "Programa ci biir & xéet u lüggey"
+
+msgid "Plugin List"
+msgstr "defëkaay yi"
+
+msgid "Filter your Plugin list"
+msgstr "tannal sa defëkaay yi !"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Telha %i"
+
+msgid "Screen"
+msgstr "Telha"
+
+msgid "Category"
+msgstr "xät"
+
+msgid "Advanced Search"
+msgstr "wut wu gönnë baax ..."
+
+#, fuzzy, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Hamul du dara melo.</b> </span><span>\n"
+" \n"
+" Sa wuute ngir \"<b>%s</b>\" hamulhoon ndamm.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr ""
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "gis ndax hame jöfë-jöfë ... , xaral bü là näxë !"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Ñög gi (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Ñög gi (%(value)s) u %(setting)s:"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "%s u %s du xamee"
+
+#~ msgid "Actions"
+#~ msgstr "defaay yi"
+
+#~ msgid "Disable %s"
+#~ msgstr "Fay ... "
+
+#~ msgid "Name"
+#~ msgstr "Tudde"
+
+#~ msgid "Screen Edge"
+#~ msgstr "koĩ u telha"
+
+#~ msgid "Button %i"
+#~ msgstr "Botão %i u jénnax"
+
+#~ msgid "Edge Button"
+#~ msgstr "butão ngir koĩ u telha"
+
+#~ msgid "On System Bell"
+#~ msgstr "ao tocar a campaínha"
+
+#~ msgid "Edit Action: %s"
+#~ msgstr "bindal bu war na def defaay %s ! "
+
+#~ msgid "Screen Edges"
+#~ msgstr "ay koĩ i telha"
+
+#~ msgid "Reset To Defaults"
+#~ msgstr "Ñögàl ñög ñu wees yi ..."

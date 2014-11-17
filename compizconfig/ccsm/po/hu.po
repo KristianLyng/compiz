@@ -1,0 +1,560 @@
+# translation of hu.po to hungarian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Karoly Gossler <connor@connor.hu>, 2007.
+# KAMI911 <kami911@gmail.com>, 2007-2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: hu\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2009-03-25 09:07+0100\n"
+"Last-Translator: KAMI <kamihir@freemail.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"A(z) %(binding)s összerendelés a(z) <b>%(plugin)s</b> bővítményben lévő, a"
+"(z) <b>%(action)s</b> művelethez rendelt új értéke összeférhetetlen a(z) <b>%"
+"(plugin_conflict)s</b> bővímény <b>%(action_conflict)s</b> műveletével.\n"
+"Le kívánja tiltani a(z) <b>%(plugin_conflict)s</b> bővítmény <b>%"
+"(action_conflict)s</b> műveletét?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "%(action_conflict)s letiltása"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "%(action)s mellőzése"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "%(action)s beállítása"
+
+msgid "key"
+msgstr "Billentyű"
+
+msgid "button"
+msgstr "Gomb"
+
+msgid "edge"
+msgstr "Szegély"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Olyan <b>%(feature)s</b> funkciót kíván használatba venni, amelyet semelyik "
+"bővítmény <b>nem</b> tud kiszolgálni. Ennek ellenére engedélyezni kívánja "
+"ezt a funkciót?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "%(feature)s használata"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "%(feature)s mellőzése"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Olyan <b>%(feature)s</b> funkciót kíván használatba venni, amelyet a(z) <b>%"
+"(plugin)s</b> bővítmény szolgáltat.\n"
+"Ez a bővítmény jelenleg le van tiltva.\n"
+"Kívánja engedélyezni a(z) <b>%(plugin)s</b> bővítményt?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "%(plugin)s engedélyezése"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "%(feature)s mellőzése"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"A(z) <b>%(plugin)s</b> bővítmény néhány kötése: %(bindings)s "
+"összeférhetetlen egyéb bővítményekkel. Meg kívánja oldani ezeket az "
+"összeférhetetlenségeket?"
+
+msgid "Resolve conflicts"
+msgstr "Összeférhetetlenség megoldása"
+
+msgid "Ignore conflicts"
+msgstr "Mellőzés"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"A(z) <b>%(plugin_conflict)s</b> bővítmény biztosítja a(z) <b>%(feature)s</b> "
+"funkciót. Ezt a funkciót a(z) <b>%(plugin)s</b> bővítmény is biztosítja."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "%(plugin_conflict)s letiltása"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "%(plugin)s mellőzése"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"A(z) <b>%(plugin_conflict)s</b> bővítmény összeférhetetlen a(z) <b>%(plugin)"
+"s</b> bővítménnyel."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"A(z) <b>%(plugin)s</b> bővítmény igényli a(z) <b>%(feature)s</b> funkciót. "
+"Ezt a funkciót az alábbi bővítmények biztosítják:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Következő bővítmények engedélyezése"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr ""
+"A(z) <b>%(plugin)s</b> szükséges a(z) <b>%(require)s</b> bővítmény számára."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "%(require)s engedélyezése"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"A(z) <b>%(plugin)s</b> bővítmény biztosítja a(z) <b>%(feature)s</b> "
+"funkciót. Ezt a funkciót az alábbi bővítmények igényelik:\n"
+"%(plugin_list)s"
+
+msgid "Disable these plugins"
+msgstr "Következő bővítmények tiltása"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "%(plugin)s engedélyezése"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"A(z) <b>%(plugin)s</b> bővítmény szükséges a(z) <b>%(plugin_list)s</b> "
+"bővítmények számára."
+
+msgid "General"
+msgstr "Általános"
+
+msgid "Accessibility"
+msgstr "Akadálymentesítés"
+
+msgid "Desktop"
+msgstr "Asztal"
+
+msgid "Extras"
+msgstr "Extrák"
+
+msgid "Window Management"
+msgstr "Ablakkezelés"
+
+msgid "Effects"
+msgstr "Effektusok"
+
+msgid "Image Loading"
+msgstr "Képbetöltés"
+
+msgid "Utility"
+msgstr "Eszközök"
+
+msgid "All"
+msgstr "Összes"
+
+msgid "Uncategorized"
+msgstr "Nem kategorizált"
+
+msgid "N/A"
+msgstr "Nem elérhető"
+
+msgid "Reset setting to the default value"
+msgstr "Alapértelmezett beállítás visszaállítása"
+
+msgid "Edit"
+msgstr "Szerkesztés"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Többlistás beállítások. Kattintson duplán a sorokra az értékek "
+"szerkesztéséhez."
+
+#, python-format
+msgid "Edit %s"
+msgstr "%s szerkesztése"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "„%s” nem érvényes gyorsbillentyű"
+
+msgid "Disabled"
+msgstr "Letiltva"
+
+msgid "Enabled"
+msgstr "Engedélyezve"
+
+msgid "Grab key combination"
+msgstr "Billentyűzetkombináció megadása"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "„%s” nem érvényes gomb"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"A Gomb 1 módosítók nélküli használata elérhetetlenné tesz minden bal gombbal "
+"történő műveletet, így használhatatlanok lesznek a jelenlegi beállítások. "
+"Biztos benne, hogy a(z) „%s” gombot a Gomb 1 gombra állítja be?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "„%s” nem érvényes maszk"
+
+msgid "None"
+msgstr "Nincs"
+
+msgid "CompizConfig Settings Manager"
+msgstr "CompizConfig beállításkezelő"
+
+msgid "Plugin"
+msgstr "Bővítmények"
+
+msgid "Please press the new key combination"
+msgstr "Nyomja le az új billentyűzetkombinációt"
+
+msgid "Window Title"
+msgstr "Ablakcím"
+
+msgid "Window Role"
+msgstr "Ablak szerep"
+
+msgid "Window Name"
+msgstr "Ablaknév"
+
+msgid "Window Class"
+msgstr "Ablakosztály"
+
+msgid "Window Type"
+msgstr "Ablaktípus"
+
+msgid "Window ID"
+msgstr "Ablak azonosító"
+
+msgid "And"
+msgstr "És"
+
+msgid "Or"
+msgstr "Vagy"
+
+msgid "Edit match"
+msgstr "Egyezés szerkesztése"
+
+#. Type
+msgid "Type"
+msgstr "Típus"
+
+#. Value
+msgid "Value"
+msgstr "Érték"
+
+msgid "Grab"
+msgstr "Megadás"
+
+#. Relation
+msgid "Relation"
+msgstr "Összefüggés"
+
+#. Invert
+msgid "Invert"
+msgstr "Megfordítás"
+
+msgid "Browse..."
+msgstr "Tallózás…"
+
+msgid "Images"
+msgstr "Képek"
+
+msgid "File"
+msgstr "Fájl"
+
+msgid "Open directory..."
+msgstr "Mappa megnyitása…"
+
+msgid "Open file..."
+msgstr "Fájl megnyitása…"
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Beállításkezelő a Compiz rendszerhez."
+
+msgid "translator-credits"
+msgstr "Fordították"
+
+msgid "An error has occured"
+msgstr "Hiba lépett fel"
+
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#, python-format
+msgid "Enable %s"
+msgstr "%s engedélyezése"
+
+msgid "Filter"
+msgstr "Szűrő"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "%s bővítmény beállításainak keresése"
+
+msgid "Use This Plugin"
+msgstr "Következő bővítmény használata"
+
+msgid "Search Compiz Core Options"
+msgstr "Compiz beállítások keresése"
+
+msgid "Error"
+msgstr "Hiba"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Adja meg a keresési feltételt.\n"
+"Kattintson a billentyűzet képére, hogy megadhassa a keresési feltételt."
+
+msgid "Search in..."
+msgstr "Keresés…"
+
+#. Options
+msgid "Short description and name"
+msgstr "Rövid leírásban és névben"
+
+msgid "Long description"
+msgstr "Hosszú leírásban"
+
+msgid "Settings value"
+msgstr "Beállítások értékeiben"
+
+msgid "Group"
+msgstr "Csoport"
+
+msgid "Subgroup"
+msgstr "Alcsoport"
+
+#. Notebook
+msgid "Settings"
+msgstr "Beállítások"
+
+msgid "Loading Advanced Search"
+msgstr "Haladó keresés betöltése"
+
+msgid "Add a New Profile"
+msgstr "Új profil hozzáadása"
+
+msgid "Remove This Profile"
+msgstr "Profil törlése"
+
+msgid "Default"
+msgstr "Alapértelmezett"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Import"
+msgstr "Importálás"
+
+msgid "Import a CompizConfig Profile"
+msgstr "CompizConfig profil importálása"
+
+msgid "Import as..."
+msgstr "Importálás másként…"
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "CompizConfig profil importálása új profilként"
+
+msgid "Export"
+msgstr "Exportálás"
+
+msgid "Export your CompizConfig Profile"
+msgstr "CompizConfig profil exportálása"
+
+msgid "Reset to defaults"
+msgstr "Alapértelmezett"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "CompizConfig profil visszaállítása az általános alapértelmezésekre"
+
+msgid "Backend"
+msgstr "Kiszolgáló"
+
+msgid "Integration"
+msgstr "Integráció"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Integráció engedélyezése az ablakkezelő-környezetbe"
+
+msgid "Profiles (*.profile)"
+msgstr "Profilok (*.profile)"
+
+msgid "All files"
+msgstr "Összes fájl"
+
+msgid "Save file.."
+msgstr "Fájl mentése…"
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"Ki kívánja hagyni az alapértelmezett értékeket tartalmazó beállításokat a "
+"profil exportálása során?"
+
+msgid "Open file.."
+msgstr "Fájl megnyitása…"
+
+msgid "Enter a profile name"
+msgstr "Profil név megadása"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Adjon meg egy nevet az új profil számára:"
+
+msgid "Backend not found."
+msgstr "A kiszolgáló nem található."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Automatikus bővítmény-sorrend"
+
+msgid "Disabled Plugins"
+msgstr "Tiltott bővítmények"
+
+msgid "Enabled Plugins"
+msgstr "Engedélyezett bővítmények"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Valóban ki kívánja kapcsolni az automatikus bővítményrendezést? Ez a "
+"lehetőség kikapcsolja a összeférhetetlenség-kezelést is, így ez a beállítás "
+"csak gyakorlott felhasználóknak ajánlható."
+
+msgid "Add plugin"
+msgstr "Bővítmény hozzáadása"
+
+msgid "Plugin name:"
+msgstr "Bővítmény neve:"
+
+msgid "Insert plugin name"
+msgstr "Adja meg a bővítmény nevét"
+
+msgid "Preferences"
+msgstr "Beállítások"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Kiszolgáló, profil és Compiz beállítórendszer egyéb belső beállításainak "
+"szerkesztése."
+
+msgid "About"
+msgstr "Névjegy"
+
+msgid "About CCSM..."
+msgstr "CCSM névjegye…"
+
+msgid "Profile & Backend"
+msgstr "Profilok és kiszolgálók"
+
+msgid "Plugin List"
+msgstr "Bővítmény lista"
+
+msgid "Filter your Plugin list"
+msgstr "Bővítménylista szűrése"
+
+#, python-format
+msgid "Screen %i"
+msgstr "%i képernyő"
+
+msgid "Screen"
+msgstr "Képernyő"
+
+msgid "Category"
+msgstr "Kategória"
+
+msgid "Advanced Search"
+msgstr "Haladó keresés"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Nincs találat.</b> </span><span>\n"
+"\n"
+" A szűrő („<b>%s</b>”) nem adott találatot.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Compiz beállítása a CompizCOnfig programmal"
+
+#~ msgid "Open file…"
+#~ msgstr "Fájl megnyitása…"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Lehetséges összeférhetetlenségek keresése. Kérem várjon."
+
+#~ msgid "Value (%s)"
+#~ msgstr "Érték (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "%(setting)s beállítás értéke: %(value)s"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "Nem kezelt listatípusok: %s a következőhöz: %s"
+
+#~ msgid "Actions"
+#~ msgstr "Műveletek"
+
+#~ msgid "Name"
+#~ msgstr "Név"

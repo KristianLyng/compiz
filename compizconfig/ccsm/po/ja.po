@@ -1,0 +1,537 @@
+# ccsm Japanese translation.
+# Copyright (C) 2007 opencompositing.org
+# This file is distributed under the same license as the compiz-fusion package.
+# Masaaki KANEMOTO <masaaki.kanemoto@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm 0.6\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2009-06-06 08:56+0200\n"
+"Last-Translator: Chris Hsin <AkiraHsin@gmail.com>\n"
+"Language-Team: Japanese <masaaki.kanemoto@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"<b>%(plugin)s</b> プラグインの <b>%(action)s</b> アクションに割り当てられた %"
+"(binding)s の新しい設定は、 <b>%(plugin_conflict)s</b> プラグインの <b>%"
+"(action_conflict)s</b> アクションと干渉します。\n"
+"<b>%(plugin_conflict)s</b> プラグインの <b>%(action_conflict)s</b> を無効にし"
+"ますか？"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "%(action_conflict)s を無効化"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "%(action)s の設定中止"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "%(action)s をとにかく設定"
+
+msgid "key"
+msgstr "キー"
+
+msgid "button"
+msgstr "ボタン"
+
+msgid "edge"
+msgstr "エッジ"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"どのプラグインからも提供されて<b>いない</b> <b>%(feature)s</b> 機能を使用しよ"
+"うとしています。\n"
+"この機能をこのまま使用しますか？"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "%(feature)s を使用"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "%(feature)s の使用化中止"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"<b>%(plugin)s</b> により提供されている <b>%(feature)s</b> 機能を使用しようと"
+"しています。\n"
+"このプラグインは現在無効の状態です。\n"
+"この機能を利用可能にするため <b>%(plugin)s</b> を有効にしますか？"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "%(plugin)s を有効化"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "%(feature)s の有効化中止"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"<b>%(plugin)s</b> プラグインの %(bindings)s 割り当てのいくつかは他のプラグイ"
+"ンと干渉します。これらの干渉を解決しますか？"
+
+msgid "Resolve conflicts"
+msgstr "干渉を解決"
+
+msgid "Ignore conflicts"
+msgstr "干渉を無視"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"<b>%(plugin_conflict)s</b> プラグインが、<b>%(plugin)s</b> からも提供される "
+"<b>%(feature)s</b> 機能を提供しています。"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "%(plugin_conflict)s を無効化"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "%(plugin)s の有効化中止"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"<b>%(plugin_conflict)s</b> プラグインが <b>%(plugin)s</b> と干渉します。"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> の動作には、以下のプラグインで提供される <b>%(feature)s</"
+"b> 機能が必要です:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "これらのプラグインを有効化"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> の動作には、 <b>%(require)s</b> プラグインが必要です。"
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "%(require)s を有効化"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> は、 <b>%(plugin_list)s</b> プラグインの動作に必要な <b>%"
+"(feature)s</b> 機能を提供します。"
+
+msgid "Disable these plugins"
+msgstr "これらのプラグインを無効化"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "%(plugin)s の無効化中止"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> は <b>%(plugin_list)s</b> プラグインの動作に必要です。"
+
+msgid "General"
+msgstr "一般"
+
+msgid "Accessibility"
+msgstr "アクセシビリティ"
+
+msgid "Desktop"
+msgstr "デスクトップ"
+
+msgid "Extras"
+msgstr "エクストラ"
+
+msgid "Window Management"
+msgstr "ウィンドウ・マネジメント"
+
+msgid "Effects"
+msgstr "エフェクト"
+
+msgid "Image Loading"
+msgstr "画像の読み込み"
+
+msgid "Utility"
+msgstr "ユーティリティ"
+
+msgid "All"
+msgstr "すべて"
+
+msgid "Uncategorized"
+msgstr "未分類"
+
+msgid "N/A"
+msgstr "適用不可"
+
+msgid "Reset setting to the default value"
+msgstr "設定をデフォルト値に戻す"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "複数リストの設定。列をダブルクリックして値を編集することができます。"
+
+#, python-format
+msgid "Edit %s"
+msgstr "%s を編集"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" は有効なショートカットではありません"
+
+msgid "Disabled"
+msgstr "無効"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Grab key combination"
+msgstr "キーの組み合わせをつかむ"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" は有効なボタンではありません"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"修飾キーなしで Button1 を単独使用すると、あらゆる左クリック操作が阻害され、設"
+"定が破綻します。本当に \"%s\" ボタンを Button1 に割り当てますか？"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" は有効なエッジマスクではありません"
+
+msgid "None"
+msgstr "なし"
+
+msgid "CompizConfig Settings Manager"
+msgstr "CompizConfig 設定マネージャ"
+
+msgid "Plugin"
+msgstr "プラグイン"
+
+msgid "Please press the new key combination"
+msgstr "新しいキーの組み合わせを入力してください"
+
+msgid "Window Title"
+msgstr "ウィンドウ・タイトル"
+
+msgid "Window Role"
+msgstr "ウィンドウ・ロール"
+
+msgid "Window Name"
+msgstr "ウィンドウ・ネーム"
+
+msgid "Window Class"
+msgstr "ウィンドウ・クラス"
+
+msgid "Window Type"
+msgstr "ウィンドウ・タイプ"
+
+msgid "Window ID"
+msgstr "ウィンドウ ID"
+
+msgid "And"
+msgstr "かつ"
+
+msgid "Or"
+msgstr "または"
+
+msgid "Edit match"
+msgstr "マッチ条件の編集"
+
+#. Type
+msgid "Type"
+msgstr "種類"
+
+#. Value
+msgid "Value"
+msgstr "値"
+
+msgid "Grab"
+msgstr "取得"
+
+#. Relation
+msgid "Relation"
+msgstr "論理演算子"
+
+#. Invert
+msgid "Invert"
+msgstr "否定"
+
+# スカイドーム画像の参照ボタンで表示
+msgid "Browse..."
+msgstr "参照..."
+
+msgid "Images"
+msgstr "画像"
+
+msgid "File"
+msgstr "ファイル"
+
+msgid "Open directory..."
+msgstr "ディレクトリを開く..."
+
+msgid "Open file..."
+msgstr "ファイルを開く..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "これは CompizConfig 設定システム用の設定マネージャです。"
+
+msgid "translator-credits"
+msgstr ""
+"Nishio Futoshi <futoshi@momonga-linux.org>\n"
+"Yohsuke Ooi <meke@momonga-linux.org>\n"
+"TABUCHI Takaaki <tab@momonga-linux.org>\n"
+"Masaaki Kanemoto <masaaki.kanemoto@gmail.com>\n"
+"Jiro Kawada <jiro.kawada@gmail.com>"
+
+msgid "An error has occured"
+msgstr "エラーが発生しました"
+
+msgid "Warning"
+msgstr "警告"
+
+#, python-format
+msgid "Enable %s"
+msgstr "%s を有効にする"
+
+msgid "Filter"
+msgstr "フィルタ"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "%s プラグインのオプションを検索"
+
+msgid "Use This Plugin"
+msgstr "このプラグインの使用"
+
+msgid "Search Compiz Core Options"
+msgstr "Compiz Core のオプションを検索"
+
+msgid "Error"
+msgstr "エラー"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"フィルタを入力、\n"
+"キーショートカット検索のためキーをつかむにはキーボード画像をクリック"
+
+msgid "Search in..."
+msgstr "検索対象..."
+
+#. Options
+msgid "Short description and name"
+msgstr "名前や簡単な説明"
+
+msgid "Long description"
+msgstr "詳細な説明"
+
+msgid "Settings value"
+msgstr "設定値"
+
+msgid "Group"
+msgstr "グループ"
+
+msgid "Subgroup"
+msgstr "サブグループ"
+
+#. Notebook
+msgid "Settings"
+msgstr "設定"
+
+msgid "Loading Advanced Search"
+msgstr "詳細検索を読み込み中"
+
+msgid "Add a New Profile"
+msgstr "新しいプロファイルを追加"
+
+msgid "Remove This Profile"
+msgstr "このプロファイルを削除"
+
+msgid "Default"
+msgstr "デフォルト"
+
+msgid "Profile"
+msgstr "プロファイル"
+
+msgid "Import"
+msgstr "インポート"
+
+msgid "Import a CompizConfig Profile"
+msgstr "CompizConfig のプロファイルをインポート"
+
+msgid "Import as..."
+msgstr "別名でインポート..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "CompizConfig のプロファイルを新しいプロファイルとしてインポート"
+
+msgid "Export"
+msgstr "エクスポート"
+
+msgid "Export your CompizConfig Profile"
+msgstr "CompizConfig のプロファイルをエクスポート"
+
+msgid "Reset to defaults"
+msgstr "デフォルトに戻す"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "この CompizConfig プロファイル内容全体をデフォルト値にリセット"
+
+msgid "Backend"
+msgstr "バックエンド"
+
+msgid "Integration"
+msgstr "統合"
+
+msgid "Enable integration into the desktop environment"
+msgstr "デスクトップ環境への統合を有効にする"
+
+msgid "Profiles (*.profile)"
+msgstr "プロファイル (*.profile)"
+
+msgid "All files"
+msgstr "すべてのファイル"
+
+msgid "Save file.."
+msgstr "ファイルを保存..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"プロファイルをエクスポートする際に、デフォルトのオプション値を省きますか？"
+
+msgid "Open file.."
+msgstr "ファイルを開く.."
+
+msgid "Enter a profile name"
+msgstr "プロファイル名を入力"
+
+msgid "Please enter a name for the new profile:"
+msgstr "新しいプロファイル名を入力してください:"
+
+msgid "Backend not found."
+msgstr "バックエンドが見つかりません。"
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "プラグインの自動分類"
+
+msgid "Disabled Plugins"
+msgstr "無効なプラグイン"
+
+msgid "Enabled Plugins"
+msgstr "有効なプラグイン"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"本当にプラグインの自動分類を無効にしますか？この操作で干渉の処理も無効になり"
+"ます。何をしようとしているか理解されていない場合は、無効にすべきではありませ"
+"ん。"
+
+msgid "Add plugin"
+msgstr "プラグインを追加"
+
+msgid "Plugin name:"
+msgstr "プラグインの名前:"
+
+msgid "Insert plugin name"
+msgstr "プラグイン名を入力"
+
+msgid "Preferences"
+msgstr "設定"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Compiz 制御システムによって使用されるバックエンドやプロファイル、その他内部設"
+"定を設定します。"
+
+msgid "About"
+msgstr "詳細情報"
+
+msgid "About CCSM..."
+msgstr "CCSM について..."
+
+msgid "Profile & Backend"
+msgstr "プロファイルとバックエンド"
+
+msgid "Plugin List"
+msgstr "プラグイン・リスト"
+
+msgid "Filter your Plugin list"
+msgstr "プラグインリストのフィルタ"
+
+#, python-format
+msgid "Screen %i"
+msgstr "スクリーン %i"
+
+msgid "Screen"
+msgstr "スクリーン"
+
+msgid "Category"
+msgstr "カテゴリ"
+
+msgid "Advanced Search"
+msgstr "詳細検索"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>何も見つかりませんでした。</b> </span><span>\n"
+"フィルタ \"<b>%s</b>\" はどのアイテムにも一致しません。"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "CompizConfig で Compiz を設定します"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "干渉の可能性を計算していますのでお待ちください"

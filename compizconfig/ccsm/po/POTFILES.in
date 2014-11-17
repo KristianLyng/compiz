@@ -1,0 +1,10 @@
+ccm/Conflicts.py
+ccm/Constants.py.in
+ccm/Settings.py
+ccm/Window.py
+ccm/Widgets.py
+ccm/Pages.py
+ccm/Utils.py
+ccm/__init__.py
+ccsm
+ccsm.desktop.in

@@ -1,0 +1,538 @@
+# translation of ccsm_new.po to Russian
+# Denis Rakhmangulov <danfocus@gmail.com>, 2007.
+# Dimitriy Ryazantcev <DJm00n@mail.ru>, 2008.
+# Translation of CCSM to ru
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the ccsm packages.
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm_new\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2009-03-10 21:37+0100\n"
+"Last-Translator: Denis Rakhmangulov <danfocus@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 1.1.0\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Новое значение для закрепления %(binding)s для действия <b>%(action)s</b> в "
+"модуле <b>%(plugin)s</b> конфликтует с действием <b>%(action_conflict)s</b> "
+"модуля <b>%(plugin_conflict)s</b>.\n"
+"Вы хотите отключить <b>%(action_conflict)s</b> в модуле <b>%(plugin_conflict)"
+"s</b>?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Отключить %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Не устанавливать %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Установить %(action)s все равно"
+
+msgid "key"
+msgstr "ключ"
+
+msgid "button"
+msgstr "клавиша"
+
+msgid "edge"
+msgstr "край"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Вы пытаетесь использовать возможность <b>%(feature)s</b>, которая <b>не</b> "
+"предоставлена ни одним модулем.\n"
+"Вы все равно хотите использовать эту возможность?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Использовать %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Не использовать %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Вы пытаетесь воспользоваться возможностью <b>%(feature)s</b> которую "
+"предоставляет <b>%(plugin)s</b>.\n"
+"Этот модуль сейчас отключен.\n"
+"Вы хотите включить <b>%(plugin)s</b>, чтобы сделать возможность доступной?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Включить %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Не включать %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"Назначения клавиш %(bindings)s модуля <b>%(plugin)s</b> конфликтуют с "
+"другими модулями. Вы хотите разрешить эти конфликты?"
+
+msgid "Resolve conflicts"
+msgstr "Разрешить конфликты"
+
+msgid "Ignore conflicts"
+msgstr "Игнорировать конфикты"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Модуль <b>%(plugin_conflict)s</b> предоставляет возможность <b>%(feature)s</"
+"b>, которая уже предоставлена <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Отключить %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Не включать %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "Модуль <b>%(plugin_conflict)s</b> конфликтует с <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> требует возможность <b>%(feature)s</b>, которая "
+"предоставлена следующими модулями:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Включить эти модули"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> требует модуль <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Включить %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> предоставляет возможность <b>%(feature)s</b>, которая "
+"требуется модулям <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Отключить эти модули"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Не отключать %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> требуется модулю <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Общие"
+
+msgid "Accessibility"
+msgstr "Специальные возможности"
+
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+msgid "Extras"
+msgstr "Дополнения"
+
+msgid "Window Management"
+msgstr "Управление окнами"
+
+msgid "Effects"
+msgstr "Эффекты"
+
+msgid "Image Loading"
+msgstr "Загрузка изображения"
+
+msgid "Utility"
+msgstr "Утилиты"
+
+msgid "All"
+msgstr "Все"
+
+msgid "Uncategorized"
+msgstr "Не категоризировано"
+
+msgid "N/A"
+msgstr "Не доступно"
+
+msgid "Reset setting to the default value"
+msgstr "Сбросить настройку на значения по умолчанию"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Многострочные настройки. Вы можете дважды щелкнуть строку для редактирования "
+"значений."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Изменить %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" является неправильным сочетанием клавиш"
+
+msgid "Disabled"
+msgstr "Отключено"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Grab key combination"
+msgstr "Считать комбинацию клавиш"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" неверная клавиша"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Использование Button1 без модификаторов может предотвратить любой левый клик "
+"и это испортит Вашу конфигурацию. Вы действительно хотите установить клавишу "
+"\"%s\" на Button1 ?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" неверная маска края"
+
+msgid "None"
+msgstr "Нет"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Менеджер настройки CompizConfig"
+
+msgid "Plugin"
+msgstr "Модуль"
+
+msgid "Please press the new key combination"
+msgstr "Пожалуйста, нажмите новую комбинацию клавиш"
+
+msgid "Window Title"
+msgstr "Заголовок окна"
+
+msgid "Window Role"
+msgstr "Роль окна"
+
+msgid "Window Name"
+msgstr "Имя окна"
+
+msgid "Window Class"
+msgstr "Класс окна"
+
+msgid "Window Type"
+msgstr "Тип окна"
+
+msgid "Window ID"
+msgstr "ID окна"
+
+msgid "And"
+msgstr "И"
+
+msgid "Or"
+msgstr "Или"
+
+msgid "Edit match"
+msgstr "Изменить соответствие"
+
+#. Type
+msgid "Type"
+msgstr "Тип"
+
+#. Value
+msgid "Value"
+msgstr "Значение"
+
+msgid "Grab"
+msgstr "Считать"
+
+#. Relation
+msgid "Relation"
+msgstr "Отношение"
+
+#. Invert
+msgid "Invert"
+msgstr "Инвертировать"
+
+msgid "Browse..."
+msgstr "Обзор..."
+
+msgid "Images"
+msgstr "Изображения"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Open directory..."
+msgstr "Открыть каталог..."
+
+msgid "Open file..."
+msgstr "Открыть файл..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Это менеджер настроек для системы конфигурирования CompizConfig."
+
+msgid "translator-credits"
+msgstr ""
+"Denis Rakhmangulov <danfocus@gmail.com>\n"
+"Дмитрий Рязанцев <DJm00n@mail.ru>\n"
+"Александр Муравья <alexmuravya@gmail.com> "
+
+msgid "An error has occured"
+msgstr "Произошла ошибка"
+
+msgid "Warning"
+msgstr "Предупреждение"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Включить %s"
+
+msgid "Filter"
+msgstr "Фильтр"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Искать %s опции модуля"
+
+msgid "Use This Plugin"
+msgstr "Использовать этот модуль"
+
+msgid "Search Compiz Core Options"
+msgstr "Искать опции Compiz Core"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Введите фильтр.\n"
+"Щелкните на иконке клавиатуры для считывания ключевого слова, по которому "
+"искать."
+
+msgid "Search in..."
+msgstr "Искать в..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Кратком описании и наименовании"
+
+msgid "Long description"
+msgstr "Подробном описании"
+
+msgid "Settings value"
+msgstr "Значении настроек"
+
+msgid "Group"
+msgstr "Группа"
+
+msgid "Subgroup"
+msgstr "Подгруппа"
+
+#. Notebook
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Loading Advanced Search"
+msgstr "Загружается расширенный поиск"
+
+msgid "Add a New Profile"
+msgstr "Добавить новый профиль"
+
+msgid "Remove This Profile"
+msgstr "Удалить этот профиль"
+
+msgid "Default"
+msgstr "По умолчанию"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Import"
+msgstr "Импортировать"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Импортировать профиль CompizConfig"
+
+msgid "Import as..."
+msgstr "Импортировать как..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Импортировать профиль CompizConfig как новый профиль"
+
+msgid "Export"
+msgstr "Экспортировать"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Экспортировать Ваш профиль CompizConfig"
+
+msgid "Reset to defaults"
+msgstr "Сбросить на значения по умолчанию"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Сбросить Ваш профиль CompizConfig на общие значения по умолчанию"
+
+msgid "Backend"
+msgstr "Формат хранения настроек"
+
+msgid "Integration"
+msgstr "Интеграция"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Включить интеграцию в окружение рабочего стола"
+
+msgid "Profiles (*.profile)"
+msgstr "Профили (*.profile)"
+
+msgid "All files"
+msgstr "Все файлы"
+
+msgid "Save file.."
+msgstr "Сохранить файл.."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"Хотите ли вы пропустить значения по умолчанию, экспортируя ваш профиль?"
+
+msgid "Open file.."
+msgstr "Открыть файл.."
+
+msgid "Enter a profile name"
+msgstr "Введите наименование профиля"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Пожалуйста введите наименование нового профиля:"
+
+msgid "Backend not found."
+msgstr "Формат хранения настроек не найден."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Автоматическая сортировка модулей"
+
+msgid "Disabled Plugins"
+msgstr "Отключенные модули"
+
+msgid "Enabled Plugins"
+msgstr "Включенные модули"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Вы действительно хотите отключить автоматическую сортировку модулей? Это "
+"отключит разрешение конфликтов. Вы можете это сделать только если знаете, "
+"что делаете."
+
+msgid "Add plugin"
+msgstr "Добавить модуль"
+
+msgid "Plugin name:"
+msgstr "Наименование модуля:"
+
+msgid "Insert plugin name"
+msgstr "Введите наименование модуля"
+
+msgid "Preferences"
+msgstr "Установки"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Конфигурировать формат хранения настроек, профиль и другие внутренние "
+"настройки используя систему конфигурации Compiz."
+
+msgid "About"
+msgstr "О программе"
+
+msgid "About CCSM..."
+msgstr "О CCSM..."
+
+msgid "Profile & Backend"
+msgstr "Профиль и формат хранения настроек"
+
+msgid "Plugin List"
+msgstr "Список модулей"
+
+msgid "Filter your Plugin list"
+msgstr "Отфильтровать Ваш список модулей"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Экран %i"
+
+msgid "Screen"
+msgstr "Экран"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Advanced Search"
+msgstr "Расширенный поиск"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Не найдено совпадений.</b> </span><span>\n"
+"\n"
+" Ваш фильтр \"<b>%s</b>\" не совпал ни с чем.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Настройка Compiz с помощью CompizConfig"

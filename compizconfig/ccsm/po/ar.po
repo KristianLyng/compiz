@@ -1,0 +1,526 @@
+# translation of ccsm.po to Arabic
+# OsamaKhalid <osamak.wfm@gmail.com>, 2009.
+# ccsm ar translation.
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+# 2007, Banxoo <banxoo+ar@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2009-02-06 20:36+0300\n"
+"Last-Translator: OsamaKhalid <osamak.wfm@gmail.com>\n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"القيمة الجديدة للملزم %(binding)s لتنفيذ الإجراء <b>%(action)s</b> في الملحق "
+"<b>%(plugin)s</b> تتداخل مع الإجراء <b>%(action_conflict)s</b> الذي يتبع "
+"للملحق <b>%(plugin_conflict)s</b>.\n"
+"أتريد تعطيل <b>%(action_conflict)s</b> في الملحق <b>%(plugin_conflict)s</b>؟"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "عطّل %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "لا تضبط %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "حدد %(action)s على كل الأحوال"
+
+msgid "key"
+msgstr "مفتاح"
+
+msgid "button"
+msgstr "زر"
+
+msgid "edge"
+msgstr "حافة"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"أنت بصدد استعمال الميزة  <b>%(feature)s</b> اللتي <b>لم</b> يوفّرها أي ملحق.\n"
+"أتريد استخدام هذه الميزة على كل حال؟"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "استخدم %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "لا تستخدم %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"أنت بصدد استعمال الميزة  <b>%(feature)s</b> اللتي وفّرها <b>%(plugin)s</b>.\n"
+"هذا الملحق معطّل حاليا.\n"
+"أتريد تمكين <b>%(plugin)s</b> لتصبح الميزة متوفرة؟"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "مكّن %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "لا تمكّن %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"بعض تثبيتات %(bindings)s للملحقات <b>%(plugin)s</b> تتعارض مع ملحقات أخرى . "
+"أتريد حل هذا التعارض؟"
+
+msgid "Resolve conflicts"
+msgstr "حل التعارضات"
+
+msgid "Ignore conflicts"
+msgstr "تجاهل التعارضات"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"الملحق <b>%(plugin_conflict)s</b> يوفر الميزة <b>%(feature)s</b> الموفّرة "
+"أيضا بواسطة <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "عطّل %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "لا تمكّن %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "الملحق <b>%(plugin_conflict)s</b> يتداخل مع <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> توفر الميزة <b>%(feature)s</b> المطلوبة من الملحقات "
+"التالية:\n"
+" %(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "مكّن هذه الإضافات"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> بحاجة إلى الإضافة <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "مكّن %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> توفر الميزة <b>%(feature)s</b> المطلوبة من الملحقات <b>%"
+"(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "عطّل هذه الإضافات"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "%(plugin)s لا تعطّل "
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> مطلوبة للملحقات <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "عام"
+
+msgid "Accessibility"
+msgstr "الإتاحة"
+
+msgid "Desktop"
+msgstr "سطح المكتب"
+
+msgid "Extras"
+msgstr "زواىٔد"
+
+msgid "Window Management"
+msgstr "إدارة النوفذة"
+
+msgid "Effects"
+msgstr "مؤثرات"
+
+msgid "Image Loading"
+msgstr "تحميل الصورة"
+
+msgid "Utility"
+msgstr "فاىٔدة"
+
+msgid "All"
+msgstr "الكل"
+
+msgid "Uncategorized"
+msgstr "غير مصنّف"
+
+msgid "N/A"
+msgstr "غير متوفر"
+
+msgid "Reset setting to the default value"
+msgstr "أعد الضبط إلى القيمة المبدئية"
+
+msgid "Edit"
+msgstr "حرّر"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "إعادات اللوائح المتعددة. تستطيع النقر مزدوجا على صف لتحرير قيمه."
+
+#, python-format
+msgid "Edit %s"
+msgstr "حرّر %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" ليس اختصارا صحيحا"
+
+msgid "Disabled"
+msgstr "معطّل"
+
+msgid "Enabled"
+msgstr "ممكّن"
+
+msgid "Grab key combination"
+msgstr "اقبض تجميعة المفاتيح"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" ليس زرا صحيحا"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"استخدام الزر1 بدون مغيرات يمكن أن يحجب أي نقر أيسر وبالتالي تعطيب تشكيلاتك. "
+"أتريد حقا تحديد الزر \"%s\" كالزر1؟"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" ليس قناع حافة صحيح"
+
+msgid "None"
+msgstr "لا شيء"
+
+msgid "CompizConfig Settings Manager"
+msgstr "مدير إعدادات CompizConfig"
+
+msgid "Plugin"
+msgstr "الملحق"
+
+msgid "Please press the new key combination"
+msgstr "من فضلك أدخل تجميعة المفاتيح الجديدة"
+
+msgid "Window Title"
+msgstr "عنوان النافذة"
+
+msgid "Window Role"
+msgstr "دور النافذة"
+
+msgid "Window Name"
+msgstr "اسم النافذة"
+
+msgid "Window Class"
+msgstr "فئة النافذة"
+
+msgid "Window Type"
+msgstr "نوع النافذة"
+
+msgid "Window ID"
+msgstr "هوية النافذة"
+
+msgid "And"
+msgstr "و"
+
+msgid "Or"
+msgstr "أو"
+
+msgid "Edit match"
+msgstr "حرّر المتطابقات"
+
+#. Type
+msgid "Type"
+msgstr "النوع"
+
+#. Value
+msgid "Value"
+msgstr "القيمة"
+
+msgid "Grab"
+msgstr "اقبض"
+
+#. Relation
+msgid "Relation"
+msgstr "العلاقة"
+
+#. Invert
+msgid "Invert"
+msgstr "اقلب"
+
+msgid "Browse..."
+msgstr "تصفّح.."
+
+msgid "Images"
+msgstr "صور"
+
+msgid "File"
+msgstr "ملف"
+
+msgid "Open directory..."
+msgstr "افتح دليلا...."
+
+msgid "Open file..."
+msgstr "افتح ملفا..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "هذا مدير إعدادات لنظام تشكيل CompizConfig."
+
+msgid "translator-credits"
+msgstr ""
+"أسامة خالد <osamak.wfm@gmail.com>\n"
+"وآخرون"
+
+msgid "An error has occured"
+msgstr "حدث خطأ"
+
+msgid "Warning"
+msgstr "إنذار"
+
+#, python-format
+msgid "Enable %s"
+msgstr "مكّن %s"
+
+msgid "Filter"
+msgstr "مرشّح"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "ابحث في خيارات الملحق %s"
+
+msgid "Use This Plugin"
+msgstr "استخدم هذه الإضافة"
+
+msgid "Search Compiz Core Options"
+msgstr "ابحث في خيارات نواة Compiz."
+
+msgid "Error"
+msgstr "خطأ"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"أدخل مرشّحا.\n"
+"انقر صورة لوحة المفاتيح لقبض مفتاح تبحث عنه."
+
+msgid "Search in..."
+msgstr "ابحث في.."
+
+#. Options
+msgid "Short description and name"
+msgstr "وصف قصير واسم"
+
+msgid "Long description"
+msgstr "وصف طويل"
+
+msgid "Settings value"
+msgstr "قيمة الإعدادات"
+
+msgid "Group"
+msgstr "مجموعة"
+
+msgid "Subgroup"
+msgstr "مجموعة فرعية"
+
+#. Notebook
+msgid "Settings"
+msgstr "إعدادات"
+
+msgid "Loading Advanced Search"
+msgstr "تحميل البحث المتقدم"
+
+msgid "Add a New Profile"
+msgstr "أضف ملفا جديدا"
+
+msgid "Remove This Profile"
+msgstr "أزل هذا الملف"
+
+msgid "Default"
+msgstr "المبدئي"
+
+msgid "Profile"
+msgstr "الملف"
+
+msgid "Import"
+msgstr "استورد"
+
+msgid "Import a CompizConfig Profile"
+msgstr "استورد ملف CompizConfig"
+
+msgid "Import as..."
+msgstr "استورد كـ..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "استورد ملف CompizConfig كملف جديد"
+
+msgid "Export"
+msgstr "صدّر"
+
+msgid "Export your CompizConfig Profile"
+msgstr "صدّر تشكيل CompizConfig المستخدم "
+
+msgid "Reset to defaults"
+msgstr "أعد الضبط إلى المبدئيات"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "أعد ضبط ملف CompizConfig إلى المبدئيات العمومية"
+
+msgid "Backend"
+msgstr "الخلفية"
+
+msgid "Integration"
+msgstr "دمج"
+
+msgid "Enable integration into the desktop environment"
+msgstr "مكّن الدمج إلى بيىٔة المكتب"
+
+msgid "Profiles (*.profile)"
+msgstr "ملفات (*.profile)"
+
+msgid "All files"
+msgstr "كل الملفات"
+
+msgid "Save file.."
+msgstr "احفظ الملف..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "أتريد تخطي قيم الخيارات المبدئية أثناء تصدير ملفك؟"
+
+msgid "Open file.."
+msgstr "افتح ملفا.."
+
+msgid "Enter a profile name"
+msgstr "أدخل اسم ملف"
+
+msgid "Please enter a name for the new profile:"
+msgstr "من فضلك أدخل اسما للملف الجديد:"
+
+msgid "Backend not found."
+msgstr "لم توجد الخلفية."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "ترتيب الملحقات تلقائيا"
+
+msgid "Disabled Plugins"
+msgstr "الإضافات المعطلة"
+
+msgid "Enabled Plugins"
+msgstr "الملحقات الممكنة"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"أتريد حقا تعطيل الفرز التلقائي للملحقات؟ هذا من شأنه أيضا تعطيل التعامل مع "
+"التعارضات. يتعين عليك فعل ذلك فقط إذا كنت تعرف ما أنت بصدد القيام به."
+
+msgid "Add plugin"
+msgstr "أضف ملحقا"
+
+msgid "Plugin name:"
+msgstr "اسم الملحق:"
+
+msgid "Insert plugin name"
+msgstr "أدخل اسم الملحق"
+
+msgid "Preferences"
+msgstr "تفضيلات"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"اضبط الخلفية والملف، والإعدادات الداخلية الأخرى المستخدمة بواسطة تظام "
+"إعدادات Compiz."
+
+msgid "About"
+msgstr "عن"
+
+msgid "About CCSM..."
+msgstr "عن CCSM..."
+
+msgid "Profile & Backend"
+msgstr "الملف والمنتهى الخلفي"
+
+msgid "Plugin List"
+msgstr "قائمة الملحقات"
+
+msgid "Filter your Plugin list"
+msgstr "رشّح قائمة ملحقاتك"
+
+#, python-format
+msgid "Screen %i"
+msgstr "الشاشة %i"
+
+msgid "Screen"
+msgstr "شاشة"
+
+msgid "Category"
+msgstr "تصنيف"
+
+msgid "Advanced Search"
+msgstr "بحث متقدّم"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>لا وجود لتطابق.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" لا تطابق مع ايّ من الموجودات.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "شكّل Compiz بواسطة CompizConfig"

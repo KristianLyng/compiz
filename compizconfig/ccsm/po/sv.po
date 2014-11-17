@@ -1,0 +1,558 @@
+# Swedish translation for ccsm.
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the compiz-fusion package.
+# Daniel Nylander <po@danielnylander.se>, 2007.
+# Erik Eloff <erik@eloff.se>, 2007.
+# Sebastian Parborg <zedDB@hotmail.com>, 2007.
+# Fredrik Karlsson <mjukis@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: compiz-fusion-plugins 0.0.1\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-12-07 18:22+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Compiz Fusion Translators <i18n@lists.compiz-fusion.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Det nya värdet för tangentbindningen %(binding)s för åtgärden <b>%(action)s</"
+"b>i insticksmodulen <b>%(plugin)s</b> står i konflikt med åtgärden <b>%"
+"(action_conflict)s</b>för insticksmodulen <b>%(plugin_conflict)s</b>.\n"
+"Vill du inaktivera <b>%(action_conflict)s</b> i insticksmodulen <b>%"
+"(plugin_conflict)s</b>?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Inaktivera %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Ställ inte in %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Ställ in %(action)s ändå"
+
+msgid "key"
+msgstr "tangent"
+
+msgid "button"
+msgstr "knapp"
+
+msgid "edge"
+msgstr "kant"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Du försöker använda funktionen <b>%(feature)s</b> som <b>inte</b> "
+"tillhandahålls av någon insticksmodul.\n"
+"Vill du använda den här funktionen ändå? "
+
+# Två "Aktivera inte" måste bli förvirrande
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Använd %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Använd inte %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Du försöker använda funktionen <b>%(feature)s</b> som tillhandahålls av <b>%"
+"(plugin)s</b>.\n"
+"Den här insticksmodulen är för närvarande inaktiverad.\n"
+"Vill du aktivera <b>%(plugin)s</b> så att funktionen blir tillgänglig?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Aktivera %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Aktivera inte %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"Några %(bindings)s bindningar för insticksmodulen <b>%(plugin)s</b> är i "
+"konflikt med andra insticksmoduler. Vill du lösa dessa konflikter? "
+
+msgid "Resolve conflicts"
+msgstr "Lös konflikter"
+
+msgid "Ignore conflicts"
+msgstr "Ignorera konflikter"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Insticksmodulen <b>%(plugin_conflict)s</b> tillhandahåller funktionen <b>%"
+"(feature)s</b>, som även finns i <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Inaktivera %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Aktivera inte %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"Insticksmodulen <b>%(plugin_conflict)s</b> står i konflikt med <b>%(plugin)"
+"s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> kräver funktionen <b>%(feature)s</b> som tillhandahålls av "
+"följande insticksmoduler:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Aktivera dessa insticksmoduler"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> kräver insticksmodulen <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Aktivera %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> tillhandahåller funktionen <b>%(feature)s</b> som krävs av "
+"insticksmodulerna <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Inaktivera dessa insticksmoduler"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Inaktivera inte %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> krävs av insticksmodulerna <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Allmänt"
+
+# This is what gnomes translation looks like...
+msgid "Accessibility"
+msgstr "Tillgänglighet"
+
+msgid "Desktop"
+msgstr "Skrivbord"
+
+msgid "Extras"
+msgstr "Extrafunktioner"
+
+msgid "Window Management"
+msgstr "Fönsterhantering"
+
+msgid "Effects"
+msgstr "Effekter"
+
+msgid "Image Loading"
+msgstr "Bildinläsning"
+
+msgid "Utility"
+msgstr "Verktyg"
+
+msgid "All"
+msgstr "Alla"
+
+msgid "Uncategorized"
+msgstr "Okategoriserade"
+
+msgid "N/A"
+msgstr "-"
+
+msgid "Reset setting to the default value"
+msgstr "Återställ inställning till standardvärde"
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Multilist-inställningar. Du kan dubbelklicka i en rad för att ändra värdena."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Redigera %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" är inte en giltig genväg"
+
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgid "Enabled"
+msgstr "Aktiverad"
+
+msgid "Grab key combination"
+msgstr "Fånga tangentkombination"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" är inte en giltig knapp"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Användandet av Knapp1 utan modifierare kan förhindra vänsterklickande och på "
+"så sätt ha sönder din konfiguration. Vill du verkligen binda \"%s\" knappen "
+"till Knapp1 ?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" är inte en giltig kantmask"
+
+msgid "None"
+msgstr "Inget"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Inställningshanteraren CompizConfig"
+
+msgid "Plugin"
+msgstr "Insticksmodul"
+
+msgid "Please press the new key combination"
+msgstr "Tryck den nya tangentkombinationen"
+
+msgid "Window Title"
+msgstr "Fönstertitel"
+
+# Särskrivning
+msgid "Window Role"
+msgstr "Fönsterroll"
+
+# Ersatte "Fönsterhantering" med "Fönsternamn"
+msgid "Window Name"
+msgstr "Fönsternamn"
+
+msgid "Window Class"
+msgstr "Fönsterklass"
+
+msgid "Window Type"
+msgstr "Fönstertyp"
+
+msgid "Window ID"
+msgstr "Fönster-ID"
+
+msgid "And"
+msgstr "Och"
+
+msgid "Or"
+msgstr "Eller"
+
+msgid "Edit match"
+msgstr "Redigera träff"
+
+#. Type
+msgid "Type"
+msgstr "Typ"
+
+# Ersatte "Värde (%s)" med "Värde"
+#. Value
+msgid "Value"
+msgstr "Värde"
+
+msgid "Grab"
+msgstr "Fånga"
+
+#. Relation
+msgid "Relation"
+msgstr "Relation"
+
+#. Invert
+msgid "Invert"
+msgstr "Invertera"
+
+msgid "Browse..."
+msgstr "Bläddra efter... "
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Open directory..."
+msgstr "Öppna katalog..."
+
+msgid "Open file..."
+msgstr "Öppna fil..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr ""
+"Det här är en inställningshanterare för CompizConfig konfigurationssystem."
+
+msgid "translator-credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>\n"
+"Sebastian Parborg"
+
+msgid "An error has occured"
+msgstr "Ett fel har inträffat"
+
+msgid "Warning"
+msgstr "Varning"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Aktivera %s"
+
+msgid "Filter"
+msgstr "Filtrera"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Sök alternativ för insticksmodulen %s"
+
+msgid "Use This Plugin"
+msgstr "Använd denna insticksmodul"
+
+msgid "Search Compiz Core Options"
+msgstr "Sök Compiz Core-alternativ"
+
+msgid "Error"
+msgstr "Fel"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Skriv in ett filter.\n"
+"Klicka på tangentbordsbilden för att fånga en tangent att söka efter."
+
+msgid "Search in..."
+msgstr "Sök i..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Kort beskrivning och namn"
+
+msgid "Long description"
+msgstr "Lång beskrivning"
+
+msgid "Settings value"
+msgstr "Inställningsvärde"
+
+msgid "Group"
+msgstr "Grupp"
+
+msgid "Subgroup"
+msgstr "Undergrupp"
+
+#. Notebook
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Loading Advanced Search"
+msgstr "Läser in avancerad sökning"
+
+msgid "Add a New Profile"
+msgstr "Lägg till en ny profil"
+
+msgid "Remove This Profile"
+msgstr "Ta bort den här profilen"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Import"
+msgstr "Importera"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Importera en CompizConfig-profil"
+
+msgid "Import as..."
+msgstr "Importera som..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Importera en CompizConfig-profil som ny profil"
+
+msgid "Export"
+msgstr "Exportera"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Exportera en CompizConfig profil"
+
+msgid "Reset to defaults"
+msgstr "Återställ till standardvärden"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Återställ din CompizConfig profil till de globala standardvärdena"
+
+msgid "Backend"
+msgstr "Bakände"
+
+msgid "Integration"
+msgstr "Integration"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Aktivera integration med skrivbordsmiljö"
+
+msgid "Profiles (*.profile)"
+msgstr "Profiler (*.profile)"
+
+msgid "All files"
+msgstr "Alla filer"
+
+msgid "Save file.."
+msgstr "Spara fil.."
+
+# Kanske duger?
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"Vill du hoppa över standardvärdena på alternativ när du exporterar din "
+"profil?"
+
+msgid "Open file.."
+msgstr "Öppna fil.."
+
+msgid "Enter a profile name"
+msgstr "Ange ett profilnamn"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Ange ett namn för den nya profilen:"
+
+msgid "Backend not found."
+msgstr "Bakände hittades inte."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Automatisk sortering av insticksmoduler"
+
+msgid "Disabled Plugins"
+msgstr "Inaktiverade insticksmoduler"
+
+msgid "Enabled Plugins"
+msgstr "Aktiverade insticksmoduler"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Vill du verkligen avaktivera den automatiska sorteringen av insticksmoduler? "
+"Detta kommer också att avaktivera konflikthantering. Du borde bara göra "
+"detta om du vet vad du gör."
+
+msgid "Add plugin"
+msgstr "Lägg till instickmodul"
+
+msgid "Plugin name:"
+msgstr "Insticksmodulens namn:"
+
+msgid "Insert plugin name"
+msgstr "Ange insticksmodulens namn"
+
+msgid "Preferences"
+msgstr "Inställningar"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Konfigurera bakände, profil och andra interna inställningar som används av "
+"Compiz konfigurationssystem."
+
+msgid "About"
+msgstr "Om"
+
+msgid "About CCSM..."
+msgstr "Om CCSM..."
+
+msgid "Profile & Backend"
+msgstr "Profil och bakände"
+
+msgid "Plugin List"
+msgstr "Plugin lista"
+
+msgid "Filter your Plugin list"
+msgstr "Filtrera din insticksmodullista"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Skärm %i"
+
+msgid "Screen"
+msgstr "Skärm"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Advanced Search"
+msgstr "Avancerad sökning"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Inga matchingar hittades.</b> </span><span>\n"
+"\n"
+" Ditt filter \"<b>%s</b>\" matchar inga objekt.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Konfigurera Compiz med CompizConfig"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Beräknar eventuella konflikter, var snäll vänta"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Värde (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Värde (%(value)s) för  %(setting)s"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "Ohanterad listtyp %s för %s"
+
+#~ msgid "Actions"
+#~ msgstr "Åtgärder"

@@ -1,0 +1,522 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2009-04-10 13:32+0200\n"
+"Last-Translator: Jesse P Francis <atjesse2@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"<b>%(plugin)s</b> എന്ന പ്ലഗിനിലെ <b>%(action)s</b> എന്ന നടപടിയുടെ "
+"%(binding)s എന്ന ബൈന്‍ഡിങ്ങിന്റെ പുതിയ മൂല്യം <b>%(plugin_conflict)s</b> "
+"എന്ന പ്ലഗിനിലെ <b>%(action_conflict)s</b> എന്ന നടപടിയുമായി "
+"പൊരുത്തപ്പെടുന്നില്ല.\n"
+" <b>%(plugin_conflict)s</b> എന്ന പ്ലഗിനിലെ <b>%(action_conflict)s</b> എന്ന "
+"നടപടി അപ്രാവര്‍ത്തികമാക്കണോ?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "%(action_conflict)s അപ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "%(action)s സജ്ജമാക്കരുതു്"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "%(action)s എന്താണെങ്കിലും സജ്ജമാക്കുക."
+
+msgid "key"
+msgstr "താക്കോല്‍"
+
+msgid "button"
+msgstr "ബട്ടണ്‍"
+
+msgid "edge"
+msgstr "വക്കു്"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"ഒരു പ്ലഗിനും <b>നല്‍കാത്ത</b> <b>%(feature)s</b> എന്ന വിശേഷത നിങ്ങള്‍ "
+"ഉപയോഗിക്കാന്‍ ശ്രമിക്കുന്നു.\n"
+"ഈ വിശേഷത എന്താണെങ്കിലും ഉപയോഗിക്കണോ?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "%(feature)s ഉപയോഗിക്കുക"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "%(feature)s ഉപയോഗിക്കാതിരിക്കുക"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"<b>%(plugin)s</b> എന്ന പ്ലഗിന്‍ നല്‍കുന്ന <b>%(feature)s</b> എന്ന വിശേഷത "
+"നിങ്ങള്‍ ഉപയോഗിക്കാന്‍ ശ്രമിക്കുന്നു.\n"
+"ഈ പ്ലഗിന്‍ ഇപ്പോള്‍ അപ്രാവര്‍ത്തികമാണു്.\n"
+"ഈ വിശേഷത ലഭ്യമാക്കാനായി <b>%(plugin)s</b> എന്ന പ്ലഗിന്‍ "
+"പ്രാവര്‍ത്തികമാക്കണോ?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "%(plugin)s പ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "%(feature)s പ്രാവര്‍ത്തികമാക്കരുതു്"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"<b>%(plugin)s</b> എന്ന പ്ലഗിനിന്റെ ചില %(bindings)s ബൈന്‍ഡിങ്ങുകള്‍ വേറെ "
+"പ്ലഗിനുകളുമായി പൊരുത്തപ്പെടുന്നില്ല. ഈ പൊരുത്തക്കേടുകള്‍ പരിഹരിക്കണോ?"
+
+msgid "Resolve conflicts"
+msgstr "പൊരുത്തക്കേടുകള്‍ പരിഹരിക്കുക"
+
+msgid "Ignore conflicts"
+msgstr "പൊരുത്തക്കേടുകള്‍ അവഗണിക്കുക"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"<b>%(plugin_conflict)s</b> എന്ന പ്ലഗിന്‍ നല്‍കുന്ന <b>%(feature)s</b> എന്ന "
+"വിശേഷത <b>%(plugin)s</b> -ഉം നല്‍കുന്നു."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "%(plugin_conflict)s അപ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "%(plugin)s പ്രാവര്‍ത്തികമാക്കാതിരിക്കുക"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"<b>%(plugin_conflict)s</b> എന്ന പ്ലഗിന്‍ <b>%(plugin)s</b> എന്നതുമായി "
+"പൊരുത്തപ്പെടുന്നില്ല."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> എന്നതിനു് <b>%(feature)s</b> എന്ന വിശേഷത(കള്‍) "
+"ആവശ്യമുണ്ടു്, ഇനിപ്പറയുന്ന പ്ലഗിനുകള്‍ അവ നല്‍കുന്നു:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "ഈ പ്ലഗിനുകള്‍ പ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> എന്നതിനു് <b>%(require)s</b> എന്ന പ്ലഗിന്‍ ആവശ്യമുണ്ടു്."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "%(require)s പ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> എന്നതു്‌ <b>%(feature)s</b> എന്ന വിശേഷത നല്‍കുന്നു, അതു് "
+"<b>%(plugin_list)s</b> എന്നീ പ്ലഗിനുകള്‍ക്കാവശ്യമുണ്ടു്."
+
+msgid "Disable these plugins"
+msgstr "ഈ പ്ലഗിനുകള്‍ അപ്രാവര്‍ത്തികമാക്കുക"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "%(plugin)s എന്നതു് അപ്രാവര്‍ത്തികമാക്കാതിരിക്കുക"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> എന്നതു് <b>%(plugin_list)s</b> എന്നീ "
+"പ്ലഗിനുകള്‍ക്കാവശ്യമുണ്ടു്."
+
+msgid "General"
+msgstr "പൊതുവായതു്"
+
+msgid "Accessibility"
+msgstr ""
+
+msgid "Desktop"
+msgstr "പണിയിടം"
+
+msgid "Extras"
+msgstr "കൂടുതല്‍"
+
+msgid "Window Management"
+msgstr "ജാലക നോക്കിനടത്തല്‍"
+
+msgid "Effects"
+msgstr ""
+
+msgid "Image Loading"
+msgstr ""
+
+msgid "Utility"
+msgstr ""
+
+msgid "All"
+msgstr "എല്ലാം"
+
+msgid "Uncategorized"
+msgstr "വിഭാഗീകരിക്കപ്പെടാത്തവ"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Reset setting to the default value"
+msgstr ""
+
+msgid "Edit"
+msgstr "തിരുത്തുക"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+
+#, python-format
+msgid "Edit %s"
+msgstr "%s തിരുത്തുക"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" ഒരു ശരിയായ കുറുക്കുവഴിയല്ല"
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Grab key combination"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" ഒരു ശരിയായ ബട്ടണല്ല"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr ""
+
+msgid "None"
+msgstr "ഒന്നുമില്ല"
+
+msgid "CompizConfig Settings Manager"
+msgstr ""
+
+msgid "Plugin"
+msgstr "പ്ലഗ്ഗിന്‍"
+
+msgid "Please press the new key combination"
+msgstr "പുതിയ കീ കോമ്പിനേഷന്‍ അമര്‍ത്തുക"
+
+msgid "Window Title"
+msgstr "വിന്‍ഡോ തലക്കെട്ട്"
+
+msgid "Window Role"
+msgstr ""
+
+msgid "Window Name"
+msgstr ""
+
+msgid "Window Class"
+msgstr ""
+
+msgid "Window Type"
+msgstr ""
+
+msgid "Window ID"
+msgstr ""
+
+msgid "And"
+msgstr ""
+
+msgid "Or"
+msgstr ""
+
+msgid "Edit match"
+msgstr ""
+
+#. Type
+msgid "Type"
+msgstr "തരം"
+
+#. Value
+msgid "Value"
+msgstr "മൂല്യം"
+
+msgid "Grab"
+msgstr ""
+
+#. Relation
+msgid "Relation"
+msgstr "ബന്ധം"
+
+#. Invert
+msgid "Invert"
+msgstr ""
+
+msgid "Browse..."
+msgstr "തിരയുക..."
+
+msgid "Images"
+msgstr "ചിത്രങ്ങള്‍"
+
+msgid "File"
+msgstr "ഫയല്‍"
+
+msgid "Open directory..."
+msgstr "ഡയറെക്റ്ററി തുറക്കുക..."
+
+msgid "Open file..."
+msgstr "ഫയല്‍ തുറക്കുക..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr ""
+
+msgid "translator-credits"
+msgstr ""
+
+msgid "An error has occured"
+msgstr ""
+
+msgid "Warning"
+msgstr "മുന്നറിയിപ്പ്"
+
+#, python-format
+msgid "Enable %s"
+msgstr ""
+
+msgid "Filter"
+msgstr "ഫില്‍ട്ടര്‍"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr ""
+
+msgid "Use This Plugin"
+msgstr "ഈ പ്ലഗ്ഗിന്‍ ഉപയോഗിക്കുക"
+
+msgid "Search Compiz Core Options"
+msgstr ""
+
+#, fuzzy
+msgid "Error"
+msgstr "പിഴവ്"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+
+msgid "Search in..."
+msgstr ""
+
+#. Options
+msgid "Short description and name"
+msgstr "ചെറു വിവരണവും പേരും"
+
+msgid "Long description"
+msgstr "വിവരണം"
+
+#, fuzzy
+msgid "Settings value"
+msgstr "ക്രമീകരണ മൂല്യം"
+
+msgid "Group"
+msgstr "കൂട്ടം"
+
+msgid "Subgroup"
+msgstr "ചെറുകൂട്ടം"
+
+#. Notebook
+msgid "Settings"
+msgstr "ക്രമീകരണങ്ങള്‍"
+
+msgid "Loading Advanced Search"
+msgstr ""
+
+msgid "Add a New Profile"
+msgstr "പുതിയ ഒരു പ്രൊഫൈല്‍ ചേര്‍ക്കുക"
+
+msgid "Remove This Profile"
+msgstr "ഈ പ്രൊഫൈല്‍ ഉപേക്ഷിക്കുക"
+
+msgid "Default"
+msgstr "സ്വതേ"
+
+msgid "Profile"
+msgstr ""
+
+msgid "Import"
+msgstr "ഇറക്കുമതി ചെയ്യുക"
+
+msgid "Import a CompizConfig Profile"
+msgstr "CompizConfig പ്രൊഫൈല്‍ ഇറക്കുമതി ചെയ്യുക"
+
+msgid "Import as..."
+msgstr ""
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "ഒരു പുതിയ പ്രൊഫൈല്‍ പോലെ CompizConfig പ്രൊഫൈല്‍ ഇറക്കുമതി ചെയ്യുക"
+
+msgid "Export"
+msgstr ""
+
+msgid "Export your CompizConfig Profile"
+msgstr ""
+
+msgid "Reset to defaults"
+msgstr ""
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr ""
+
+msgid "Backend"
+msgstr ""
+
+msgid "Integration"
+msgstr ""
+
+msgid "Enable integration into the desktop environment"
+msgstr ""
+
+msgid "Profiles (*.profile)"
+msgstr "പ്രൊഫൈലുകള്‍ (*.profile)"
+
+msgid "All files"
+msgstr "എല്ലാ ഫയലുകളും"
+
+msgid "Save file.."
+msgstr "സേവ് ചെയ്യുക.."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+
+msgid "Open file.."
+msgstr "ഫയല്‍ ഓപ്പണ്‍ ചെയ്യുക.."
+
+msgid "Enter a profile name"
+msgstr ""
+
+msgid "Please enter a name for the new profile:"
+msgstr ""
+
+msgid "Backend not found."
+msgstr ""
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr ""
+
+msgid "Disabled Plugins"
+msgstr ""
+
+msgid "Enabled Plugins"
+msgstr ""
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+
+msgid "Add plugin"
+msgstr "പ്ലഗ്ഗിന്‍ ചേര്‍ക്കുക"
+
+msgid "Plugin name:"
+msgstr "പ്ലഗ്ഗിന്‍ പേര്:"
+
+msgid "Insert plugin name"
+msgstr ""
+
+msgid "Preferences"
+msgstr "ക്രമീകരങ്ങള്‍"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "About CCSM..."
+msgstr "CCSM-നെക്കുറിച്ച്..."
+
+msgid "Profile & Backend"
+msgstr ""
+
+msgid "Plugin List"
+msgstr "പ്ലഗ്ഗിന്‍ പട്ടിക"
+
+msgid "Filter your Plugin list"
+msgstr ""
+
+#, python-format
+msgid "Screen %i"
+msgstr ""
+
+msgid "Screen"
+msgstr ""
+
+msgid "Category"
+msgstr "വിഭാഗം"
+
+msgid "Advanced Search"
+msgstr ""
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "കോമ്പിസ് CompizConfig ഉപയോഗിച്ച് ക്രമീകരിക്കുക"

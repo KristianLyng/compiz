@@ -1,0 +1,11 @@
+2007-08-07  cyberorg <cyberorg@cyberorg.info>
+
+        * Add gujarati translation from Ankit Patel <ankit@redhat.com>
+2007-08-04  cyberorg <cyberorg@cyberorg.info>
+
+        * Add zh_CN from Thruth <gubotruth@gmail.com>
+
+2007-06-28  cyberorg <cyberorg@cyberorg.info>
+
+        * Initial internationalization of ccsm
+	* Developers need to mark _() translatable strings

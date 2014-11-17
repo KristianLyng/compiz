@@ -1,0 +1,537 @@
+# translation of ccsm.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2007-12-16 16:36+0530\n"
+"Last-Translator: Sangeeta Kumari\n"
+"Language-Team:  <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"<b>%(action)s क्रिया के %(binding)s बाइंडिंग के लिए नया मान </b> <b>%(plugin)s</"
+"b> प्लगिन में <b>%(action_conflict)s</b> क्रिया के साथ विरोध में है <b>%"
+"(plugin_conflict)s</b> प्लगिन के.\n"
+"क्या आप <b>%(action_conflict)s</b> को <b>%(plugin_conflict)s</b> प्लगिन में "
+"निष्क्रिय करना चाहते हैं?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "%(action_conflict)s निष्क्रिय करें"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "%(action)s सेट मत करें"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "%(action)s किसी तरह सेट करें"
+
+msgid "key"
+msgstr ""
+
+msgid "button"
+msgstr ""
+
+msgid "edge"
+msgstr ""
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"आप <b>%(feature)s</b> फीचर प्रयोग करने की कोशिश कर रहे हैं जो <b>नहीं</b> दिया है "
+"किसी प्लगिन के द्वारा.\n"
+"क्या आप इस फीचर को किसी तरह प्रयोग करना चाहते हैं?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "%(feature)s का उपयोग करें"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "%(feature)s का उपयोग मत करें"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"आप <b>%(feature)s</b> फीचर का प्रयोग करने की कोशिश कर रहे हैं जो <b>%(plugin)s "
+"प्लगिन के द्वारा दिया हुआ है</b>.\n"
+"यह प्लगिन अभी निष्क्रिय किया हुआ है.\n"
+"क्या आप <b>%(plugin)s</b> को सक्रिय करना चाहते हैं ताकि फीचर उपलब्ध रहे?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "%(plugin)s सक्रिय करें"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "%(feature)s सक्रिय मत करें"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+
+msgid "Resolve conflicts"
+msgstr ""
+
+msgid "Ignore conflicts"
+msgstr ""
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"<b>%(plugin_conflict)s</b> प्लगिन <b>%(feature)s</b> फीचर देता है जो कि <b>%"
+"(plugin)s</b> के द्वारा दिया गया है."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "%(plugin_conflict)s निष्क्रिय करें"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "%(plugin)s सक्रिय मत करें"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "<b>%(plugin_conflict)s</b> प्लगिन <b>%(plugin)s</b> के साथ विरोध में है."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> के लिये <b>%(feature)s</b> फीचर जरूरी है जो कि निम्नलिखित प्लगिन "
+"के द्वारा दिया हुआ है:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "इन प्लगिन को सक्रिय करें"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> के लिए <b>%(require)s</b> प्लगिन जरूरी है."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "%(require)s सक्रिय करें"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> <b>%(feature)s</b> फीचर उपलब्ध कराता है जो कि <b>%"
+"(plugin_list)s</b> प्लगिन के द्वारा जरूरी है."
+
+msgid "Disable these plugins"
+msgstr "इन प्लगिन को निष्क्रिय करें"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "%(plugin)s को मत निष्क्रिय करें"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> <b>%(plugin_list)s</b> प्लगिन के द्वारा जरूरी होता है."
+
+msgid "General"
+msgstr "सामान्य"
+
+msgid "Accessibility"
+msgstr "अभिगम्यता"
+
+msgid "Desktop"
+msgstr "डेस्कटॉप"
+
+msgid "Extras"
+msgstr "अतिरिक्त"
+
+msgid "Window Management"
+msgstr "विंडो प्रबंधन"
+
+msgid "Effects"
+msgstr "प्रभाव"
+
+msgid "Image Loading"
+msgstr "चित्र लोडिंग"
+
+msgid "Utility"
+msgstr "उपयोगिता"
+
+msgid "All"
+msgstr "सभी"
+
+msgid "Uncategorized"
+msgstr "अवर्गीकृत"
+
+msgid "N/A"
+msgstr ""
+
+msgid "Reset setting to the default value"
+msgstr "मूलभूत मान में सेटिंग फिर सेट करें"
+
+msgid "Edit"
+msgstr "संपादन"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "मल्टी लिस्ट सेटिंग. आप एक पंक्ति पर मानों के संपादन के लिए दो बार क्लिक कर सकते हैं."
+
+#, python-format
+msgid "Edit %s"
+msgstr "%s संपादित करें"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" एक वैध शार्टकर्ट नहीं है"
+
+msgid "Disabled"
+msgstr "निष्क्रिय किया हुआ"
+
+msgid "Enabled"
+msgstr "सक्रिय किया हुआ"
+
+msgid "Grab key combination"
+msgstr "कुंजी युग्म पकड़ें"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" एक वैध बटन नहीं है"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"बिना रूपांतरक के बटन1 का प्रयोग किसी बायें क्लिक को रोक सकता है और इस प्रकार आपके "
+"विन्यास को तोड़ सकता है. क्या आप वास्तव में \"%s\" बटन को बटन1 में सेट करना चाहते हैं?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" एक वैध किनारा मास्क नहीं है"
+
+msgid "None"
+msgstr "कोई नहीं"
+
+msgid "CompizConfig Settings Manager"
+msgstr "CompizConfig जमावट प्रबंधक"
+
+#, fuzzy
+msgid "Plugin"
+msgstr "प्लगिन सूची"
+
+msgid "Please press the new key combination"
+msgstr "कृपया नया कुंजी युग्म दबायें"
+
+msgid "Window Title"
+msgstr "विंडो शीर्षक"
+
+msgid "Window Role"
+msgstr "विंडो भूमिका"
+
+msgid "Window Name"
+msgstr "विंडो नाम"
+
+msgid "Window Class"
+msgstr "विंडो वर्ग"
+
+msgid "Window Type"
+msgstr "विंडो प्रकार"
+
+msgid "Window ID"
+msgstr "विंडो ID"
+
+msgid "And"
+msgstr "और"
+
+msgid "Or"
+msgstr "या"
+
+msgid "Edit match"
+msgstr "मिलान संपादित करें"
+
+#. Type
+msgid "Type"
+msgstr "प्रकार"
+
+#. Value
+msgid "Value"
+msgstr "मान"
+
+msgid "Grab"
+msgstr "पकड़ें"
+
+#. Relation
+msgid "Relation"
+msgstr "संबंध"
+
+#. Invert
+msgid "Invert"
+msgstr "उलटें"
+
+#, fuzzy
+msgid "Browse..."
+msgstr "इसके लिए ब्राउज़"
+
+msgid "Images"
+msgstr "बिंब"
+
+msgid "File"
+msgstr "फाइल"
+
+msgid "Open directory..."
+msgstr "निर्देशिका खोलें..."
+
+msgid "Open file..."
+msgstr "फाइल खोलें..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "यह CompizConfig विन्यास सिस्टम के लिए सेटिंग मैनेजर है."
+
+msgid "translator-credits"
+msgstr "संगीता कुमारी (sangeeta09@gmail.com)"
+
+msgid "An error has occured"
+msgstr "एक त्रुटि आयी"
+
+msgid "Warning"
+msgstr "चेतावनी"
+
+#, python-format
+msgid "Enable %s"
+msgstr "%s सक्रिय करें"
+
+msgid "Filter"
+msgstr "फिल्टर"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "%s प्लगिन विकल्प खोजें"
+
+msgid "Use This Plugin"
+msgstr "इस प्लगिन का उपयोग करें"
+
+msgid "Search Compiz Core Options"
+msgstr "कोपिंज कोर विकल्प खोजें"
+
+msgid "Error"
+msgstr "त्रुटि"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+
+msgid "Search in..."
+msgstr "इसमें खोजें..."
+
+#. Options
+msgid "Short description and name"
+msgstr "संक्षिप्त वर्णन और नाम"
+
+msgid "Long description"
+msgstr "लंबा वर्णन"
+
+msgid "Settings value"
+msgstr "जमावट मान"
+
+msgid "Group"
+msgstr ""
+
+msgid "Subgroup"
+msgstr ""
+
+#. Notebook
+msgid "Settings"
+msgstr "जमावट"
+
+#, fuzzy
+msgid "Loading Advanced Search"
+msgstr "उन्नत खोज"
+
+msgid "Add a New Profile"
+msgstr "नया प्रोफाइल जोड़ें"
+
+msgid "Remove This Profile"
+msgstr "इस प्रोफाइल को हटायें"
+
+msgid "Default"
+msgstr "मूलभूत"
+
+msgid "Profile"
+msgstr "प्रोफाइल"
+
+msgid "Import"
+msgstr "आयात"
+
+msgid "Import a CompizConfig Profile"
+msgstr "CompizConfig प्रोफाइल आयात करें"
+
+msgid "Import as..."
+msgstr "ऐसे आयात करें..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "CompizConfig प्रोफाइल को नये प्रोफाइल के रूप में आयात करें"
+
+msgid "Export"
+msgstr "निर्यात"
+
+msgid "Export your CompizConfig Profile"
+msgstr "अपने CompizConfig प्रोफाइल को निर्यात करें"
+
+msgid "Reset to defaults"
+msgstr "मूलभूत में फिर सेट करें"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "अपने CompizConfig प्रोफाइल को वैश्विक मूलभूत में फिर सेट करें"
+
+msgid "Backend"
+msgstr "बैकेंड"
+
+msgid "Integration"
+msgstr "संयोजन"
+
+msgid "Enable integration into the desktop environment"
+msgstr "डेस्कटॉप वातावरण में संयोजन सक्रिय करें"
+
+msgid "Profiles (*.profile)"
+msgstr "प्रोफ़ाइल (*.profile)"
+
+msgid "All files"
+msgstr "सभी फ़ाइलें"
+
+msgid "Save file.."
+msgstr "फाइल सहेजें.."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "क्या आप मूलभूत विकल्प मान को अपने प्रोफाइल के निर्यात के दौरान छोड़ना चाहते हैं?"
+
+msgid "Open file.."
+msgstr "फाइल खोलें..."
+
+msgid "Enter a profile name"
+msgstr "प्रोफाइल नाम दें"
+
+msgid "Please enter a name for the new profile:"
+msgstr "कृपया नये प्रोफाइल के लिए एक नाम दें:"
+
+msgid "Backend not found."
+msgstr "बैकेंड नहीं मिला."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "स्वचालित प्लगिन छांट"
+
+msgid "Disabled Plugins"
+msgstr "निष्क्रिय किया हुआ प्लगिन"
+
+msgid "Enabled Plugins"
+msgstr "सक्रिय प्लगिन"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"क्या आप सचमुच स्वचालित प्लगिन छांट को निष्क्रिय करना चाहते हैं? यह साथ ही विरोध नियंत्रण "
+"को निष्क्रिय करेगा. आप सिर्फ तभी करना चाहिए इसे जब आप जानते हों कि आप क्या कर रहे हैं."
+
+msgid "Add plugin"
+msgstr "प्लगिन जोड़ें"
+
+msgid "Plugin name:"
+msgstr "प्लगिन नाम:"
+
+msgid "Insert plugin name"
+msgstr "प्लगिन नाम जोड़ें"
+
+msgid "Preferences"
+msgstr "वरीयताएँ"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Compiz विन्यास सिस्टम के द्वारा प्रयुक्त बैकैंड, प्रोफाइल और दूसरे सेटिंग को विन्यस्त करें."
+
+msgid "About"
+msgstr "के बारे में"
+
+msgid "About CCSM..."
+msgstr "CCSM के बारे में..."
+
+msgid "Profile & Backend"
+msgstr "प्रोफाइल व बैकेंड"
+
+msgid "Plugin List"
+msgstr "प्लगिन सूची"
+
+msgid "Filter your Plugin list"
+msgstr "अपनी प्लगिन सूची फिल्टर करें"
+
+#, python-format
+msgid "Screen %i"
+msgstr "स्क्रीन %i"
+
+msgid "Screen"
+msgstr "स्क्रीन"
+
+msgid "Category"
+msgstr "श्रेणी"
+
+msgid "Advanced Search"
+msgstr "उन्नत खोज"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>कोई मेल नहीं मिला.</b> </span><span>\n"
+"\n"
+" आपका फिल्टर \"<b>%s</b>\" किसी मद से नहीं मेल खाता है.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr ""
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "संभावित विरोध की गणना कर रहा है, कृपया प्रतीक्षा करें"
+
+#~ msgid "Value (%s)"
+#~ msgstr "मान (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "(%(value)s) मान %(setting)s के लिए"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "%s अनियंत्रित सूची प्रकार %s के लिए"
+
+#~ msgid "Actions"
+#~ msgstr "क्रियाएँ"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+_Name=CompizConfig Settings Manager
+_Comment=Configure Compiz with CompizConfig
+Icon=ccsm
+Exec=ccsm
+Terminal=false
+Type=Application
+Categories=Compiz;Settings;DesktopSettings;
+StartupNotify=true

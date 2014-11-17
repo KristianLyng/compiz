@@ -1,0 +1,135 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, 
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Authors: Quinn Storm (quinn@beryl-project.org)
+#          Patrick Niklaus (marex@opencompositing.org)
+# Copyright (C) 2007 Quinn Storm
+
+DBUS_CCSM_SERVICE = 'org.compiz_fusion.ccsm'
+DBUS_CCSM_PATH = '/org/compiz_fusion/ccsm'
+DBUS_CCSM_INTERFACE = 'org.compiz_fusion.ccsm'
+
+# from the D-Bus specification
+DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER = 1
+
+from optparse import OptionParser
+import pygtk
+pygtk.require('2.0')
+import gtk
+import sys
+
+def try_register_dbus ():
+    '''Return instance of dbus control object on success, None on failure'''
+    try:
+        import dbus, dbus.service
+        from dbus.mainloop.glib import DBusGMainLoop
+
+    except ImportError:
+        return
+
+    # rely on a reasonably new dbus-python
+    if dbus.version < (0, 80, 0):
+        return
+
+    class CCSMObject(dbus.service.Object):
+        main_window = None
+
+        @dbus.service.method(DBUS_CCSM_INTERFACE, in_signature='s', out_signature='')
+        def present (self, startup_id):
+            if startup_id:
+                self.main_window.set_startup_id(startup_id)
+            else:
+                self.main_window.present()
+
+    DBusGMainLoop(set_as_default=True)
+
+    try:
+        bus = dbus.SessionBus()
+    except dbus.DBusException:
+        return
+
+    try:
+        obj = bus.get_object(DBUS_CCSM_SERVICE, DBUS_CCSM_PATH)
+        obj = dbus.Interface(obj, DBUS_CCSM_INTERFACE)
+    except dbus.DBusException:
+        # no ccsm instance running
+        if (bus.request_name(DBUS_CCSM_SERVICE)
+            == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER):
+            return CCSMObject(bus, DBUS_CCSM_PATH)
+        else:
+            return
+
+    else:
+        try:
+            display = gtk.gdk.display_get_default()
+            startup_id = gtk.gdk.x11_display_get_startup_notification_id(display)
+            obj.present(startup_id or "")
+            print 'Another CCSM instance already running'
+            sys.exit(0)
+        except dbus.DBusException:
+            # error on present call so pretend it doesn't exist and start up normally
+            return
+
+dbusObj = try_register_dbus()
+
+try:
+    import sexy
+    has_sexy = True
+except ImportError:
+    print "Info: No sexy-python package found, don't worry it's optional."
+    has_sexy = False
+
+if gtk.pygtk_version < (2,12,0):
+    raise SystemExit("PyGtk 2.12.0 or later required")
+
+import compizconfig
+import ccm
+from ccm.Utils import GlobalUpdater
+from ccm.Constants import Version
+
+plugin   = None
+category = None
+parser   = OptionParser()
+parser.add_option("-p", "--plugin", dest = "plugin",
+                  help = "Directly jump to the page of PLUGIN",
+                  metavar = "PLUGIN")
+parser.add_option("-c", "--category", dest = "category",
+                  help = "Directly jump to CATEGORY",
+                  metavar = "CATEGORY")
+parser.add_option("-v", "--version", dest = "version",
+                  action = "store_true",
+                  help = "Version")
+(options, args) = parser.parse_args()
+if options.version:
+    print "CCSM %s" % Version
+    sys.exit(0)
+if options.plugin:
+    plugin = options.plugin
+if options.category:
+    category = options.category
+
+screens = ccm.getScreens()
+context = compizconfig.Context(screens)
+GlobalUpdater.SetContext (context)
+mainWin = ccm.MainWin(context, plugin, category)
+if dbusObj is not None:
+    dbusObj.main_window = mainWin
+
+idle = ccm.IdleSettingsParser(context, mainWin)
+mainWin.show_all()
+
+gtk.main()

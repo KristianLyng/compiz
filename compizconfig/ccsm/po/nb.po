@@ -1,0 +1,544 @@
+# Norwegian Bokmaal translation for CSSM.
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the CCSM package.
+# <ketil.w.aanensen@gmail.com>, 2007.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CompizConfig Settings Manager\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-06-10 22:53+0200\n"
+"Last-Translator: Markus Igeland <markusigeland@gmail.com>\n"
+"Language-Team: Norwegian Bokmaal <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Den nye verdien for snarveien %(binding)s for hendelsen <b>%(action)s</b> i "
+"tillegget <b>%(plugin)s</b> er i konflikt med hendelsen <b>%(action_conflict)"
+"s</b> i tillegget <b>%(plugin_conflict)s</b>.\n"
+"Vil du slå av <b>%(action_conflict)s</b> i tillegget <b>%(plugin_conflict)s</"
+"b>?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Slå av %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Ikke velg %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Velg %(action)s uansett"
+
+msgid "key"
+msgstr "Tast"
+
+msgid "button"
+msgstr "Knapp"
+
+msgid "edge"
+msgstr "Kant"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Du prøver å bruke funksjonaliteten <b>%(feature)s</b> som <b>ikke</b> "
+"leveres av noe tillegg.\n"
+"Ønsker du å bruke denne funksjonaliteten uansett?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Bruk %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Ikke bruk %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Du prøver å bruke funksjonaliteten <b>%(feature)s</b> som leveres av "
+"tillegget <b>%(plugin)s</b>.\n"
+"Dette programtillegget er for tiden slått av.\n"
+"Vil du skru på <b>%(plugin)s</b> så funksjonaliteten er tilgjengelig?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Slå på %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Ikke slå på %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+
+msgid "Resolve conflicts"
+msgstr "Løs conflikter"
+
+msgid "Ignore conflicts"
+msgstr "Ignorer konflikter"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Programtillegget <b>%(plugin_conflict)s</b> leverer funksjonaliteten <b>%"
+"(feature)s</b> som også leveres av <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Slå av %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Ikke skru på %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"Programtillegget <b>%(plugin_conflict)s</b> er i konflikt med <b>%(plugin)s</"
+"b>"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> krever funksjonaliteten <b>%(feature)s</b> som leveres av "
+"de følgende programtilleggene:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Skru på disse tilleggene"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> krever programtillegget <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Skru på %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> leverer funksjonaliteten <b>%(feature)s</b> som kreves av "
+"programtilleggene <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Slå av disse tilleggene"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Ikke slå av %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b> kreves av programtilleggen <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Generelt"
+
+msgid "Accessibility"
+msgstr "Tilgjengelighet"
+
+msgid "Desktop"
+msgstr "Skrivebord"
+
+msgid "Extras"
+msgstr "Ekstra"
+
+msgid "Window Management"
+msgstr "Vindushåndtering"
+
+msgid "Effects"
+msgstr "Effekter"
+
+msgid "Image Loading"
+msgstr "Bildelasting"
+
+msgid "Utility"
+msgstr "Nytte"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Uncategorized"
+msgstr "Ukategorisert"
+
+msgid "N/A"
+msgstr ""
+
+msgid "Reset setting to the default value"
+msgstr "Tilbakestill innstillingen til standardverdien"
+
+msgid "Edit"
+msgstr "Rediger"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Flerliste-innstillinger. Du kan dobbeltklikke på en rad for å redigere "
+"verdiene."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Rediger %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" er ikke en gyldig snarvei"
+
+msgid "Disabled"
+msgstr "Slått av"
+
+msgid "Enabled"
+msgstr "Skrudd på"
+
+msgid "Grab key combination"
+msgstr "Hent tastekombinasjon"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" er ikke en gyldig knapp"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Å bruke Knapp1 uten modifikator kan hindre venstreklikk og ødelegge "
+"konfigurasjonen din. Vil du virkelig stille inn \"%s\"-knapp til Knapp1 ?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" er ikke en gyldig kantmaske"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "CompizConfig Settings Manager"
+msgstr "CompizConfig Innstillingshåndterer"
+
+msgid "Plugin"
+msgstr "Tillegg"
+
+msgid "Please press the new key combination"
+msgstr "Vennligst trykk den nye tastaturkombinasjonen"
+
+msgid "Window Title"
+msgstr "Vindustittel"
+
+msgid "Window Role"
+msgstr "Vindusrolle"
+
+msgid "Window Name"
+msgstr "Vindusnavn"
+
+msgid "Window Class"
+msgstr "Vindusklasse"
+
+msgid "Window Type"
+msgstr "Vindustype"
+
+msgid "Window ID"
+msgstr "Vindus-ID"
+
+msgid "And"
+msgstr "Og"
+
+msgid "Or"
+msgstr "Eller"
+
+msgid "Edit match"
+msgstr "Rediger treff"
+
+#. Type
+msgid "Type"
+msgstr "Type"
+
+#. Value
+msgid "Value"
+msgstr "Verdi"
+
+msgid "Grab"
+msgstr "Grip"
+
+#. Relation
+msgid "Relation"
+msgstr "Relasjon"
+
+#. Invert
+msgid "Invert"
+msgstr "Omvendt"
+
+msgid "Browse..."
+msgstr "Let etter..."
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Open directory..."
+msgstr "Åpne katalog..."
+
+msgid "Open file..."
+msgstr "Åpne fil..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr ""
+"Dette er en innstillingshåndterer for CompizConfig-konfigurasjonssystemet"
+
+msgid "translator-credits"
+msgstr "oversetter-takk "
+
+msgid "An error has occured"
+msgstr "En feil har oppstått"
+
+msgid "Warning"
+msgstr "Advarsel"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Skru på %s"
+
+msgid "Filter"
+msgstr "Filter"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Søk valg for programtillegget %s"
+
+msgid "Use This Plugin"
+msgstr "Bruk dette programtillegget"
+
+msgid "Search Compiz Core Options"
+msgstr "Søk Compiz Core-valg"
+
+msgid "Error"
+msgstr "Feil"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Skriv inn filteret.\n"
+"Klikk tastaturbildet for å gripe en tast å søke etter."
+
+msgid "Search in..."
+msgstr "Søk i..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Kort beskrivelse og navn"
+
+msgid "Long description"
+msgstr "Lang beskrivelse"
+
+msgid "Settings value"
+msgstr "Verdi for innstilling"
+
+msgid "Group"
+msgstr "Grupper"
+
+msgid "Subgroup"
+msgstr "Undergruppe"
+
+#. Notebook
+msgid "Settings"
+msgstr "Innstillinger"
+
+msgid "Loading Advanced Search"
+msgstr "Laster avansert søk"
+
+msgid "Add a New Profile"
+msgstr "Legg til en ny profil"
+
+msgid "Remove This Profile"
+msgstr "Fjern denne profilen"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Importer en CompizConfig-profil"
+
+msgid "Import as..."
+msgstr "Importer som..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Importer en CompizConfig-profil som en ny profil"
+
+msgid "Export"
+msgstr "Eksporter"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Eksporter din CompizConfig-profil"
+
+msgid "Reset to defaults"
+msgstr "Tilbakestill til standardvalg"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Tilbakestill din CompizConfig-profil til de globale standardvalgene"
+
+msgid "Backend"
+msgstr "Bakvegg"
+
+msgid "Integration"
+msgstr "Integrasjon"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Aktiver integrasjon inn i skrivebordsmiljøet"
+
+msgid "Profiles (*.profile)"
+msgstr "Profiler (*.profile)"
+
+msgid "All files"
+msgstr "Alle filer"
+
+msgid "Save file.."
+msgstr "Lagre fil..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "Vil du hoppe over standardverdiene når du eksporterer profilen din?"
+
+msgid "Open file.."
+msgstr "Åpne fil..."
+
+msgid "Enter a profile name"
+msgstr "Skriv inn et profilnavn"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Vennligst skriv inn et navn for den nye profilen"
+
+msgid "Backend not found."
+msgstr "Bakvegg ikke funnet"
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Automatisk sortering av programtillegg"
+
+msgid "Disabled Plugins"
+msgstr "Avslåtte programtillegg"
+
+msgid "Enabled Plugins"
+msgstr "Påslåtte programtillegg"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Vil du virkelig slå av automatisk sortering av programtillegg? Dette vil "
+"også slå av konflikthåndtering. Du burde bare gjøre dette om du vet hva du "
+"driver med."
+
+msgid "Add plugin"
+msgstr "Legg til programtillegg"
+
+msgid "Plugin name:"
+msgstr "Navn på programtillegg:"
+
+msgid "Insert plugin name"
+msgstr "Sett inn navnet på programtillegget"
+
+msgid "Preferences"
+msgstr "Preferanser"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Konfigurer bakveggen, profilen og andre interne innstillinger som brukes av "
+"Compiz-konfigurasjonssystemet."
+
+msgid "About"
+msgstr "Om"
+
+msgid "About CCSM..."
+msgstr "Om CCSM..."
+
+msgid "Profile & Backend"
+msgstr "Profil og bakvegg"
+
+msgid "Plugin List"
+msgstr "Tilleggsliste"
+
+msgid "Filter your Plugin list"
+msgstr "Filter programtilleggslisten din"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Skjerm %i"
+
+msgid "Screen"
+msgstr "Skjerm"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Advanced Search"
+msgstr "Avansert søk"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Ingen treff.</b> </span><span>\n"
+"\n"
+" Filteret ditt, \"<b>%s</b>\", passer ikke til noen gjenstander.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr ""
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Beregner mulige konflikter, vennligst vent"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Verdi (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Verdi (%(value)s) for %(setting)s"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "Uhåndtert listetype %s for %s"
+
+#~ msgid "Actions"
+#~ msgstr "Handlingen"

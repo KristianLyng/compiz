@@ -1,0 +1,549 @@
+# translation of ccsm.po to Euskara
+# Copyright (C) 2007 compiz-fusion
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Ander Elortondo <ander.elor@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-09-01 11:41+0200\n"
+"Last-Translator: Ander Elortondo <ander.elor@gmail.com>\n"
+"Language-Team: Euskara <librezale@librezale.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"<b>%(plugin)s</b> plugineko <b>%(action)s</b> ekintzaren %(binding)s lotura "
+"balio berriak gatazka sortzen du, <b>%(plugin_conflict)s</b> pluginaren <b>%"
+"(action_conflict)s</b> ekintzarekin. \n"
+"<b>%(plugin_conflict)s</b> pluginaren <b>%(action_conflict)s</b> ekintza "
+"ezgaitzerik nahi?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Ezgaitu %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Ez aukeratu %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Aukeratu %(action)s"
+
+msgid "key"
+msgstr "Tekla"
+
+msgid "button"
+msgstr "Botoia"
+
+msgid "edge"
+msgstr "Ertza"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"<b>%(feature)s</b> ezaugarria erabiltzekotan zaude. Hau <b>Ez</b> ez da "
+"egokia edozein pluginekin.\n"
+"hala ere ezaugarri hau erabili nahi duzu?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Erabili %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Ez erabili %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"<b>%(plugin)s</b> plugineko <b>%(feature)s</b> ezaugarria erabili nahi "
+"duzu.\n"
+"Plugin hau orain ezgaitua dago.\n"
+"<b>%(plugin)s</b> gaitu nahi duzu, ezaugarria erabilgarri izateko?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Gaitu %(plugin)s "
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Ez gaitu %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+" <b>%(plugin)s</b>  plugineko hainbat laster-tekla %(bindings)s beste plugin "
+"batzuekoekin gatazkan daude. Gatazka hauek konpondu nahi dituzu?"
+
+msgid "Resolve conflicts"
+msgstr "Konpondu gatazkak"
+
+msgid "Ignore conflicts"
+msgstr "Ez ikusi gatazkak"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Plugina honek <b>%(plugin_conflict)s</b> beste <b>%(plugin)s</b> pluginak "
+"ere ematen duen <b>%(feature)s</b> ezaugarria ematen du"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Ezgaitu %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Ez gaitu %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"<b>%(plugin_conflict)s</b> pluginak gatazkan dago <b>%(plugin)s</b> "
+"pluginarekin."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> pluginak <b>%(feature)s</b> ezaugarria beharrezko du, "
+"ondorengo pluginek emana:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Gaitu plugin hauek"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> pluginek beste hau beharrezko dute: <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Gaitu %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> pluginak <b>%(feature)s</b> ezaugarria ematen du, "
+"ondorengo pluginek beharrezko dutena: <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Ezgaitu plugin hauek"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Ez ezgaitu %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> beharrezkoa da ondorengo plugnientzat: <b>%(plugin_list)s</"
+"b>."
+
+msgid "General"
+msgstr "Orokorra"
+
+msgid "Accessibility"
+msgstr "Erabilerraztasuna"
+
+msgid "Desktop"
+msgstr "Mahaigaina"
+
+msgid "Extras"
+msgstr "Extrak"
+
+msgid "Window Management"
+msgstr "Leiho kudeaketa"
+
+msgid "Effects"
+msgstr "Efektuak"
+
+msgid "Image Loading"
+msgstr "Irudia kargatzen"
+
+msgid "Utility"
+msgstr "Utilitate"
+
+msgid "All"
+msgstr "Denak"
+
+msgid "Uncategorized"
+msgstr "Kategori gabekoa"
+
+msgid "N/A"
+msgstr "E/E"
+
+msgid "Reset setting to the default value"
+msgstr "Lehenetsitako balioetan jarri ezarpenak"
+
+msgid "Edit"
+msgstr "Editatu"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Lerro anitzeko ezarpenak. Baloreak editatzeko klik bikoitza egin lerroan."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Editatu %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\"ez da baliozko laster-tekla"
+
+msgid "Disabled"
+msgstr "Ezgaitua"
+
+msgid "Enabled"
+msgstr "Gaitua"
+
+msgid "Grab key combination"
+msgstr "Tekla konbinazioa grabatu"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" ez da baliozko botoia"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"1botoia aldaketa gabe erabiltzeak ezkerreko edozein kliki aurrea hartu "
+"diezaioke eta ezarpenak hautsi. Ziur \"%s\" botoia 1botoiaz ezarri nahi "
+"duzula?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" eza da maskara ertz baliokoa"
+
+msgid "None"
+msgstr "Ezer ez"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Compiz ezarpen kudeatzailea"
+
+msgid "Plugin"
+msgstr "Plugin "
+
+msgid "Please press the new key combination"
+msgstr "Mesedez sakatu tekla konbinaketa berria"
+
+msgid "Window Title"
+msgstr "Leiho Izenburua"
+
+msgid "Window Role"
+msgstr "Leiho-rola"
+
+msgid "Window Name"
+msgstr "Leiho izena"
+
+msgid "Window Class"
+msgstr "Leiho klase"
+
+msgid "Window Type"
+msgstr "Leiho mota"
+
+msgid "Window ID"
+msgstr "Leiho ID"
+
+msgid "And"
+msgstr "eta"
+
+msgid "Or"
+msgstr "edo"
+
+msgid "Edit match"
+msgstr "Editatu parekatzea"
+
+#. Type
+msgid "Type"
+msgstr "Mota"
+
+#. Value
+msgid "Value"
+msgstr "Balioa"
+
+msgid "Grab"
+msgstr "Eutsi"
+
+#. Relation
+msgid "Relation"
+msgstr "Relazioa"
+
+#. Invert
+msgid "Invert"
+msgstr "Alderantzikatu"
+
+msgid "Browse..."
+msgstr "Arakatu..."
+
+msgid "Images"
+msgstr "Irudiak"
+
+msgid "File"
+msgstr "Fitxategia"
+
+msgid "Open directory..."
+msgstr "Zabaldu karpeta..."
+
+msgid "Open file..."
+msgstr "Zabaldu fitxategia..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Hau ezarpen kudeatzailea da, Compiz sistemaren ezarpenerako."
+
+msgid "translator-credits"
+msgstr "Itzultzaile kredituak"
+
+msgid "An error has occured"
+msgstr "Errore bat eman da"
+
+msgid "Warning"
+msgstr "Kontuz"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Gaitu %s"
+
+msgid "Filter"
+msgstr "Iragazki"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Bilatu %s plugin aukerak"
+
+msgid "Use This Plugin"
+msgstr "Plugin hau erabili"
+
+msgid "Search Compiz Core Options"
+msgstr "Compiz core aukerak bilatu"
+
+msgid "Error"
+msgstr "Errorea"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Sartu iragazkia.\n"
+"Click the keyboard image to grab a key for which to search."
+
+msgid "Search in..."
+msgstr "Bilatu..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Izena eta deskribapen motza"
+
+msgid "Long description"
+msgstr "Deskribapen luzea"
+
+msgid "Settings value"
+msgstr "Ezarpen balioak"
+
+msgid "Group"
+msgstr "Taldea"
+
+msgid "Subgroup"
+msgstr "Azpitaldea"
+
+#. Notebook
+msgid "Settings"
+msgstr "Ezarpenak"
+
+msgid "Loading Advanced Search"
+msgstr "Bilaketa aurreratua kargatzen"
+
+msgid "Add a New Profile"
+msgstr "Profil berria gehitu"
+
+msgid "Remove This Profile"
+msgstr "Ezabatu profil hau"
+
+msgid "Default"
+msgstr "Lehenetsia"
+
+msgid "Profile"
+msgstr "Profila"
+
+msgid "Import"
+msgstr "Inportatu"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Inportatu Compiz ezarpen profila"
+
+msgid "Import as..."
+msgstr "Inportatu honela..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Inportatu Compiz ezarpen profila, profil berrira"
+
+msgid "Export"
+msgstr "Esportatu"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Esportatu zure Compiz ezarpen profila"
+
+msgid "Reset to defaults"
+msgstr "Ezarri lehenetsiak"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Ezarrri zure Compìz ezarpen profila, lehenetsi orokorretara"
+
+msgid "Backend"
+msgstr "Backend"
+
+msgid "Integration"
+msgstr "Integrazioa"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Gaitu integrazioa mahagain ingurunean"
+
+msgid "Profiles (*.profile)"
+msgstr "Profilak (*.profile)"
+
+msgid "All files"
+msgstr "Fitxategi guztiak"
+
+msgid "Save file.."
+msgstr "Gorde fitxategia.."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"Zure porfila esportatzean salto egin nahi dituzu aukera lehenetsien balioak?"
+
+msgid "Open file.."
+msgstr "Ireki fitxategia.."
+
+msgid "Enter a profile name"
+msgstr "Sartu profile izena"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Mesedez sartu izena profil berriari:"
+
+msgid "Backend not found."
+msgstr "Backend not found."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Pluginak automatikoki antolatu"
+
+msgid "Disabled Plugins"
+msgstr "Plugin ezgaituak"
+
+msgid "Enabled Plugins"
+msgstr "Plugin gaituak"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Ziur pluginak automatikoki ordenatzea ezgaitu nahi duzula? honek konfliktu "
+"kuduatzailea ere ezgaituko du. Hau egiten ari zarenarekin ziur bazaude "
+"bakarrik egin beharko zenuke."
+
+msgid "Add plugin"
+msgstr "Gehitu plugina"
+
+msgid "Plugin name:"
+msgstr "Plugin izena:"
+
+msgid "Insert plugin name"
+msgstr "Sartu plugin izena"
+
+msgid "Preferences"
+msgstr "Aukerak"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Backend, profil eta beste barne ezarpen batzuen konfigurazioa Copiz ezarpen "
+"sistema erabiliz."
+
+msgid "About"
+msgstr "Honi buruz"
+
+msgid "About CCSM..."
+msgstr "CCSMri buruz..."
+
+msgid "Profile & Backend"
+msgstr "Profil & Backend"
+
+msgid "Plugin List"
+msgstr "Plugin zerrenda"
+
+msgid "Filter your Plugin list"
+msgstr "Iragazi zure plugin zerrenda"
+
+#, python-format
+msgid "Screen %i"
+msgstr "%i pantaila"
+
+msgid "Screen"
+msgstr "Pantaila"
+
+msgid "Category"
+msgstr "Kategoria"
+
+msgid "Advanced Search"
+msgstr "Bilaketa aureratua"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b> ez du aurkitu </b> </span><span>\n"
+"\n"
+"Zure \"<b>%s</b>\" iragazkiak ez du elementurik aurkitu </span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Konfiguratu Compiz CompizConfig erabiliz"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Gatazkak ote dauden aztertzen. Mesedez itxaron"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Balioa (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "%(setting)s-dako balioa (%(value)s)"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "%s ezohiko lista mota %s -entzat"
+
+#~ msgid "Actions"
+#~ msgstr "Ekintzak"

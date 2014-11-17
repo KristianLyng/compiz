@@ -1,0 +1,6 @@
+include po/*
+include TODO README INSTALL AUTHORS COPYING LICENSE NEWS VERSION ChangeLog
+include ccsm.desktop.in
+include ccm/Constants.py.in
+include Makefile MANIFEST.in
+recursive-include images *

@@ -1,0 +1,579 @@
+# CompizConfig  Mandingo translation.     
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+# Werner Landgraf <werner@copaya.yi.org>
+#   Por falta de ortografia oficial, uso essentialmente àquela de:
+#   Carreira, António:  Mandingas da Guiné Portuguesa.  Bissão 1947
+#   mas substituo dj -> j ;  j -> y . 
+#  Sonderzeichen ã,õ,ĩ,ẽ,ũ,ñ die auch nachfolgendes ŋ einschließen
+#   Palavras que não sei, coloquei em português.
+#    iconv -t UTF-8 *.pot > *.po ;  msgfmt -cv *.po  
+msgid ""
+msgstr ""
+"Project-Id-Version: md-ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 12:33+0530\n"
+"PO-Revision-Date: 2007-09-24 23:00-0300\n"
+"Last-Translator: Werner Landgraf <werner@copaya.yi.org>\n"
+"Language-Team: Mandingo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"Dorão <b>%(plugin)s</b> -la kêebaarão <b>%(action)s</b> -la da %(binding)s a-"
+"ualita dorão <b>%(plugin_conflict)s</b> -la kêbarão <b>%(action_conflict)s</"
+"b> le ti.Fa i lafita dorão <b>%(plugin_conflict)s</b> -la kêbarão <b>%"
+"(action_conflict)s</b> dubẽna ?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "%(action_conflict)s dubẽna ..."
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Kanna %(action)s malãdi !"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "%(action)s malãdi jiko-o-jiko !"
+
+#, fuzzy
+msgid "key"
+msgstr "teclado-la Botão"
+
+#, fuzzy
+msgid "button"
+msgstr "niño-la botão"
+
+msgid "edge"
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"I ka kitindila dorão <b>%(plugin)s</b> -lu-la kêebaarão <b>%(feature)s</b> "
+"naffala.\n"
+"Ñĩ dorão, a-dubẽta.\n"
+"Fa i lafta <b>%(plugin)s</b> malãdila, fo i a naffa nola?"
+
+#, fuzzy, python-format
+msgid "Use %(feature)s"
+msgstr "Kanna %(feature)s malãdi !"
+
+#, fuzzy, python-format
+msgid "Don't use %(feature)s"
+msgstr "Kanna %(feature)s malãdi !"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"I ka kitindila dorão <b>%(plugin)s</b> -lu-la kêebaarão <b>%(feature)s</b> "
+"naffala.\n"
+"Ñĩ dorão, a-dubẽta.\n"
+"Fa i lafta <b>%(plugin)s</b> malãdila, fo i a naffa nola?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "%(plugin)s malãdi bã !"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Kanna %(feature)s malãdi !"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+
+msgid "Resolve conflicts"
+msgstr ""
+
+msgid "Ignore conflicts"
+msgstr ""
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"Dorão <b>%(plugin_conflict)s</b> çãba nã kêbarão <b>%(feature)s</b> le mim "
+"çãba nã dorão <b>%(plugin)s</b> fanã. Ñĩ a-ualita."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "%(plugin_conflict)s  dubẽ bã !"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Kanna %(plugin)s malãdi ! "
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "Dorão-lu <b>%(plugin_conflict)s</b> anĩ <b>%(plugin)s</b> a-ualita."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"Dorão-lu <b>%(plugin)s</b> çohla <b>%(feature)s</b> le ti, mim çãbãdi nã "
+"dorão-lu:\n"
+" %(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "ñĩ dorão-lu  malãdi bã !"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "Dorão-lu <b>%(plugin)s</b>, dorão <b>%(require)s</b> çohla."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "%(require)s malãdi bã !"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"Dorão <b>%(plugin)s</b> , kêbarão <b>%(feature)s</b> çãba nã mim çohlãdi "
+"dorão-lu <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "dorão-lu ñĩ, dubẽ bã !"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Dorão-lu %(plugin)s, kanna dubẽ !"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "Dorão-lu <b>%(plugin_list)s</b>, dorão-lu <b>%(plugin)s</b> çohla."
+
+msgid "General"
+msgstr "Tilĩdĩo"
+
+msgid "Accessibility"
+msgstr "çônêa"
+
+msgid "Desktop"
+msgstr "bẽtãdĩo"
+
+msgid "Extras"
+msgstr "lãkãolu"
+
+msgid "Window Management"
+msgstr "mãçã-parãterolu"
+
+msgid "Effects"
+msgstr "kêeolu"
+
+msgid "Image Loading"
+msgstr "natalolu çãbala nã ..."
+
+msgid "Utility"
+msgstr "dorão"
+
+msgid "All"
+msgstr "bê"
+
+msgid "Uncategorized"
+msgstr "çifa-tão"
+
+msgid "N/A"
+msgstr ""
+
+msgid "Reset setting to the default value"
+msgstr "da-tillĩdĩolu çêĩdila ..."
+
+msgid "Edit"
+msgstr "çaferola ..."
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr "Jã, i fẽ tõbonna anĩ çaferola nole"
+
+#, python-format
+msgid "Edit %s"
+msgstr " %s çafe !"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" a-mãbetêa"
+
+#
+msgid "Disabled"
+msgstr "a-dubẽta"
+
+#
+msgid "Enabled"
+msgstr "a-malãta"
+
+msgid "Grab key combination"
+msgstr "teclado -la butão-lu la kafo tõbõ !"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "Mo a mã butão \"%s\" naffa nole !"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"I butão-1 naffa jã, ñĩ tanolu çãba nã nole. Fa i lafta \"%s\" naffala kõmko "
+"butão-1 ñãoñã ? "
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" koofo mãçotto !"
+
+msgid "None"
+msgstr "Hanni fẽ"
+
+msgid "CompizConfig Settings Manager"
+msgstr "CompizConfig compiz -la tillĩdirão leti"
+
+#, fuzzy
+msgid "Plugin"
+msgstr "dorãolu"
+
+msgid "Please press the new key combination"
+msgstr "teclado -la butão-lu la kafo mim a-tõbõta,  diki bã !"
+
+msgid "Window Title"
+msgstr ""
+
+msgid "Window Role"
+msgstr ""
+
+#, fuzzy
+msgid "Window Name"
+msgstr "mãçã-parãterolu"
+
+msgid "Window Class"
+msgstr ""
+
+msgid "Window Type"
+msgstr ""
+
+msgid "Window ID"
+msgstr ""
+
+msgid "And"
+msgstr ""
+
+msgid "Or"
+msgstr ""
+
+msgid "Edit match"
+msgstr ""
+
+#. Type
+msgid "Type"
+msgstr ""
+
+#. Value
+#, fuzzy
+msgid "Value"
+msgstr "da (%s)"
+
+msgid "Grab"
+msgstr ""
+
+#. Relation
+#, fuzzy
+msgid "Relation"
+msgstr "mábôko"
+
+#. Invert
+msgid "Invert"
+msgstr ""
+
+#, fuzzy
+msgid "Browse..."
+msgstr "ñininna katuko :   ... "
+
+msgid "Images"
+msgstr "natalolu"
+
+msgid "File"
+msgstr "kaito"
+
+msgid "Open directory..."
+msgstr "kaito-lu-la kulũo iêlela ..."
+
+msgid "Open file..."
+msgstr "kaito iêlela ..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "Ñĩ, CompizConfig mu compiz -la tillĩdirão, le ti  :). "
+
+msgid "translator-credits"
+msgstr "kãaçorrla: Werner Landgraf <werner@copaya.yi.org>"
+
+msgid "An error has occured"
+msgstr "tano çoto !"
+
+msgid "Warning"
+msgstr "I hakilto !"
+
+#, python-format
+msgid "Enable %s"
+msgstr " %s malã bã !"
+
+msgid "Filter"
+msgstr "tombõdão"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Dorão %s -la tõbõdãolu ñinnĩla ... "
+
+msgid "Use This Plugin"
+msgstr "Dorão ñĩ naffa bã !"
+
+msgid "Search Compiz Core Options"
+msgstr "CompizCore -la tõbõdãolu ñinnĩla ... "
+
+msgid "Error"
+msgstr "tano !"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+
+msgid "Search in..."
+msgstr "jubela ... kono : "
+
+#. Options
+msgid "Short description and name"
+msgstr "farãfãço anĩ to:"
+
+msgid "Long description"
+msgstr "farãfãço ba:"
+
+msgid "Settings value"
+msgstr "Da:"
+
+msgid "Group"
+msgstr ""
+
+msgid "Subgroup"
+msgstr ""
+
+#. Notebook
+msgid "Settings"
+msgstr "Dalu"
+
+#, fuzzy
+msgid "Loading Advanced Search"
+msgstr "ñinnĩarla ba ..."
+
+msgid "Add a New Profile"
+msgstr "Dokuo-la kêeña kotoma kefũna ..."
+
+msgid "Remove This Profile"
+msgstr "Dokuo-la kêeña dubẽna ..."
+
+msgid "Default"
+msgstr "da a-tillĩdĩ"
+
+msgid "Profile"
+msgstr "Dokuo-la kêeña"
+
+msgid "Import"
+msgstr "çãbala nã ..."
+
+msgid "Import a CompizConfig Profile"
+msgstr "dokuo-la kêeñão CompizConfig -ya çãbala nã ..."
+
+#
+msgid "Import as..."
+msgstr "çãbala nã kõmko ..."
+
+#
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "çãba nã dokuo-la kêeñão a-kotama CompizConfig -ya le ..."
+
+msgid "Export"
+msgstr "çãba jêe ..."
+
+msgid "Export your CompizConfig Profile"
+msgstr "çãba jê i-la dokuo-la kêeñão CompizConfig -ya le ..."
+
+#
+msgid "Reset to defaults"
+msgstr "da-lu tilĩdĩolu çêĩdila ..."
+
+#
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "i-la dokuo-la kêeñão CompizConfig-ña -la da-lu tilĩdĩolu çêĩdi ... "
+
+msgid "Backend"
+msgstr "programa kono"
+
+msgid "Integration"
+msgstr "mábôko"
+
+msgid "Enable integration into the desktop environment"
+msgstr "mábôko bẽtãdĩo kono malãdi !"
+
+msgid "Profiles (*.profile)"
+msgstr "dokuola  kêeño-lu (*.profile)"
+
+msgid "All files"
+msgstr "kaitalu bê"
+
+msgid "Save file.."
+msgstr "kaito mabôla ..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+
+msgid "Open file.."
+msgstr "kaito iêlela .."
+
+msgid "Enter a profile name"
+msgstr "dokuola  kêeño tõbõ bã !"
+
+msgid "Please enter a name for the new profile:"
+msgstr "dokuola  kêeño a-kotama -la to çafe !"
+
+msgid "Backend not found."
+msgstr "programma mãçotto !  :("
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "dorão-lu ke kurĩna ..."
+
+msgid "Disabled Plugins"
+msgstr "dorão-lu a-dubẽta:"
+
+msgid "Enabled Plugins"
+msgstr "dorão-lu a-malãta:"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+
+msgid "Add plugin"
+msgstr "dorão kafũna ..."
+
+msgid "Plugin name:"
+msgstr "dorão-la to:"
+
+msgid "Insert plugin name"
+msgstr "dorão-la to çafê !"
+
+msgid "Preferences"
+msgstr "tõbõkelu"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"programa, dokuola  kêeño-lu, anĩ dokuo-la dalu, mim CompizConfig ka naffa le "
+"kono-ya,  tillĩdĩdirĩla ..."
+
+msgid "About"
+msgstr "... dũ"
+
+msgid "About CCSM..."
+msgstr "CCSM dũ"
+
+msgid "Profile & Backend"
+msgstr "programma & dokuola kêeño kono"
+
+msgid "Plugin List"
+msgstr "dorãolu"
+
+msgid "Filter your Plugin list"
+msgstr "I i-la dorão-lu tombõ bã !"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Telha %i"
+
+msgid "Screen"
+msgstr "Telha"
+
+msgid "Category"
+msgstr "çifo"
+
+msgid "Advanced Search"
+msgstr "ñinnĩarla ba ..."
+
+#, fuzzy, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Hanni fẽ a-ñinnĩta.</b> </span><span>\n"
+" \n"
+" Feñ kommko \"<b>%s</b>\" mã çotto.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr ""
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "jubela fa tanolu sotto ... , batu domãdĩ !"
+
+#~ msgid "Value (%s)"
+#~ msgstr "da (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "%(setting)s -la da,  (%(value)s) le ti."
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr " %s a mã naffa nole komko %s"
+
+#~ msgid "Actions"
+#~ msgstr "kêebaarolu"
+
+#~ msgid "Disable %s"
+#~ msgstr " dubẽna ... "
+
+#~ msgid "Name"
+#~ msgstr "To"
+
+#~ msgid "Screen Edge"
+#~ msgstr "tele-la koofo"
+
+#~ msgid "Button %i"
+#~ msgstr "niño-la Butão %i"
+
+#~ msgid "Edge Button"
+#~ msgstr "tele-la koofo -la butão"
+
+#~ msgid "On System Bell"
+#~ msgstr "Talão-la kumo -la tumo"
+
+#~ msgid "Edit Action: %s"
+#~ msgstr "kêebarão %s fãdi ! "
+
+#~ msgid "Screen Edges"
+#~ msgstr "tele-la koofo-lu"
+
+#~ msgid "Reset To Defaults"
+#~ msgstr "da-tillĩdĩolu çêĩdila ..."

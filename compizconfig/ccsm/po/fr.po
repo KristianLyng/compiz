@@ -1,0 +1,551 @@
+# CompizConfig French translation
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+#
+# Sylvain Debray <sylvain.debray@wanadoo.fr>, 2007.
+# Tristan RABLAT <tristan.rablat@gmail.com>, 2007.
+# Guillaume Seguin <guillaume@segu.in>.
+msgid ""
+msgstr ""
+"Project-Id-Version: fr-ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-09-03 14:27+0200\n"
+"Last-Translator: Florent <cartman@igstaff.com>\n"
+"Language-Team: <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"La nouvelle valeur assignée au raccourci %(binding)s pour l'action <b>%"
+"(action)s</b> dans l'extension <b>%(plugin)s</b> est en conflit avec "
+"l'action <b>%(action_conflict)s</b> de l'extension <b>%(plugin_conflict)s</"
+"b>.\n"
+"Voulez vous désactiver l'action <b>%(action_conflict)s</b> de l'extension <b>"
+"%(plugin_conflict)s</b> ?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "Désactiver %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "Ne pas définir %(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "Définir %(action)s malgré tout"
+
+msgid "key"
+msgstr "clé"
+
+msgid "button"
+msgstr "bouton"
+
+msgid "edge"
+msgstr "bordure"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"Vous essayez d'utiliser la fonctionnalité <b>%(feature)s</b> qui n'est "
+"fournie par <b>aucune</b> extension.\n"
+"Voulez vous tout de même utiliser cette fonctionnalité?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "Utiliser %(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "Ne pas utiliser %(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"Vous essayez d'activer la fonctionnalité <b>%(feature)s</b> qui est fournie "
+"par <b>%(plugin)s</b>. Cette extension est actuellement désactivée.\n"
+" Voulez vous activer <b>%(plugin)s</b> pour que la fonctionnalité soit "
+"disponible?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "Activer \"%(plugin)s\""
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "Ne pas activer %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"Quelques %(bindings)s fonctions du Plugin <b>%(plugin)s</b> sont en conflit "
+"avec d'autres plugins. Voulez-vous résoudre ces conflits ?"
+
+msgid "Resolve conflicts"
+msgstr "Résoudre les conflits"
+
+msgid "Ignore conflicts"
+msgstr "Ignorer les conflits"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"L'extension <b>%(plugin_conflict)s</b> fournit la fonctionnalité <b>%"
+"(feature)s</b> qui est aussi fournie par <b>%(plugin)s</b>."
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "Désactiver %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "Ne pas activer %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr ""
+"L'extension <b>%(plugin_conflict)s</b> est en conflit avec <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> requiert la fonctionnalité <b>%(feature)s</b> qui est "
+"fournie par les extensions suivantes:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "Activer ces extensions"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> requiert l'extension <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "Activer %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> fournit la fonctionnalité <b>%(feature)s</b> qui est "
+"requise par les extensions <b>%(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "Désactiver ces extensions"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "Ne pas désactiver %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> est requis par les extensions <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "Général"
+
+msgid "Accessibility"
+msgstr "Accessibilité"
+
+msgid "Desktop"
+msgstr "Bureau"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Window Management"
+msgstr "Gestion des fenêtres"
+
+msgid "Effects"
+msgstr "Effets"
+
+msgid "Image Loading"
+msgstr "Chargement d'Image"
+
+msgid "Utility"
+msgstr "Utilitaire"
+
+msgid "All"
+msgstr "Tous"
+
+msgid "Uncategorized"
+msgstr "Sans catégorie"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Reset setting to the default value"
+msgstr "Revenir à la configuration par défaut"
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"Configuration multi-liste. Vous pouvez double-cliquer sur une ligne pour "
+"éditer la valeur."
+
+#, python-format
+msgid "Edit %s"
+msgstr "Éditer %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" n'est pas un raccourci valide"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Grab key combination"
+msgstr "Saisir une combinaison de touches"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" n'est pas un bouton valide"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"Utiliser Button1 sans modificateurs interceptera tous les clics gauches et "
+"risque donc de casser votre configuration. Voulez vous vraiment associer le "
+"bouton \"%s\" à Button1?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" n'est pas un masque d'arrête valide"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "CompizConfig Settings Manager"
+msgstr "Gestionnaire de Configuration CompizConfig"
+
+msgid "Plugin"
+msgstr "Plugin"
+
+msgid "Please press the new key combination"
+msgstr "Veuillez appuyer sur la nouvelle combinaison de touches"
+
+msgid "Window Title"
+msgstr "Titre de la fenêtre"
+
+msgid "Window Role"
+msgstr "Rôle de la fenêtre"
+
+msgid "Window Name"
+msgstr "Nom de la fenêtre"
+
+msgid "Window Class"
+msgstr "Classe de la fenêtre"
+
+msgid "Window Type"
+msgstr "Type de fenêtre"
+
+msgid "Window ID"
+msgstr "ID de la fenêtre"
+
+msgid "And"
+msgstr "Et"
+
+msgid "Or"
+msgstr "Ou"
+
+msgid "Edit match"
+msgstr "Modifier l'équivalence"
+
+#. Type
+msgid "Type"
+msgstr "Type"
+
+#. Value
+msgid "Value"
+msgstr "Valeur"
+
+msgid "Grab"
+msgstr "Saisir"
+
+#. Relation
+msgid "Relation"
+msgstr "Relation"
+
+#. Invert
+msgid "Invert"
+msgstr "Inverser"
+
+msgid "Browse..."
+msgstr "Parcourir..."
+
+msgid "Images"
+msgstr "Images"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "Open directory..."
+msgstr "Ouvrir un dossier..."
+
+msgid "Open file..."
+msgstr "Ouvrir un fichier..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr ""
+"Ceci est un gestionnaire de configuration pour le système de configuration "
+"CompizConfig"
+
+msgid "translator-credits"
+msgstr "Crédits Traducteurs"
+
+msgid "An error has occured"
+msgstr "Une erreur est survenue"
+
+msgid "Warning"
+msgstr "Attention"
+
+#, python-format
+msgid "Enable %s"
+msgstr "Activer %s"
+
+msgid "Filter"
+msgstr "Filtre"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "Chercher les options de l'extension %s"
+
+msgid "Use This Plugin"
+msgstr "Utiliser cette Extension"
+
+msgid "Search Compiz Core Options"
+msgstr "Chercher les options du Noyau de Compiz (compiz-core)"
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"Entrez un filtre.\n"
+"Cliquez sur l'image du clavier pour saisir une touche pour laquelle chercher."
+
+msgid "Search in..."
+msgstr "Chercher dans..."
+
+#. Options
+msgid "Short description and name"
+msgstr "Description courte et nom"
+
+msgid "Long description"
+msgstr "Description longue"
+
+msgid "Settings value"
+msgstr "Valeurs de réglage"
+
+msgid "Group"
+msgstr "Groupe"
+
+msgid "Subgroup"
+msgstr "Sous-groupe"
+
+#. Notebook
+msgid "Settings"
+msgstr "Réglage"
+
+msgid "Loading Advanced Search"
+msgstr "Chargement de la Recherche Avancée"
+
+msgid "Add a New Profile"
+msgstr "Ajouter un nouveau profil"
+
+msgid "Remove This Profile"
+msgstr "Effacer ce profil"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Import a CompizConfig Profile"
+msgstr "Importer un profil CompizConfig"
+
+msgid "Import as..."
+msgstr "Importer en tant que..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "Importer un profil CompizConfig"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Export your CompizConfig Profile"
+msgstr "Exporter votre profil CompizConfig"
+
+msgid "Reset to defaults"
+msgstr "Revenir au défaut"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "Initialiser votre profil CompizConfig avec les paramètres par défaut"
+
+msgid "Backend"
+msgstr "Backend"
+
+msgid "Integration"
+msgstr "Intégration"
+
+msgid "Enable integration into the desktop environment"
+msgstr "Activer l'intégration avec l'environnement du bureau"
+
+msgid "Profiles (*.profile)"
+msgstr "Profils (*.profile)"
+
+msgid "All files"
+msgstr "Tous les fichiers"
+
+msgid "Save file.."
+msgstr "Sauvegarder..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr ""
+"Désirez vous ommettre les valeurs d'option par défaut en exportant votre "
+"profil?"
+
+msgid "Open file.."
+msgstr "Ouvrir un fichier..."
+
+msgid "Enter a profile name"
+msgstr "Entrer un nom pour le profil"
+
+msgid "Please enter a name for the new profile:"
+msgstr "Merci d'entrer un nom pour le nouveau profil:"
+
+msgid "Backend not found."
+msgstr "Backend non trouvé."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "Tri automatique des extension"
+
+msgid "Disabled Plugins"
+msgstr "Extensions désactivées"
+
+msgid "Enabled Plugins"
+msgstr "Extensions activées"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"Voulez vous vraiment désactiver le tri automatique des extensions? Cela "
+"désactivera également la gestion des conflits. Vous devriez seulement faire "
+"cela si vous êtes sûr de ce que vous faites."
+
+msgid "Add plugin"
+msgstr "Ajouter une extension"
+
+msgid "Plugin name:"
+msgstr "Nom de l'extension:"
+
+msgid "Insert plugin name"
+msgstr "Insérer le nom de l'extension"
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"Configurer le backend, le profil et d'autres réglages internes utilisés par "
+"le Système de Configuration de Compiz."
+
+msgid "About"
+msgstr "À propos"
+
+msgid "About CCSM..."
+msgstr "À propos de CCSM..."
+
+msgid "Profile & Backend"
+msgstr "Profil & Backend"
+
+msgid "Plugin List"
+msgstr "Liste des Extensions"
+
+msgid "Filter your Plugin list"
+msgstr "Filtrer votre liste d'extensions"
+
+#, python-format
+msgid "Screen %i"
+msgstr "Écran %i"
+
+msgid "Screen"
+msgstr "Écran"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Advanced Search"
+msgstr "Recherche avancée"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>Pas de concordance trouvée.</b> </span><br><br> "
+"Votre filtre \"<b>%s</b>\" ne correspond à aucun objet."
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "Configurer Compiz avec CompizConfig"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "Recherche d'éventuels conflits, veuillez patienter"
+
+#~ msgid "Value (%s)"
+#~ msgstr "Valeur (%s)"
+
+#~ msgid "Value (%(value)s) for %(setting)s"
+#~ msgstr "Valeur (%(value)s) pour %(setting)s"
+
+#~ msgid "Unhandled list type %s for %s"
+#~ msgstr "Liste de type %s non supportée pour %s"
+
+#~ msgid "Actions"
+#~ msgstr "Actions"

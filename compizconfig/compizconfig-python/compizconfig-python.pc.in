@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+pyexecdir=@pyexecdir@
+
+Name: compizconfig-python
+Description: Compiz configuration system bindings
+Version: @VERSION@
+
+Requires: @CCS_REQUIRES@
+Libs: @CCS_LIBS@ -L@libdir@ -lcompizconfig
+Cflags: @CCS_CFLAGS@ -I@includedir@/compizconfig

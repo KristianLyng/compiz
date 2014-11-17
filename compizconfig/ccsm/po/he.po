@@ -1,0 +1,526 @@
+# ccsm he translation.
+# Copyright (C) 2008 compiz-fusion.org
+# This file is distributed under the same license as the ccsm package.
+# Yotam Benshalom <benshalom@gmail.com>.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ccsm\n"
+"Report-Msgid-Bugs-To: http://bugs.opencompositing.org\n"
+"POT-Creation-Date: 2009-03-24 08:12+0100\n"
+"PO-Revision-Date: 2008-09-07 05:37+0200\n"
+"Last-Translator: Yotam Benshalom <benshalom@gmail.com>\n"
+"Language-Team: Yotam Benshalom <benshalom@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#, python-format
+msgid ""
+"The new value for the %(binding)s binding for the action <b>%(action)s</b> "
+"in plugin <b>%(plugin)s</b> conflicts with the action <b>%(action_conflict)"
+"s</b> of the <b>%(plugin_conflict)s</b> plugin.\n"
+"Do you wish to disable <b>%(action_conflict)s</b> in the <b>%"
+"(plugin_conflict)s</b> plugin?"
+msgstr ""
+"הערך החדש של הצירוף %(binding)s  לפעולה <b>%(action)s</b> בהתקן <b>%(plugin)"
+"s</b> מתנגש עם הפעולה <b>%(action_conflict)s</b> בהתקן <b>%(plugin_conflict)"
+"s</b> .\n"
+"האם ברצונך לנטרל את  <b>%(action_conflict)s</b> בהתקן <b>%(plugin_conflict)"
+"s</b>?"
+
+#, python-format
+msgid "Disable %(action_conflict)s"
+msgstr "נטרל את %(action_conflict)s"
+
+#, python-format
+msgid "Don't set %(action)s"
+msgstr "אל תקבע צירוף ל%(action)s"
+
+#, python-format
+msgid "Set %(action)s anyway"
+msgstr "קבע צירוף ל%(action)s בכל זאת"
+
+msgid "key"
+msgstr "מקש"
+
+msgid "button"
+msgstr "כפתור"
+
+msgid "edge"
+msgstr "קצה מסך"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is <b>not</b> "
+"provided by any plugin.\n"
+"Do you wish to use this feature anyway?"
+msgstr ""
+"נסית להשתמש בתכונה <b>%(feature)s</b> אשר <b>אינה</b> provided by נתמכת בידי "
+"שום התקן.\n"
+"האם ברצונך להשתמש בה בכל זאת?"
+
+#, python-format
+msgid "Use %(feature)s"
+msgstr "השתמש ב%(feature)s"
+
+#, python-format
+msgid "Don't use %(feature)s"
+msgstr "אל תשתמש ב%(feature)s"
+
+#, python-format
+msgid ""
+"You are trying to use the feature <b>%(feature)s</b> which is provided by <b>"
+"%(plugin)s</b>.\n"
+"This plugin is currently disabled.\n"
+"Do you wish to enable <b>%(plugin)s</b> so the feature is available?"
+msgstr ""
+"נסית להשתמש בתכונה <b>%(feature)s</b> שאותה מספק ההתקן <b>%(plugin)s</b>.\n"
+"ההתקן מנוטרל כרגע.\n"
+"האם ברצונך להפעיל את ההתקן <b>%(plugin)s</b> כדי לאפשר תכונה זו?"
+
+#, python-format
+msgid "Enable %(plugin)s"
+msgstr "הפעל את %(plugin)s"
+
+#, python-format
+msgid "Don't enable %(feature)s"
+msgstr "אל תפעיל את %(feature)s"
+
+#, python-format
+msgid ""
+"Some %(bindings)s bindings of Plugin <b>%(plugin)s</b> conflict with other "
+"plugins. Do you want to resolve these conflicts?"
+msgstr ""
+"כמה צימודי %(bindings)s של ההתקן <b>%(plugin)s</b> מתנגשים עם התקנים אחרים. "
+"האם ברצונך לפתור התנגשויות אלה?"
+
+msgid "Resolve conflicts"
+msgstr "פתור התנגשויות"
+
+msgid "Ignore conflicts"
+msgstr "התעלם מהתנגשויות"
+
+#, python-format
+msgid ""
+"Plugin <b>%(plugin_conflict)s</b> provides feature <b>%(feature)s</b> which "
+"is also provided by <b>%(plugin)s</b>"
+msgstr ""
+"ההתקן <b>%(plugin_conflict)s</b> מספק את התכונה <b>%(feature)s</b> שאותה "
+"מספק גם <b>%(plugin)s</b>"
+
+#, python-format
+msgid "Disable %(plugin_conflict)s"
+msgstr "נטרל את %(plugin_conflict)s"
+
+#, python-format
+msgid "Don't enable %(plugin)s"
+msgstr "אל תפעיל את %(plugin)s"
+
+#, python-format
+msgid "Plugin <b>%(plugin_conflict)s</b> conflicts with <b>%(plugin)s</b>."
+msgstr "ההתקן <b>%(plugin_conflict)s</b> מתנגש עם <b>%(plugin)s</b>."
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> requires feature <b>%(feature)s</b> which is provided by "
+"the following plugins:\n"
+"%(plugin_list)s"
+msgstr ""
+"<b>%(plugin)s</b> זקוק לתכונה <b>%(feature)s</b> המצויה בהתקנים הבאים:\n"
+"%(plugin_list)s"
+
+msgid "Enable these plugins"
+msgstr "הפעל התקנים אלה"
+
+#, python-format
+msgid "<b>%(plugin)s</b> requires the plugin <b>%(require)s</b>."
+msgstr "<b>%(plugin)s</b> זקוק להתקן <b>%(require)s</b>."
+
+#, python-format
+msgid "Enable %(require)s"
+msgstr "הפעל את %(require)s"
+
+#, python-format
+msgid ""
+"<b>%(plugin)s</b> provides the feature <b>%(feature)s</b> which is required "
+"by the plugins <b>%(plugin_list)s</b>."
+msgstr ""
+"<b>%(plugin)s</b> כולל את התכונה <b>%(feature)s</b> שלה זקוקים ההתקנים <b>%"
+"(plugin_list)s</b>."
+
+msgid "Disable these plugins"
+msgstr "נטרל התקנים אלה"
+
+#, python-format
+msgid "Don't disable %(plugin)s"
+msgstr "אל תנטרל את %(plugin)s"
+
+#, python-format
+msgid "<b>%(plugin)s</b> is required by the plugins <b>%(plugin_list)s</b>."
+msgstr "<b>%(plugin)s</b>נחוץ להתקנים <b>%(plugin_list)s</b>."
+
+msgid "General"
+msgstr "כללי"
+
+msgid "Accessibility"
+msgstr "נגישות"
+
+msgid "Desktop"
+msgstr "שולחן עבודה"
+
+msgid "Extras"
+msgstr "תוספות"
+
+msgid "Window Management"
+msgstr "ניהול חלונות"
+
+msgid "Effects"
+msgstr "אפקטים"
+
+msgid "Image Loading"
+msgstr "טעינת תמונות"
+
+msgid "Utility"
+msgstr "עזרים"
+
+msgid "All"
+msgstr "הכל"
+
+msgid "Uncategorized"
+msgstr "שונות"
+
+msgid "N/A"
+msgstr "לא זמין"
+
+msgid "Reset setting to the default value"
+msgstr "חזרה לברירת המחדל"
+
+msgid "Edit"
+msgstr "עריכה"
+
+msgid "Multi-list settings. You can double-click a row to edit the values."
+msgstr ""
+"הגדרות מרובות רשימות. ניתן להקליק הקלקה כפולה על שורה כדי לערוך את הערכים."
+
+#, python-format
+msgid "Edit %s"
+msgstr "עריכת %s"
+
+#, python-format
+msgid "\"%s\" is not a valid shortcut"
+msgstr "\"%s\" אינו קיצור דרך תקין"
+
+msgid "Disabled"
+msgstr "מנוטרל"
+
+msgid "Enabled"
+msgstr "פועל"
+
+msgid "Grab key combination"
+msgstr "יירט צירוף מקשים"
+
+#, python-format
+msgid "\"%s\" is not a valid button"
+msgstr "\"%s\" אינו כפתור תקין"
+
+#, python-format
+msgid ""
+"Using Button1 without modifiers can prevent any left click and thus break "
+"your configuration. Do you really want to set \"%s\" button to Button1 ?"
+msgstr ""
+"שימוש בכפתור מס' 1 עלול למנוע ממך להפעיל קליק שמאלי ובכך לשבש את פעולת "
+"המערכת שלך. האם אתה בטוח שברצונך להצמיד את הכפתור  \"%s\" לכפתור מס' 1?"
+
+#, python-format
+msgid "\"%s\" is not a valid edge mask"
+msgstr "\"%s\" אינו מסיכת קצה תקינה"
+
+msgid "None"
+msgstr "ללא"
+
+msgid "CompizConfig Settings Manager"
+msgstr "מנהל הגדרות CompizConfig"
+
+msgid "Plugin"
+msgstr "התקן"
+
+msgid "Please press the new key combination"
+msgstr "אנא לחץ על צירוף המקשים הרצוי"
+
+msgid "Window Title"
+msgstr "כותרת החלון"
+
+msgid "Window Role"
+msgstr "תפקיד החלון"
+
+msgid "Window Name"
+msgstr "שם החלון"
+
+msgid "Window Class"
+msgstr "מחלקת החלון"
+
+msgid "Window Type"
+msgstr "סוג החלון"
+
+msgid "Window ID"
+msgstr "מזהה החלון"
+
+msgid "And"
+msgstr "וגם"
+
+msgid "Or"
+msgstr "או"
+
+# אני לא בטוח כאן. למה הכוונה?
+msgid "Edit match"
+msgstr "התאמת עריכה"
+
+#. Type
+msgid "Type"
+msgstr "סוג"
+
+#. Value
+msgid "Value"
+msgstr "ערך"
+
+msgid "Grab"
+msgstr "יירוט"
+
+#. Relation
+msgid "Relation"
+msgstr "קשר"
+
+#. Invert
+msgid "Invert"
+msgstr "היפוך"
+
+msgid "Browse..."
+msgstr "עיון..."
+
+msgid "Images"
+msgstr "תמונות"
+
+msgid "File"
+msgstr "קובץ"
+
+msgid "Open directory..."
+msgstr "פתיחת ספריה..."
+
+msgid "Open file..."
+msgstr "פתיחת קובץ..."
+
+msgid "This is a settings manager for the CompizConfig configuration system."
+msgstr "זהו מנהל הגדרות עבור מערכת בקרת התצורה של CompizConfig."
+
+msgid "translator-credits"
+msgstr "מתרגמים"
+
+msgid "An error has occured"
+msgstr "חלה שגיאה"
+
+msgid "Warning"
+msgstr "אזהרה"
+
+#, python-format
+msgid "Enable %s"
+msgstr "הפעל את %s"
+
+msgid "Filter"
+msgstr "מסנן"
+
+#, python-format
+msgid "Search %s Plugin Options"
+msgstr "חפש באפשרויות ההתקן %s "
+
+msgid "Use This Plugin"
+msgstr "השתמש בהתקן זה"
+
+msgid "Search Compiz Core Options"
+msgstr "חפש באפשרויות הליבה של קומפיז"
+
+msgid "Error"
+msgstr "שגיאה"
+
+msgid ""
+"Enter a filter.\n"
+"Click the keyboard image to grab a key for which to search."
+msgstr ""
+"הזן מסנן.\n"
+"הקלק על תמונת המקלדת כדי ליירט את הכפתור שעליו יש לבצע חיפוש."
+
+msgid "Search in..."
+msgstr "חפש בתוך..."
+
+#. Options
+msgid "Short description and name"
+msgstr "תיאור קצר ושם"
+
+msgid "Long description"
+msgstr "תיאור מפורט"
+
+msgid "Settings value"
+msgstr "ערך ההגדרות"
+
+msgid "Group"
+msgstr "קבוצה"
+
+msgid "Subgroup"
+msgstr "תת-קבוצה"
+
+#. Notebook
+msgid "Settings"
+msgstr "הגדרות"
+
+msgid "Loading Advanced Search"
+msgstr "טוען חיפוש מתקדם"
+
+msgid "Add a New Profile"
+msgstr "הוספת פרופיל חדש"
+
+msgid "Remove This Profile"
+msgstr "הסרת פרופיל זה"
+
+msgid "Default"
+msgstr "ברירת מחדל"
+
+msgid "Profile"
+msgstr "פרופיל"
+
+msgid "Import"
+msgstr "ייבוא"
+
+msgid "Import a CompizConfig Profile"
+msgstr "ייבוא פרופיל CompizConfig"
+
+msgid "Import as..."
+msgstr "ייבוא כ..."
+
+msgid "Import a CompizConfig Profile as a new profile"
+msgstr "ייבוא פרופיל CompizConfig כפרופיל חדש"
+
+msgid "Export"
+msgstr "ייצוא"
+
+msgid "Export your CompizConfig Profile"
+msgstr "ייצוא פרופיל ה-CompizConfig שלך"
+
+msgid "Reset to defaults"
+msgstr "חזרה לברירת המחדל"
+
+msgid "Reset your CompizConfig Profile to the global defaults"
+msgstr "החזרת פרופיל ה-CompizConfig שלך לברירת המחדל הגלובלית"
+
+msgid "Backend"
+msgstr "תשתית"
+
+msgid "Integration"
+msgstr "השתלבות"
+
+msgid "Enable integration into the desktop environment"
+msgstr "השתלב בסביבת שולחן העבודה"
+
+msgid "Profiles (*.profile)"
+msgstr "פרופילים (*.profile)"
+
+msgid "All files"
+msgstr "כל הקבצים"
+
+msgid "Save file.."
+msgstr "שמירת קובץ..."
+
+msgid "Do you want to skip default option values while exporting your profile?"
+msgstr "האם ברצונך לדלג על אפשרויות שנקבעו לברירת המחדל בעת ייצוא הפרופיל שלך?"
+
+msgid "Open file.."
+msgstr "פתיחת קובץ..."
+
+msgid "Enter a profile name"
+msgstr "הזן שם פרופיל"
+
+msgid "Please enter a name for the new profile:"
+msgstr "נא להזין את שם הפרופיל החדש:"
+
+msgid "Backend not found."
+msgstr "תשתית לא נמצאה."
+
+#. Auto sort
+msgid "Automatic plugin sorting"
+msgstr "הסדרת התקנים אוטומטית."
+
+msgid "Disabled Plugins"
+msgstr "התקנים מנוטרלים"
+
+msgid "Enabled Plugins"
+msgstr "התקנים פועלים"
+
+msgid ""
+"Do you really want to disable automatic plugin sorting? This will also "
+"disable conflict handling. You should only do this if you know what you are "
+"doing."
+msgstr ""
+"האם ברצונך לנטרל את הסדרת ההתקנים האוטומטית? הדבר ינטרל גם את הטיפול "
+"בהתנגשויות. אין לעשות זאת ללא הבנת ההשלכות."
+
+msgid "Add plugin"
+msgstr "הוספת התקן"
+
+msgid "Plugin name:"
+msgstr "שם ההתקן:"
+
+msgid "Insert plugin name"
+msgstr "הזן שם התקן"
+
+msgid "Preferences"
+msgstr "העדפות"
+
+msgid ""
+"Configure the backend, profile and other internal settings used by the "
+"Compiz Configuration System."
+msgstr ""
+"עריכת תצורת התשתית, הפרופיל וההגדרות הפנימיות של מערכת התצורה של קומפיז."
+
+msgid "About"
+msgstr "אודות"
+
+msgid "About CCSM..."
+msgstr "אודות CCSM..."
+
+msgid "Profile & Backend"
+msgstr "פרופיל ותשתית"
+
+msgid "Plugin List"
+msgstr "רשימת התקנים"
+
+msgid "Filter your Plugin list"
+msgstr "סנן את רשימת ההתקנים"
+
+#, python-format
+msgid "Screen %i"
+msgstr "מסך %i"
+
+msgid "Screen"
+msgstr "מסך"
+
+msgid "Category"
+msgstr "קבוצה"
+
+msgid "Advanced Search"
+msgstr "חיפוש מתקדם"
+
+#, python-format
+msgid ""
+"<span size=\"large\"><b>No matches found.</b> </span><span>\n"
+"\n"
+" Your filter \"<b>%s</b>\" does not match any items.</span>"
+msgstr ""
+"<span size=\"large\"><b>לא נמצאו התאמות.</b> </span><span>\n"
+"\n"
+" המסנן \"<b>%s</b>\" אינו תואם לאף אחד מהפריטים.</span>"
+
+msgid "Configure Compiz with CompizConfig"
+msgstr "ערוך את תצורת קומפיז בעזרת CompizConfig"
+
+#~ msgid "Computing possible conflicts, please wait"
+#~ msgstr "בודק התנגשויות אפשריות, נא להמתין"
