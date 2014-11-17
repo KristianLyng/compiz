@@ -189,7 +189,9 @@ if test -z "$XSLTPROC"; then
   AC_MSG_ERROR([Couldn't find xsltproc])
 fi
 
+AM_PATH_PYTHON
 PKG_CHECK_MODULES(LIBPNG, libpng)
+PKG_CHECK_MODULES(PYTHON, python)
 PKG_CHECK_MODULES(LIBXML2, "libxml-2.0", [have_xml2=yes],[have_xml2=no])
 PKG_CHECK_MODULES(GLIB, glib-2.0,[have_glib=yes],[have_glib=no])
 PKG_CHECK_MODULES(GCONF, gconf-2.0, [have_gconf2=yes],[have_gconf2=no])
@@ -359,6 +361,13 @@ if test "x$use_protobuf" = "xyes"; then
 fi
 AM_CONDITIONAL([USE_PROTOBUF], [test "x$use_protobuf" = "xyes"])
 AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
+
+
+AC_CHECK_PROGS(PYREX, pyrexc)
+if test -z "$PYREX"
+then
+	AC_MSG_ERROR([Couldn't find Pyrex])
+fi
 
 
 if test "x$use_gtk" = "xyes"; then
@@ -705,6 +714,8 @@ compizconfig/libcompizconfig/plugin/Makefile
 compizconfig/libcompizconfig/include/Makefile
 compizconfig/libcompizconfig/metadata/Makefile
 compizconfig/libcompizconfig/config/Makefile
+compizconfig/compizconfig-python/Makefile
+compizconfig/compizconfig-python/src/Makefile
 ])
 
 echo ""
