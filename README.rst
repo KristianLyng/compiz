@@ -36,35 +36,61 @@ OPTIONS
 --display DISPLAY
 	The X display to run at. E.g. ``--display :0.0``
 
---replace
-        If an other window manager is running, try to replace it. This also
-        works if compiz is already running and you wish to restart.
+--bg-image PNG
+        Default background image if none is set.
 
 --refresh-rate RATE
         Set the screen refresh rate to RATE. Useful if you are using
         multiple monitors with different refresh rates.
-
---no-detection
-        Do not attempt to detect screen sizes and refresh rates. Will most
-        likely result in a semi-broken desktop until you can configure it
-        manually.
-
---version
-        Print the compiz version.
-
---help
-        Print basic usage.
 
 --fast-filter
         Force using a fast filter. This will give a visually jagged, but
         smooth experience. Does not significantly impact performance in most
         cases.
 
+--indirect-rendering
+        Force indirect rendering, even when direct rendering is seemingly
+        possible.
+
+--no-detection
+        Do not attempt to detect screen sizes and refresh rates. Will most
+        likely result in a semi-broken desktop until you can configure it
+        manually.
+
+--keep-desktop-hints
+        Use desktop hints to determine amount of desktops and which one is
+        the current one at startup.
+
+--lose-bindings
+        Don't use strict binding for textures.
+
+--replace
+        If an other window manager is running, try to replace it. This also
+        works if compiz is already running and you wish to restart.
+
+--sm-disable
+        Disable session management.
+
+--sm-client-id ID
+        Session ID.
+
 --only-current-screen
         Only start compiz on the current X Screen. Most setups today only
         use a single X screen, even for multiple monitors. Multiple X
         screens are mostly obsoleted and has the major drawback of not
         allowing you to move windows between one screen and an other.
+
+--use-root-window
+        Don't use the compositing overlay window (cow) for the root window.
+
+--debug
+        Enable certain debug-features (like forcing sync).
+
+--version
+        Print the compiz version.
+
+--help
+        Print basic usage.
 
 [PLUGIN]
         One or more plugin to load. You most likely want to load a
