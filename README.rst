@@ -198,6 +198,6 @@ COPYRIGHT
 =========
 
 This document is licensed under the MIT license, same as most of Compiz. See
-LICENSE for details.
+COPYING for details.
 
 * Copyright 2014 Kristian Lyngstol <kristian@bohemians.org>
