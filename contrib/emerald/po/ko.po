@@ -1,0 +1,793 @@
+# Emerald Window Decorator.
+# Copyright (C) 2006
+# This file is distributed under the same license as the Emerald package.
+# cyberorg <cyberorg@cyberorg.info>, 2006.
+# Original translator: atie H. <atie.at.matrix@gmail.com>\n"
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: http://bugs.beryl-project.org\n"
+"POT-Creation-Date: 2009-03-24 08:14+0100\n"
+"PO-Revision-Date: 2007-12-24 12:08+0100\n"
+"Last-Translator: Jeong Seungwon <jeongseungwon@hanmail.net>\n"
+"Language-Team: beryl-project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.0.2\n"
+
+msgid "Close Window"
+msgstr "창 닫기"
+
+msgid "Maximize Window"
+msgstr "창 최대화"
+
+msgid "Restore Window"
+msgstr "창 되돌리기"
+
+msgid "Minimize Window"
+msgstr "창 최소화"
+
+msgid "Context Help"
+msgstr "문맥 도움말"
+
+msgid "Window Menu"
+msgstr "창 메뉴"
+
+msgid "Shade Window"
+msgstr "창 말아올리기"
+
+msgid "UnShade Window"
+msgstr "창 말아올리기 해제"
+
+msgid "Set Above"
+msgstr "항상 위에"
+
+msgid "UnSet Above"
+msgstr "항상 위에 해제"
+
+msgid "Stick Window"
+msgstr "끈적이 창"
+
+msgid "UnStick Window"
+msgstr "끈적이 창 해제"
+
+#, c-format
+msgid "The window \"%s\" is not responding."
+msgstr "창 \"%s\"(은)는 응답이 없습니다."
+
+msgid ""
+"Forcing this application to quit will cause you to lose any unsaved changes."
+msgstr ""
+"이 프로그램을 강제로 끝내면, 저장되지 않은 변경 내용들은 잃어 버리게 됩니다."
+
+msgid "_Force Quit"
+msgstr "강제로 끝내기(_F)"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>버전</b> %s\n"
+"<b>만든이</b> %s\n"
+"<b>함께 사용하면 좋은 테마</b> %s\n"
+"</small>"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b> (System Theme)\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b> (시스템 테마)\n"
+"<i>%s</i>\n"
+"<small><b>버전</b> %s\n"
+"<b>만든이</b> %s\n"
+"<b>함께 사용하면 좋은 테마</b> %s\n"
+"</small>"
+
+msgid "Unknown"
+msgstr "알 수 없음"
+
+msgid "Whatever (no hint)"
+msgstr "무엇이든 (힌트 없음)"
+
+msgid "No Description"
+msgstr "설명 없음"
+
+msgid "Invalid Theme Name"
+msgstr "올바르지 않은 테마 이름"
+
+msgid "Invalid theme file.  Does not end in .emerald"
+msgstr "올바르지 않은 테마 파일. .emerald 확장자로 끝나지 않음"
+
+msgid ""
+"Invalid Theme Name\n"
+"Could Not Export"
+msgstr ""
+"올바르지 않은 테마 이름\n"
+"내보낼 수 없습니다."
+
+msgid ""
+"Invalid File Name\n"
+"Must End in .emerald"
+msgstr ""
+"올바르지 않은 파일 이름\n"
+"반드시 .emerald 확장자여야 합니다."
+
+msgid "Error calling tar."
+msgstr "tar 명령 호출 중 에러."
+
+msgid "Theme Exported"
+msgstr "테마 내보내짐"
+
+msgid ""
+"Can't save over system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"시스템 테마로 저장할 수 없습니다.\n"
+"(아니면 테마 이름을 입력하지 않았습니다.)"
+
+#, c-format
+msgid "Overwrite Theme %s?"
+msgstr "테마 %s(을)를 덮어씁니까?"
+
+msgid "Couldn't Write Theme"
+msgstr "테마를 저장할 수 없습니다."
+
+msgid "Couldn't Form Theme"
+msgstr "테마를 생성할 수 없습니다."
+
+msgid "Theme Saved"
+msgstr "테마 저장됨"
+
+msgid ""
+"Can't delete system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"시스템 테마는 삭제할 수 없습니다.\n"
+"(아니면 테마 이름을 입력하지 않았습니다.)"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "정말로 %s(을)를 삭제하시겠습니까?"
+
+msgid "Theme deleted"
+msgstr "테마 삭제됨"
+
+msgid "No such theme to delete"
+msgstr "그런 테마 없음"
+
+msgid "Use Pixmap Buttons"
+msgstr "버튼 픽스맵 사용"
+
+msgid "Use Button Halo/Glow"
+msgstr "버튼 후광/발광 효과"
+
+msgid "Use Button Halo/Glow For Inactive Windows"
+msgstr "비활성화된  창에 대한 버튼 후광/발광 효과"
+
+msgid "Button Pixmaps"
+msgstr "버튼 픽스맵"
+
+msgid "Button"
+msgstr "버튼"
+
+msgid "File"
+msgstr "파일"
+
+msgid "Preview"
+msgstr "미리보기"
+
+msgid "Clear"
+msgstr "비우기"
+
+msgid "Colors"
+msgstr "색상"
+
+msgid "Text Fill"
+msgstr "글자 채우기"
+
+msgid "Text Outline"
+msgstr "글자 외곽선"
+
+msgid "Button Fill"
+msgstr "버튼 채우기"
+
+msgid "Button Outline"
+msgstr "버튼 외곽선"
+
+msgid "Color"
+msgstr "색상"
+
+msgid "Opacity"
+msgstr "투명도"
+
+msgid "Radius"
+msgstr "반경"
+
+msgid "X Offset"
+msgstr "가로 여백"
+
+msgid "Y Offset"
+msgstr "세로 여백"
+
+msgid "Title-Text Font"
+msgstr "창 제목 글꼴"
+
+msgid "Minimum Title-bar Height"
+msgstr "제목 표시줄 최소 높이"
+
+msgid "Vertical Button Offset"
+msgstr "버튼 세로 여백"
+
+msgid "Horizontal Button Offset"
+msgstr "버튼 가로 여백"
+
+msgid "Title-bar Object Layout"
+msgstr "제목 표시줄 객체 배치"
+
+msgid ""
+"Use colons to separate left, center, and right.\n"
+"Anything after a third colon is ignored.\n"
+"C=Close, N=Minimize, X/R=Restore\n"
+"I=Icon, T=Title, H=Help, M=Menu\n"
+"S=Shade, U/A=On Top(Up/Above)\n"
+"Y=Sticky, (#)=# pixels space, ex: (5)\n"
+msgstr ""
+"왼쪽, 가운데, 오른쪽을 구분하기 위해 콜론 사용.\n"
+"어느 것이든 세번째 콜론 다음은 무시됨.\n"
+"C=닫기, N=최소, X/R=되돌리기\n"
+"I=아이콘, T=창이름, H=도움말, M=메뉴\n"
+"S=말아넣기, U/A=항상 위에\n"
+"Y=끈적이, (#)=# 픽셀 간격, 예: (5)\n"
+
+msgid "Export Theme..."
+msgstr "테마 내보내기..."
+
+msgid "Name:"
+msgstr "이름:"
+
+msgid "Untitled Theme"
+msgstr "이름없는 테마"
+
+msgid "Export..."
+msgstr "내보내기..."
+
+msgid "Creator"
+msgstr "만든이"
+
+msgid "Description"
+msgstr "설명"
+
+msgid "Theme Version"
+msgstr "테마 버전"
+
+msgid "Suggested Widget Theme"
+msgstr "제안하는 위젯 테마"
+
+msgid "Themer Version"
+msgstr "테마 도구 버전"
+
+msgid "Border"
+msgstr "테두리"
+
+msgid "Size"
+msgstr "크기"
+
+msgid "Top"
+msgstr "위"
+
+msgid "Bottom"
+msgstr "아래"
+
+msgid "Left"
+msgstr "왼쪽"
+
+msgid "Right"
+msgstr "오른쪽"
+
+msgid ""
+"Note, when changing these values,\n"
+"it is advised that you do something\n"
+"like change viewports, as this will\n"
+"cause the position of the 'event windows'\n"
+"to update properly, and thus make\n"
+"moving/resizing windows work properly.\n"
+"This also applies to when you change\n"
+"the title-bar height through either\n"
+"the titlebar-min-height slider\n"
+"or the titlebar font setting.\n"
+msgstr ""
+"주의, 이 값을 변경할 때는,\n"
+"작업 공간을 바꾸는 것과 같은\n"
+"동작을 수행하는 것이 좋습니다. 그러면\n"
+"이벤트가 일어나는 창의 위치를 제대로\n"
+"갱신하게 되고, 그래서 창의 이동과\n"
+"크기 조절이 올바르게 이루어집니다.\n"
+"이것은 또한 제목 표시줄 최소 높이 슬라이더와\n"
+"제목 표시줄 글꼴 설정과\n"
+"제목 표시줄의 높이를 변경할 때도\n"
+"적용됩니다.\n"
+
+msgid "Shadows"
+msgstr "그림자"
+
+msgid "Frame Borders"
+msgstr "프레임 테두리"
+
+msgid "Active Window"
+msgstr "활성화된 창"
+
+msgid "Inactive Window"
+msgstr "활성화되지 않은 창"
+
+msgid "Title Bar"
+msgstr "제목 표시줄"
+
+msgid "Screenshot"
+msgstr "스크린샷"
+
+msgid "Images"
+msgstr "이미지"
+
+msgid "Information"
+msgstr "정보"
+
+msgid ""
+"NOTE - These settings are not part of themes, they are stored separately, "
+"and control various UI preferences for Emerald."
+msgstr ""
+"주의 - 이 설정들은 테마의 일부분이 아니라서 따로 저장됩니다. 에머랄드의 다양"
+"한 인터페이스 환경 설정을 제어합니다."
+
+msgid "Show Tooltips for Buttons"
+msgstr "버튼에 대한 풍선 도움말 보이기"
+
+msgid "Use Decoration Cropping"
+msgstr "장식 잘라내기 사용"
+
+msgid "Use Button Fade"
+msgstr "버튼 페이드 효과"
+
+msgid "Use Button Fade Pulse"
+msgstr "버튼 깜빡이기 효과"
+
+msgid "Button Fade Total Duration"
+msgstr "버튼 페이드 총 지속 시간"
+
+msgid "Button Fade Step Duration"
+msgstr "버튼 페이드 단계 지속 시간"
+
+msgid "Button Pulse Wait Duration"
+msgstr "버튼 깜빡이기 기다림 지속 시간"
+
+msgid "Button Pulse Min Opacity %"
+msgstr "버튼 깜빡이기 최소 투명도 %"
+
+msgid "Titlebar Double-Click Action"
+msgstr "제목 표시줄 더블 클릭 동작"
+
+msgid "Button Hover Cursor"
+msgstr "버튼 위에 커서를 올렸을 때 모양"
+
+msgid "Normal"
+msgstr "보통"
+
+msgid "Pointing Finger"
+msgstr "손가락 모양"
+
+msgid "Compiz Decoration Blur Type"
+msgstr "컴피즈 장식 블러 형태"
+
+msgid "None"
+msgstr "없음"
+
+msgid "Titlebar only"
+msgstr "제목 표시줄만"
+
+msgid "All decoration"
+msgstr "모든 장식"
+
+msgid "Frame Engine"
+msgstr "프레임 엔진"
+
+msgid "Buttons"
+msgstr "버튼"
+
+msgid "Frame/Shadows"
+msgstr "프레임/그림자"
+
+msgid "Titlebar"
+msgstr "제목 표시줄"
+
+msgid "Theme"
+msgstr "테마"
+
+msgid "Edit"
+msgstr "편집"
+
+msgid "Import Theme..."
+msgstr "테마 들여오기..."
+
+msgid "Search:"
+msgstr "검색:"
+
+msgid "Fetching Themes"
+msgstr "테마 가져오기"
+
+msgid ""
+"Fetching themes... \n"
+"This may take time depending on \n"
+"internet connection speed."
+msgstr ""
+"테마 가져오는 중... \n"
+"인터넷 연결 속도에 따라 \n"
+"시간이 걸릴 수 있습니다."
+
+msgid ""
+"Here are the repositories that you can fetch Emerald Themes from. \n"
+"Fetching themes would fetch and import themes from SVN repositories \n"
+"You need Subversion package installed to use this feature."
+msgstr ""
+"여기에 에머랄드 테마를 가져올 수 있는 저장소가 있습니다. \n"
+"테마 가져오기는 SVN 저장소에서 테마를 가져와서 들여오기를 합니다. \n"
+"이 기능을 사용하려면 Subversion 꾸러미를 설치하여야 합니다."
+
+msgid ""
+"This repository contains GPL'd themes that can be used under \n"
+"the terms of GNU GPL licence v2.0 or later \n"
+msgstr ""
+"이 저장소는 GNU GPL 사용허가 v2.0 또는 그 이상에서 \n"
+"사용할 수 있는 GPL 테마를 가지고 있습니다. \n"
+
+msgid ""
+"This repository contains non-GPL'd themes. They might infringe \n"
+"copyrights and patent laws in some countries."
+msgstr ""
+"이 저장소는 GPL이 아닌 테마를 가지고 있습니다. \n"
+"나라에 따라 저작권과 특허법에 저촉될 수 있습니다."
+
+msgid ""
+"To activate Non-GPL repository please run the following in shell and accept "
+"the server certificate permanently: \n"
+"svn ls https://svn.generation.no/emerald-themes."
+msgstr ""
+"GPL이 아닌 저장소를 사용하려면 터미널에서 다음 명령을 사용하여 그 저장소 서버"
+"의 인증서를 받아들입니다. \n"
+"svn·ls·https://svn.generation.no/emerald-themes"
+
+msgid "Themes"
+msgstr "테마"
+
+msgid "Edit Themes"
+msgstr "테마 편집"
+
+msgid "Themes Settings"
+msgstr "테마 설정"
+
+msgid "Emerald Settings"
+msgstr "에머랄드 설정"
+
+msgid ""
+"Select\n"
+"Engine"
+msgstr ""
+"엔진\n"
+"선택"
+
+msgid "Based on original gnome-window-decorator"
+msgstr "그놈 기본 창 테두리에 기반"
+
+msgid "Round Top Left Corner"
+msgstr "왼쪽 위 구석을 둥글게 함"
+
+msgid "Round Top Right Corner"
+msgstr "오른쪽 위 구석을 둥글게 함"
+
+msgid "Round Bottom Left Corner"
+msgstr "왼쪽 아래 구석을 둥글게함"
+
+msgid "Round Bottom Right Corner"
+msgstr "오른쪽 아래 구석을 둥글게 함"
+
+msgid "Rounding Radius"
+msgstr "둥근 반경"
+
+msgid "Outer Frame Blend"
+msgstr "프레임 외부 혼합"
+
+msgid "Inner Frame Blend"
+msgstr "프레임 내부 혼합"
+
+msgid "Outer Titlebar Blend"
+msgstr "제목 표시줄 외부 혼합"
+
+msgid "Inner Titlebar Blend"
+msgstr "제목 표시줄 내부 혼합"
+
+msgid "Titlebar Separator"
+msgstr "제목 표시줄 구분자"
+
+msgid "Frame Outline"
+msgstr "프레임 외곽선"
+
+msgid "Frame Highlight"
+msgstr "프레임 강조"
+
+msgid "Frame Shadow"
+msgstr "프레임 그림자"
+
+msgid "Contents Outline"
+msgstr "내용 외곽선"
+
+msgid "Contents Highlight"
+msgstr "내용 부분 강조"
+
+msgid "Contents Shadow"
+msgstr "내용 부분 그림자"
+
+msgid "Frame"
+msgstr "프레임"
+
+msgid "Based on original legacy"
+msgstr "그놈 기본 창 테두리에 기반"
+
+msgid "Designed to be vista-ish in nature"
+msgstr "기본적으로 비스타 테마처럼 디자인됨"
+
+msgid "Base"
+msgstr "기본"
+
+msgid "Glow"
+msgstr "발광 효과"
+
+msgid "Sides"
+msgstr "측면"
+
+msgid "Everything done with customizable pixmaps!"
+msgstr "모든 것이 변경 가능한 픽스맵으로 이루어짐!"
+
+msgid "Top Rounding Radius"
+msgstr "둥근 반경(상단)"
+
+msgid "Bottom Rounding Radius"
+msgstr "둥근 반경(하단)"
+
+#. Style : Use Tiled or Scaled pixmaps
+msgid "Scaled"
+msgstr "스케일"
+
+msgid "Not adjustable"
+msgstr "조절할 수 없음"
+
+msgid "Same as Active"
+msgstr "활성화된 창과 같음"
+
+msgid "Pixmap"
+msgstr "픽스맵"
+
+msgid "Tiled/Scaled"
+msgstr "타일/스케일"
+
+msgid "Width Override"
+msgstr "넓이 초과"
+
+msgid "Height Override"
+msgstr "높이 초과"
+
+msgid "Glassy effects for your windows"
+msgstr "유리창 효과"
+
+msgid "Glow Height"
+msgstr "발광 높이"
+
+msgid "Frame Base Color"
+msgstr "프레임 기본 색상"
+
+msgid "Upper Titlebar Glow"
+msgstr "제목 표시줄 위쪽 발광 효과"
+
+msgid "Upper Glass Glow"
+msgstr "위쪽 유리 발광 효과"
+
+msgid "Lower Glass Glow"
+msgstr "아래쪽 유리 발광 효과"
+
+msgid "Middle Glass Glow"
+msgstr "가운데 유리 발광 효과"
+
+msgid "Outer Glass Glow"
+msgstr "바깥쪽 유리 발광 효과"
+
+msgid "Multiple gradients with somewhat glassy features too"
+msgstr "약간의 유리창 효과와 다수의 그래디언트"
+
+msgid "Left Blend"
+msgstr "왼쪽 혼합"
+
+msgid "Middle Blend"
+msgstr "가운데 혼합"
+
+msgid "Right Blend"
+msgstr "오른쪽 혼합"
+
+msgid "Contrast"
+msgstr "대비"
+
+msgid "(Color)"
+msgstr "(색상)"
+
+msgid "(Alpha)"
+msgstr "(투명도)"
+
+msgid "Notch"
+msgstr "홈"
+
+msgid "Position"
+msgstr "위치"
+
+msgid "Curve"
+msgstr "커브"
+
+msgid "Offset"
+msgstr "여백"
+
+msgid "Use Glow"
+msgstr "발광 효과"
+
+msgid "Title Glow"
+msgstr "창 제목 발광"
+
+msgid "Evolved from the legacy engine"
+msgstr "레거시 엔진에서 진화됨"
+
+msgid "Border Gap"
+msgstr "테두리 간격"
+
+msgid "Show Border when maximised?"
+msgstr "최대화되었을 때 테두리를 보입니까?"
+
+msgid "Show when minimised?"
+msgstr "최소화되었을 때 보입니까?"
+
+msgid "Minimised Border Size"
+msgstr "최소화된 테두리 크기"
+
+msgid "Enable Left Bar Dip?"
+msgstr "왼쪽 막대 함몰을 사용합니까?"
+
+msgid "Left Bar Radius"
+msgstr "왼쪽 막대 반경"
+
+msgid "Enable Lower Bulge? (Useless at the moment, but will be used soon)"
+msgstr ""
+"아래쪽 부풀리기를 사용합니까? (현재는 사용하지 못하지만, 곧 사용할 수 있게됨)"
+
+msgid "Top Corner Offset (%)"
+msgstr "위 구석 여백 (%)"
+
+msgid "Enable Title Bar Dip?"
+msgstr "제목 표시줄 함몰을 사용합니까?"
+
+msgid "Enable Button Part?"
+msgstr "버튼 부분을 사용합니까?"
+
+msgid "Title Part Width"
+msgstr "창 제목 부분 넓이"
+
+msgid "Button Part Width)"
+msgstr "버튼 부분 넓이"
+
+msgid "Dip Corners Radius)"
+msgstr "함몰 구석 반경"
+
+msgid "Round Inside Corners As well?"
+msgstr "내부 구석들도 같이 둥글게 합니까?"
+
+msgid "Enable Different Maximised Colors?"
+msgstr "다른 최대화된 색상을 사용합니까?"
+
+msgid "Turn Off repeating gradients when maximised?"
+msgstr "최대화되었을 때 색 변화를 반복하는 것을 끕니까?"
+
+msgid "Round Top Left Corner?"
+msgstr "왼쪽 위 구석을 둥글게 합니까?"
+
+msgid "Frame Rounding Radius"
+msgstr "프레임 둥근 반경"
+
+msgid "Titlebar Rounding Radius"
+msgstr "제목 표시줄 둥근 반경"
+
+msgid "Repeat Gradient?"
+msgstr "그레디언트를 반복합니까?"
+
+msgid "Vertical Repeat?"
+msgstr "세로로 반복합니까?"
+
+msgid "Diagonal Repeat?"
+msgstr "대각선으로 반복합니까?"
+
+msgid "Repeat Frequency"
+msgstr "반복 횟수"
+
+#. /////////////////////
+msgid "Enable Title Part Pixmap?"
+msgstr "창 제목 부분 픽스맵을 사용합니까?"
+
+msgid "Repeat Title Part Pixmap?"
+msgstr "창 제목 부분 픽스맵을 반복합니까?"
+
+msgid "Title Bar Part Pixmap"
+msgstr "제목 표시줄 부분 픽스맵"
+
+msgid "Choose Titlebar Part Pixmap"
+msgstr "제목 표시줄 부분 픽스맵 선택"
+
+#. /////////////////////////
+msgid "Enable Button Part Pixmap?"
+msgstr "버튼 부분 픽스맵을 사용합니까?"
+
+msgid "Repeat Button Part Pixmap?"
+msgstr "버튼 부분 픽스맵을 반복합니까?"
+
+msgid "Button Part Pixmap"
+msgstr "버튼 부분 픽스맵"
+
+msgid "Choose Button Part Pixmap"
+msgstr "버튼 부분 픽스맵 선택"
+
+#. /////////////////////////
+msgid "Enable Titlebar Pixmap?"
+msgstr "제목 표시줄 픽스맵을 사용합니까?"
+
+msgid "Repeat Titlebar Pixmap?"
+msgstr "제목 표시줄 픽스맵을 반복합니까?"
+
+msgid "Titlebar Pixmap"
+msgstr "제목 표시줄 픽스맵"
+
+msgid "Choose Titlebar Pixmap"
+msgstr "제목 표시줄 픽스맵 선택"
+
+msgid "Active/Inactive"
+msgstr "활성화/비활성화"
+
+msgid "Maximised"
+msgstr "최대화됨"
+
+msgid "Corners"
+msgstr "구석"
+
+msgid "Border Layout"
+msgstr "테두리 레이아웃"
+
+msgid "Left Bar"
+msgstr "왼쪽 막대"
+
+msgid "Pixmaps"
+msgstr "픽스맵"
+
+#~ msgid "Repositories"
+#~ msgstr "저장소"
+
+#~ msgid "Pixmaps (Active))"
+#~ msgstr "픽스맵 (활성화)"
+
+#~ msgid "Pixmaps (Inactive)"
+#~ msgstr "픽스맵 (비활성화)"
+
+#~ msgid "Theme Imported"
+#~ msgstr "테마 가져와짐"

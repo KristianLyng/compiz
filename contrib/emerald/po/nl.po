@@ -1,0 +1,784 @@
+# Emerald translation.
+# Copyright (C) 2006
+# This file is distributed under the same license as the emerald package.
+# cyberorg <cyberorg@cyberorg.info>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: http://bugs.beryl-project.org\n"
+"POT-Creation-Date: 2009-03-24 08:14+0100\n"
+"PO-Revision-Date: 2008-01-21 15:01+0100\n"
+"Last-Translator: Rick <mailmelist@gmail.com>\n"
+"Language-Team: Dutch <ixce@beryl-project.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.0.2\n"
+
+msgid "Close Window"
+msgstr "Sluit venster"
+
+msgid "Maximize Window"
+msgstr "Maximaliseren venster"
+
+msgid "Restore Window"
+msgstr "Herstel venster"
+
+msgid "Minimize Window"
+msgstr "Minimaliseren venster"
+
+msgid "Context Help"
+msgstr "Context hulp"
+
+msgid "Window Menu"
+msgstr "Venster menu"
+
+msgid "Shade Window"
+msgstr "Venster oprollen"
+
+msgid "UnShade Window"
+msgstr "Venster afrollen"
+
+msgid "Set Above"
+msgstr "Plaats bovenaan"
+
+msgid "UnSet Above"
+msgstr "Geen plaats bovenaan"
+
+msgid "Stick Window"
+msgstr "Venster vastzetten"
+
+msgid "UnStick Window"
+msgstr "Venster niet vastzetten"
+
+#, c-format
+msgid "The window \"%s\" is not responding."
+msgstr "Het venster \"%s\" reageert niet."
+
+msgid ""
+"Forcing this application to quit will cause you to lose any unsaved changes."
+msgstr ""
+"Dit programma geforceerd afsluiten zal tot gevolg hebben dat alle niet "
+"opgeslagen wijzigingen verloren gaan."
+
+msgid "_Force Quit"
+msgstr "_Forceer afsluiten"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>Versie</b> %s\n"
+"<b>Gecreerd door</b> %s\n"
+"<b>Gebruik met</b> %s\n"
+"</small>"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b> (System Theme)\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b> (Systeem Thema) \n"
+"<i>%s</i>\n"
+"<small><b>Versie</b> %s\n"
+"<b>Gecreëerd door</b> %s\n"
+"<b>Gebruik met</b> %s\n"
+"</small>"
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "Whatever (no hint)"
+msgstr "Wat dan ook (geen hint)"
+
+msgid "No Description"
+msgstr "Geen beschrijving"
+
+msgid "Invalid Theme Name"
+msgstr "Ongeldige thema naam"
+
+msgid "Invalid theme file.  Does not end in .emerald"
+msgstr "Ongeldig thema bestand. Eindigt niet op .emerald"
+
+msgid ""
+"Invalid Theme Name\n"
+"Could Not Export"
+msgstr ""
+"Ongeldige thema naam\n"
+" Kon niet exporteren"
+
+msgid ""
+"Invalid File Name\n"
+"Must End in .emerald"
+msgstr ""
+"Ongeldige bestands naam\n"
+"Moet eindigen op .emerald"
+
+msgid "Error calling tar."
+msgstr "Fout met aanroepen van tar"
+
+msgid "Theme Exported"
+msgstr "Thema geëxporteerd"
+
+msgid ""
+"Can't save over system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"Kan niet opslaan over systeem thema's\n"
+" (of je vergat een naam op te geven)"
+
+#, c-format
+msgid "Overwrite Theme %s?"
+msgstr "Thema %s overschrijven?"
+
+msgid "Couldn't Write Theme"
+msgstr "Kon thema niet wegschrijven"
+
+msgid "Couldn't Form Theme"
+msgstr "Kon thema niet vormen"
+
+msgid "Theme Saved"
+msgstr "Thema opgeslagen"
+
+msgid ""
+"Can't delete system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"Kan geen systeem thema's verwijderen\n"
+" (of je vergat om een naam op te geven)"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Weet je zeker dat je %s wilt verwijderen?"
+
+msgid "Theme deleted"
+msgstr "Thema gewist"
+
+msgid "No such theme to delete"
+msgstr "Geen thema om te wissen"
+
+msgid "Use Pixmap Buttons"
+msgstr "Gebruik pixmap knoppen"
+
+msgid "Use Button Halo/Glow"
+msgstr "Gebruik knop Halo/Glow"
+
+msgid "Use Button Halo/Glow For Inactive Windows"
+msgstr "Gebruik knop Halo/Glow voor inactieve vensters"
+
+msgid "Button Pixmaps"
+msgstr "Knop pixmaps"
+
+msgid "Button"
+msgstr "Knop"
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "Preview"
+msgstr "Voorbeeldweergave"
+
+msgid "Clear"
+msgstr "Wissen"
+
+msgid "Colors"
+msgstr "Kleuren"
+
+msgid "Text Fill"
+msgstr "Tekst opvulling"
+
+msgid "Text Outline"
+msgstr "Text omtrek"
+
+msgid "Button Fill"
+msgstr "Knop opvulling"
+
+msgid "Button Outline"
+msgstr "Knop omtrek"
+
+msgid "Color"
+msgstr "Kleur"
+
+msgid "Opacity"
+msgstr "Ondoorzichtigheid"
+
+msgid "Radius"
+msgstr "Radius"
+
+msgid "X Offset"
+msgstr "X Offset"
+
+msgid "Y Offset"
+msgstr "Y Offset"
+
+msgid "Title-Text Font"
+msgstr "Titel tekst font"
+
+msgid "Minimum Title-bar Height"
+msgstr "Minimum titel balk hoogte"
+
+msgid "Vertical Button Offset"
+msgstr "Verticale Knop offset"
+
+msgid "Horizontal Button Offset"
+msgstr "Horizontale Knop offset"
+
+msgid "Title-bar Object Layout"
+msgstr "Titel balk object layout"
+
+msgid ""
+"Use colons to separate left, center, and right.\n"
+"Anything after a third colon is ignored.\n"
+"C=Close, N=Minimize, X/R=Restore\n"
+"I=Icon, T=Title, H=Help, M=Menu\n"
+"S=Shade, U/A=On Top(Up/Above)\n"
+"Y=Sticky, (#)=# pixels space, ex: (5)\n"
+msgstr ""
+"Gebuik dubbele punten om onderscheid te maken tussen links, midden en "
+"rechts\n"
+" Alles na de derde dubbele punt wordt genegeerd.\n"
+"C=Sluiten, N=Minimaliseren, X/R=herstellen,\n"
+" S=Oprollen, U/A=Bovenaan(UP/Above0\n"
+" Y=Sticky, (#)=# pixels ruimte, bijv.: (5)\n"
+
+msgid "Export Theme..."
+msgstr "Exporteer thema..."
+
+msgid "Name:"
+msgstr "Naam:"
+
+msgid "Untitled Theme"
+msgstr "Naamloos thema"
+
+msgid "Export..."
+msgstr "Exporteren..."
+
+msgid "Creator"
+msgstr "Maker"
+
+msgid "Description"
+msgstr "Beschrijving"
+
+msgid "Theme Version"
+msgstr "Thema versie"
+
+msgid "Suggested Widget Theme"
+msgstr "Suggestie voor Widget thema"
+
+msgid "Themer Version"
+msgstr "Themer Versie"
+
+msgid "Border"
+msgstr "Omranding"
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Top"
+msgstr "Top"
+
+msgid "Bottom"
+msgstr "Onderkant"
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid ""
+"Note, when changing these values,\n"
+"it is advised that you do something\n"
+"like change viewports, as this will\n"
+"cause the position of the 'event windows'\n"
+"to update properly, and thus make\n"
+"moving/resizing windows work properly.\n"
+"This also applies to when you change\n"
+"the title-bar height through either\n"
+"the titlebar-min-height slider\n"
+"or the titlebar font setting.\n"
+msgstr ""
+"Notitie, als deze waarden worden veranderd is het\n"
+"aangeraden dat je iets doet om bijvoorbeeld \n"
+"viewports te veranderen omdat zo de positie\n"
+"van de 'gebeurtenis vensters' op de juiste\n"
+"manier herladen wordt. Zodoende werkt \n"
+"venster vergroten en verplaatsen ook op\n"
+"de juiste manier. Dit is ook van toepassing\n"
+"als de titelbalk hoogte wordt aangepast\n"
+"met behulp van de titelbalk-min-hoogte schuif\n"
+"of de titelbalk fontgrootte instelling\n"
+
+msgid "Shadows"
+msgstr "Schaduwen"
+
+msgid "Frame Borders"
+msgstr "Frame randen"
+
+msgid "Active Window"
+msgstr "Active vensters"
+
+msgid "Inactive Window"
+msgstr "Inactieve vensters"
+
+msgid "Title Bar"
+msgstr "Titel Balk"
+
+msgid "Screenshot"
+msgstr "Schermafbeelding"
+
+msgid "Images"
+msgstr "Afbeeldingen"
+
+msgid "Information"
+msgstr "Informatie"
+
+msgid ""
+"NOTE - These settings are not part of themes, they are stored separately, "
+"and control various UI preferences for Emerald."
+msgstr ""
+"OPMERKING - Deze instellingen zijn geen deel van de thema's maar worden "
+"apart ervan opgeslagen. Ze bepalen diverse UI voorkeuren voor Emerald"
+
+msgid "Show Tooltips for Buttons"
+msgstr "Toon gereedschap tips voor knoppen"
+
+msgid "Use Decoration Cropping"
+msgstr "Gebruik Decoration Cropping"
+
+msgid "Use Button Fade"
+msgstr "Gebruik Knop Fade"
+
+msgid "Use Button Fade Pulse"
+msgstr "Gebruik Knop Fade-Pulse"
+
+msgid "Button Fade Total Duration"
+msgstr "Totale duur Knop Fading"
+
+msgid "Button Fade Step Duration"
+msgstr "Stap duur Knop Fading"
+
+msgid "Button Pulse Wait Duration"
+msgstr "Wachttijd Knop Pulse"
+
+msgid "Button Pulse Min Opacity %"
+msgstr "Minimale ondoorzichtigheid Knop Pulse %"
+
+msgid "Titlebar Double-Click Action"
+msgstr "Titelbalk Dubbelklik Actie"
+
+msgid "Button Hover Cursor"
+msgstr "Knop Zweef Cursor"
+
+msgid "Normal"
+msgstr "Normaal"
+
+msgid "Pointing Finger"
+msgstr "Wijzende Vinger"
+
+msgid "Compiz Decoration Blur Type"
+msgstr "Compiz decoratie Wazig type"
+
+msgid "None"
+msgstr "Geen"
+
+msgid "Titlebar only"
+msgstr "Aleen de titelbalk"
+
+msgid "All decoration"
+msgstr "Alle decoratie"
+
+msgid "Frame Engine"
+msgstr "Frame Engine"
+
+msgid "Buttons"
+msgstr "Knoppen"
+
+msgid "Frame/Shadows"
+msgstr "Frame/Schaduwen"
+
+msgid "Titlebar"
+msgstr "Titelbalk"
+
+msgid "Theme"
+msgstr "Thema"
+
+msgid "Edit"
+msgstr "Bewerken"
+
+msgid "Import Theme..."
+msgstr "Importeer thema..."
+
+msgid "Search:"
+msgstr "Zoeken:"
+
+msgid "Fetching Themes"
+msgstr "Verkrijgen van thema's"
+
+msgid ""
+"Fetching themes... \n"
+"This may take time depending on \n"
+"internet connection speed."
+msgstr ""
+"Verkrijgen van thema's...\n"
+"Dit kan even duren afhankelijk van de internet snelheid"
+
+msgid ""
+"Here are the repositories that you can fetch Emerald Themes from. \n"
+"Fetching themes would fetch and import themes from SVN repositories \n"
+"You need Subversion package installed to use this feature."
+msgstr ""
+"Hier zijn de repositories waar je Emerald thema's kunt krijgen\n"
+"Het verkrijgen van thema's houdt in het verkrijgen en importeren uit SVN "
+"repositories\n"
+"Het Subversion pakket dient geïnstalleerd te zijn voor deze mogelijkheid"
+
+msgid ""
+"This repository contains GPL'd themes that can be used under \n"
+"the terms of GNU GPL licence v2.0 or later \n"
+msgstr ""
+"Deze repository bevat GPL thema's die kunnen worden\n"
+"gebruikt onder de GNU GPL licentie v2.0 of nieuwer\n"
+
+msgid ""
+"This repository contains non-GPL'd themes. They might infringe \n"
+"copyrights and patent laws in some countries."
+msgstr ""
+"Deze repository bevat non-GPL thema's. Deze kunnen mogelijk\n"
+"inbreuk maken op copyright en patentwetten in sommige landen."
+
+msgid ""
+"To activate Non-GPL repository please run the following in shell and accept "
+"the server certificate permanently: \n"
+"svn ls https://svn.generation.no/emerald-themes."
+msgstr ""
+"Om de non-GPL repository te activeren moet je de volgende opdracht in een "
+"shell uitvoeren en het certificaat permanent accepteren:\n"
+"svn ls https//svn.generation.no/emerald-themes"
+
+msgid "Themes"
+msgstr "Thema's"
+
+msgid "Edit Themes"
+msgstr "Thema's bewerken"
+
+msgid "Themes Settings"
+msgstr "Thema instellingen"
+
+msgid "Emerald Settings"
+msgstr "Emerald instellingen"
+
+msgid ""
+"Select\n"
+"Engine"
+msgstr ""
+"Selecteer\n"
+"Engine"
+
+msgid "Based on original gnome-window-decorator"
+msgstr "Gebaseerd op originele gnome-window-decorator"
+
+msgid "Round Top Left Corner"
+msgstr "Ronde Linksboven Hoek"
+
+msgid "Round Top Right Corner"
+msgstr "Ronde Rechtsboven Hoek"
+
+msgid "Round Bottom Left Corner"
+msgstr "Ronde Linksonder Hoek"
+
+msgid "Round Bottom Right Corner"
+msgstr "Ronde Rechtsonder Hoek"
+
+msgid "Rounding Radius"
+msgstr "Rondings Radius"
+
+msgid "Outer Frame Blend"
+msgstr "Buitenste Frame Overgang"
+
+msgid "Inner Frame Blend"
+msgstr "Binnenste Frame Overgang"
+
+msgid "Outer Titlebar Blend"
+msgstr "Buitenste Titelbalk Overgang"
+
+msgid "Inner Titlebar Blend"
+msgstr "Binnenste Titelbalk Overgang"
+
+msgid "Titlebar Separator"
+msgstr "Titelbalk Scheidingslijn"
+
+msgid "Frame Outline"
+msgstr "Frame Omtrek"
+
+msgid "Frame Highlight"
+msgstr "Frame Highlight"
+
+msgid "Frame Shadow"
+msgstr "Frame Schaduw"
+
+msgid "Contents Outline"
+msgstr "Inhoud Omtrek"
+
+msgid "Contents Highlight"
+msgstr "Inhoud Highlight"
+
+msgid "Contents Shadow"
+msgstr "Inhoud Schaduw"
+
+msgid "Frame"
+msgstr "Frame"
+
+msgid "Based on original legacy"
+msgstr "Gebaseerd op de orginele legacy"
+
+msgid "Designed to be vista-ish in nature"
+msgstr "Ontworpen om Vista-achtig te zijn"
+
+msgid "Base"
+msgstr "Basis"
+
+msgid "Glow"
+msgstr "Gloeien"
+
+msgid "Sides"
+msgstr "Zijden"
+
+msgid "Everything done with customizable pixmaps!"
+msgstr "Alles gedaan met aanpasbare pixmaps!"
+
+msgid "Top Rounding Radius"
+msgstr "Bovenste Rondings Radius"
+
+msgid "Bottom Rounding Radius"
+msgstr "Onderste Rondings Radius"
+
+#. Style : Use Tiled or Scaled pixmaps
+msgid "Scaled"
+msgstr "Geschaald"
+
+msgid "Not adjustable"
+msgstr "Niet aanpasbaar"
+
+msgid "Same as Active"
+msgstr "Zelfde als Actief"
+
+msgid "Pixmap"
+msgstr "Pixmap"
+
+msgid "Tiled/Scaled"
+msgstr "Tegels/geschaald"
+
+msgid "Width Override"
+msgstr "Breedte Overschrijven"
+
+msgid "Height Override"
+msgstr "Hoogte Overschrijven"
+
+msgid "Glassy effects for your windows"
+msgstr "Glasachtige effecten voor je vensters"
+
+msgid "Glow Height"
+msgstr "Gloei Hoogte"
+
+msgid "Frame Base Color"
+msgstr "Frame Basis Kleur"
+
+msgid "Upper Titlebar Glow"
+msgstr "Bovenste Titelbalk Gloeien"
+
+msgid "Upper Glass Glow"
+msgstr "Bovenste Glas Gloeien"
+
+msgid "Lower Glass Glow"
+msgstr "Lagere Glas Gloeien"
+
+msgid "Middle Glass Glow"
+msgstr "Midden Glas Gloeien"
+
+msgid "Outer Glass Glow"
+msgstr "Buitenste Glas Gloeien"
+
+msgid "Multiple gradients with somewhat glassy features too"
+msgstr "Meerdere kleurgradaties met ook min of meer glasachtige eigenschappen"
+
+msgid "Left Blend"
+msgstr "Links Overgang"
+
+msgid "Middle Blend"
+msgstr "Midden Overgang"
+
+msgid "Right Blend"
+msgstr "Rechts Overgang"
+
+msgid "Contrast"
+msgstr "Contrast"
+
+msgid "(Color)"
+msgstr "(Kleur)"
+
+msgid "(Alpha)"
+msgstr "(Alpha)"
+
+msgid "Notch"
+msgstr "Inkeping"
+
+msgid "Position"
+msgstr "Positie"
+
+msgid "Curve"
+msgstr "Curve"
+
+msgid "Offset"
+msgstr "Offset"
+
+msgid "Use Glow"
+msgstr "Gebruik Gloeien"
+
+msgid "Title Glow"
+msgstr "Titel Gloeien"
+
+msgid "Evolved from the legacy engine"
+msgstr "Voortgekomen uit de legacy engine"
+
+msgid "Border Gap"
+msgstr "Rand Opening"
+
+msgid "Show Border when maximised?"
+msgstr "Toon omtrek rand indien gemaximaliseerd?"
+
+msgid "Show when minimised?"
+msgstr "Toon indien geminimaliseerd?"
+
+msgid "Minimised Border Size"
+msgstr "Geminimaliseerd Rand Grootte"
+
+msgid "Enable Left Bar Dip?"
+msgstr "Inschakelen Linker Balk Dip?"
+
+msgid "Left Bar Radius"
+msgstr "Linker Balk Radius"
+
+msgid "Enable Lower Bulge? (Useless at the moment, but will be used soon)"
+msgstr ""
+"Inschakelen lagere uitstulping? (Nutteloos op het moment, maar het zal "
+"binnenkort wel gebruikt worden)"
+
+msgid "Top Corner Offset (%)"
+msgstr "Bovenste Hoek Offset (%)"
+
+msgid "Enable Title Bar Dip?"
+msgstr "Inschakelen Titel Balk Dip?"
+
+msgid "Enable Button Part?"
+msgstr "Inschakelen Knop Deel?"
+
+msgid "Title Part Width"
+msgstr "Titel Part Breedte"
+
+msgid "Button Part Width)"
+msgstr "Knop Deel Breedte)"
+
+msgid "Dip Corners Radius)"
+msgstr "Dip Hoeken radius)"
+
+msgid "Round Inside Corners As well?"
+msgstr "Binnenste Hoeken ook afronden?"
+
+msgid "Enable Different Maximised Colors?"
+msgstr "Inschakelen Verschillende gemaximaliseerde Kleuren?"
+
+msgid "Turn Off repeating gradients when maximised?"
+msgstr "Uitschakelen herhalen van gradaties indien gemaximaliseerd?"
+
+msgid "Round Top Left Corner?"
+msgstr "Ronde Linkerboven Hoek? "
+
+msgid "Frame Rounding Radius"
+msgstr "Frame Afrondings Radius"
+
+msgid "Titlebar Rounding Radius"
+msgstr "Titelbalk Afrondings Radius"
+
+msgid "Repeat Gradient?"
+msgstr "Herhaal Gradaties?"
+
+msgid "Vertical Repeat?"
+msgstr "Verticaal Herhalen?"
+
+msgid "Diagonal Repeat?"
+msgstr "Diagonaal Herhalen?"
+
+msgid "Repeat Frequency"
+msgstr "Herhaal Frequentie"
+
+#. /////////////////////
+msgid "Enable Title Part Pixmap?"
+msgstr "Inschakelen Titel Part Pixmap?"
+
+msgid "Repeat Title Part Pixmap?"
+msgstr "Herhaal Titel Part Pixmap?"
+
+msgid "Title Bar Part Pixmap"
+msgstr "Titel Balk Part Pixmap"
+
+msgid "Choose Titlebar Part Pixmap"
+msgstr "Kies Titelbalk Deel Pixmap"
+
+#. /////////////////////////
+msgid "Enable Button Part Pixmap?"
+msgstr "Inschakelen Knop Deel Pixmap?"
+
+msgid "Repeat Button Part Pixmap?"
+msgstr "Herhaal Knop Deel Pixmap?"
+
+msgid "Button Part Pixmap"
+msgstr "Knop Deel Pixmap"
+
+msgid "Choose Button Part Pixmap"
+msgstr "Kies Knoppen Part Pixmap"
+
+#. /////////////////////////
+msgid "Enable Titlebar Pixmap?"
+msgstr "Inschakelen TitelBalk Pixmap?"
+
+msgid "Repeat Titlebar Pixmap?"
+msgstr "Herhaal Titelbalk Pixmap?"
+
+msgid "Titlebar Pixmap"
+msgstr "Titelbalk Pixmap"
+
+msgid "Choose Titlebar Pixmap"
+msgstr "Kies Titelbalk Pixmap"
+
+msgid "Active/Inactive"
+msgstr "Actief/Inactief"
+
+msgid "Maximised"
+msgstr "Gemaximaliseerd"
+
+msgid "Corners"
+msgstr "Hoeken"
+
+msgid "Border Layout"
+msgstr "Rand Layout"
+
+msgid "Left Bar"
+msgstr "Linker Balk"
+
+msgid "Pixmaps"
+msgstr "Pixmaps"
+
+#~ msgid "Repositories"
+#~ msgstr "Repositories"

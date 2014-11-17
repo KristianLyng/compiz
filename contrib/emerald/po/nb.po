@@ -1,0 +1,781 @@
+# Emerald translation.
+# Copyright (C) 2007 compiz-fusion.org
+# This file is distributed under the same license as the emerald package.
+# Ketil Wendelbo Aanensen <ketil.w.aanensen@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: Emerald nb_NO\n"
+"Report-Msgid-Bugs-To: http://bugs.beryl-project.org\n"
+"POT-Creation-Date: 2009-03-24 08:14+0100\n"
+"PO-Revision-Date: 2008-02-16 22:44+0100\n"
+"Last-Translator: Ketil Wendelbo Aanensen <ketil.w.aanensen@gmail.com>\n"
+"Language-Team: Norsk bokmål<ketil.w.aanensen@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.0.2\n"
+
+msgid "Close Window"
+msgstr "Lukk vindu"
+
+msgid "Maximize Window"
+msgstr "Maksimer vindu"
+
+msgid "Restore Window"
+msgstr "Gjenopprett vindu"
+
+msgid "Minimize Window"
+msgstr "Minimer vindu"
+
+msgid "Context Help"
+msgstr "Sammenhengshjelp"
+
+msgid "Window Menu"
+msgstr "Vindusmeny"
+
+msgid "Shade Window"
+msgstr "Rull opp vindu"
+
+msgid "UnShade Window"
+msgstr "Rull ned vindu"
+
+msgid "Set Above"
+msgstr "Vis over"
+
+msgid "UnSet Above"
+msgstr "Ikke vis over"
+
+msgid "Stick Window"
+msgstr "Klistre vindu"
+
+msgid "UnStick Window"
+msgstr "Ikke klistre vindu"
+
+#, c-format
+msgid "The window \"%s\" is not responding."
+msgstr "Vinduet \"%s\" svarer ikke"
+
+msgid ""
+"Forcing this application to quit will cause you to lose any unsaved changes."
+msgstr ""
+"Hvis du tvinger dette programmet til å slutte vil du miste alle endringer "
+"som ikke er lagret."
+
+msgid "_Force Quit"
+msgstr "_Avslutt"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b>\n"
+"<i>%s</i>\n"
+"<small><b>Versjon</b> %s\n"
+"<b>Laget av</b> %s\n"
+"<b>Bruk med</b> %s\n"
+"</small>"
+
+#, c-format
+msgid ""
+"<b><big>%s</big></b> (System Theme)\n"
+"<i>%s</i>\n"
+"<small><b>Version</b> %s\n"
+"<b>Created By</b> %s\n"
+"<b>Use With</b> %s\n"
+"</small>"
+msgstr ""
+"<b><big>%s</big></b> (Systemtema)\n"
+"<i>%s</i>\n"
+"<small><b>Versjon</b> %s\n"
+"<b>Laget av</b> %s\n"
+"<b>Bruk med</b> %s\n"
+"</small>"
+
+msgid "Unknown"
+msgstr "Ukjent"
+
+msgid "Whatever (no hint)"
+msgstr "Hva som helst (ingen hint)"
+
+msgid "No Description"
+msgstr "Ingen beskrivelse"
+
+msgid "Invalid Theme Name"
+msgstr "Ugyldig temanavn"
+
+msgid "Invalid theme file.  Does not end in .emerald"
+msgstr "Ugyldig temafil. Den slutter ikke med .emerald"
+
+msgid ""
+"Invalid Theme Name\n"
+"Could Not Export"
+msgstr ""
+"Ugyldig temanavn\n"
+"Kunne ikke eksportere"
+
+msgid ""
+"Invalid File Name\n"
+"Must End in .emerald"
+msgstr ""
+"Ugyldig filnavn\n"
+"Det må slutte på .emerald"
+
+msgid "Error calling tar."
+msgstr "Tar ga feil."
+
+msgid "Theme Exported"
+msgstr "Temaet ble eksportert"
+
+msgid ""
+"Can't save over system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"Kan ikke lagre over systemtema\n"
+"(eller så glemte du å skrive inn et navn)"
+
+#, c-format
+msgid "Overwrite Theme %s?"
+msgstr "Skal temaet %s skrives over?"
+
+msgid "Couldn't Write Theme"
+msgstr "Kunne ikke skrive tema"
+
+msgid "Couldn't Form Theme"
+msgstr "Kunne ikke danne tema"
+
+msgid "Theme Saved"
+msgstr "Tema ble lagret"
+
+msgid ""
+"Can't delete system themes\n"
+"(or you forgot to enter a name)"
+msgstr ""
+"Kan ikke slette systemtema\n"
+"(eller så glemte du å skrive inn et navn)"
+
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Er du sikker på at du vil slette %s?"
+
+msgid "Theme deleted"
+msgstr "Tema ble slettet"
+
+msgid "No such theme to delete"
+msgstr "Kan ikke slette temaet, det finnes ikke."
+
+msgid "Use Pixmap Buttons"
+msgstr "Bruk pikselkartknapper"
+
+msgid "Use Button Halo/Glow"
+msgstr "Bruk knappeglorie"
+
+msgid "Use Button Halo/Glow For Inactive Windows"
+msgstr "Bruk knappeglorie for inaktive vinduer"
+
+msgid "Button Pixmaps"
+msgstr "Bildeknapper"
+
+msgid "Button"
+msgstr "Knapp"
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+msgid "Clear"
+msgstr "Rens"
+
+msgid "Colors"
+msgstr "Farger"
+
+msgid "Text Fill"
+msgstr "Tekstfyll"
+
+msgid "Text Outline"
+msgstr "Tekststrøk"
+
+msgid "Button Fill"
+msgstr "Knappefyll"
+
+msgid "Button Outline"
+msgstr "Knappestrøk"
+
+msgid "Color"
+msgstr "Farge"
+
+msgid "Opacity"
+msgstr "Gjennomsiktighet"
+
+msgid "Radius"
+msgstr "Radius"
+
+msgid "X Offset"
+msgstr "X-forskyvning"
+
+msgid "Y Offset"
+msgstr "Y-forskyvning"
+
+msgid "Title-Text Font"
+msgstr "Flislegg-tekst skrifttype"
+
+msgid "Minimum Title-bar Height"
+msgstr "Minimum tittellinjehøyde"
+
+msgid "Vertical Button Offset"
+msgstr "Vertikal knappeforskyvning"
+
+msgid "Horizontal Button Offset"
+msgstr "Horisontal knappeforskyvning"
+
+msgid "Title-bar Object Layout"
+msgstr "Objektoppsett for tittellinje"
+
+msgid ""
+"Use colons to separate left, center, and right.\n"
+"Anything after a third colon is ignored.\n"
+"C=Close, N=Minimize, X/R=Restore\n"
+"I=Icon, T=Title, H=Help, M=Menu\n"
+"S=Shade, U/A=On Top(Up/Above)\n"
+"Y=Sticky, (#)=# pixels space, ex: (5)\n"
+msgstr ""
+"Bruk kolon for å dele opp venstre, midtstilt og høyre.\n"
+"Alt etter tredje kolon blir ignorert.\n"
+"C=Lukk, N=Minimer, X/R=Gjennopprett\n"
+"I=Ikon, T=Tittel, H=Hjelp, M=Meny\n"
+"S=Rull opp, U/A=Øverst(Over)\n"
+"Y=Klebet, (#)=# pikseldistanse, f.eks: (5)\n"
+
+msgid "Export Theme..."
+msgstr "Eksporter tema..."
+
+msgid "Name:"
+msgstr "Navn:"
+
+msgid "Untitled Theme"
+msgstr "Tema uten navn"
+
+msgid "Export..."
+msgstr "Eksporter..."
+
+msgid "Creator"
+msgstr "Forfatter"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "Theme Version"
+msgstr "Temaversjon"
+
+msgid "Suggested Widget Theme"
+msgstr "Anbefalt elementtema"
+
+msgid "Themer Version"
+msgstr "Temaerversjon"
+
+msgid "Border"
+msgstr "Kant"
+
+msgid "Size"
+msgstr "Størrelse"
+
+msgid "Top"
+msgstr "Topp"
+
+msgid "Bottom"
+msgstr "Bunn"
+
+msgid "Left"
+msgstr "Venstre"
+
+msgid "Right"
+msgstr "Høyre"
+
+msgid ""
+"Note, when changing these values,\n"
+"it is advised that you do something\n"
+"like change viewports, as this will\n"
+"cause the position of the 'event windows'\n"
+"to update properly, and thus make\n"
+"moving/resizing windows work properly.\n"
+"This also applies to when you change\n"
+"the title-bar height through either\n"
+"the titlebar-min-height slider\n"
+"or the titlebar font setting.\n"
+msgstr ""
+"Merk at når du endrer disse verdiene\n"
+"anbefales det at du gjør noe, som å endre\n"
+"skrivebordsområde, da dette vil gjøre at\n"
+"posisjonen til 'hendelsevinduene' vil\n"
+"oppdateres ordentlig, og med det gjøre at flytting\n"
+"størrelsesendring på vinduer fungerer riktig.\n"
+"Dette gjelder også når du endrer tittellinjenhøyde\n"
+"gjennom enten Minimum tittellinjehøyde-glideren\n"
+"eller innstillinger for skrift på tittellinjen.\n"
+
+msgid "Shadows"
+msgstr "Skygger"
+
+msgid "Frame Borders"
+msgstr "Rammekanter"
+
+msgid "Active Window"
+msgstr "Aktivt vindu"
+
+msgid "Inactive Window"
+msgstr "Inaktivt vindu"
+
+msgid "Title Bar"
+msgstr "Tittellinje"
+
+msgid "Screenshot"
+msgstr "Skjermbilde"
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "Information"
+msgstr "Informasjon"
+
+msgid ""
+"NOTE - These settings are not part of themes, they are stored separately, "
+"and control various UI preferences for Emerald."
+msgstr ""
+"PS - Disse egenskapene er ikke del av noe tema, de er lagret uavhengig, og "
+"kontrollerer forskjellige grensesnittsegenskaper i Emerald."
+
+msgid "Show Tooltips for Buttons"
+msgstr "Vis verktøytips til knapper"
+
+msgid "Use Decoration Cropping"
+msgstr "Klipp dekorasjonene"
+
+msgid "Use Button Fade"
+msgstr "Bruk knappebleking"
+
+msgid "Use Button Fade Pulse"
+msgstr "Bruk knappeblekingspuls"
+
+msgid "Button Fade Total Duration"
+msgstr "Lengde for knappebleking"
+
+msgid "Button Fade Step Duration"
+msgstr "Trinnlengde for knappebleking"
+
+msgid "Button Pulse Wait Duration"
+msgstr "Ventelengde for knappepuls"
+
+msgid "Button Pulse Min Opacity %"
+msgstr "Minimumssynlighet i knappepulser %"
+
+msgid "Titlebar Double-Click Action"
+msgstr "Hendelse ved dobbeltklikk for tittellinja"
+
+msgid "Button Hover Cursor"
+msgstr "Peker over knapper"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Pointing Finger"
+msgstr "Pekende finger"
+
+msgid "Compiz Decoration Blur Type"
+msgstr "Utviskingstype for Compiz-dekorasjon"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "Titlebar only"
+msgstr "Kun tittellinje"
+
+msgid "All decoration"
+msgstr "Alle dekorasjoner"
+
+msgid "Frame Engine"
+msgstr "Rammemottor"
+
+msgid "Buttons"
+msgstr "Knapper"
+
+msgid "Frame/Shadows"
+msgstr "Ramme/Skygger"
+
+msgid "Titlebar"
+msgstr "Tittellinje"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Edit"
+msgstr "Rediger"
+
+msgid "Import Theme..."
+msgstr "Importer tema..."
+
+msgid "Search:"
+msgstr "Søk:"
+
+msgid "Fetching Themes"
+msgstr "Henter tema"
+
+msgid ""
+"Fetching themes... \n"
+"This may take time depending on \n"
+"internet connection speed."
+msgstr ""
+"Henter tema... \n"
+"Dette kan ta en stund, særlig hvis du har en\n"
+"treg tilkobling til internett."
+
+msgid ""
+"Here are the repositories that you can fetch Emerald Themes from. \n"
+"Fetching themes would fetch and import themes from SVN repositories \n"
+"You need Subversion package installed to use this feature."
+msgstr ""
+"Her er arkivene du kan hente Emerald-temaer fra. \n"
+"Henting av temaer vil hente og importere temaer fra SVN-lagre. \n"
+"Du trenger pakken Subversion installert for å bruke denne funksjonaliteten."
+
+msgid ""
+"This repository contains GPL'd themes that can be used under \n"
+"the terms of GNU GPL licence v2.0 or later \n"
+msgstr ""
+"Dette arkivet inneholder temaer med GPL-lisens, som kan brukes under \n"
+"vilkårene fra GNU GPL-lisensen v2.0 eller senere \n"
+
+msgid ""
+"This repository contains non-GPL'd themes. They might infringe \n"
+"copyrights and patent laws in some countries."
+msgstr ""
+"Dette arkivet inneholder temaer med en annen lisens enn GPL. De bryter \n"
+"kanskje med opphavsretter og patentlover i noen land."
+
+msgid ""
+"To activate Non-GPL repository please run the following in shell and accept "
+"the server certificate permanently: \n"
+"svn ls https://svn.generation.no/emerald-themes."
+msgstr ""
+"For å aktivere ikke-GPL-arkivet, vennligst kjør følgende i terminal og "
+"aksepter tjenersertifikatet permanent: \n"
+"svn ls https://svn.generation.no/emerald-themes"
+
+msgid "Themes"
+msgstr "Tema"
+
+msgid "Edit Themes"
+msgstr "Rediger tema"
+
+msgid "Themes Settings"
+msgstr "Egenskaper for tema"
+
+msgid "Emerald Settings"
+msgstr "Egenskaper for Emerald"
+
+msgid ""
+"Select\n"
+"Engine"
+msgstr ""
+"Velg\n"
+"Motor"
+
+msgid "Based on original gnome-window-decorator"
+msgstr "Basert på den originale gnome-window-decorator"
+
+msgid "Round Top Left Corner"
+msgstr "Rund av øverste høyre hjørne"
+
+msgid "Round Top Right Corner"
+msgstr "Rund av øverste venstre hjørne"
+
+msgid "Round Bottom Left Corner"
+msgstr "Rund av nedeste venstre hjørne"
+
+msgid "Round Bottom Right Corner"
+msgstr "Rund av nederste høyre hjørne"
+
+msgid "Rounding Radius"
+msgstr "Radius på runde hjørner"
+
+msgid "Outer Frame Blend"
+msgstr "Blanding for ytre ramme"
+
+msgid "Inner Frame Blend"
+msgstr "Blanding for indre ramme"
+
+msgid "Outer Titlebar Blend"
+msgstr "Blanding for ytre tittellinje"
+
+msgid "Inner Titlebar Blend"
+msgstr "Blanding for indre tittellinje"
+
+msgid "Titlebar Separator"
+msgstr "Tittellinjedeler"
+
+msgid "Frame Outline"
+msgstr "Rammestrøk"
+
+msgid "Frame Highlight"
+msgstr "Rammemarkering"
+
+msgid "Frame Shadow"
+msgstr "Rammeskygge"
+
+msgid "Contents Outline"
+msgstr "Innholdsstrøk"
+
+msgid "Contents Highlight"
+msgstr "Innholdsmarkering"
+
+msgid "Contents Shadow"
+msgstr "Innholdsskygge"
+
+msgid "Frame"
+msgstr "Ramme"
+
+msgid "Based on original legacy"
+msgstr "Basert på orginal gammel motor"
+
+msgid "Designed to be vista-ish in nature"
+msgstr "Utformet for å være Vista-aktig"
+
+msgid "Base"
+msgstr "Basis"
+
+msgid "Glow"
+msgstr "Glød"
+
+msgid "Sides"
+msgstr "Sider"
+
+msgid "Everything done with customizable pixmaps!"
+msgstr "Alt gjøres med bilder som kan tilpasses"
+
+msgid "Top Rounding Radius"
+msgstr "Avrundingsradius for topp"
+
+msgid "Bottom Rounding Radius"
+msgstr "Avrundingsradius for bunn"
+
+#. Style : Use Tiled or Scaled pixmaps
+msgid "Scaled"
+msgstr "Skalert"
+
+msgid "Not adjustable"
+msgstr "Ikke justerbart"
+
+msgid "Same as Active"
+msgstr "Samme som aktiv"
+
+msgid "Pixmap"
+msgstr "Bilde"
+
+msgid "Tiled/Scaled"
+msgstr "Flislagt/skalert"
+
+msgid "Width Override"
+msgstr "Overkjør bredde"
+
+msgid "Height Override"
+msgstr "Overkjør høyde"
+
+msgid "Glassy effects for your windows"
+msgstr "Glassaktige effekter for vinduene dine"
+
+msgid "Glow Height"
+msgstr "Glødshøyde"
+
+msgid "Frame Base Color"
+msgstr "Rammebasisfarge"
+
+msgid "Upper Titlebar Glow"
+msgstr "Glød for øvre tittellinje"
+
+msgid "Upper Glass Glow"
+msgstr "Glød for øvre glass"
+
+msgid "Lower Glass Glow"
+msgstr "Glød for nedre glass"
+
+msgid "Middle Glass Glow"
+msgstr "Glød for midtre glass"
+
+msgid "Outer Glass Glow"
+msgstr "Glød for ytre glass"
+
+msgid "Multiple gradients with somewhat glassy features too"
+msgstr "Flere fargeoverganger, også med litt glassaktige egenskaper"
+
+msgid "Left Blend"
+msgstr "Venstre blanding"
+
+msgid "Middle Blend"
+msgstr "Midtre blanding"
+
+msgid "Right Blend"
+msgstr "Høyre blanding"
+
+msgid "Contrast"
+msgstr "Kontrast"
+
+msgid "(Color)"
+msgstr "(Farge)"
+
+msgid "(Alpha)"
+msgstr "(Alfa)"
+
+msgid "Notch"
+msgstr "Spor"
+
+msgid "Position"
+msgstr "Posisjon"
+
+msgid "Curve"
+msgstr "Kurve"
+
+msgid "Offset"
+msgstr "Forskyvning"
+
+msgid "Use Glow"
+msgstr "Bruk glød"
+
+msgid "Title Glow"
+msgstr "Tittelglød"
+
+msgid "Evolved from the legacy engine"
+msgstr "Utviklet fra den gamle motoren"
+
+msgid "Border Gap"
+msgstr "Kantmellomrom"
+
+msgid "Show Border when maximised?"
+msgstr "Vis kant når vinduet er maksimert?"
+
+msgid "Show when minimised?"
+msgstr "Vis når vinduet er minimert?"
+
+msgid "Minimised Border Size"
+msgstr "Kantstørrelse når vinduet er minimert"
+
+msgid "Enable Left Bar Dip?"
+msgstr "Aktiver venstre kantdypp?"
+
+msgid "Left Bar Radius"
+msgstr "Venstre kantradius"
+
+msgid "Enable Lower Bulge? (Useless at the moment, but will be used soon)"
+msgstr "Aktiver nedre bul? (Ubrukelig for øyeblikket, men vil bli brukt snart)"
+
+msgid "Top Corner Offset (%)"
+msgstr "Hjørneavstand for Topp (%)"
+
+msgid "Enable Title Bar Dip?"
+msgstr "Bruk tittelbardypp?"
+
+msgid "Enable Button Part?"
+msgstr "Bruk knappdel"
+
+msgid "Title Part Width"
+msgstr "Bredde for titteldel"
+
+msgid "Button Part Width)"
+msgstr "bredde for knappdel)"
+
+msgid "Dip Corners Radius)"
+msgstr "radius for dypphjørne)"
+
+msgid "Round Inside Corners As well?"
+msgstr "Gjør indre hjørner runde også?"
+
+msgid "Enable Different Maximised Colors?"
+msgstr "Bruk forskjellige maksimerte farger?"
+
+msgid "Turn Off repeating gradients when maximised?"
+msgstr "Skru av repeterende fargeoverganger når vinduet er maksimert"
+
+msgid "Round Top Left Corner?"
+msgstr "Avrund øvre venstre hjørne?"
+
+msgid "Frame Rounding Radius"
+msgstr "Avrundingsradius for rammen"
+
+msgid "Titlebar Rounding Radius"
+msgstr "Avrundingsradius for tittellinje"
+
+msgid "Repeat Gradient?"
+msgstr "Repeter fargeovergang?"
+
+msgid "Vertical Repeat?"
+msgstr "Repeter vertikalt?"
+
+msgid "Diagonal Repeat?"
+msgstr "Repeter diagonalt?"
+
+msgid "Repeat Frequency"
+msgstr "Repeteringsfrekvens"
+
+#. /////////////////////
+msgid "Enable Title Part Pixmap?"
+msgstr "Bruk bilde for titteldel?"
+
+msgid "Repeat Title Part Pixmap?"
+msgstr "Repeter bilde for titteldel?"
+
+msgid "Title Bar Part Pixmap"
+msgstr "Bilde for tittellinjedel"
+
+msgid "Choose Titlebar Part Pixmap"
+msgstr "Velg bilde for tittellinjedel"
+
+#. /////////////////////////
+msgid "Enable Button Part Pixmap?"
+msgstr "Bruk bilde for knappdel?"
+
+msgid "Repeat Button Part Pixmap?"
+msgstr "Repeter bilde for knappdel?"
+
+msgid "Button Part Pixmap"
+msgstr "Bilde for knappdel"
+
+msgid "Choose Button Part Pixmap"
+msgstr "Velg bilde for knappdel"
+
+#. /////////////////////////
+msgid "Enable Titlebar Pixmap?"
+msgstr "Bruk bilde for tiltellinje?"
+
+msgid "Repeat Titlebar Pixmap?"
+msgstr "Repeter bilde for tittellinje?"
+
+msgid "Titlebar Pixmap"
+msgstr "Bilde for tittellinje"
+
+msgid "Choose Titlebar Pixmap"
+msgstr "Velg bilde for tittellinje"
+
+msgid "Active/Inactive"
+msgstr "Aktiv/inaktiv"
+
+msgid "Maximised"
+msgstr "Maksimert"
+
+msgid "Corners"
+msgstr "Hjørner"
+
+msgid "Border Layout"
+msgstr "Kantoppsett"
+
+msgid "Left Bar"
+msgstr "Venstre linje"
+
+msgid "Pixmaps"
+msgstr "Bilder"
+
+#~ msgid "Repositories"
+#~ msgstr "Arkiver"
