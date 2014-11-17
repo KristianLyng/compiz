@@ -122,6 +122,9 @@ AC_C_BIGENDIAN
 stylesheetdir=$datadir/compiz
 AC_SUBST(stylesheetdir)
 
+compdatadir=$datadir/compiz
+AC_SUBST(compdatadir)
+
 plugindir=$libdir/compiz
 AC_SUBST(plugindir)
 
@@ -625,11 +628,6 @@ AC_CONFIG_COMMANDS([include/compiz-common.h],
 # define COMPIZ_END_DECLS
 #endif
 
-#define COMPIZ_VERSION_MAJOR $COMPIZ_VERSION_MAJOR
-#define COMPIZ_VERSION_MINOR $COMPIZ_VERSION_MINOR
-#define COMPIZ_VERSION_MICRO $COMPIZ_VERSION_MICRO
-
-#define COMPIZ_VERSION_STRING "$COMPIZ_VERSION_MAJOR.$COMPIZ_VERSION_MINOR.$COMPIZ_VERSION_MICRO"
 
 _EOF
 	echo '#endif' >> $outfile
@@ -660,6 +658,7 @@ libdecoration/Makefile
 libdecoration/libdecoration.pc
 include/Makefile
 plugins/Makefile
+plugins/animation/Makefile
 bcop/Makefile
 bcop/bcop
 images/Makefile

@@ -1,6 +1,6 @@
-PFLAGS=-module -avoid-version -no-undefined -lGLU 
 
-libanimation_la_LDFLAGS = $(PFLAGS)
+AM_LDFLAGS = -module -avoid-version -no-undefined
+
 libanimation_la_LIBADD = @COMPIZ_LIBS@
 libanimation_la_SOURCES = animation.c \
 			  animation-internal.h \
@@ -17,8 +17,9 @@ libanimation_la_SOURCES = animation.c \
 			  wave.c \
 			  zoomside.c
 
-INCLUDES =                              \
+AM_CPPFLAGS =					\
 	-I$(top_srcdir)/include             \
+	-I$(top_builddir)/include               \
 	@COMPIZ_CFLAGS@                     \
 	-DDATADIR='"$(compdatadir)"'        \
 	-DLIBDIR='"$(libdir)"'              \

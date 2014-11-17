@@ -301,15 +301,15 @@ fxMagicLampModelStep (CompWindow *w, float time)
 	float targetx = fy * (origx - iconx) + iconx;
 
 	// Apply waves
-	int i;
-	for (i = 0; i < aw->magicLampWaveCount; i++)
+	int j;
+	for (j = 0; j < aw->magicLampWaveCount; j++)
 	{
-	    float cosfx = ((fx - aw->magicLampWaves[i].pos) /
-			   aw->magicLampWaves[i].halfWidth);
+	    float cosfx = ((fx - aw->magicLampWaves[j].pos) /
+			   aw->magicLampWaves[j].halfWidth);
 	    if (cosfx < -1 || cosfx > 1)
 		continue;
 	    targetx +=
-		aw->magicLampWaves[i].amp * model->scale.x *
+		aw->magicLampWaves[j].amp * model->scale.x *
 		(cos(cosfx * M_PI) + 1) / 2;
 	}
 

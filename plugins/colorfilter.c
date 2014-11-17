@@ -26,7 +26,7 @@
 #include <stdio.h>
 
 #include <compiz-core.h>
-#include "parser.h"
+#include "colorfilter-parser.h"
 #include "colorfilter_options.h"
 
 static int displayPrivateIndex;
@@ -168,7 +168,7 @@ colorFilterSwitchFilter (CompScreen * s)
     FILTER_SCREEN (s);
 
     /* % (count + 1) because of the cumulative filters mode */
-    cfs->currentFilter = ++cfs->currentFilter % (cfs->filtersCount + 1);
+    cfs->currentFilter = (cfs->currentFilter + 1) % (cfs->filtersCount + 1);
     if (cfs->currentFilter == 0)
 	compLogMessage ("colorfilter", CompLogLevelInfo,
 			"Cumulative filters mode");

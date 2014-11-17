@@ -877,8 +877,6 @@ modelUpdateBB (CompOutput *output,
     if (!model)
 	return;
 
-    Object *object = model->objects;
-
     if (aw->com.usingTransform)
     {
 	if (aw->com.curAnimEffect->properties.modelAnimIs3D)
@@ -924,6 +922,7 @@ modelUpdateBB (CompOutput *output,
     }
     else
     {
+	Object *object = model->objects;
 	for (i = 0; i < model->numObjects; i++, object++)
 	{
 	    expandBoxWithPoint (BB,
@@ -1704,7 +1703,7 @@ static void postAnimationCleanupCustom (CompWindow * w,
     if (closing || finishing || !thereIsUnfinishedChainElem)
     {
 	// Finish off all windows in parent-child chain
-	CompWindow *wCur = aw->moreToBePaintedNext;
+	wCur = aw->moreToBePaintedNext;
 	while (wCur)
 	{
 	    AnimWindow *awCur = GET_ANIM_WINDOW(wCur, as);
@@ -2730,9 +2729,13 @@ animAddWindowGeometry(CompWindow * w,
 		}
 		else			// in window contents (only in Y coords)
 		{
-		    float winContentsHeight =
+		    /*
+		     * FIXME: Overlapped with function-wide definition.
+		     * Renaming it to work around, but WHY is it different?
+		     */
+		    float winContentsHeight2 =
 			height - model->topHeight - model->bottomHeight;
-		    gridH = winContentsHeight / (model->gridHeight - 3);
+		    gridH = winContentsHeight2 / (model->gridHeight - 3);
 		}
 	    }
 	    else
@@ -4226,9 +4229,6 @@ static Bool animDamageWindowRect(CompWindow * w, Bool initial, BoxPtr rect)
 	}
 	else if (!w->invisible && as->startCountdown == 0)
 	{
-	    AnimEffect chosenEffect;
-	    int duration = 200;
-
 	    // Always reset stacking related info when a window is opened.
 	    resetStackingInfo (w->screen);
 

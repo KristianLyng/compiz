@@ -28,7 +28,7 @@
 #include <ctype.h>
 
 #include <compiz-core.h>
-#include "parser.h"
+#include "colorfilter-parser.h"
 
 /* Internal prototypes ------------------------------------------------------ */
 
@@ -114,6 +114,7 @@ programReadSource (char *fname)
     FILE   *fp;
     char   *data, *path = NULL, *home = getenv ("HOME");
     int     length;
+    int	    ret=1;
 
     /* Try to open file fname as is */
     fp = fopen (fname, "r");
@@ -121,7 +122,11 @@ programReadSource (char *fname)
     /* If failed, try as user filter file (in ~/.compiz/data/filters) */
     if (!fp && home && strlen (home))
     {
-	asprintf (&path, "%s/.compiz/data/filters/%s", home, fname);
+	ret = asprintf (&path, "%s/.compiz/data/filters/%s", home, fname);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed. This is not good.\n");
+	    return NULL;
+	}
 	fp = fopen (path, "r");
 	free (path);
     }
@@ -130,7 +135,11 @@ programReadSource (char *fname)
      * (in PREFIX/share/compiz/filters) */
     if (!fp)
     {
-	asprintf (&path, "%s/filters/%s", DATADIR, fname);
+	ret = asprintf (&path, "%s/filters/%s", DATADIR, fname);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed. This is not good.\n");
+	    return NULL;
+	}
 	fp = fopen (path, "r");
 	free (path);
     }
@@ -153,7 +162,13 @@ programReadSource (char *fname)
     }
 
     /* Read file */
-    fread (data, length, 1, fp);
+    ret = fread (data, length, 1, fp);
+    if (ret != length) {
+	fprintf(stderr, "fread() returned %d bytes, expcted %d.\n", ret, length);
+	fclose(fp);
+	free(data);
+	return NULL;
+    }
 
     data[length] = 0;
 
@@ -333,22 +348,20 @@ programParseSource (CompFunctionData *data,
 		    int target, char *source)
 {
     char *line, *next, *current;
-    char *strtok_ptr;
+    char *strtok_ptr = NULL;
     int   length, oplength, type;
+    int   ret = 1;
     FragmentOffset *offsets = NULL;
 
     char *arg1, *arg2, *temp;
 
     /* Find the header, skip it, and start parsing from there */
-    while (*source)
-    {
-	if (strncmp (source, "!!ARBfp1.0", 10) == 0)
-	{
-	    source += 10;
-	    break;
-	}
-	source++;
+    source = strstr(source, "!!ARBfp1.0");
+    if (!source) {
+	fprintf(stderr, "colorfilter: ARB source not found\n");
+	return ;
     }
+    source += 10;
 
     /* Strip linefeeds */
     next = source;
@@ -426,9 +439,13 @@ programParseSource (CompFunctionData *data,
 	{
 	    /* Data op : just copy paste the whole instruction plus a ";" */
 	    case DataOp:
-		asprintf (&arg1, "%s;", current);
-		addDataOpToFunctionData (data, arg1);
-		free (arg1);
+		ret = asprintf (&arg1, "%s;", current);
+		if (ret <= 0) {
+		    fprintf(stderr, "asprintf() failed. This is not good.\n");
+		} else {
+		    addDataOpToFunctionData (data, arg1);
+		    free (arg1);
+		}
 		break;
 	    /* Parse arguments one by one */
 	    case TempOp:

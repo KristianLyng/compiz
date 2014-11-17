@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <compiz-core.h>
+#include "compiz.h"
+#include "compiz-core.h"
 #include "compiz-animation.h"
 
 

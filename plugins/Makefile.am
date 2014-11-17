@@ -9,6 +9,12 @@ AM_LDFLAGS = -module -avoid-version -no-undefined
 # Ugh, it's fugly. This is only because foo.c doesn't match libfoo.la. If we
 # used libfoo.c instead, then all this would be redundant.
 
+nodist_libcolorfilter_la_SOURCES = colorfilter_options.c \
+			    colorfilter_options.h
+dist_libcolorfilter_la_SOURCES = colorfilter.c \
+			    colorfilter-parser.c              \
+			    colorfilter-parser.h
+
 nodist_libthumbnail_la_SOURCES = thumbnail_options.c \
 			  thumbnail_options.h
 dist_libthumbnail_la_SOURCES = thumbnail.c \
@@ -197,6 +203,7 @@ BUILT_SOURCES = \
 	$(nodist_libtitleinfo_la_SOURCES)	\
 	$(nodist_libscaleaddon_la_SOURCES)	\
 	$(nodist_libthumbnail_la_SOURCES)	\
+	$(nodist_libcolorfilter_la_SOURCES)	\
 	$(libwall_built_sources)
 
 CLEANFILES = *_options.c *_options.h
@@ -217,6 +224,7 @@ AM_CPPFLAGS =					\
 	-DIMAGEDIR=\"$(imagedir)\"		\
 	-I$(top_srcdir)/include                 \
 	-I$(top_builddir)/include               \
+	-DDATADIR=\"$(compdatadir)\"		\
 	-DMETADATADIR=\"$(metadatadir)\"
 
 moduledir = $(plugindir)
@@ -272,8 +280,10 @@ module_LTLIBRARIES =		\
 	libkdecompat.la		\
 	libscaleaddon.la	\
 	libthumbnail.la		\
+	libcolorfilter.la	\
 	$(libsvg_module)	\
 	$(libannotate_module)	\
 	$(libinotify_module)	\
 	$(libfs_module)
 
+SUBDIRS = animation

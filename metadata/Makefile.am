@@ -1,8 +1,10 @@
 xmldir       = $(metadatadir)
 xml_in_files =		\
+    animation.xml.in	\
     annotate.xml.in	\
     blur.xml.in		\
     clone.xml.in	\
+    colorfilter.xml.in	\
     commands.xml.in	\
     cube.xml.in		\
     dbus.xml.in		\
