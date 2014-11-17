@@ -5,6 +5,7 @@ EXTRA_DIST = \
 	COPYING.GPL	       \
 	COPYING.LGPL	       \
 	COPYING.MIT	       \
+	README.rst		\
 	pc/compiz.pc.in	       \
 	pc/compiz-mousepoll.pc.in \
 	pc/compiz-cube.pc.in   \
@@ -33,6 +34,19 @@ pkgconfig_DATA =	    \
 	pc/bcop.pc          \
 	$(gconfdata)	    \
 	$(kconfigdata)
+
+dist_man_MANS = compiz.1
+MAINTAINERCLEANFILES = $(dist_man_MANS)
+
+compiz.1: $(top_srcdir)/README.rst
+if HAVE_RST2MAN
+	${RST2MAN} $? $@
+else
+	@echo "========================================"
+	@echo "You need rst2man installed to make dist"
+	@echo "========================================"
+	@false
+endif
 
 # Some custom targets to make it easier to release things.
 # Use either:

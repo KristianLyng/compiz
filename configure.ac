@@ -27,6 +27,17 @@ AC_PROG_INTLTOOL([0.23])
 AM_MAINTAINER_MODE
 AM_GCONF_SOURCE_2
 
+# Check for rst utilities
+AC_ARG_WITH([rst2man],
+	       AS_HELP_STRING([--with-rst2man=PATH],
+			      [Location of rst2man (auto)]),
+	       [RST2MAN="$withval"],
+	       [AC_CHECK_PROGS(RST2MAN, [rst2man rst2man.py], "no")
+		if test "x$RST2MAN" = "xno"; then
+		   AC_MSG_WARN([rst2man not found – not building man pages])
+		fi])
+AM_CONDITIONAL(HAVE_RST2MAN,[test "x$RST2MAN" != "xno"])
+
 dnl decorator interface version
 AC_DEFINE(DECOR_INTERFACE_VERSION, 20080529, [Decorator interface version])
 
