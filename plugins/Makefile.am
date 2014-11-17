@@ -204,6 +204,13 @@ BUILT_SOURCES = \
 	$(nodist_libscaleaddon_la_SOURCES)	\
 	$(nodist_libthumbnail_la_SOURCES)	\
 	$(nodist_libcolorfilter_la_SOURCES)	\
+	$(nodist_libput_la_SOURCES)		\
+	$(nodist_libopacify_la_SOURCES)		\
+	$(nodist_libworkarounds_la_SOURCES)	\
+	$(nodist_libresizeinfo_la_SOURCES)	\
+	$(nodist_libring_la_SOURCES)		\
+	$(nodist_libvpswitch_la_SOURCES)	\
+	$(nodist_libkdecompat_la_SOURCES)	\
 	$(libwall_built_sources)
 
 CLEANFILES = *_options.c *_options.h

@@ -11,8 +11,6 @@ ALL_SUBDIRS = 	 \
 SUBDIRS = $(ALL_SUBDIRS)
 
 EXTRA_DIST =            \
-    VERSION             \
-    COPYING		\
     libcompizconfig.pc.in
 
 pkgconfigdir = $(libdir)/pkgconfig
