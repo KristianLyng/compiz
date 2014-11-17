@@ -34,18 +34,27 @@ getConfigFileName (void)
 {
     char *configDir = NULL;
     char *fileName = NULL;
+    int ret = 1;
 
     configDir = getenv ("XDG_CONFIG_HOME");
     if (configDir && strlen (configDir))
     {
-	asprintf (&fileName, "%s/%s/config", configDir, SETTINGPATH);
+	ret = asprintf (&fileName, "%s/%s/config", configDir, SETTINGPATH);
+	if (ret <= 0) {
+	    fprintf(stderr,"asprintf() failed\n");
+	    return NULL;
+	}
 	return fileName;
     }
 
     configDir = getenv ("HOME");
     if (configDir && strlen (configDir))
     {
-	asprintf (&fileName, "%s/.config/%s/config", configDir, SETTINGPATH);
+	ret = asprintf (&fileName, "%s/.config/%s/config", configDir, SETTINGPATH);
+	if (ret <= 0) {
+	    fprintf(stderr,"asprintf() failed\n");
+	    return NULL;
+	}
 	return fileName;
     }
 
@@ -57,11 +66,16 @@ getSectionName (void)
 {
     char *profile;
     char *section;
+    int ret = 1;
 
     profile = getenv ("COMPIZ_CONFIG_PROFILE");
     if (profile && strlen (profile))
     {
-	asprintf (&section, "general_%s", profile);
+	ret = asprintf (&section, "general_%s", profile);
+	if (ret <= 0) {
+	    fprintf(stderr,"asprintf() failed\n");
+	    return NULL;
+	}
 	return section;
     }
 

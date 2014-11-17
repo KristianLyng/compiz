@@ -155,6 +155,7 @@ COMPIZ_REQUIRES="x11        \
 PKG_CHECK_MODULES(COMPIZ, $COMPIZ_REQUIRES)
 AC_SUBST(COMPIZ_REQUIRES)
 
+PKG_CHECK_MODULES(LIBX11, "x11")
 DECORATION_REQUIRES="xrender"
 
 PKG_CHECK_MODULES(DECORATION, $DECORATION_REQUIRES)
@@ -189,6 +190,7 @@ if test -z "$XSLTPROC"; then
 fi
 
 PKG_CHECK_MODULES(LIBPNG, libpng)
+PKG_CHECK_MODULES(LIBXML2, "libxml-2.0", [have_xml2=yes],[have_xml2=no])
 PKG_CHECK_MODULES(GLIB, glib-2.0,[have_glib=yes],[have_glib=no])
 PKG_CHECK_MODULES(GCONF, gconf-2.0, [have_gconf2=yes],[have_gconf2=no])
 PKG_CHECK_MODULES(DBUS, dbus-1 libxml-2.0, [have_dbus=yes], [have_dbus=no])
@@ -333,6 +335,31 @@ AC_ARG_ENABLE(gnome,
 AC_ARG_ENABLE(gnome-keybindings,
   [  --disable-gnome-keybindings Disable gnome keybindings],
   [use_gnome_keybindings=$enableval], [use_gnome_keybindings=yes])
+
+# compizconfig
+AC_ARG_ENABLE(protobuf,
+  [  --disable-protobuf      Disable Protocol Buffers],
+  [use_protobuf=$enableval], [use_protobuf=yes])
+
+if test "x$use_protobuf" = "xyes"; then
+  protobuf_error_msg="\nWARNING: You need to install Protocol Buffers to get faster program startup.\n        Sources are available at http://code.google.com/p/protobuf/downloads/list\n         Package names for Ubuntu/Debian: libprotobuf0, libprotobuf-dev, protobuf-compiler\n         Package names for other distributions: protobuf, protobuf-devel\n        Disabling protobuf.\n"
+  AC_CHECK_PROG(have_protoc, protoc, yes, no)
+  if test "x$have_protoc" = "xno"; then
+    echo -e $protobuf_error_msg; use_protobuf=no
+  else
+    AC_CHECK_LIB(protobuf, _ZN6google8protobuf7MessageD2Ev, [], [
+      echo -e $protobuf_error_msg; use_protobuf=no ], -lpthread)
+    if test "x$use_protobuf" = "xyes"; then
+      AC_LANG([C++])
+      AC_CHECK_HEADER([google/protobuf/message.h],,[
+        echo -e $protobuf_error_msg; use_protobuf=no ])
+      AC_LANG([C])
+    fi
+  fi
+fi
+AM_CONDITIONAL([USE_PROTOBUF], [test "x$use_protobuf" = "xyes"])
+AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
+
 
 if test "x$use_gtk" = "xyes"; then
   PKG_CHECK_MODULES(GTK_WINDOW_DECORATOR,
@@ -670,6 +697,14 @@ kde/window-decorator/Makefile
 kde/window-decorator-kde4/Makefile
 po/Makefile.in
 metadata/Makefile
+compizconfig/libcompizconfig/libcompizconfig.pc
+compizconfig/libcompizconfig/Makefile
+compizconfig/libcompizconfig/src/Makefile
+compizconfig/libcompizconfig/backend/Makefile
+compizconfig/libcompizconfig/plugin/Makefile
+compizconfig/libcompizconfig/include/Makefile
+compizconfig/libcompizconfig/metadata/Makefile
+compizconfig/libcompizconfig/config/Makefile
 ])
 
 echo ""

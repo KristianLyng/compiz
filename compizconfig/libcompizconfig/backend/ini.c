@@ -31,7 +31,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#include <ccs.h>
+#include "ccs.h"
 #include <ccs-backend.h>
 
 #include <X11/X.h>
@@ -78,19 +78,28 @@ getIniFileName (char *profile)
 {
     char *configDir = NULL;
     char *fileName = NULL;
+    int ret;
 
     configDir = getenv ("XDG_CONFIG_HOME");
     if (configDir && strlen (configDir))
     {
-	asprintf (&fileName, "%s/%s/%s.ini", configDir, SETTINGPATH, profile);
+	ret = asprintf (&fileName, "%s/%s/%s.ini", configDir, SETTINGPATH, profile);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return NULL;
+	}
 	return fileName;
     }
 
     configDir = getenv ("HOME");
     if (configDir && strlen (configDir))
     {
-	asprintf (&fileName, "%s/.config/%s/%s.ini", configDir, SETTINGPATH,
+	ret = asprintf (&fileName, "%s/.config/%s/%s.ini", configDir, SETTINGPATH,
 		  profile);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return NULL;
+	}
 	return fileName;
     }
 
@@ -260,15 +269,25 @@ readSetting (CCSContext *context,
     Bool         status = FALSE;
     char        *keyName;
     IniPrivData *data;
+    int ret;
 
     data = findPrivFromContext (context);
     if (!data)
 	return;
 
-    if (setting->isScreen)
-	asprintf (&keyName, "s%d_%s", setting->screenNum, setting->name);
-    else
-	asprintf (&keyName, "as_%s", setting->name);
+    if (setting->isScreen) {
+	ret = asprintf (&keyName, "s%d_%s", setting->screenNum, setting->name);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return ;
+	}
+    } else {
+	ret = asprintf (&keyName, "as_%s", setting->name);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return ;
+	}
+    }
 
     switch (setting->type)
     {
@@ -453,15 +472,25 @@ writeSetting (CCSContext *context,
 {
     char        *keyName;
     IniPrivData *data;
+    int ret;
 
     data = findPrivFromContext (context);
     if (!data)
 	return;
 
-    if (setting->isScreen)
-	asprintf (&keyName, "s%d_%s", setting->screenNum, setting->name);
-    else
-	asprintf (&keyName, "as_%s", setting->name);
+    if (setting->isScreen) {
+	ret = asprintf (&keyName, "s%d_%s", setting->screenNum, setting->name);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return ;
+	}
+    } else {
+	ret = asprintf (&keyName, "as_%s", setting->name);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return ;
+	}
+    }
 
     if (setting->isDefault)
     {
@@ -654,11 +683,16 @@ getExistingProfiles (CCSContext * context)
     char	   *filePath = NULL;
     char           *homeDir = NULL;
     char	   *configDir = NULL;
+    int nret;
     
     configDir = getenv ("XDG_CONFIG_HOME");
     if (configDir && strlen (configDir))
     {
-	asprintf (&filePath, "%s/%s", configDir, SETTINGPATH);
+	nret = asprintf (&filePath, "%s/%s", configDir, SETTINGPATH);
+	if (nret <= 0) {
+	    fprintf(stderr, "asprintf() failed...\n");
+	    return NULL;
+	}
 	
 	ret = scanConfigDir(filePath);
 	free(filePath);
@@ -671,7 +705,11 @@ getExistingProfiles (CCSContext * context)
     if (!homeDir)
 	return NULL;
 
-    asprintf (&filePath, "%s/.config/%s", homeDir, SETTINGPATH);
+    nret = asprintf (&filePath, "%s/.config/%s", homeDir, SETTINGPATH);
+    if (nret <= 0) {
+	fprintf(stderr, "asprintf() failed...\n");
+	return NULL;
+    }
     if (!filePath)
 	return NULL;
 

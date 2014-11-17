@@ -272,16 +272,16 @@ static unsigned dictionary_hash (char * key)
   dictionary, give size=0.
   */
 /*--------------------------------------------------------------------------*/
-dictionary*
+IniDictionary*
 dictionary_new (int size)
 {
-    dictionary *d;
+    IniDictionary *d;
 
     /* If no size was specified, allocate space for DICTMINSZ */
     if (size < DICTMINSZ)
 	size = DICTMINSZ;
 
-    d = (dictionary *) calloc (1, sizeof (dictionary));
+    d = (IniDictionary *) calloc (1, sizeof (IniDictionary));
     if (!d)
 	return NULL;
 
@@ -323,7 +323,7 @@ dictionary_new (int size)
   */
 /*--------------------------------------------------------------------------*/
 static void
-dictionary_del (dictionary * d)
+dictionary_del (IniDictionary * d)
 {
     int     i;
 
@@ -362,7 +362,7 @@ dictionary_del (dictionary * d)
   */
 /*--------------------------------------------------------------------------*/
 static char*
-dictionary_get (dictionary * d, char * key, char * def)
+dictionary_get (IniDictionary * d, char * key, char * def)
 {
     unsigned    hash;
     int         i;
@@ -414,7 +414,7 @@ dictionary_get (dictionary * d, char * key, char * def)
   */
 /*--------------------------------------------------------------------------*/
 static void
-dictionary_set (dictionary * d, char * key, char * val)
+dictionary_set (IniDictionary * d, char * key, char * val)
 {
     int         i;
     unsigned    hash;
@@ -494,7 +494,7 @@ dictionary_set (dictionary * d, char * key, char * val)
   */
 /*--------------------------------------------------------------------------*/
 static void
-dictionary_unset (dictionary * d, char * key)
+dictionary_unset (IniDictionary * d, char * key)
 {
     unsigned    hash;
     int         i;
@@ -541,7 +541,7 @@ dictionary_unset (dictionary * d, char * key)
 
 /* Private: add an entry to the dictionary */
 void
-iniparser_add_entry (dictionary * d,
+iniparser_add_entry (IniDictionary * d,
 		     char * sec,
 		     char * key,
 		     char * val)
@@ -578,7 +578,7 @@ iniparser_add_entry (dictionary * d,
   */
 /*--------------------------------------------------------------------------*/
 int
-iniparser_getnsec (dictionary * d)
+iniparser_getnsec (IniDictionary * d)
 {
     int i;
     int nsec;
@@ -614,7 +614,7 @@ iniparser_getnsec (dictionary * d)
   */
 /*--------------------------------------------------------------------------*/
 char*
-iniparser_getsecname (dictionary * d, int n)
+iniparser_getsecname (IniDictionary * d, int n)
 {
     int i;
     int foundsec;
@@ -654,7 +654,7 @@ iniparser_getsecname (dictionary * d, int n)
   */
 /*--------------------------------------------------------------------------*/
 void
-iniparser_dump_ini (dictionary * d, const char * file_name)
+iniparser_dump_ini (IniDictionary * d, const char * file_name)
 {
     int     i, j;
     char    keym[ASCIILINESZ+1];
@@ -737,7 +737,7 @@ iniparser_dump_ini (dictionary * d, const char * file_name)
   */
 /*--------------------------------------------------------------------------*/
 char*
-iniparser_getstring (dictionary * d, char * key, char * def)
+iniparser_getstring (IniDictionary * d, char * key, char * def)
 {
     char * lc_key;
     char * sval;
@@ -765,7 +765,7 @@ iniparser_getstring (dictionary * d, char * key, char * def)
   */
 /*--------------------------------------------------------------------------*/
 int
-iniparser_find_entry (dictionary  *ini, char *entry)
+iniparser_find_entry (IniDictionary  *ini, char *entry)
 {
     int found = 0;
 
@@ -791,7 +791,7 @@ iniparser_find_entry (dictionary  *ini, char *entry)
   */
 /*--------------------------------------------------------------------------*/
 int
-iniparser_setstr (dictionary * ini, char * entry, char * val)
+iniparser_setstr (IniDictionary * ini, char * entry, char * val)
 {
     dictionary_set (ini, strlwc (entry), val);
     return 0;
@@ -808,7 +808,7 @@ iniparser_setstr (dictionary * ini, char * entry, char * val)
   */
 /*--------------------------------------------------------------------------*/
 void
-iniparser_unset (dictionary * ini, char * entry)
+iniparser_unset (IniDictionary * ini, char * entry)
 {
     dictionary_unset (ini, strlwc (entry));
 }
@@ -827,10 +827,10 @@ iniparser_unset (dictionary * ini, char * entry)
   The returned dictionary must be freed using iniparser_free().
   */
 /*--------------------------------------------------------------------------*/
-dictionary*
+IniDictionary*
 iniparser_new (char *ininame)
 {
-    dictionary  *   d;
+    IniDictionary  *   d;
     char        lin[ASCIILINESZ+1];
     char        sec[ASCIILINESZ+1];
     char        key[ASCIILINESZ+1];
@@ -918,7 +918,7 @@ iniparser_new (char *ininame)
   */
 /*--------------------------------------------------------------------------*/
 void
-iniparser_free (dictionary * d)
+iniparser_free (IniDictionary * d)
 {
     dictionary_del (d);
 }

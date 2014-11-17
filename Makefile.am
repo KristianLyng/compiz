@@ -1,4 +1,4 @@
-SUBDIRS = include src libdecoration plugins images gtk kde po metadata bcop
+SUBDIRS = include src libdecoration plugins images gtk kde po metadata bcop compizconfig/libcompizconfig
 
 EXTRA_DIST = \
 	COPYING		       \

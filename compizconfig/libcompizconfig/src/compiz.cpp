@@ -26,7 +26,7 @@
 extern "C"
 {
 #ifdef HAVE_CONFIG_H
-#  include "../config.h"
+#  include "config.h"
 #endif
 
 #include <stdlib.h>
@@ -41,7 +41,7 @@ extern "C"
 
 #include <locale.h>
 
-#include <compiz-core.h>
+#include "compiz-core.h"
 #include <ccs.h>
 #include "ccs-private.h"
 }

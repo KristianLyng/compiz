@@ -24,7 +24,7 @@
 #include <sys/types.h>
 #include <errno.h>
 
-#include <ccs.h>
+#include "ccs.h"
 #include "iniparser.h"
 
 /** 
@@ -109,8 +109,13 @@ getIniString (IniDictionary *dictionary,
 {
     char *sectionName;
     char *retValue;
+    int ret = 1;
 
-    asprintf (&sectionName, "%s:%s", section, entry);
+    ret = asprintf (&sectionName, "%s:%s", section, entry);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed.\n");
+	return NULL;
+    }
 
     retValue = iniparser_getstring (dictionary, sectionName, NULL);
     free (sectionName);
@@ -125,8 +130,13 @@ setIniString (IniDictionary *dictionary,
 	      const char    *value)
 {
     char *sectionName;
+    int ret = 1;
 
-    asprintf (&sectionName, "%s:%s", section, entry);
+    ret = asprintf (&sectionName, "%s:%s", section, entry);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed.\n");
+	return ;
+    }
 
     if (!iniparser_find_entry (dictionary, (char*) section))
 	iniparser_add_entry (dictionary, (char*) section, NULL, NULL);
@@ -535,8 +545,13 @@ ccsIniSetInt (IniDictionary *dictionary,
 	      int           value)
 {
     char *string = NULL;
+    int ret = 1;
 
-    asprintf (&string, "%i", value);
+    ret = asprintf (&string, "%i", value);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed.\n");
+	return ;
+    }
     if (string)
     {
 	setIniString (dictionary, section, entry, string);
@@ -551,8 +566,13 @@ ccsIniSetFloat (IniDictionary *dictionary,
 		float         value)
 {
     char *string = NULL;
+    int ret = 1;
 
-    asprintf (&string, "%f", value);
+    ret = asprintf (&string, "%f", value);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed.\n");
+	return ;
+    }
     if (string)
     {
 	setIniString (dictionary, section, entry, string);
@@ -745,8 +765,13 @@ void ccsIniRemoveEntry (IniDictionary * dictionary,
 			const char * entry)
 {
     char *sectionName;
+    int ret = 1;
 
-    asprintf (&sectionName, "%s:%s", section, entry);
+    ret = asprintf (&sectionName, "%s:%s", section, entry);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed.\n");
+	return ;
+    }
     iniparser_unset (dictionary, sectionName);
     free (sectionName);
 }

@@ -18,15 +18,18 @@ clean-local:
 	rm -f compizconfig.pb.cc compizconfig.pb.h
 
 endif
-
+cc_srcdir = $(top_srcdir)/compizconfig/libcompizconfig
 EXTRA_DIST = compizconfig.proto
 
-INCLUDES =			               \
+AM_CPPFLAGS =			               \
 	@COMPIZ_CFLAGS@                        \
 	@LIBX11_CFLAGS@                        \
 	@LIBXML2_CFLAGS@                       \
+	-I$(cc_srcdir)/include	               \
 	-I$(top_srcdir)/include	               \
-	-I$(top_srcdir)/src                    \
+	-I$(top_builddir)/include		\
+	-I$(cc_srcdir)/src                    \
+	-I$(top_srcdir)				\
 	-DPLUGINDIR=\"$(PLUGINDIR)\"           \
 	-DMETADATADIR=\"$(METADATADIR)\"       \
 	-DLIBDIR=\"$(libdir)\"                 \

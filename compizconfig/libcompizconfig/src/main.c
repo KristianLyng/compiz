@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "../config.h"
+#  include "config.h"
 #endif
 
 #define _GNU_SOURCE
@@ -208,7 +208,7 @@ ccsContextNew (unsigned int *screens, unsigned int numScreens)
 	if (s)
 	{
 	    CCSStringList       list;
-	    CCSSettingValueList vl;
+	    CCSSettingValueList vl = NULL;
 
 	    ccsGetList (s, &vl);
 	    list = ccsGetStringListFromValueList (vl);
@@ -592,11 +592,16 @@ openBackend (char *backend)
     void *dlhand = NULL;
     char *dlname = NULL;
     char *err = NULL;
+    int ret = 1;
 
     if (home && strlen (home))
     {
-	asprintf (&dlname, "%s/.compizconfig/backends/lib%s.so", 
+	ret = asprintf (&dlname, "%s/.compizconfig/backends/lib%s.so", 
 		  home, backend);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed\n");
+	    return NULL;
+	}
 	dlerror ();
 	dlhand = dlopen (dlname, RTLD_NOW | RTLD_NODELETE | RTLD_LOCAL);
 	err = dlerror ();
@@ -607,8 +612,12 @@ openBackend (char *backend)
         if (dlname) {
 	        free (dlname);
         }
-	asprintf (&dlname, "%s/compizconfig/backends/lib%s.so", 
+	ret = asprintf (&dlname, "%s/compizconfig/backends/lib%s.so", 
 		  LIBDIR, backend);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed\n");
+	    return NULL;
+	}
 	dlhand = dlopen (dlname, RTLD_NOW | RTLD_NODELETE | RTLD_LOCAL);
 	err = dlerror ();
     }
@@ -2456,15 +2465,24 @@ ccsGetExistingBackends ()
     CCSBackendInfoList rv = NULL;
     char *home = getenv ("HOME");
     char *backenddir;
+    int ret = 1;
 
     if (home && strlen (home))
     {
-	asprintf (&backenddir, "%s/.compizconfig/backends", home);
+	ret = asprintf (&backenddir, "%s/.compizconfig/backends", home);
+	if (ret <= 0) {
+	    fprintf(stderr, "asprintf() failed\n");
+	    return NULL;
+	}
 	getBackendInfoFromDir (&rv, backenddir);
 	free (backenddir);
     }
 
-    asprintf (&backenddir, "%s/compizconfig/backends", LIBDIR);
+    ret = asprintf (&backenddir, "%s/compizconfig/backends", LIBDIR);
+    if (ret <= 0) {
+	fprintf(stderr, "asprintf() failed\n");
+	return NULL;
+    }
 
     getBackendInfoFromDir (&rv, backenddir);
     free (backenddir);
@@ -2482,6 +2500,7 @@ ccsExportToFile (CCSContext *context,
     CCSPlugin *plugin;
     CCSSetting *setting;
     char *keyName;
+    int ret = 1;
 
     exportFile = ccsIniNew ();
     if (!exportFile)
@@ -2502,11 +2521,20 @@ ccsExportToFile (CCSContext *context,
 	    if (skipDefaults && setting->isDefault)
 		continue;
 
-	    if (setting->isScreen)
-		asprintf (&keyName, "s%d_%s", 
+	    if (setting->isScreen) {
+		ret = asprintf (&keyName, "s%d_%s", 
 			  setting->screenNum, setting->name);
-	    else
-		asprintf (&keyName, "as_%s", setting->name);
+		if (ret <= 0) {
+		    fprintf(stderr, "asprintf() failed\n");
+		    return FALSE;
+		}
+	    } else {
+		ret = asprintf (&keyName, "as_%s", setting->name);
+		if (ret <= 0) {
+		    fprintf(stderr, "asprintf() failed\n");
+		    return FALSE;
+		}
+	    }
 
 	    switch (setting->type)
 	    {
@@ -2578,6 +2606,7 @@ ccsImportFromFile (CCSContext *context,
     CCSSettingList s;
     CCSPlugin *plugin;
     CCSSetting *setting;
+    int ret = 1;
     char *keyName;
     FILE *fp;
 
@@ -2605,11 +2634,20 @@ ccsImportFromFile (CCSContext *context,
 	    if (!setting->isDefault && !overwriteNonDefault)
 		continue;
 
-	    if (setting->isScreen)
-		asprintf (&keyName, "s%d_%s", 
-			  setting->screenNum, setting->name);
-	    else
-		asprintf (&keyName, "as_%s", setting->name);
+	    if (setting->isScreen) {
+		ret = asprintf (&keyName, "s%d_%s", 
+				setting->screenNum, setting->name);
+		if (ret <= 0) {
+		    fprintf(stderr, "asprintf() failed\n");
+		    return FALSE;
+		}
+	    } else {
+		ret = asprintf (&keyName, "as_%s", setting->name);
+		if (ret <= 0) {
+		    fprintf(stderr, "asprintf() failed\n");
+		    return FALSE;
+		}
+	    }
 
 	    switch (setting->type)
 	    {
