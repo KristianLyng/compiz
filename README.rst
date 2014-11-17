@@ -168,9 +168,7 @@ between the 0.8.9-code(which is almost identical to the released 0.8.8) and
 
 - bcop now included directly and built/distributed. Plugins don't need the
   bcop-binary, just the xslt. See staticswitcher in plugins/Makefile.am.
-- plugins-main imported to contrib/ and most plugins moved from
-  contrib/plugins-main to plugins/ . Missing colorfilter and animation for
-  now.
+- plugins-main now integrated directly into plugins/, still needs testing.
 - Significant work on the build system to reduce cruft
 - Silent building
 - autogen.sh does NOT run configure now. Run it by hand. (Tip:
