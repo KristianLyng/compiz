@@ -128,7 +128,9 @@ AC_SUBST(compdatadir)
 plugindir=$libdir/compiz
 AC_SUBST(plugindir)
 
-AC_ARG_WITH(default-plugins, [  --with-default-plugins=PLUGINS ],
+AC_ARG_WITH(default-plugins, 
+	       AS_HELP_STRING([--with-default-plugins=PLUGINS],
+			      [Comma-separated list of default plugins(staticswitcher,move,resize,place,decoration)]),
 		       [default_plugins="$withval"],
 		       [default_plugins="staticswitcher,move,resize,place,decoration"])
 AC_SUBST(default_plugins)
