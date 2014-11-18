@@ -130,9 +130,9 @@ AC_SUBST(plugindir)
 
 AC_ARG_WITH(default-plugins, 
 	       AS_HELP_STRING([--with-default-plugins=PLUGINS],
-			      [Comma-separated list of default plugins(staticswitcher,move,resize,place,decoration)]),
+			      [Comma-separated list of default plugins(mousepoll,ezoom,png,cube,rotate,staticswitcher,move,resize,place,decoration)]),
 		       [default_plugins="$withval"],
-		       [default_plugins="staticswitcher,move,resize,place,decoration"])
+		       [default_plugins="mousepoll,ezoom,png,cube,rotate,staticswitcher,move,resize,place,decoration"])
 AC_SUBST(default_plugins)
 
 imagedir=$datadir/compiz
