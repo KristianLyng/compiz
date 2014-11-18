@@ -130,7 +130,7 @@ AC_SUBST(plugindir)
 
 AC_ARG_WITH(default-plugins, [  --with-default-plugins=PLUGINS ],
 		       [default_plugins="$withval"],
-		       [default_plugins=""])
+		       [default_plugins="staticswitcher,move,resize,place,decoration"])
 AC_SUBST(default_plugins)
 
 imagedir=$datadir/compiz

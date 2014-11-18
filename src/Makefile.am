@@ -1,6 +1,7 @@
 AM_CPPFLAGS =			     \
 	@COMPIZ_CFLAGS@		     \
 	@GL_CFLAGS@		     \
+	-DDEFAULT_PLUGINS=\"@default_plugins@\"	     \
 	-I$(top_srcdir)/include	     \
 	-I$(top_builddir)/include    \
 	-DPLUGINDIR=\"$(plugindir)\" \

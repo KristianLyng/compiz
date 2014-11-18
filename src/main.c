@@ -249,6 +249,39 @@ readCoreXmlCallback (void *context,
     return i;
 }
 
+/*
+ * Add the default set of plugins, typically only run if no plugins are
+ * supplied.
+ */
+static void addDefaultPlugins(char **plugin, int *nPlugin)
+{
+
+    char *plug = strdup(DEFAULT_PLUGINS);
+    char *aPlug;
+    if (!plug || !*plug) {
+	fprintf(stderr, "no plugins or default plugins\n");
+    } else {
+	printf("No plugins specified, adding defaults:");
+	do {
+	    aPlug = plug;
+	    while(*plug && *plug != ',')
+		plug++;
+	    if (*plug) {
+		*plug = '\0';
+		plug++;
+	    }
+	    if (*nPlugin < 256) {
+		plugin[(*nPlugin)++] = aPlug;
+		printf(" %s", aPlug);
+	    } else {
+		fprintf(stderr,"Too many plugins (256)\n");
+		break;
+	    }
+	} while(*plug);
+	printf("\n");
+    }
+}
+
 int
 main (int argc, char **argv)
 {
@@ -387,6 +420,10 @@ main (int argc, char **argv)
 		plugin[nPlugin++] = argv[i];
 	}
     }
+    if (nPlugin == 0) {
+	addDefaultPlugins(plugin,&nPlugin);
+    }
+
 
     if (refreshRateArg)
     {
