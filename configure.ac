@@ -350,23 +350,17 @@ AC_ARG_ENABLE(gnome-keybindings,
 AC_ARG_ENABLE(protobuf,
   [  --disable-protobuf      Disable Protocol Buffers],
   [use_protobuf=$enableval], [use_protobuf=yes])
-
-if test "x$use_protobuf" = "xyes"; then
-  protobuf_error_msg="\nWARNING: You need to install Protocol Buffers to get faster program startup.\n        Sources are available at http://code.google.com/p/protobuf/downloads/list\n         Package names for Ubuntu/Debian: libprotobuf0, libprotobuf-dev, protobuf-compiler\n         Package names for other distributions: protobuf, protobuf-devel\n        Disabling protobuf.\n"
-  AC_CHECK_PROG(have_protoc, protoc, yes, no)
-  if test "x$have_protoc" = "xno"; then
-    echo -e $protobuf_error_msg; use_protobuf=no
-  else
-    AC_CHECK_LIB(protobuf, _ZN6google8protobuf7MessageD2Ev, [], [
-      echo -e $protobuf_error_msg; use_protobuf=no ], -lpthread)
-    if test "x$use_protobuf" = "xyes"; then
-      AC_LANG([C++])
-      AC_CHECK_HEADER([google/protobuf/message.h],,[
-        echo -e $protobuf_error_msg; use_protobuf=no ])
-      AC_LANG([C])
-    fi
-  fi
+PKG_CHECK_MODULES(PROTOBUF, [protobuf], [have_protobuf=yes], [have_protobuf=no])
+AC_CHECK_PROG(have_protoc, protoc, yes, no)
+if test "x$have_protobuf" != "xyes"; then
+    use_protobuf="no"
+    missing_optional_deps="${missing_optional_deps} protobuf"
 fi
+if test "x$have_protoc" != "xyes"; then
+    use_protobuf="no"
+    missing_optional_deps="${missing_optional_deps} protoc(protobuf compiler)"
+fi
+
 AM_CONDITIONAL([USE_PROTOBUF], [test "x$use_protobuf" = "xyes"])
 AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
 
@@ -747,5 +741,6 @@ echo "  metacity: $use_metacity"
 echo "  gnome:    $use_gnome"
 echo "  kde:      $use_kde"
 echo "  kde4:     $use_kde4"
+echo "  protobuf: $use_protobuf"
 echo ""
 echo "Known missing optional dependencies: $missing_optional_deps"

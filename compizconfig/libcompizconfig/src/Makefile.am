@@ -4,8 +4,11 @@ PROTOBUF_LIB = -lprotobuf
 PROTOBUF_DEFINES = \
 	-DUSE_PROTOBUF=1
 
+# protoc and family are retarded. That's it, why the hell are anyone using
+# them.
+
 compizconfig.pb.cc: compizconfig.proto
-	protoc --cpp_out=. compizconfig.proto
+	protoc --cpp_out=. -I $(srcdir)/ $(srcdir)/compizconfig.proto
 
 compizconfig.pb.h: compizconfig.pb.cc
 
