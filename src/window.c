@@ -51,6 +51,46 @@ typedef struct {
     unsigned long decorations;
 } MwmHints;
 
+#if 0
+#define dPoint(x) compLog( "%s: 0x%lx", #x,  (unsigned long int)(x))
+#define dUint(x) compLog( "%s: 0x%x", #x,  (unsigned int)(x))
+#define dBool(x) compLog( "%s: %s", #x,  (x) ? "true" : "false")
+static void
+windowDebug(CompWindow *w)
+{
+    compLog("Debug info for window:");
+    dPoint(w->screen);
+    dPoint(w->next);
+    dPoint(w->prev);
+    dPoint(w->id);
+    dPoint(w->frame);
+    dPoint(w->transientFor);
+    dPoint(w->clientLeader);
+    dPoint(w->pixmap);
+    dPoint(w->texture);
+    dUint(w->wmType);
+    dUint(w->type);
+    dUint(w->state);
+    dUint(w->actions);
+    dUint(w->protocols);
+    dUint(w->mwmDecor);
+    dUint(w->mwmFunc);
+    dBool(w->invisible);
+    dBool(w->destroyed);
+    dBool(w->damaged);
+    dBool(w->redirected);
+    dBool(w->managed);
+    dBool(w->unmanaging);
+    dBool(w->bindFailed);
+    dBool(w->overlayWindow);
+
+
+}
+#undef dPoint
+#undef dUint
+#undef dBool
+#endif
+
 static int
 reallocWindowPrivates (int  size,
 		       void *closure)
@@ -2654,18 +2694,16 @@ resizeWindow (CompWindow *w,
 	pw = width  + borderWidth * 2;
 	ph = height + borderWidth * 2;
 
-	if (w->mapNum && w->redirected)
+	if (w->mapNum && w->redirected && !w->invisible)
 	{
 	    pixmap = XCompositeNameWindowPixmap (w->screen->display->display,
 						 w->id);
 	    result = XGetGeometry (w->screen->display->display, pixmap, &root,
 				   &i, &i, &actualWidth, &actualHeight,
 				   &ui, &ui);
-
 	    if (!result || actualWidth != pw || actualHeight != ph)
 	    {
 		XFreePixmap (w->screen->display->display, pixmap);
-
 		return FALSE;
 	    }
 	}

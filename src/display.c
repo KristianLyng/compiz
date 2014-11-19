@@ -1742,10 +1742,12 @@ errorHandler (Display     *dpy,
     compDebug("\t%s", longs);
 
     XGetErrorDatabaseText (dpy, "XlibMessage", "MinorCode", "%d", str, 128);
-    compDebug(str, e->minor_code);
+    snprintf(longs,256,str,e->minor_code);
+    compDebug("\t%s",longs);
 
     XGetErrorDatabaseText (dpy, "XlibMessage", "ResourceID", "%d", str, 128);
-    compDebug(str, e->resourceid);
+    snprintf(longs,256,str,e->resourceid);
+    compDebug("\t%s",longs);
     compDebug(" "); // Formatting. Must be non-empty.
 
     return 0;
