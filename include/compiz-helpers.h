@@ -67,7 +67,7 @@
 #ifdef DEBUG
 #define compDebug(fmt, ...) compLogRaw(stdout, fmt, ##__VA_ARGS__)
 #else
-#define compDebug(fmt, ...) (void)
+#define compDebug(fmt, ...)
 #endif
 
 
