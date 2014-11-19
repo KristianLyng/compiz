@@ -1,6 +1,4 @@
 Makefile.in
-m4/
-intltool*
 aclocal.m4
 autom4te.cache
 compile
@@ -11,9 +9,7 @@ configure
 depcomp
 install-sh
 ltmain.sh
+m4/
 missing
-po/.intltool-merge-cache
 po/Makefile.in.in
-po/POTFILES
-po/stamp-it
 
