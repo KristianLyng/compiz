@@ -21,11 +21,21 @@
  * WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * Author: Kristian Lyngstøl <kristian@bohemians.org>
+ *
  */
 
 
 #ifndef COMPIZ_HELPER_H
 #define COMPIZ_HELPER_H
+
+/*
+ * Need this to make sure DEBUG is set.
+ *
+ * It's nasty if people add compiz-helper.h and forget config.h, since you
+ * end up with some files with and some files without DEBUG set.
+ */
+#include "config.h"
+
 
 /*
  * Skip past .'s and /'s in s, to turn 
