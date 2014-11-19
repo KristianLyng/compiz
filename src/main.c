@@ -35,6 +35,7 @@
 #include <sys/wait.h>
 
 #include <compiz-core.h>
+#include <compiz-helpers.h>
 
 char *programName;
 char **programArgv;
@@ -472,8 +473,7 @@ main (int argc, char **argv)
 
     if (!compInitMetadata (&coreMetadata))
     {
-	compLogMessage ("core", CompLogLevelFatal,
-			"Couldn't initialize core metadata");
+	compWarn ( "Couldn't initialize core metadata");
 	return 1;
     }
 

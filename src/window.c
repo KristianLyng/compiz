@@ -37,6 +37,8 @@
 #include <assert.h>
 
 #include <compiz-core.h>
+#include "config.h"
+#include <compiz-helpers.h>
 
 #define MwmHintsFunctions   (1L << 0)
 #define MwmHintsDecorations (1L << 1)

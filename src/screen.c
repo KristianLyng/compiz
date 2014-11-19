@@ -46,6 +46,7 @@
 #include <X11/cursorfont.h>
 
 #include <compiz-core.h>
+#include <compiz-helpers.h>
 
 #define NUM_OPTIONS(s) (sizeof ((s)->opt) / sizeof (CompOption))
 
@@ -2757,11 +2758,8 @@ insertWindowIntoScreen (CompScreen *s,
 		    break;
 		}
 	    }
-
-#ifdef DEBUG
 	    if (!p)
-		abort ();
-#endif
+		compWarn("Window lost!");
 
 	}
     }
@@ -2884,10 +2882,8 @@ updateScreenGrab (CompScreen *s,
 {
   index--;
 
-#ifdef DEBUG
     if (index < 0 || index >= s->maxGrab)
 	abort ();
-#endif
 
   XChangeActivePointerGrab (s->display->display, POINTER_GRAB_MASK,
 			    cursor, CurrentTime);
@@ -2904,10 +2900,8 @@ removeScreenGrab (CompScreen *s,
 
     index--;
 
-#ifdef DEBUG
     if (index < 0 || index >= s->maxGrab)
 	abort ();
-#endif
 
     s->grabs[index].cursor = None;
     s->grabs[index].active = FALSE;

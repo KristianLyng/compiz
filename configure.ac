@@ -207,6 +207,12 @@ PKG_CHECK_MODULES(CAIRO_XLIB_XRENDER, cairo-xlib-xrender, [have_cairo_xlib_xrend
 PKG_CHECK_MODULES(CAIRO, cairo-xlib-xrender cairo >= 1.0, [have_cairo=yes], [have_cairo=no])
 PKG_CHECK_MODULES(PANGO, pangocairo, [have_pango=yes], [have_pango=no])
 
+AC_ARG_ENABLE(debug,
+  [  --enable-debug	     Enable debug mode],
+  [use_debug=$enableval], [use_debug=false])
+if test "x$use_debug" = "xyes"; then
+    AC_DEFINE(DEBUG, 1, [Enable debug output])
+fi
 AC_ARG_ENABLE(text,
   [  --disable-text          Disable text],
   [use_text=$enableval], [use_text=yes])

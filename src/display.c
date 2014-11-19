@@ -43,6 +43,7 @@
 #include <X11/extensions/shape.h>
 
 #include <compiz-core.h>
+#include <compiz-helpers.h>
 
 static unsigned int virtualModMask[] = {
     CompAltMask, CompMetaMask, CompSuperMask, CompHyperMask,
@@ -1699,43 +1700,53 @@ eventLoop (void)
 
 static int errors = 0;
 
+/*
+ * Error handler for X errors. This is a callback, so we don't always know
+ * where we came from here.
+ *
+ * XXX:
+ * The code is a bit ugly, but you'll get over it. This is also complicated
+ * by how the XGetErrorDatabaseText returns a format string instead of an
+ * actual string, so you can't do compDebug("Whatever %s (%s)",str1, str),
+ * but have to do compDebug(str, e->value); compDebug(str2, e->value2); etc.
+ * which both looks ugly and complicates compDebug() since fmt can't be
+ * treated as a constant any more...
+ */
 static int
 errorHandler (Display     *dpy,
 	      XErrorEvent *e)
 {
 
-#ifdef DEBUG
     char str[128];
-#endif
+    char str2[128];
+    char longs[256];
+    char strReqCode[9];
+    snprintf(strReqCode,9,"%d", e->request_code);
 
     errors++;
 
-#ifdef DEBUG
     XGetErrorDatabaseText (dpy, "XlibMessage", "XError", "", str, 128);
-    fprintf (stderr, "%s", str);
-
-    XGetErrorText (dpy, e->error_code, str, 128);
-    fprintf (stderr, ": %s\n  ", str);
+    XGetErrorText (dpy, e->error_code, str2, 128);
+    snprintf(longs,256, "%s: ", str);
+    strncat(longs,str2,255);
+    compDebug("%s", longs);
 
     XGetErrorDatabaseText (dpy, "XlibMessage", "MajorCode", "%d", str, 128);
-    fprintf (stderr, str, e->request_code);
-
-    sprintf (str, "%d", e->request_code);
-    XGetErrorDatabaseText (dpy, "XRequest", str, "", str, 128);
-    if (strcmp (str, ""))
-	fprintf (stderr, " (%s)", str);
-    fprintf (stderr, "\n  ");
+    XGetErrorDatabaseText (dpy, "XRequest", strReqCode, "", str2, 128);
+    snprintf(longs, 256, str, e->request_code);
+    if (*str2) {
+	strncat(longs, " (", 255);
+	strncat(longs, str2,255);
+	strncat(longs, ")", 255);
+    }
+    compDebug("\t%s", longs);
 
     XGetErrorDatabaseText (dpy, "XlibMessage", "MinorCode", "%d", str, 128);
-    fprintf (stderr, str, e->minor_code);
-    fprintf (stderr, "\n  ");
+    compDebug(str, e->minor_code);
 
     XGetErrorDatabaseText (dpy, "XlibMessage", "ResourceID", "%d", str, 128);
-    fprintf (stderr, str, e->resourceid);
-    fprintf (stderr, "\n");
-
-    /* abort (); */
-#endif
+    compDebug(str, e->resourceid);
+    compDebug(" "); // Formatting. Must be non-empty.
 
     return 0;
 }
@@ -1943,7 +1954,7 @@ addDisplay (const char *name)
 
     snprintf (d->displayString, 255, "DISPLAY=%s", DisplayString (dpy));
 
-#ifdef DEBUG
+#ifdef DEBUG_SYNC
     XSynchronize (dpy, TRUE);
 #endif
 
@@ -2176,13 +2187,6 @@ addDisplay (const char *name)
     }
 
     XFixesQueryVersion (dpy, &d->fixesVersion, &fixesMinor);
-    /*
-    if (d->fixesVersion < 5)
-    {
-	fprintf (stderr, "%s: Need fixes extension version 5 or later "
-		 "for client-side cursor\n", programName);
-    }
-    */
 
     d->randrExtension = XRRQueryExtension (dpy,
 					   &d->randrEvent,
