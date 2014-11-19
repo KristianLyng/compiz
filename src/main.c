@@ -35,6 +35,7 @@
 #include <sys/wait.h>
 
 #include <compiz-core.h>
+#include <compiz-version.h>
 #include <compiz-helpers.h>
 
 char *programName;
@@ -329,7 +330,7 @@ main (int argc, char **argv)
 	}
 	else if (!strcmp (argv[i], "--version"))
 	{
-	    printf (PACKAGE_STRING "\n");
+	    printf (COMPIZ_Version "\n");
 	    return 0;
 	}
 	else if (!strcmp (argv[i], "--debug"))
