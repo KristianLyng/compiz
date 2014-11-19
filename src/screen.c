@@ -707,7 +707,7 @@ const CompMetadataOptionInfo coreScreenOptionInfo[COMP_SCREEN_OPTION_NUM] = {
     { "overlapping_outputs", "int",
       RESTOSTRING (0, OUTPUT_OVERLAP_MODE_LAST), 0, 0 },
     { "focus_prevention_level", "int",
-      RESTOSTRING (0, FOCUS_PREVENTION_LEVEL_LAST), 0, 0 },
+      RESTOSTRING (0, FOCUS_PREVENTION_LEVEL_LAST) "<default>0</default>", 0, 0 },
     { "focus_prevention_match", "match", 0, 0, 0 },
     { "texture_compression", "bool", 0, 0, 0 },
     { "force_independent_output_painting", "bool", 0, 0, 0 }
