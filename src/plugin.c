@@ -752,18 +752,15 @@ checkPluginABI (const char *name,
     int pluginABI;
 
     pluginABI = getPluginABI (name);
-    if (!pluginABI)
-    {
-	compLogMessage ("core", CompLogLevelError,
-			"Plugin '%s' not loaded.\n", name);
+    if (!pluginABI) {
+	compWarn("Plugin '%s' not loaded.\n", name);
 	return FALSE;
     }
     else if (pluginABI != abi)
     {
-	compLogMessage ("core", CompLogLevelError,
-			"Plugin '%s' has ABI version '%d', expected "
-			"ABI version '%d'.\n",
-			name, pluginABI, abi);
+	compWarn("Plugin '%s' has ABI version '%d', expected "
+		 "ABI version '%d'.\n",
+		name, pluginABI, abi);
 	return FALSE;
     }
 

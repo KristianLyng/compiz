@@ -4346,8 +4346,10 @@ updateDefaultIcon (CompScreen *screen)
 	screen->defaultIcon = NULL;
     }
 
-    if (!readImageFromFile (screen->display, file, &width, &height, &data))
+    if (!readImageFromFile (screen->display, file, &width, &height, &data)) {
+	compLog("Couldn't open default icon for images (%s)", file);
 	return FALSE;
+    }
 
     icon = malloc (sizeof (CompIcon) + width * height * sizeof (CARD32));
     if (!icon)

@@ -28,8 +28,10 @@
 #include <string.h>
 #include <png.h>
 #include <setjmp.h>
+#include <errno.h>
 
 #include <compiz-core.h>
+#include <compiz-helpers.h>
 
 static CompMetadata pngMetadata;
 
@@ -434,13 +436,15 @@ pngFileToImage (CompDisplay *d,
 	    sprintf (file, "%s%s", name, extension);
 
 	fp = fopen (file, "r");
-	if (fp)
-	{
+	if (fp) {
 	    status = readPngFileToImage (fp,
 					 width,
 					 height,
 					 data);
 	    fclose (fp);
+	} else {
+	    compLog("Couldn't open %s for reading: %s",
+	    	    file, strerror(errno));
 	}
 
 	free (file);
@@ -450,6 +454,15 @@ pngFileToImage (CompDisplay *d,
 	    *stride = *width * 4;
 	    return TRUE;
 	}
+    } else {
+	/*
+	 * FIXME:
+	 *  This is just dumb. Yeah, we check if it succeeds, but what do
+	 *  we expect will happen in about 0.5 seconds if it fails? This
+	 *  should be an assert().
+	 */
+	compWarn("malloc() failed. You are probably about to crash.");
+	return FALSE;
     }
 
     UNWRAP (pd, d, fileToImage);

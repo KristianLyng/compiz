@@ -31,6 +31,7 @@
 #include <X11/Xproto.h>
 
 #include <compiz-cube.h>
+#include <compiz-helpers.h>
 
 static CompMetadata cubeMetadata;
 
@@ -79,9 +80,9 @@ cubeLoadImg (CompScreen *s,
 			    imgFiles[cs->imgCurFile].s,
 			    &width, &height))
     {
-	compLogMessage ("cube", CompLogLevelWarn,
-			"Failed to load slide: %s",
-			imgFiles[cs->imgCurFile].s);
+	compLog("Failed to load slide: %s. Either not found or "
+		"missing image format plugin.",
+		imgFiles[cs->imgCurFile].s);
 
 	finiTexture (s, &cs->texture);
 	initTexture (s, &cs->texture);

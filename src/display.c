@@ -2868,6 +2868,10 @@ writeImageToFile (CompDisplay *display,
 				    width * 4, data);
 }
 
+/*
+ * XXX: We should not hide file suffixes. They matter. This is pretty
+ * silly.
+ */
 Bool
 fileToImage (CompDisplay *display,
 	     const char	 *path,
@@ -2877,6 +2881,9 @@ fileToImage (CompDisplay *display,
 	     int	 *stride,
 	     void	 **data)
 {
+    compLog("Failed to load image %s%s%s. Possibly missing image "
+	"format plugin.", path ? path : "", path ? "/" : "",
+	name);
     return FALSE;
 }
 
