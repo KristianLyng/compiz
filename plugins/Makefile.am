@@ -73,6 +73,7 @@ libcommands_la_SOURCES = commands.c
 libgnomecompat_la_SOURCES = gnomecompat.c
 libpng_la_LIBADD = @LIBPNG_LIBS@
 libpng_la_SOURCES = png.c
+liblolconf_la_SOURCES = lolconf.c
 
 libdecoration_la_DEPENDENCIES = $(top_builddir)/libdecoration/libdecoration.la
 libdecoration_la_LIBADD = $(top_builddir)/libdecoration/libdecoration.la
@@ -272,6 +273,7 @@ module_LTLIBRARIES =		\
 	libwater.la		\
 	libscreenshot.la	\
 	libclone.la		\
+	liblolconf.la		\
 	libpng.la		\
 	libblur.la		\
 	libregex.la		\
