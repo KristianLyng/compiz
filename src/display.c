@@ -32,7 +32,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/poll.h>
-#include <assert.h>
 #include <unistd.h>
 #include <errno.h>
 

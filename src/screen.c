@@ -35,7 +35,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <assert.h>
 #include <limits.h>
 
 #include <X11/Xlib.h>

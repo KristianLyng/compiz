@@ -80,5 +80,13 @@
 #define compDebug(fmt, ...)
 #endif
 
+#define assert(expr) \
+	do {						    \
+	    if (!(expr)) {				    \
+		compWarn("Assertion '" #expr "' failed");   \
+		abort();				    \
+	    }						    \
+	} while(0)
+
 
 #endif

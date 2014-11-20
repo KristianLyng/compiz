@@ -34,7 +34,6 @@
 #include <strings.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <assert.h>
 
 #include <compiz-core.h>
 #include "config.h"
