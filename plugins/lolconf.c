@@ -80,9 +80,9 @@ csvToList (CompDisplay *d, char *csv, CompListValue *list, CompOptionType type)
     char *splitEnd = NULL;
     char *item = NULL;
     int  itemLength, count, i;
-
-    if (csv[0] == '\0')
-    {
+    assert(csv);
+    assert(list);
+    if (csv[0] == '\0') {
 	list->nValue = 0;
 	return FALSE;
     }
@@ -97,32 +97,24 @@ csvToList (CompDisplay *d, char *csv, CompListValue *list, CompOptionType type)
     list->value = malloc (sizeof (CompOptionValue) * count);
     list->nValue = count;
 
+    assert(list->value);
+
     if (list->value)
     {
 	for (i = 0; i < count; i++)
 	{
 	    splitEnd = strchr (splitStart, ',');
 
-	    if (splitEnd)
-	    {
+	    if (splitEnd) {
 		itemLength = strlen (splitStart) - strlen (splitEnd);
 		item = malloc (sizeof (char) * (itemLength + 1));
-		if (item)
-		{
-		   strncpy (item, splitStart, itemLength);
-		   item[itemLength] = 0;
-		}
-	    }
-	    else // last value
-	    {
+		assert(item);
+		strncpy (item, splitStart, itemLength);
+		item[itemLength] = 0;
+	    } else {
 		item = strdup (splitStart);
 	    }
-
-	    if (!item) {
-	        compLogMessage ("ini", CompLogLevelError, "Not enough memory");
-	        list->nValue = 0;
-	        return FALSE;
-	    }
+	    assert(item);
 
 	    switch (type)
 	    {
@@ -224,7 +216,7 @@ handleTimeout(void *closure)
 	debugOption(o);
     else
 	compLog("... vat");
-    assert (csvToList (d, "staticswitcher,move,core,lolconf",
+    assert (csvToList (d, "staticswitcher,png,move,mousepoll,ezoom,cube,rotate,lolconf,decoration,core",
 		       &value.list,
 		       CompOptionTypeString));
     value.list.type = CompOptionTypeString;
