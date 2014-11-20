@@ -318,7 +318,7 @@
 	    <option name="default_icon" type="string">
 		<_short>Default Icon</_short>
 		<_long>Default window icon image</_long>
-		<default>icon</default>
+		<default>icon.png</default>
 	    </option>
 	    <option name="force_independent_output_painting" type="bool">
 		<_short>Force independent output painting.</_short>

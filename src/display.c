@@ -27,11 +27,13 @@
 #  include "../config.h"
 #endif
 
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/poll.h>
 #include <assert.h>
+#include <unistd.h>
 
 #define XK_MISCELLANY
 #include <X11/keysymdef.h>
@@ -2812,6 +2814,44 @@ clearTargetOutput (CompDisplay	*display,
 
 #define HOME_IMAGEDIR ".compiz/images"
 
+/*
+ * Looks for the file specified in 'name' as either an regular path
+ * (absolute or otherwise), prefixed with $home/HOME_IMAGEDIR or the
+ * systemwide IMAGEDIR. Returns either NULL or a char * that must be freed
+ * by the caller.
+ */
+static char *
+findImgFile(const char *name)
+{
+    char *ret;
+    char *home;
+    int iret;
+    if (!access(name, R_OK)) {
+	ret = strdup(name);
+	return ret;
+    }
+    home = getenv ("HOME");
+    if (home) {
+	iret = asprintf (&ret, "%s/%s/%s", home, HOME_IMAGEDIR, name);
+	assert(iret);
+	assert(ret);
+	if (!access(ret, R_OK)) {
+	    return ret;
+	} else {
+	    free(ret);
+	}
+    }
+    iret = asprintf(&ret, "%s/%s", IMAGEDIR, name);
+    assert(iret);
+    assert(ret);
+    if (!access(ret, R_OK)) {
+	return ret;
+    } else {
+	free(ret);
+    }
+    return NULL;
+}
+
 Bool
 readImageFromFile (CompDisplay *display,
 		   const char  *name,
@@ -2821,36 +2861,16 @@ readImageFromFile (CompDisplay *display,
 {
     Bool status;
     int  stride;
+    char *target;
 
-    status = (*display->fileToImage) (display, NULL, name, width, height,
-				      &stride, data);
-    if (!status)
-    {
-	char *home;
-
-	home = getenv ("HOME");
-	if (home)
-	{
-	    char *path;
-
-	    path = malloc (strlen (home) + strlen (HOME_IMAGEDIR) + 2);
-	    if (path)
-	    {
-		sprintf (path, "%s/%s", home, HOME_IMAGEDIR);
-		status = (*display->fileToImage) (display, path, name,
-						  width, height, &stride,
-						  data);
-
-		free (path);
-
-		if (status)
-		    return TRUE;
-	    }
-	}
-
-	status = (*display->fileToImage) (display, IMAGEDIR, name,
-					  width, height, &stride, data);
+    target = findImgFile(name);
+    if (!target) {
+	compLog("Couldn't open image %s for reading.", name);
+	return FALSE;
     }
+    status = (*display->fileToImage) (display, NULL, target, width, height,
+				      &stride, data);
+    free(target);
 
     return status;
 }

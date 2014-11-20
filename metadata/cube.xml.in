@@ -110,7 +110,7 @@
 			<type>string</type>
 			<hints>file;image;</hints>
 			<default>
-			    <value>freedesktop</value>
+			    <value>freedesktop.png</value>
 			</default>
 		    </option>
 		    <option name="adjust_image" type="bool">
