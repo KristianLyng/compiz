@@ -259,33 +259,8 @@ writeJPEG (CompDisplay *d,
     return TRUE;
 }
 
-/* Turns the path & name into a real, absolute path
-   No extensions jiggery-pokery here, as JPEGs can be
-   .jpg or .jpeg - or, indeed, whatever.
-   Deals with the path, regardless of what it's passed. */
-static char*
-createFilename (const char *path,
-		const char *name)
-{
-    char *filename = NULL;
-    int ret;
-
-    if (path && !name)
-	ret = asprintf (&filename, "%s", path);
-    else if (!path && name)
-	ret = asprintf (&filename, "%s", name);
-    else
-	ret = asprintf (&filename, "%s/%s", path, name);
-    if (ret <= 0) {
-	fprintf(stderr,"asprintf failed");
-	return NULL;
-    }
-    return filename;
-}
-
 static Bool
 JPEGImageToFile (CompDisplay *d,
-		 const char  *path,
 		 const char  *name,
 		 const char  *format,
 		 int         width,
@@ -294,7 +269,6 @@ JPEGImageToFile (CompDisplay *d,
 		 void        *data)
 {
     Bool status = FALSE;
-    char *fileName;
     FILE *file;
 
     /* Not a JPEG */
@@ -302,31 +276,24 @@ JPEGImageToFile (CompDisplay *d,
     {
 	JPEG_DISPLAY (d);
 	UNWRAP (jd, d, imageToFile);
-	status = (*d->imageToFile) (d, path, name, format,
+	status = (*d->imageToFile) (d, name, format,
 				    width, height, stride, data);
 	WRAP (jd, d, imageToFile, JPEGImageToFile);
 	return status;
     }
 
-    /* Is a JPEG */
-    fileName = createFilename (path, name);
-    if (!fileName)
-	return FALSE;
-
-    file = fopen (fileName, "wb");
+    file = fopen (name, "wb");
     if (file)
     {
 	status = writeJPEG (d, data, file, width, height, stride);
 	fclose (file);
     }
 
-    free (fileName);
     return status;
 }
 
 static Bool
 JPEGFileToImage (CompDisplay *d,
-		 const char  *path,
 		 const char  *name,
 		 int         *width,
 		 int         *height,
@@ -334,43 +301,26 @@ JPEGFileToImage (CompDisplay *d,
 		 void        **data)
 {
     Bool status = FALSE;
-    char *fileName, *extension;
+    FILE *file;
 
     JPEG_DISPLAY (d);
 
-    fileName = createFilename (path, name);
-    if (!fileName)
-	return FALSE;
-
-    /* Do some testing here to see if it's got a .jpg or .jpeg extension */
-    extension = strrchr (fileName, '.');
-    if (extension)
+    file = fopen (name, "rb");
+    if (file)
     {
-	if (strcasecmp (extension, ".jpeg") == 0 ||
-	    strcasecmp (extension, ".jpg") == 0)
+	status = readJPEGFileToImage (file, width, height, data);
+	fclose (file);
+
+	if (status)		/* Success! */
 	{
-	    FILE *file;
-
-	    file = fopen (fileName, "rb");
-	    if (file)
-	    {
-		status = readJPEGFileToImage (file, width, height, data);
-		fclose (file);
-
-		if (status)		/* Success! */
-		{
-		    free (fileName);
-    		    *stride = *width * 4;
-		    return TRUE;
-		}
-	    }
+	    *stride = *width * 4;
+	    return TRUE;
 	}
     }
-    free (fileName);
 
     /* Isn't a JPEG - pass to the next in the chain. */
     UNWRAP (jd, d, fileToImage);
-    status = (*d->fileToImage) (d, path, name, width, height, stride, data);
+    status = (*d->fileToImage) (d, name, width, height, stride, data);
     WRAP (jd, d, fileToImage, JPEGFileToImage);
 
     return status;

@@ -328,22 +328,8 @@ stdioWriteFunc (png_structp png,
 	png_error (png, "Write Error");
 }
 
-static char *
-pngExtension (const char *name)
-{
-
-    if (strlen (name) > 4)
-    {
-	if (strcasecmp (name + (strlen (name) - 4), ".png") == 0)
-	    return "";
-    }
-
-    return ".png";
-}
-
 static Bool
 pngImageToFile (CompDisplay *d,
-		const char  *path,
 		const char  *name,
 		const char  *format,
 		int	    width,
@@ -352,64 +338,31 @@ pngImageToFile (CompDisplay *d,
 		void	    *data)
 {
     Bool status = FALSE;
-    char *extension = pngExtension (name);
-    char *file;
     FILE *fp;
-    int  len;
 
     PNG_DISPLAY (d);
 
-    len = (path ? strlen (path) : 0) + strlen (name) + strlen (extension) + 2;
-
-    file = malloc (len);
-    if (file)
-    {
-	if (path)
-	    sprintf (file, "%s/%s%s", path, name, extension);
-	else
-	    sprintf (file, "%s%s", name, extension);
-    }
-
-    if (file && strcasecmp (format, "png") == 0)
-    {
-	fp = fopen (file, "wb");
-	if (fp)
-	{
+    if (!strcasecmp (format, "png")) {
+	fp = fopen (name, "wb");
+	if (fp) {
 	    status = writePng (data, stdioWriteFunc, fp, width, height, stride);
 	    fclose (fp);
 	}
 
 	if (status)
-	{
-	    free (file);
 	    return TRUE;
-	}
     }
 
     UNWRAP (pd, d, imageToFile);
-    status = (*d->imageToFile) (d, path, name, format, width, height, stride,
+    status = (*d->imageToFile) (d, name, format, width, height, stride,
 				data);
     WRAP (pd, d, imageToFile, pngImageToFile);
-
-    if (!status && file)
-    {
-	fp = fopen (file, "wb");
-	if (fp)
-	{
-	    status = writePng (data, stdioWriteFunc, fp, width, height, stride);
-	    fclose (fp);
-	}
-    }
-
-    if (file)
-	free (file);
 
     return status;
 }
 
 static Bool
 pngFileToImage (CompDisplay *d,
-		const char  *path,
 		const char  *name,
 		int	    *width,
 		int	    *height,
@@ -417,56 +370,24 @@ pngFileToImage (CompDisplay *d,
 		void	    **data)
 {
     Bool status = FALSE;
-    char *extension = pngExtension (name);
-    char *file;
-    int  len;
-
+    FILE *fp;
     PNG_DISPLAY (d);
-
-    len = (path ? strlen (path) : 0) + strlen (name) + strlen (extension) + 2;
-
-    file = malloc (len);
-    if (file)
-    {
-	FILE *fp;
-
-	if (path)
-	    sprintf (file, "%s/%s%s", path, name, extension);
-	else
-	    sprintf (file, "%s%s", name, extension);
-
-	fp = fopen (file, "r");
-	if (fp) {
-	    status = readPngFileToImage (fp,
-					 width,
-					 height,
-					 data);
-	    fclose (fp);
-	} else {
-	    compLog("Couldn't open %s for reading: %s",
-	    	    file, strerror(errno));
-	}
-
-	free (file);
-
-	if (status)
-	{
-	    *stride = *width * 4;
-	    return TRUE;
-	}
+    fp = fopen (name, "r");
+    if (fp) {
+	status = readPngFileToImage (fp, width, height, data);
+	fclose (fp);
     } else {
-	/*
-	 * FIXME:
-	 *  This is just dumb. Yeah, we check if it succeeds, but what do
-	 *  we expect will happen in about 0.5 seconds if it fails? This
-	 *  should be an assert().
-	 */
-	compWarn("malloc() failed. You are probably about to crash.");
-	return FALSE;
+	compLog("Couldn't open %s for reading: %s",
+		name, strerror(errno));
+    }
+
+    if (status) {
+	*stride = *width * 4;
+	return TRUE;
     }
 
     UNWRAP (pd, d, fileToImage);
-    status = (*d->fileToImage) (d, path, name, width, height, stride, data);
+    status = (*d->fileToImage) (d, name, width, height, stride, data);
     WRAP (pd, d, fileToImage, pngFileToImage);
 
     return status;

@@ -639,7 +639,7 @@ svgHandleCompizEvent (CompDisplay *d,
 }
 
 static Bool
-readSvgFileToImage (char *file,
+readSvgFileToImage (const char *file,
 		    int  *width,
 		    int  *height,
 		    void **data)
@@ -698,22 +698,8 @@ readSvgFileToImage (char *file,
     return TRUE;
 }
 
-static char *
-svgExtension (const char *name)
-{
-
-    if (strlen (name) > 4)
-    {
-	if (strcasecmp (name + (strlen (name) - 4), ".svg") == 0)
-	    return "";
-    }
-
-    return ".svg";
-}
-
 static Bool
 svgFileToImage (CompDisplay *d,
-		const char  *path,
 		const char  *name,
 		int	    *width,
 		int	    *height,
@@ -721,35 +707,17 @@ svgFileToImage (CompDisplay *d,
 		void	    **data)
 {
     Bool status = FALSE;
-    char *extension = svgExtension (name);
-    char *file;
-    int  len;
 
     SVG_DISPLAY (d);
 
-    len = (path ? strlen (path) : 0) + strlen (name) + strlen (extension) + 2;
-
-    file = malloc (len);
-    if (file)
-    {
-	if (path)
-	    sprintf (file, "%s/%s%s", path, name, extension);
-	else
-	    sprintf (file, "%s%s", name, extension);
-
-	status = readSvgFileToImage (file, width, height, data);
-
-	free (file);
-
-	if (status)
-	{
-	    *stride = *width * 4;
-	    return TRUE;
-	}
+    status = readSvgFileToImage (name, width, height, data);
+    if (status) {
+	*stride = *width * 4;
+	return TRUE;
     }
 
     UNWRAP (sd, d, fileToImage);
-    status = (*d->fileToImage) (d, path, name, width, height, stride, data);
+    status = (*d->fileToImage) (d, name, width, height, stride, data);
     WRAP (sd, d, fileToImage, svgFileToImage);
 
     return status;

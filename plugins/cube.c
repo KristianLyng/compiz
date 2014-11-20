@@ -80,8 +80,7 @@ cubeLoadImg (CompScreen *s,
 			    imgFiles[cs->imgCurFile].s,
 			    &width, &height))
     {
-	compLog("Failed to load slide: %s. Either not found or "
-		"missing image format plugin.",
+	compWarn("Failed to load slide: %s.",
 		imgFiles[cs->imgCurFile].s);
 
 	finiTexture (s, &cs->texture);

@@ -34,6 +34,7 @@
 #include <sys/poll.h>
 #include <assert.h>
 #include <unistd.h>
+#include <errno.h>
 
 #define XK_MISCELLANY
 #include <X11/keysymdef.h>
@@ -2823,32 +2824,42 @@ clearTargetOutput (CompDisplay	*display,
 static char *
 findImgFile(const char *name)
 {
-    char *ret;
+    char *tmp;
     char *home;
     int iret;
-    if (!access(name, R_OK)) {
-	ret = strdup(name);
-	return ret;
+    if (!access(name, R_OK))
+	return strdup(name);
+    if (errno != ENOENT) {
+	compWarn("Couldn't open %s: %s", name, strerror(errno));
+	return NULL;
     }
+
     home = getenv ("HOME");
     if (home) {
-	iret = asprintf (&ret, "%s/%s/%s", home, HOME_IMAGEDIR, name);
-	assert(iret);
-	assert(ret);
-	if (!access(ret, R_OK)) {
-	    return ret;
-	} else {
-	    free(ret);
+	iret = asprintf (&tmp, "%s/%s/%s", home, HOME_IMAGEDIR, name);
+	assert(iret && tmp);
+
+	if (!access(tmp, R_OK))
+	    return tmp;
+	if (errno != ENOENT) {
+	    compWarn("Couldn't open %s: %s", tmp, strerror(errno));
+	    free(tmp);
+	    return NULL;
 	}
+	free(tmp);
     }
-    iret = asprintf(&ret, "%s/%s", IMAGEDIR, name);
-    assert(iret);
-    assert(ret);
-    if (!access(ret, R_OK)) {
-	return ret;
-    } else {
-	free(ret);
+
+    iret = asprintf(&tmp, "%s/%s", IMAGEDIR, name);
+    assert(iret && tmp);
+    if (!access(tmp, R_OK))
+	return tmp;
+    if (errno != ENOENT) {
+	compWarn("Couldn't open %s: %s", tmp, strerror(errno));
+	free(tmp);
+	return NULL;
     }
+    free(tmp);
+
     return NULL;
 }
 
@@ -2865,51 +2876,46 @@ readImageFromFile (CompDisplay *display,
 
     target = findImgFile(name);
     if (!target) {
-	compLog("Couldn't open image %s for reading.", name);
+	compLog("Image %s not readable in any search path"
+		" (PWD, ~/%s and %s)",name, HOME_IMAGEDIR,IMAGEDIR);
 	return FALSE;
     }
-    status = (*display->fileToImage) (display, NULL, target, width, height,
+    status = (*display->fileToImage) (display, target, width, height,
 				      &stride, data);
+    if (!status) {
+	compWarn("Image file %s exists and is readable, but failed to load.",
+		target);
+	compLog("Possible causes are invalid image data and missing image format plugin.");
+    }
     free(target);
-
     return status;
 }
 
 Bool
 writeImageToFile (CompDisplay *display,
-		  const char  *path,
 		  const char  *name,
 		  const char  *format,
 		  int	      width,
 		  int	      height,
 		  void	      *data)
 {
-    return (*display->imageToFile) (display, path, name, format, width, height,
+    return (*display->imageToFile) (display, name, format, width, height,
 				    width * 4, data);
 }
 
-/*
- * XXX: We should not hide file suffixes. They matter. This is pretty
- * silly.
- */
 Bool
 fileToImage (CompDisplay *display,
-	     const char	 *path,
 	     const char	 *name,
 	     int	 *width,
 	     int	 *height,
 	     int	 *stride,
 	     void	 **data)
 {
-    compLog("Failed to load image %s%s%s. Possibly missing image "
-	"format plugin.", path ? path : "", path ? "/" : "",
-	name);
     return FALSE;
 }
 
 Bool
 imageToFile (CompDisplay *display,
-	     const char	 *path,
 	     const char	 *name,
 	     const char	 *format,
 	     int	 width,

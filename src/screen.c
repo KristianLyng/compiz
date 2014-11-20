@@ -4347,7 +4347,7 @@ updateDefaultIcon (CompScreen *screen)
     }
 
     if (!readImageFromFile (screen->display, file, &width, &height, &data)) {
-	compLog("Couldn't open default icon for images (%s)", file);
+	compWarn("Failed to load default window icon (%s)", file);
 	return FALSE;
     }
 

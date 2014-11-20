@@ -365,8 +365,10 @@ shotPaintScreen (CompScreen   *s,
 			sprintf (name, "screenshot%d.png", number);
 
 			app = sd->opt[SHOT_DISPLAY_OPTION_LAUNCH_APP].value.s;
-
-			if (!writeImageToFile (s->display, dir, name, "png",
+			/* FIXME:
+			 * Err, need to add path here I suppose.
+			 */
+			if (!writeImageToFile (s->display, name, "png",
 					       w, h, buffer))
 			{
 			    compLogMessage ("screenshot", CompLogLevelError,

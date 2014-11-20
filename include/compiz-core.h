@@ -791,7 +791,6 @@ typedef void (*ForEachWindowProc) (CompWindow *window,
 				   void	      *closure);
 
 typedef Bool (*FileToImageProc) (CompDisplay *display,
-				 const char  *path,
 				 const char  *name,
 				 int	     *width,
 				 int	     *height,
@@ -799,7 +798,6 @@ typedef Bool (*FileToImageProc) (CompDisplay *display,
 				 void	     **data);
 
 typedef Bool (*ImageToFileProc) (CompDisplay *display,
-				 const char  *path,
 				 const char  *name,
 				 const char  *format,
 				 int	     width,
@@ -1197,7 +1195,6 @@ readImageFromFile (CompDisplay *display,
 
 Bool
 writeImageToFile (CompDisplay *display,
-		  const char  *path,
 		  const char  *name,
 		  const char  *format,
 		  int	      width,
@@ -1206,7 +1203,6 @@ writeImageToFile (CompDisplay *display,
 
 Bool
 fileToImage (CompDisplay *display,
-	     const char	 *path,
 	     const char	 *name,
 	     int	 *width,
 	     int	 *height,
@@ -1215,7 +1211,6 @@ fileToImage (CompDisplay *display,
 
 Bool
 imageToFile (CompDisplay *display,
-	     const char	 *path,
 	     const char	 *name,
 	     const char	 *format,
 	     int	 width,
