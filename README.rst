@@ -8,7 +8,7 @@ Compiz
 
 :Manual section: 1
 :Author: Kristian Lyngstol
-:Date: 17-11-2014
+:Date: 21-11-2014
 :Version: 0.8.11
 
 SYNOPSIS
@@ -16,7 +16,7 @@ SYNOPSIS
 
 ::
 
-	compiz [--display DISPLAY] [--bg-image PNG] [--refresh-rate RATE]
+        compiz [--display DISPLAY] [--bg-image PNG] [--refresh-rate RATE]
                [--fast-filter] [--indirect-rendering] [--no-detection]
                [--keep-desktop-hints] [--loose-binding] [--replace]
                [--sm-disable] [--sm-client-id ID] [--only-current-screen]
@@ -26,6 +26,10 @@ DESCRIPTION
 ===========
 
 Compiz is a plugin-based compositing window manager for the X desktop.
+
+It provides a visually pleasing way to manage your window, with features
+ranging from basic window movement, resizing and placement, to signature
+plugins such as the rotating cube and wobbly windows.
 
 This particular repository is a work in progress to merge various
 Compiz-components and make things easier for users and developers alike.
@@ -84,7 +88,7 @@ OPTIONS
         Don't use the compositing overlay window (cow) for the root window.
 
 --debug
-        Enable certain debug-features (like forcing sync).
+        Enable certain debug output.
 
 --version
         Print the compiz version.
@@ -118,6 +122,15 @@ EXAMPLES
 
 ::
 
+        compiz --replace
+
+Start compiz with the default set of plugins and make sure any running
+window manager is replaced. The default set of plugins provides all
+essential window management features, without being too extravagant about
+it.
+
+::
+
     compiz --replace ccp
 
 Starts compiz with the CompizConfig plugin. Configuration can then be done
@@ -132,20 +145,6 @@ through ``ccsm``.
 Starts compiz with a set of plugins and a GTK window decorator. This will
 give you a functional desktop, but no way of changing the configuration of
 the plugins from the default values.
-
-NOTES
-=====
-
-Configuration schemas are typically stored in ``/usr/share/compiz/foo.xml``
-(or the ``/usr/local`` equivalent). These schemas are NOT used by compiz
-itself. Changing default values here will not change the default values of
-Compiz.
-
-These files may be used by the various configuration plugins. If you are
-using a configuration plugin that utilizes them, then changing the default
-values in the XML files MIGHT change the actual defaults, but it is not
-guaranteed. Bottom line: Do not change the XML in attempt to change
-configuration defaults.
 
 HISTORY
 =======
@@ -170,6 +169,10 @@ between the 0.8.9-code(which is almost identical to the released 0.8.8) and
   bcop-binary, just the xslt. See staticswitcher in plugins/Makefile.am.
 - plugins-main now integrated directly into plugins/, still needs testing.
 - Significant work on the build system to reduce cruft
+- Change coding style from stupid to clever
+- Introduce a simpler approach to logging, but to ensure it's a mess, leave
+  the old one.
+- Add default plugins, configurable at build-time.
 - Silent building
 - autogen.sh does NOT run configure now. Run it by hand. (Tip:
   ./autogen.sh; mkdir build; cd build; ../configure; make ... Now you have
