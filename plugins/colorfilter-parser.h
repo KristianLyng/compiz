@@ -21,35 +21,31 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-enum
-{
-    NoOp,
-    DataOp,
-    StoreDataOp,
-    OffsetDataOp,
-    BlendDataOp,
-    FetchOp,
-    ColorOp,
-    LoadOp,
-    TempOp,
-    ParamOp,
-    AttribOp,
+enum {
+	NoOp,
+	DataOp,
+	StoreDataOp,
+	OffsetDataOp,
+	BlendDataOp,
+	FetchOp,
+	ColorOp,
+	LoadOp,
+	TempOp,
+	ParamOp,
+	AttribOp,
 } OpType;
 
 typedef struct _FragmentOffset FragmentOffset;
 
-struct _FragmentOffset
-{
-    char	    *name;
-    char	    *offset;
+struct _FragmentOffset {
+	char *name;
+	char *offset;
 
-    FragmentOffset  *next;
+	FragmentOffset *next;
 };
 
-char *base_name (char *str);
+char *base_name(char *str);
 
-int buildFragmentProgram (char *source, char *name,
-                          CompScreen *s, int target);
+int buildFragmentProgram(char *source, char *name, CompScreen * s, int target);
 
-int loadFragmentProgram (char *file, char *name,
-                         CompScreen *s, int target);
+int loadFragmentProgram(char *file, char *name, CompScreen * s, int target);

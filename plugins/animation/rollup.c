@@ -38,18 +38,16 @@
 
 // =====================  Effect: Roll Up  =========================
 
-void
-fxRollUpInitGrid(CompWindow *w,
-		 int *gridWidth, int *gridHeight)
+void fxRollUpInitGrid(CompWindow * w, int *gridWidth, int *gridHeight)
 {
-    ANIM_WINDOW(w);
+	ANIM_WINDOW(w);
 
-    *gridWidth = 2;
-    if (aw->com.curWindowEvent == WindowEventShade ||
-	aw->com.curWindowEvent == WindowEventUnshade)
-	*gridHeight = 4;
-    else
-	*gridHeight = 2;
+	*gridWidth = 2;
+	if (aw->com.curWindowEvent == WindowEventShade ||
+	    aw->com.curWindowEvent == WindowEventUnshade)
+		*gridHeight = 4;
+	else
+		*gridHeight = 2;
 }
 
 static void inline
@@ -58,97 +56,83 @@ fxRollUpModelStepObject(CompWindow * w,
 			Object * object,
 			float forwardProgress, Bool fixedInterior)
 {
-    ANIM_WINDOW(w);
+	ANIM_WINDOW(w);
 
-    float origx = WIN_X(w) + WIN_W(w) * object->gridPosition.x;
+	float origx = WIN_X(w) + WIN_W(w) * object->gridPosition.x;
 
-    if (aw->com.curWindowEvent == WindowEventShade ||
-	aw->com.curWindowEvent == WindowEventUnshade)
-    {
-	// Execute shade mode
+	if (aw->com.curWindowEvent == WindowEventShade ||
+	    aw->com.curWindowEvent == WindowEventUnshade) {
+		// Execute shade mode
 
-	// find position in window contents
-	// (window contents correspond to 0.0-1.0 range)
-	float relPosInWinContents =
-	    (object->gridPosition.y * WIN_H(w) -
-	     model->topHeight) / w->height;
+		// find position in window contents
+		// (window contents correspond to 0.0-1.0 range)
+		float relPosInWinContents =
+		    (object->gridPosition.y * WIN_H(w) -
+		     model->topHeight) / w->height;
 
-	if (object->gridPosition.y == 0)
-	{
-	    object->position.x = origx;
-	    object->position.y = WIN_Y(w);
+		if (object->gridPosition.y == 0) {
+			object->position.x = origx;
+			object->position.y = WIN_Y(w);
+		} else if (object->gridPosition.y == 1) {
+			object->position.x = origx;
+			object->position.y =
+			    (1 - forwardProgress) *
+			    (WIN_Y(w) +
+			     WIN_H(w) * object->gridPosition.y) +
+			    forwardProgress * (WIN_Y(w) +
+					       model->topHeight +
+					       model->bottomHeight);
+		} else {
+			object->position.x = origx;
+
+			if (relPosInWinContents > forwardProgress) {
+				object->position.y =
+				    (1 - forwardProgress) *
+				    (WIN_Y(w) +
+				     WIN_H(w) * object->gridPosition.y) +
+				    forwardProgress * (WIN_Y(w) +
+						       model->topHeight);
+
+				if (fixedInterior)
+					object->offsetTexCoordForQuadBefore.y =
+					    -forwardProgress * w->height;
+			} else {
+				object->position.y =
+				    WIN_Y(w) + model->topHeight;
+				if (!fixedInterior)
+					object->offsetTexCoordForQuadAfter.y =
+					    (forwardProgress -
+					     relPosInWinContents) * w->height;
+			}
+		}
 	}
-	else if (object->gridPosition.y == 1)
-	{
-	    object->position.x = origx;
-	    object->position.y =
-		(1 - forwardProgress) *
-		(WIN_Y(w) +
-		 WIN_H(w) * object->gridPosition.y) +
-		forwardProgress * (WIN_Y(w) +
-				   model->topHeight +
-				   model->bottomHeight);
-	}
-	else
-	{
-	    object->position.x = origx;
-
-	    if (relPosInWinContents > forwardProgress)
-	    {
-		object->position.y =
-		    (1 - forwardProgress) *
-		    (WIN_Y(w) +
-		     WIN_H(w) * object->gridPosition.y) +
-		    forwardProgress * (WIN_Y(w) + model->topHeight);
-
-		if (fixedInterior)
-		    object->offsetTexCoordForQuadBefore.y =
-			-forwardProgress * w->height;
-	    }
-	    else
-	    {
-		object->position.y = WIN_Y(w) + model->topHeight;
-		if (!fixedInterior)
-		    object->offsetTexCoordForQuadAfter.
-			y =
-			(forwardProgress -
-			 relPosInWinContents) * w->height;
-	    }
-	}
-    }
 }
 
-void
-fxRollUpModelStep (CompWindow *w, float time)
+void fxRollUpModelStep(CompWindow * w, float time)
 {
-    defaultAnimStep (w, time);
+	defaultAnimStep(w, time);
 
-    ANIM_WINDOW(w);
+	ANIM_WINDOW(w);
 
-    Model *model = aw->com.model;
+	Model *model = aw->com.model;
 
-    float forwardProgress = sigmoidAnimProgress (w);
-    Bool fixedInterior = animGetB (w, ANIM_SCREEN_OPTION_ROLLUP_FIXED_INTERIOR);
+	float forwardProgress = sigmoidAnimProgress(w);
+	Bool fixedInterior =
+	    animGetB(w, ANIM_SCREEN_OPTION_ROLLUP_FIXED_INTERIOR);
 
-    Object *object = model->objects;
-    int i;
-    for (i = 0; i < model->numObjects; i++, object++)
-	fxRollUpModelStepObject
-	    (w, 
-	     model,
-	     object,
-	     forwardProgress,
-	     fixedInterior);
+	Object *object = model->objects;
+	int i;
+	for (i = 0; i < model->numObjects; i++, object++)
+		fxRollUpModelStepObject
+		    (w, model, object, forwardProgress, fixedInterior);
 }
 
-Bool
-fxRollUpAnimInit (CompWindow * w)
+Bool fxRollUpAnimInit(CompWindow * w)
 {
-    ANIM_WINDOW(w);
+	ANIM_WINDOW(w);
 
-    aw->com.animTotalTime /= ROLLUP_PERCEIVED_T;
-    aw->com.animRemainingTime = aw->com.animTotalTime;
-    
-    return TRUE;
+	aw->com.animTotalTime /= ROLLUP_PERCEIVED_T;
+	aw->com.animRemainingTime = aw->com.animTotalTime;
+
+	return TRUE;
 }
-

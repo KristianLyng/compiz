@@ -30,276 +30,238 @@
 CompCore core;
 
 static char *corePrivateIndices = 0;
-static int  corePrivateLen = 0;
+static int corePrivateLen = 0;
 
-static int
-reallocCorePrivate (int  size,
-		    void *closure)
+static int reallocCorePrivate(int size, void *closure)
 {
-    void *privates;
+	void *privates;
 
-    privates = realloc (core.base.privates, size * sizeof (CompPrivate));
-    if (!privates)
-	return FALSE;
+	privates = realloc(core.base.privates, size * sizeof(CompPrivate));
+	if (!privates)
+		return FALSE;
 
-    core.base.privates = (CompPrivate *) privates;
+	core.base.privates = (CompPrivate *) privates;
 
-    return TRUE;
+	return TRUE;
 }
 
-int
-allocCoreObjectPrivateIndex (CompObject *parent)
+int allocCoreObjectPrivateIndex(CompObject * parent)
 {
-    return allocatePrivateIndex (&corePrivateLen,
-				 &corePrivateIndices,
-				 reallocCorePrivate,
-				 0);
+	return allocatePrivateIndex(&corePrivateLen,
+				    &corePrivateIndices, reallocCorePrivate, 0);
 }
 
-void
-freeCoreObjectPrivateIndex (CompObject *parent,
-			    int	       index)
+void freeCoreObjectPrivateIndex(CompObject * parent, int index)
 {
-    freePrivateIndex (corePrivateLen, corePrivateIndices, index);
+	freePrivateIndex(corePrivateLen, corePrivateIndices, index);
 }
 
 CompBool
-forEachCoreObject (CompObject         *parent,
-		   ObjectCallBackProc proc,
-		   void		      *closure)
+forEachCoreObject(CompObject * parent, ObjectCallBackProc proc, void *closure)
 {
-    return TRUE;
+	return TRUE;
 }
 
-char *
-nameCoreObject (CompObject *object)
+char *nameCoreObject(CompObject * object)
 {
-    return NULL;
+	return NULL;
 }
 
-CompObject *
-findCoreObject (CompObject *parent,
-		const char *name)
+CompObject *findCoreObject(CompObject * parent, const char *name)
 {
-    return NULL;
+	return NULL;
 }
 
-int
-allocateCorePrivateIndex (void)
+int allocateCorePrivateIndex(void)
 {
-    return compObjectAllocatePrivateIndex (NULL, COMP_OBJECT_TYPE_CORE);
+	return compObjectAllocatePrivateIndex(NULL, COMP_OBJECT_TYPE_CORE);
 }
 
-void
-freeCorePrivateIndex (int index)
+void freeCorePrivateIndex(int index)
 {
-    compObjectFreePrivateIndex (NULL, COMP_OBJECT_TYPE_CORE, index);
+	compObjectFreePrivateIndex(NULL, COMP_OBJECT_TYPE_CORE, index);
 }
 
-static CompBool
-initCorePluginForObject (CompPlugin *p,
-			 CompObject *o)
+static CompBool initCorePluginForObject(CompPlugin * p, CompObject * o)
 {
-    return TRUE;
+	return TRUE;
 }
 
-static void
-finiCorePluginForObject (CompPlugin *p,
-			 CompObject *o)
+static void finiCorePluginForObject(CompPlugin * p, CompObject * o)
 {
 }
 
 static CompBool
-setOptionForPlugin (CompObject      *object,
-		    const char	    *plugin,
-		    const char	    *name,
-		    CompOptionValue *value)
+setOptionForPlugin(CompObject * object,
+		   const char *plugin,
+		   const char *name, CompOptionValue * value)
 {
-    CompPlugin *p;
+	CompPlugin *p;
 
-    p = findActivePlugin (plugin);
-    if (p && p->vTable->setObjectOption)
-	return (*p->vTable->setObjectOption) (p, object, name, value);
+	p = findActivePlugin(plugin);
+	if (p && p->vTable->setObjectOption)
+		return (*p->vTable->setObjectOption) (p, object, name, value);
 
-    return FALSE;
-}
-
-static void
-coreObjectAdd (CompObject *parent,
-	       CompObject *object)
-{
-    object->parent = parent;
-}
-
-static void
-coreObjectRemove (CompObject *parent,
-		  CompObject *object)
-{
-    object->parent = NULL;
-}
-
-static void
-fileWatchAdded (CompCore      *c,
-		CompFileWatch *fileWatch)
-{
-}
-
-static void
-fileWatchRemoved (CompCore      *c,
-		  CompFileWatch *fileWatch)
-{
-}
-
-CompBool
-initCore (void)
-{
-    CompPlugin *corePlugin;
-
-    compObjectInit (&core.base, 0, COMP_OBJECT_TYPE_CORE);
-
-    core.displays = NULL;
-
-    core.tmpRegion = XCreateRegion ();
-    if (!core.tmpRegion)
 	return FALSE;
-
-    core.outputRegion = XCreateRegion ();
-    if (!core.outputRegion)
-    {
-	XDestroyRegion (core.tmpRegion);
-	return FALSE;
-    }
-
-    core.fileWatch	     = NULL;
-    core.lastFileWatchHandle = 1;
-
-    core.timeouts	   = NULL;
-    core.lastTimeoutHandle = 1;
-
-    core.watchFds	   = NULL;
-    core.lastWatchFdHandle = 1;
-    core.watchPollFds	   = NULL;
-    core.nWatchFds	   = 0;
-
-    gettimeofday (&core.lastTimeout, 0);
-
-    core.initPluginForObject = initCorePluginForObject;
-    core.finiPluginForObject = finiCorePluginForObject;
-
-    core.setOptionForPlugin = setOptionForPlugin;
-
-    core.objectAdd    = coreObjectAdd;
-    core.objectRemove = coreObjectRemove;
-
-    core.fileWatchAdded   = fileWatchAdded;
-    core.fileWatchRemoved = fileWatchRemoved;
-
-    core.sessionEvent = sessionEvent;
-    core.logMessage   = logMessage;
-
-    corePlugin = loadPlugin ("core");
-    if (!corePlugin)
-    {
-	compLogMessage ("core", CompLogLevelFatal,
-			"Couldn't load core plugin");
-	return FALSE;
-    }
-
-    if (!pushPlugin (corePlugin))
-    {
-	compLogMessage ("core", CompLogLevelFatal,
-			"Couldn't activate core plugin");
-	return FALSE;
-    }
-
-    return TRUE;
 }
 
-void
-finiCore (void)
+static void coreObjectAdd(CompObject * parent, CompObject * object)
 {
-    CompPlugin *p;
-
-    while (core.displays)
-	removeDisplay (core.displays);
-
-    if (core.watchPollFds)
-	free (core.watchPollFds);
-
-    while ((p = popPlugin ()))
-	unloadPlugin (p);
-
-    XDestroyRegion (core.outputRegion);
-    XDestroyRegion (core.tmpRegion);
+	object->parent = parent;
 }
 
-void
-addDisplayToCore (CompDisplay *d)
+static void coreObjectRemove(CompObject * parent, CompObject * object)
 {
-    CompDisplay *prev;
+	object->parent = NULL;
+}
 
-    for (prev = core.displays; prev && prev->next; prev = prev->next);
+static void fileWatchAdded(CompCore * c, CompFileWatch * fileWatch)
+{
+}
 
-    if (prev)
-	prev->next = d;
-    else
-	core.displays = d;
+static void fileWatchRemoved(CompCore * c, CompFileWatch * fileWatch)
+{
+}
+
+CompBool initCore(void)
+{
+	CompPlugin *corePlugin;
+
+	compObjectInit(&core.base, 0, COMP_OBJECT_TYPE_CORE);
+
+	core.displays = NULL;
+
+	core.tmpRegion = XCreateRegion();
+	if (!core.tmpRegion)
+		return FALSE;
+
+	core.outputRegion = XCreateRegion();
+	if (!core.outputRegion) {
+		XDestroyRegion(core.tmpRegion);
+		return FALSE;
+	}
+
+	core.fileWatch = NULL;
+	core.lastFileWatchHandle = 1;
+
+	core.timeouts = NULL;
+	core.lastTimeoutHandle = 1;
+
+	core.watchFds = NULL;
+	core.lastWatchFdHandle = 1;
+	core.watchPollFds = NULL;
+	core.nWatchFds = 0;
+
+	gettimeofday(&core.lastTimeout, 0);
+
+	core.initPluginForObject = initCorePluginForObject;
+	core.finiPluginForObject = finiCorePluginForObject;
+
+	core.setOptionForPlugin = setOptionForPlugin;
+
+	core.objectAdd = coreObjectAdd;
+	core.objectRemove = coreObjectRemove;
+
+	core.fileWatchAdded = fileWatchAdded;
+	core.fileWatchRemoved = fileWatchRemoved;
+
+	core.sessionEvent = sessionEvent;
+	core.logMessage = logMessage;
+
+	corePlugin = loadPlugin("core");
+	if (!corePlugin) {
+		compLogMessage("core", CompLogLevelFatal,
+			       "Couldn't load core plugin");
+		return FALSE;
+	}
+
+	if (!pushPlugin(corePlugin)) {
+		compLogMessage("core", CompLogLevelFatal,
+			       "Couldn't activate core plugin");
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+void finiCore(void)
+{
+	CompPlugin *p;
+
+	while (core.displays)
+		removeDisplay(core.displays);
+
+	if (core.watchPollFds)
+		free(core.watchPollFds);
+
+	while ((p = popPlugin()))
+		unloadPlugin(p);
+
+	XDestroyRegion(core.outputRegion);
+	XDestroyRegion(core.tmpRegion);
+}
+
+void addDisplayToCore(CompDisplay * d)
+{
+	CompDisplay *prev;
+
+	for (prev = core.displays; prev && prev->next; prev = prev->next) ;
+
+	if (prev)
+		prev->next = d;
+	else
+		core.displays = d;
 }
 
 CompFileWatchHandle
-addFileWatch (const char	    *path,
-	      int		    mask,
-	      FileWatchCallBackProc callBack,
-	      void		    *closure)
+addFileWatch(const char *path,
+	     int mask, FileWatchCallBackProc callBack, void *closure)
 {
-    CompFileWatch *fileWatch;
+	CompFileWatch *fileWatch;
 
-    fileWatch = malloc (sizeof (CompFileWatch));
-    if (!fileWatch)
-	return 0;
+	fileWatch = malloc(sizeof(CompFileWatch));
+	if (!fileWatch)
+		return 0;
 
-    fileWatch->path	= strdup (path);
-    fileWatch->mask	= mask;
-    fileWatch->callBack = callBack;
-    fileWatch->closure  = closure;
-    fileWatch->handle   = core.lastFileWatchHandle++;
+	fileWatch->path = strdup(path);
+	fileWatch->mask = mask;
+	fileWatch->callBack = callBack;
+	fileWatch->closure = closure;
+	fileWatch->handle = core.lastFileWatchHandle++;
 
-    if (core.lastFileWatchHandle == MAXSHORT)
-	core.lastFileWatchHandle = 1;
+	if (core.lastFileWatchHandle == MAXSHORT)
+		core.lastFileWatchHandle = 1;
 
-    fileWatch->next = core.fileWatch;
-    core.fileWatch = fileWatch;
+	fileWatch->next = core.fileWatch;
+	core.fileWatch = fileWatch;
 
-    (*core.fileWatchAdded) (&core, fileWatch);
+	(*core.fileWatchAdded) (&core, fileWatch);
 
-    return fileWatch->handle;
+	return fileWatch->handle;
 }
 
-void
-removeFileWatch (CompFileWatchHandle handle)
+void removeFileWatch(CompFileWatchHandle handle)
 {
-    CompFileWatch *p = 0, *w;
+	CompFileWatch *p = 0, *w;
 
-    for (w = core.fileWatch; w; w = w->next)
-    {
-	if (w->handle == handle)
-	    break;
+	for (w = core.fileWatch; w; w = w->next) {
+		if (w->handle == handle)
+			break;
 
-	p = w;
-    }
+		p = w;
+	}
 
-    if (w)
-    {
-	if (p)
-	    p->next = w->next;
-	else
-	    core.fileWatch = w->next;
+	if (w) {
+		if (p)
+			p->next = w->next;
+		else
+			core.fileWatch = w->next;
 
-	(*core.fileWatchRemoved) (&core, w);
+		(*core.fileWatchRemoved) (&core, w);
 
-	if (w->path)
-	    free (w->path);
+		if (w->path)
+			free(w->path);
 
-	free (w);
-    }
+		free(w);
+	}
 }

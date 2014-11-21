@@ -25,27 +25,21 @@
 
 typedef int PositionPollingHandle;
 
-typedef void (*PositionUpdateProc) (CompScreen *s,
-				    int        x,
-				    int        y);
+typedef void (*PositionUpdateProc) (CompScreen * s, int x, int y);
 
 typedef PositionPollingHandle
-(*AddPositionPollingProc) (CompScreen         *s,
-			   PositionUpdateProc update);
+    (*AddPositionPollingProc) (CompScreen * s, PositionUpdateProc update);
 
 typedef void
-(*RemovePositionPollingProc) (CompScreen            *s,
-			      PositionPollingHandle id);
+ (*RemovePositionPollingProc) (CompScreen * s, PositionPollingHandle id);
 
 typedef void
-(*GetCurrentPositionProc) (CompScreen *s,
-			   int        *x,
-			   int        *y);
+ (*GetCurrentPositionProc) (CompScreen * s, int *x, int *y);
 
 typedef struct _MousePollFunc {
-   AddPositionPollingProc    addPositionPolling;
-   RemovePositionPollingProc removePositionPolling;
-   GetCurrentPositionProc    getCurrentPosition;
+	AddPositionPollingProc addPositionPolling;
+	RemovePositionPollingProc removePositionPolling;
+	GetCurrentPositionProc getCurrentPosition;
 } MousePollFunc;
 
 #endif

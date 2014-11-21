@@ -34,16 +34,14 @@
 
 static int displayPrivateIndex;
 
-struct jpegErrorMgr
-{
-    struct  jpeg_error_mgr pub;	/* "public" fields */
-    jmp_buf setjmp_buffer;	/* for return to caller */
+struct jpegErrorMgr {
+	struct jpeg_error_mgr pub;	/* "public" fields */
+	jmp_buf setjmp_buffer;	/* for return to caller */
 };
 
-typedef struct _JPEGDisplay
-{
-    FileToImageProc fileToImage;
-    ImageToFileProc imageToFile;
+typedef struct _JPEGDisplay {
+	FileToImageProc fileToImage;
+	ImageToFileProc imageToFile;
 } JPEGDisplay;
 
 #define GET_JPEG_DISPLAY(d)				    \
@@ -53,365 +51,325 @@ typedef struct _JPEGDisplay
     JPEGDisplay *jd = GET_JPEG_DISPLAY (d)
 
 static Bool
-rgbToBGRA (const JSAMPLE *source,
-	   void          **data,
-	   int           height,
-	   int           width,
-	   int           alpha)
+rgbToBGRA(const JSAMPLE * source, void **data, int height, int width, int alpha)
 {
-    int  h, w;
-    char *dest;
+	int h, w;
+	char *dest;
 
-    dest = malloc (height * width * 4);
-    if (!dest)
-	return FALSE;
+	dest = malloc(height * width * 4);
+	if (!dest)
+		return FALSE;
 
-    *data = dest;
+	*data = dest;
 
-    for (h = 0; h < height; h++)
-	for (w = 0; w < width; w++)
-	{
-	    int pos = h * width + w;
+	for (h = 0; h < height; h++)
+		for (w = 0; w < width; w++) {
+			int pos = h * width + w;
 #if __BYTE_ORDER == __BIG_ENDIAN
-	    dest[(pos * 4) + 3] = source[(pos * 3) + 2];    /* blue */
-	    dest[(pos * 4) + 2] = source[(pos * 3) + 1];    /* green */
-	    dest[(pos * 4) + 1] = source[(pos * 3) + 0];    /* red */
-	    dest[(pos * 4) + 0] = alpha;
+			dest[(pos * 4) + 3] = source[(pos * 3) + 2];	/* blue */
+			dest[(pos * 4) + 2] = source[(pos * 3) + 1];	/* green */
+			dest[(pos * 4) + 1] = source[(pos * 3) + 0];	/* red */
+			dest[(pos * 4) + 0] = alpha;
 #else
-	    dest[(pos * 4) + 0] = source[(pos * 3) + 2];    /* blue */
-	    dest[(pos * 4) + 1] = source[(pos * 3) + 1];    /* green */
-	    dest[(pos * 4) + 2] = source[(pos * 3) + 0];    /* red */
-	    dest[(pos * 4) + 3] = alpha;
+			dest[(pos * 4) + 0] = source[(pos * 3) + 2];	/* blue */
+			dest[(pos * 4) + 1] = source[(pos * 3) + 1];	/* green */
+			dest[(pos * 4) + 2] = source[(pos * 3) + 0];	/* red */
+			dest[(pos * 4) + 3] = alpha;
 #endif
+		}
+
+	return TRUE;
+}
+
+static Bool
+rgbaToRGB(char *source, JSAMPLE ** dest, int height, int width, int stride)
+{
+	int h, w;
+	int ps = stride / width;	/* pixel size */
+	JSAMPLE *d;
+
+	d = malloc(height * width * 3 * sizeof(JSAMPLE));
+	if (!d)
+		return FALSE;
+
+	*dest = d;
+
+	for (h = 0; h < height; h++)
+		for (w = 0; w < width; w++) {
+			int pos = h * width + w;
+#if __BYTE_ORDER == __BIG_ENDIAN
+			d[(pos * 3) + 0] = source[(pos * ps) + 3];	/* red */
+			d[(pos * 3) + 1] = source[(pos * ps) + 2];	/* green */
+			d[(pos * 3) + 2] = source[(pos * ps) + 1];	/* blue */
+#else
+			d[(pos * 3) + 0] = source[(pos * ps) + 0];	/* red */
+			d[(pos * 3) + 1] = source[(pos * ps) + 1];	/* green */
+			d[(pos * 3) + 2] = source[(pos * ps) + 2];	/* blue */
+#endif
+		}
+
+	return TRUE;
+}
+
+static void jpegErrorExit(j_common_ptr cinfo)
+{
+	char buffer[JMSG_LENGTH_MAX];
+	struct jpegErrorMgr *err = (struct jpegErrorMgr *)cinfo->err;
+
+	/* Format the message */
+	(*cinfo->err->format_message) (cinfo, buffer);
+
+	printf("%s\n", buffer);
+
+	/* Return control to the setjmp point */
+	longjmp(err->setjmp_buffer, 1);
+}
+
+static Bool
+readJPEGFileToImage(FILE * file, int *width, int *height, void **data)
+{
+	struct jpeg_decompress_struct cinfo;
+	struct jpegErrorMgr jerr;
+	JSAMPLE *buf;
+	JSAMPROW *rows;
+	int i;
+	Bool result;
+
+	if (!file)
+		return FALSE;
+
+	cinfo.err = jpeg_std_error(&jerr.pub);
+	jerr.pub.error_exit = jpegErrorExit;
+
+	if (setjmp(jerr.setjmp_buffer)) {
+		/* this is called on decompression errors */
+		jpeg_destroy_decompress(&cinfo);
+		return FALSE;
 	}
 
-    return TRUE;
-}
+	jpeg_create_decompress(&cinfo);
 
-static Bool
-rgbaToRGB (char    *source,
-	   JSAMPLE **dest,
-	   int     height,
-	   int     width,
-	   int     stride)
-{
-    int     h, w;
-    int     ps = stride / width;	/* pixel size */
-    JSAMPLE *d;
+	jpeg_stdio_src(&cinfo, file);
 
-    d = malloc (height * width * 3 * sizeof (JSAMPLE));
-    if (!d)
-	return FALSE;
+	jpeg_read_header(&cinfo, TRUE);
 
-    *dest = d;
+	cinfo.out_color_space = JCS_RGB;
 
-    for (h = 0; h < height; h++)
-	for (w = 0; w < width; w++)
-	{
-	    int pos = h * width + w;
-#if __BYTE_ORDER == __BIG_ENDIAN
-	    d[(pos * 3) + 0] = source[(pos * ps) + 3];	/* red */
-    	    d[(pos * 3) + 1] = source[(pos * ps) + 2];	/* green */
-    	    d[(pos * 3) + 2] = source[(pos * ps) + 1];	/* blue */
-#else
-	    d[(pos * 3) + 0] = source[(pos * ps) + 0];	/* red */
-    	    d[(pos * 3) + 1] = source[(pos * ps) + 1];	/* green */
-    	    d[(pos * 3) + 2] = source[(pos * ps) + 2];	/* blue */
-#endif
+	jpeg_start_decompress(&cinfo);
+
+	*height = cinfo.output_height;
+	*width = cinfo.output_width;
+
+	buf = calloc(cinfo.output_height * cinfo.output_width *
+		     cinfo.output_components, sizeof(JSAMPLE));
+	if (!buf) {
+		jpeg_finish_decompress(&cinfo);
+		jpeg_destroy_decompress(&cinfo);
+		return FALSE;
 	}
 
-    return TRUE;
-}
+	rows = malloc(cinfo.output_height * sizeof(JSAMPROW));
+	if (!rows) {
+		free(buf);
+		jpeg_finish_decompress(&cinfo);
+		jpeg_destroy_decompress(&cinfo);
+		return FALSE;
+	}
 
-static void
-jpegErrorExit (j_common_ptr cinfo)
-{
-    char                buffer[JMSG_LENGTH_MAX];
-    struct jpegErrorMgr *err = (struct jpegErrorMgr *) cinfo->err;
+	for (i = 0; i < cinfo.output_height; i++)
+		rows[i] =
+		    &buf[i * cinfo.output_width * cinfo.output_components];
 
-    /* Format the message */
-    (*cinfo->err->format_message) (cinfo, buffer);
+	while (cinfo.output_scanline < cinfo.output_height)
+		jpeg_read_scanlines(&cinfo, &rows[cinfo.output_scanline],
+				    cinfo.output_height -
+				    cinfo.output_scanline);
 
-    printf("%s\n", buffer);
+	jpeg_finish_decompress(&cinfo);
+	jpeg_destroy_decompress(&cinfo);
 
-    /* Return control to the setjmp point */
-    longjmp (err->setjmp_buffer, 1);
-}
+	/* convert the rgb data into BGRA format */
+	result = rgbToBGRA(buf, data, *height, *width, 255);
 
-static Bool
-readJPEGFileToImage (FILE *file,
-		     int  *width,
-		     int  *height,
-		     void **data)
-{
-    struct jpeg_decompress_struct cinfo;
-    struct jpegErrorMgr           jerr;
-    JSAMPLE                       *buf;
-    JSAMPROW                      *rows;
-    int                           i;
-    Bool                          result;
-
-    if (!file)
-	return FALSE;
-
-    cinfo.err = jpeg_std_error (&jerr.pub);
-    jerr.pub.error_exit = jpegErrorExit;
-
-    if (setjmp (jerr.setjmp_buffer))
-    {
-	/* this is called on decompression errors */
-	jpeg_destroy_decompress (&cinfo);
-	return FALSE;
-    }
-
-    jpeg_create_decompress (&cinfo);
-
-    jpeg_stdio_src (&cinfo, file);
-    
-    jpeg_read_header (&cinfo, TRUE);
-
-    cinfo.out_color_space = JCS_RGB;
-
-    jpeg_start_decompress (&cinfo);
-
-    *height = cinfo.output_height;
-    *width = cinfo.output_width;
-
-    buf = calloc (cinfo.output_height * cinfo.output_width *
- 		  cinfo.output_components, sizeof (JSAMPLE));
-    if (!buf)
-    {
-	jpeg_finish_decompress (&cinfo);
-	jpeg_destroy_decompress (&cinfo);
-	return FALSE;
-    }
-
-    rows = malloc (cinfo.output_height * sizeof (JSAMPROW));
-    if (!rows)
-    {
-	free (buf);
-	jpeg_finish_decompress (&cinfo);
-	jpeg_destroy_decompress (&cinfo);
-	return FALSE;
-    }
-
-    for (i = 0; i < cinfo.output_height; i++)
-	rows[i] = &buf[i * cinfo.output_width * cinfo.output_components];
-
-    while (cinfo.output_scanline < cinfo.output_height)
-	jpeg_read_scanlines (&cinfo, &rows[cinfo.output_scanline],
-			     cinfo.output_height - cinfo.output_scanline);
-
-    jpeg_finish_decompress (&cinfo);
-    jpeg_destroy_decompress (&cinfo);
-
-    /* convert the rgb data into BGRA format */
-    result = rgbToBGRA (buf, data, *height, *width, 255);
-
-    free (rows);
-    free(buf);
-    return result;
+	free(rows);
+	free(buf);
+	return result;
 }
 
 static Bool
-writeJPEG (CompDisplay *d,
-	   void        *buffer,
-	   FILE        *file,
-	   int         width,
-	   int         height,
-	   int         stride)
+writeJPEG(CompDisplay * d,
+	  void *buffer, FILE * file, int width, int height, int stride)
 {
-    struct jpeg_compress_struct cinfo;
-    struct jpeg_error_mgr       jerr;
-    JSAMPROW                    row_pointer[1];
-    JSAMPLE                     *data;
+	struct jpeg_compress_struct cinfo;
+	struct jpeg_error_mgr jerr;
+	JSAMPROW row_pointer[1];
+	JSAMPLE *data;
 
-    /* convert the rgb data into BGRA format */
-    if (!rgbaToRGB (buffer, &data, height, width, stride))
-	return FALSE;
+	/* convert the rgb data into BGRA format */
+	if (!rgbaToRGB(buffer, &data, height, width, stride))
+		return FALSE;
 
-    cinfo.err = jpeg_std_error (&jerr);
-    jpeg_create_compress (&cinfo);
+	cinfo.err = jpeg_std_error(&jerr);
+	jpeg_create_compress(&cinfo);
 
-    jpeg_stdio_dest (&cinfo, file);
+	jpeg_stdio_dest(&cinfo, file);
 
-    cinfo.image_width      = width;
-    cinfo.image_height     = height;
-    cinfo.input_components = 3;
-    cinfo.in_color_space   = JCS_RGB;
+	cinfo.image_width = width;
+	cinfo.image_height = height;
+	cinfo.input_components = 3;
+	cinfo.in_color_space = JCS_RGB;
 
-    jpeg_set_defaults (&cinfo);
-    jpeg_set_quality (&cinfo, imgjpegGetQuality (d), TRUE);
-    jpeg_start_compress (&cinfo, TRUE);
+	jpeg_set_defaults(&cinfo);
+	jpeg_set_quality(&cinfo, imgjpegGetQuality(d), TRUE);
+	jpeg_start_compress(&cinfo, TRUE);
 
-    while (cinfo.next_scanline < cinfo.image_height)
-    {
-	row_pointer[0] =
-	    &data[(cinfo.image_height - cinfo.next_scanline - 1) * width * 3];
-	jpeg_write_scanlines (&cinfo, row_pointer, 1);
-    }
+	while (cinfo.next_scanline < cinfo.image_height) {
+		row_pointer[0] =
+		    &data[(cinfo.image_height - cinfo.next_scanline -
+			   1) * width * 3];
+		jpeg_write_scanlines(&cinfo, row_pointer, 1);
+	}
 
-    jpeg_finish_compress (&cinfo);
-    jpeg_destroy_compress (&cinfo);
+	jpeg_finish_compress(&cinfo);
+	jpeg_destroy_compress(&cinfo);
 
-    free (data);
+	free(data);
 
-    return TRUE;
+	return TRUE;
 }
 
 static Bool
-JPEGImageToFile (CompDisplay *d,
-		 const char  *name,
-		 const char  *format,
-		 int         width,
-		 int         height,
-		 int         stride,
-		 void        *data)
+JPEGImageToFile(CompDisplay * d,
+		const char *name,
+		const char *format,
+		int width, int height, int stride, void *data)
 {
-    Bool status = FALSE;
-    FILE *file;
+	Bool status = FALSE;
+	FILE *file;
 
-    /* Not a JPEG */
-    if (strcasecmp (format, "jpeg") != 0 && strcasecmp (format, "jpg") != 0)
-    {
-	JPEG_DISPLAY (d);
-	UNWRAP (jd, d, imageToFile);
-	status = (*d->imageToFile) (d, name, format,
-				    width, height, stride, data);
-	WRAP (jd, d, imageToFile, JPEGImageToFile);
+	/* Not a JPEG */
+	if (strcasecmp(format, "jpeg") != 0 && strcasecmp(format, "jpg") != 0) {
+		JPEG_DISPLAY(d);
+		UNWRAP(jd, d, imageToFile);
+		status = (*d->imageToFile) (d, name, format,
+					    width, height, stride, data);
+		WRAP(jd, d, imageToFile, JPEGImageToFile);
+		return status;
+	}
+
+	file = fopen(name, "wb");
+	if (file) {
+		status = writeJPEG(d, data, file, width, height, stride);
+		fclose(file);
+	}
+
 	return status;
-    }
-
-    file = fopen (name, "wb");
-    if (file)
-    {
-	status = writeJPEG (d, data, file, width, height, stride);
-	fclose (file);
-    }
-
-    return status;
 }
 
 static Bool
-JPEGFileToImage (CompDisplay *d,
-		 const char  *name,
-		 int         *width,
-		 int         *height,
-		 int         *stride,
-		 void        **data)
+JPEGFileToImage(CompDisplay * d,
+		const char *name,
+		int *width, int *height, int *stride, void **data)
 {
-    Bool status = FALSE;
-    FILE *file;
+	Bool status = FALSE;
+	FILE *file;
 
-    JPEG_DISPLAY (d);
+	JPEG_DISPLAY(d);
 
-    file = fopen (name, "rb");
-    if (file)
-    {
-	status = readJPEGFileToImage (file, width, height, data);
-	fclose (file);
+	file = fopen(name, "rb");
+	if (file) {
+		status = readJPEGFileToImage(file, width, height, data);
+		fclose(file);
 
-	if (status)		/* Success! */
-	{
-	    *stride = *width * 4;
-	    return TRUE;
+		if (status) {	/* Success! */
+			*stride = *width * 4;
+			return TRUE;
+		}
 	}
-    }
 
-    /* Isn't a JPEG - pass to the next in the chain. */
-    UNWRAP (jd, d, fileToImage);
-    status = (*d->fileToImage) (d, name, width, height, stride, data);
-    WRAP (jd, d, fileToImage, JPEGFileToImage);
+	/* Isn't a JPEG - pass to the next in the chain. */
+	UNWRAP(jd, d, fileToImage);
+	status = (*d->fileToImage) (d, name, width, height, stride, data);
+	WRAP(jd, d, fileToImage, JPEGFileToImage);
 
-    return status;
+	return status;
 }
 
-static Bool
-JPEGInitDisplay (CompPlugin  *p,
-		 CompDisplay *d)
+static Bool JPEGInitDisplay(CompPlugin * p, CompDisplay * d)
 {
-    JPEGDisplay *jd;
+	JPEGDisplay *jd;
 
-    if (!checkPluginABI ("core", CORE_ABIVERSION))
-	return FALSE;
+	if (!checkPluginABI("core", CORE_ABIVERSION))
+		return FALSE;
 
-    jd = malloc (sizeof (JPEGDisplay));
-    if (!jd)
-	return FALSE;
+	jd = malloc(sizeof(JPEGDisplay));
+	if (!jd)
+		return FALSE;
 
-    WRAP (jd, d, fileToImage, JPEGFileToImage);
-    WRAP (jd, d, imageToFile, JPEGImageToFile);
+	WRAP(jd, d, fileToImage, JPEGFileToImage);
+	WRAP(jd, d, imageToFile, JPEGImageToFile);
 
-    d->base.privates[displayPrivateIndex].ptr = jd;
+	d->base.privates[displayPrivateIndex].ptr = jd;
 
-    return TRUE;
+	return TRUE;
 }
 
-static void
-JPEGFiniDisplay (CompPlugin  *p,
-		 CompDisplay *d)
+static void JPEGFiniDisplay(CompPlugin * p, CompDisplay * d)
 {
-    JPEG_DISPLAY (d);
+	JPEG_DISPLAY(d);
 
-    UNWRAP (jd, d, fileToImage);
-    UNWRAP (jd, d, imageToFile);
+	UNWRAP(jd, d, fileToImage);
+	UNWRAP(jd, d, imageToFile);
 
-    free (jd);
+	free(jd);
 }
 
-static CompBool
-JPEGInitObject (CompPlugin *p,
-		CompObject *o)
+static CompBool JPEGInitObject(CompPlugin * p, CompObject * o)
 {
-    static InitPluginObjectProc dispTab[] = {
-	(InitPluginObjectProc) 0, /* InitCore */
-	(InitPluginObjectProc) JPEGInitDisplay,
-    };
+	static InitPluginObjectProc dispTab[] = {
+		(InitPluginObjectProc) 0,	/* InitCore */
+		(InitPluginObjectProc) JPEGInitDisplay,
+	};
 
-    RETURN_DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), TRUE, (p, o));
+	RETURN_DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), TRUE, (p, o));
 }
 
-static void
-JPEGFiniObject (CompPlugin *p,
-		CompObject *o)
+static void JPEGFiniObject(CompPlugin * p, CompObject * o)
 {
-    static FiniPluginObjectProc dispTab[] = {
-	(FiniPluginObjectProc) 0, /* FiniCore */
-	(FiniPluginObjectProc) JPEGFiniDisplay,
-    };
+	static FiniPluginObjectProc dispTab[] = {
+		(FiniPluginObjectProc) 0,	/* FiniCore */
+		(FiniPluginObjectProc) JPEGFiniDisplay,
+	};
 
-    DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), (p, o));
+	DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), (p, o));
 }
 
-static Bool
-JPEGInit (CompPlugin *p)
+static Bool JPEGInit(CompPlugin * p)
 {
-    displayPrivateIndex = allocateDisplayPrivateIndex ();
-    if (displayPrivateIndex < 0)
-	return FALSE;
+	displayPrivateIndex = allocateDisplayPrivateIndex();
+	if (displayPrivateIndex < 0)
+		return FALSE;
 
-    return TRUE;
+	return TRUE;
 }
 
-static void
-JPEGFini (CompPlugin *p)
+static void JPEGFini(CompPlugin * p)
 {
-    freeDisplayPrivateIndex (displayPrivateIndex);
+	freeDisplayPrivateIndex(displayPrivateIndex);
 }
 
 CompPluginVTable JPEGVTable = {
-    "imgjpeg",
-    0,
-    JPEGInit,
-    JPEGFini,
-    JPEGInitObject,
-    JPEGFiniObject,
-    0,
-    0
+	"imgjpeg",
+	0,
+	JPEGInit,
+	JPEGFini,
+	JPEGInitObject,
+	JPEGFiniObject,
+	0,
+	0
 };
 
-CompPluginVTable*
-getCompPluginInfo (void)
+CompPluginVTable *getCompPluginInfo(void)
 {
-    return &JPEGVTable;
+	return &JPEGVTable;
 }

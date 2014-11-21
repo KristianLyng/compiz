@@ -58,8 +58,7 @@
 #define MoveGrab		(1L << 0)
 #define ResizeGrab		(1L << 1)
 
-typedef enum
-{
+typedef enum {
 	LeftEdge = 0,
 	RightEdge,
 	TopEdge,
@@ -75,8 +74,7 @@ typedef struct _Edge Edge;
  * id/passed are used during visibility detection when adding edges
  * snapped is straight forward
  */
-struct _Edge
-{
+struct _Edge {
 	Edge *prev;
 	Edge *next;
 
@@ -94,8 +92,7 @@ struct _Edge
 
 static int displayPrivateIndex;
 
-typedef struct _SnapDisplay
-{
+typedef struct _SnapDisplay {
 	int screenPrivateIndex;
 	HandleEventProc handleEvent;
 
@@ -111,8 +108,7 @@ typedef struct _SnapDisplay
 #define SNAP_SCREEN_OPTION_ATTRACTION_DISTANCE	3
 #define SNAP_SCREEN_OPTION_NUM			4
 
-typedef struct _SnapScreen
-{
+typedef struct _SnapScreen {
 	int windowPrivateIndex;
 
 	WindowResizeNotifyProc windowResizeNotify;
@@ -121,8 +117,7 @@ typedef struct _SnapScreen
 	WindowUngrabNotifyProc windowUngrabNotify;
 } SnapScreen;
 
-typedef struct _SnapWindow
-{
+typedef struct _SnapWindow {
 	// Linked lists
 	Edge *edges;
 	Edge *reverseEdges;
@@ -169,7 +164,8 @@ typedef struct _SnapWindow
 /*
  * copied from Beryl's core
  */
-static void snapScreenGetOutputDevRect(CompScreen * s, int outputDev, XRectangle * outputRect)
+static void snapScreenGetOutputDevRect(CompScreen * s, int outputDev,
+				       XRectangle * outputRect)
 {
 	if (!outputRect)
 		return;
@@ -191,6 +187,7 @@ static void snapMoveWindow(CompWindow * w, int dx, int dy)
 	warpPointer(w->screen, dx, dy);
 	sw->skipNotify = FALSE;
 }
+
 /*
 static void snapResizeWindow(CompWindow * w, int dx, int dy, int dw, int dh)
 {
@@ -208,8 +205,7 @@ static void snapFreeEdges(CompWindow * w)
 	SNAP_WINDOW(w);
 	Edge *current = sw->edges, *next;
 
-	while (current)
-	{
+	while (current) {
 		next = current->next;
 		free(current);
 		current = next;
@@ -229,8 +225,8 @@ static void snapRemoveEdge(Edge * edge)
 }
 
 static Edge *snapAddEdge(Edge ** edges, Edge ** reverseEdges, Window id,
-						 int position, int start, int end, EdgeType type,
-						 Bool screenEdge)
+			 int position, int start, int end, EdgeType type,
+			 Bool screenEdge)
 {
 	Edge *edge = malloc(sizeof(Edge));
 
@@ -245,13 +241,10 @@ static Edge *snapAddEdge(Edge ** edges, Edge ** reverseEdges, Window id,
 	edge->snapped = FALSE;
 	edge->passed = FALSE;
 	edge->id = id;
-	if (!*edges)
-	{
+	if (!*edges) {
 		edge->prev = NULL;
 		*reverseEdges = *edges = edge;
-	}
-	else
-	{
+	} else {
 		edge->prev = *reverseEdges;
 		edge->prev->next = edge;
 		*reverseEdges = edge;
@@ -267,10 +260,8 @@ static void snapAddRegionEdges(SnapWindow * sw, Edge * parent, Region region)
 	Edge *edge;
 	int i, position, start, end;
 
-	for (i = 0; i < region->numRects; i++)
-	{
-		switch (parent->type)
-		{
+	for (i = 0; i < region->numRects; i++) {
+		switch (parent->type) {
 		case LeftEdge:
 		case RightEdge:
 			position = region->rects[i].x1;
@@ -285,8 +276,8 @@ static void snapAddRegionEdges(SnapWindow * sw, Edge * parent, Region region)
 			end = region->rects[i].x2;
 		}
 		edge = snapAddEdge(&sw->edges, &sw->reverseEdges, parent->id,
-						   position, start, end, parent->type,
-						   parent->screenEdge);
+				   position, start, end, parent->type,
+				   parent->screenEdge);
 		if (edge)
 			edge->passed = parent->passed;
 	}
@@ -302,16 +293,18 @@ static void snapAddRegionEdges(SnapWindow * sw, Edge * parent, Region region)
 static inline Bool isSnapWindow(CompWindow * w)
 {
 	//SNAP_SCREEN(w->screen);
-	
+
 	if (UNLIKELY(!w))
 		return FALSE;
 	if (w->invisible || w->hidden || w->minimized)
 		return FALSE;
-	if ((w->type & SNAP_WINDOW_TYPE) && 
-		(snapGetEdgesCategoriesMask(w->screen) & EdgesCategoriesWindowEdgesMask))
+	if ((w->type & SNAP_WINDOW_TYPE) &&
+	    (snapGetEdgesCategoriesMask(w->screen) &
+	     EdgesCategoriesWindowEdgesMask))
 		return TRUE;
-	if (w->struts && 
-		(snapGetEdgesCategoriesMask(w->screen) & EdgesCategoriesScreenEdgesMask))
+	if (w->struts &&
+	    (snapGetEdgesCategoriesMask(w->screen) &
+	     EdgesCategoriesScreenEdgesMask))
 		return TRUE;
 	return FALSE;
 }
@@ -332,25 +325,24 @@ static void snapUpdateWindowsEdges(CompWindow * w)
 
 	// First add all the windows
 	c = w->screen->windows;
-	while (c)
-	{
+	while (c) {
 		// Just check that we're not trying to snap to current window,
 		// that the window is not invisible and of a valid type
-		if (c == w || !isSnapWindow(c))
-		{
+		if (c == w || !isSnapWindow(c)) {
 			c = c->next;
 			continue;
 		}
 		snapAddEdge(&sw->edges, &sw->reverseEdges, c->id,
-					WIN_Y(c), WIN_X(c), WIN_X(c) + WIN_W(c), TopEdge, FALSE);
+			    WIN_Y(c), WIN_X(c), WIN_X(c) + WIN_W(c), TopEdge,
+			    FALSE);
 		snapAddEdge(&sw->edges, &sw->reverseEdges, c->id,
-					WIN_Y(c) + WIN_H(c), WIN_X(c), WIN_X(c) + WIN_W(c),
-					BottomEdge, FALSE);
+			    WIN_Y(c) + WIN_H(c), WIN_X(c), WIN_X(c) + WIN_W(c),
+			    BottomEdge, FALSE);
+		snapAddEdge(&sw->edges, &sw->reverseEdges, c->id, WIN_X(c),
+			    WIN_Y(c), WIN_Y(c) + WIN_H(c), LeftEdge, FALSE);
 		snapAddEdge(&sw->edges, &sw->reverseEdges, c->id,
-					WIN_X(c), WIN_Y(c), WIN_Y(c) + WIN_H(c), LeftEdge, FALSE);
-		snapAddEdge(&sw->edges, &sw->reverseEdges, c->id,
-					WIN_X(c) + WIN_W(c), WIN_Y(c), WIN_Y(c) + WIN_H(c),
-					RightEdge, FALSE);
+			    WIN_X(c) + WIN_W(c), WIN_Y(c), WIN_Y(c) + WIN_H(c),
+			    RightEdge, FALSE);
 		c = c->next;
 	}
 
@@ -359,35 +351,31 @@ static void snapUpdateWindowsEdges(CompWindow * w)
 	// If an edge has been passed, check if it's in the region window,
 	// if the edge is fully under the window, drop it, or if it's only
 	// partly covered, cut it/split it in one/two smaller visible edges
-	for (c = w->screen->windows; c; c = c->next)
-	{
+	for (c = w->screen->windows; c; c = c->next) {
 		if (c == w || !isSnapWindow(c))
 			continue;
-		for (e = sw->edges; e; e = next)
-		{
-			if (!e->passed)
-			{
+		for (e = sw->edges; e; e = next) {
+			if (!e->passed) {
 				if (e->id == c->id)
 					e->passed = TRUE;
 				next = e->next;
 				continue;
 			}
-			switch (e->type)
-			{
-				case LeftEdge:
-				case RightEdge:
-					rect.x = e->position;
-					rect.y = e->start;
-					rect.width = 1;
-					rect.height = e->end - e->start;
-					break;
-				case TopEdge:
-				case BottomEdge:
-				default:
-					rect.x = e->start;
-					rect.y = e->position;
-					rect.width = e->end - e->start;
-					rect.height = 1;
+			switch (e->type) {
+			case LeftEdge:
+			case RightEdge:
+				rect.x = e->position;
+				rect.y = e->start;
+				rect.width = 1;
+				rect.height = e->end - e->start;
+				break;
+			case TopEdge:
+			case BottomEdge:
+			default:
+				rect.x = e->start;
+				rect.y = e->position;
+				rect.width = e->end - e->start;
+				rect.height = 1;
 			}
 			// If the edge is in the window region, remove it,
 			// if it's partly in the region, split it
@@ -397,14 +385,12 @@ static void snapUpdateWindowsEdges(CompWindow * w)
 			XSubtractRegion(edgeRegion, c->region, resultRegion);
 			if (XEmptyRegion(resultRegion))
 				remove = TRUE;
-			else if (!XEqualRegion(edgeRegion, resultRegion))
-			{
+			else if (!XEqualRegion(edgeRegion, resultRegion)) {
 				snapAddRegionEdges(sw, e, resultRegion);
 				remove = TRUE;
 			}
 			next = e->next;
-			if (remove)
-			{
+			if (remove) {
 				if (e->prev == NULL)
 					sw->edges = e->next;
 				if (e->next == NULL)
@@ -437,50 +423,46 @@ static void snapUpdateScreenEdges(CompWindow * w)
 	XRectangle area;
 	int i;
 
-	for (i = 0; i < w->screen->nOutputDev; i++)
-	{
+	for (i = 0; i < w->screen->nOutputDev; i++) {
 		snapScreenGetOutputDevRect(w->screen, i, &area);
 		snapAddEdge(&sw->edges, &sw->reverseEdges, 0,
-					area.y, area.x, area.x + area.width - 1, BottomEdge, TRUE);
+			    area.y, area.x, area.x + area.width - 1, BottomEdge,
+			    TRUE);
 		snapAddEdge(&sw->edges, &sw->reverseEdges, 0,
-					area.y + area.height, area.x,
-					area.x + area.width - 1, TopEdge, TRUE);
+			    area.y + area.height, area.x,
+			    area.x + area.width - 1, TopEdge, TRUE);
+		snapAddEdge(&sw->edges, &sw->reverseEdges, 0, area.x, area.y,
+			    area.y + area.height - 1, RightEdge, TRUE);
 		snapAddEdge(&sw->edges, &sw->reverseEdges, 0,
-					area.x, area.y, area.y + area.height - 1, RightEdge, TRUE);
-		snapAddEdge(&sw->edges, &sw->reverseEdges, 0,
-					area.x + area.width, area.y,
-					area.y + area.height - 1, LeftEdge, TRUE);
+			    area.x + area.width, area.y,
+			    area.y + area.height - 1, LeftEdge, TRUE);
 	}
 
 	// Drop screen edges parts that are under struts, basically apply the
 	// same strategy than for windows edges visibility
-	for (c = w->screen->windows; c; c = c->next)
-	{
+	for (c = w->screen->windows; c; c = c->next) {
 		if (c == w || !c->struts)
 			continue;
-		for (e = sw->edges; e; e = next)
-		{
-			if (!e->screenEdge)
-			{
+		for (e = sw->edges; e; e = next) {
+			if (!e->screenEdge) {
 				next = e->next;
 				continue;
 			}
-			switch (e->type)
-			{
-				case LeftEdge:
-				case RightEdge:
-					rect.x = e->position;
-					rect.y = e->start;
-					rect.width = 1;
-					rect.height = e->end - e->start;
-					break;
-				case TopEdge:
-				case BottomEdge:
-				default:
-					rect.x = e->start;
-					rect.y = e->position;
-					rect.width = e->end - e->start;
-					rect.height = 1;
+			switch (e->type) {
+			case LeftEdge:
+			case RightEdge:
+				rect.x = e->position;
+				rect.y = e->start;
+				rect.width = 1;
+				rect.height = e->end - e->start;
+				break;
+			case TopEdge:
+			case BottomEdge:
+			default:
+				rect.x = e->start;
+				rect.y = e->position;
+				rect.width = e->end - e->start;
+				rect.height = 1;
 			}
 			edgeRegion = XCreateRegion();
 			resultRegion = XCreateRegion();
@@ -488,14 +470,12 @@ static void snapUpdateScreenEdges(CompWindow * w)
 			XSubtractRegion(edgeRegion, c->region, resultRegion);
 			if (XEmptyRegion(resultRegion))
 				remove = TRUE;
-			else if (!XEqualRegion(edgeRegion, resultRegion))
-			{
+			else if (!XEqualRegion(edgeRegion, resultRegion)) {
 				snapAddRegionEdges(sw, e, resultRegion);
 				remove = TRUE;
 			}
 			next = e->next;
-			if (remove)
-			{
+			if (remove) {
 				if (e->prev == NULL)
 					sw->edges = e->next;
 				if (e->next == NULL)
@@ -520,7 +500,8 @@ static void snapUpdateEdges(CompWindow * w)
 
 	snapUpdateWindowsEdges(w);
 
-	if (snapGetEdgesCategoriesMask(w->screen) & EdgesCategoriesScreenEdgesMask)
+	if (snapGetEdgesCategoriesMask(w->screen) &
+	    EdgesCategoriesScreenEdgesMask)
 		snapUpdateScreenEdges(w);
 }
 
@@ -534,7 +515,7 @@ static void snapUpdateEdges(CompWindow * w)
  */
 static void
 snapMoveCheckNearestEdge(CompWindow * w, int position, int start, int end,
-						 Bool before, EdgeType type, int snapDirection)
+			 Bool before, EdgeType type, int snapDirection)
 {
 	//SNAP_SCREEN(w->screen);
 	SNAP_WINDOW(w);
@@ -542,21 +523,18 @@ snapMoveCheckNearestEdge(CompWindow * w, int position, int start, int end,
 	Edge *edge = current;
 	int dist, min = 65535;
 
-	while (current)
-	{
+	while (current) {
 		// Skip wrong type or outbound edges
 		if (current->type != type
-			|| current->end < start || current->start > end)
-		{
+		    || current->end < start || current->start > end) {
 			current = current->next;
 			continue;
 		}
 		// Compute distance
 		dist = before ? position - current->position
-				: current->position - position;
+		    : current->position - position;
 		// Update minimum distance if needed
-		if (dist < min && dist >= 0)
-		{
+		if (dist < min && dist >= 0) {
 			min = dist;
 			edge = current;
 		}
@@ -564,26 +542,25 @@ snapMoveCheckNearestEdge(CompWindow * w, int position, int start, int end,
 		if (dist == 0)
 			break;
 		// Unsnap edges that aren't snapped anymore
-		if (current->snapped && dist > snapGetResistanceDistance(w->screen))
+		if (current->snapped
+		    && dist > snapGetResistanceDistance(w->screen))
 			current->snapped = FALSE;
 		current = current->next;
 	}
 	// We found a 0-dist edge, or we have a snapping candidate
 	if (min == 0 || (min <= snapGetAttractionDistance(w->screen)
-					 && snapGetSnapTypeMask(w->screen) & SnapTypeEdgeAttractionMask))
-	{
+			 && snapGetSnapTypeMask(w->
+						screen) &
+			 SnapTypeEdgeAttractionMask)) {
 		// Update snapping data
-		if (snapGetSnapTypeMask(w->screen) & SnapTypeEdgeResistanceMask)
-		{
+		if (snapGetSnapTypeMask(w->screen) & SnapTypeEdgeResistanceMask) {
 			sw->snapped = TRUE;
 			sw->snapDirection |= snapDirection;
 		}
 		// Attract the window if needed, moving it of the correct dist
-		if (min != 0 && !edge->snapped)
-		{
+		if (min != 0 && !edge->snapped) {
 			edge->snapped = TRUE;
-			switch (type)
-			{
+			switch (type) {
 			case LeftEdge:
 				snapMoveWindow(w, min, 0);
 				break;
@@ -609,17 +586,17 @@ snapMoveCheckNearestEdge(CompWindow * w, int position, int start, int end,
 static void snapMoveCheckEdges(CompWindow * w)
 {
 	snapMoveCheckNearestEdge(w, WIN_X(w),
-							 WIN_Y(w), WIN_Y(w) + WIN_H(w),
-							 TRUE, RightEdge, HorizontalSnap);
+				 WIN_Y(w), WIN_Y(w) + WIN_H(w),
+				 TRUE, RightEdge, HorizontalSnap);
 	snapMoveCheckNearestEdge(w, WIN_X(w) + WIN_W(w),
-							 WIN_Y(w), WIN_Y(w) + WIN_H(w),
-							 FALSE, LeftEdge, HorizontalSnap);
+				 WIN_Y(w), WIN_Y(w) + WIN_H(w),
+				 FALSE, LeftEdge, HorizontalSnap);
 	snapMoveCheckNearestEdge(w, WIN_Y(w),
-							 WIN_X(w), WIN_X(w) + WIN_W(w),
-							 TRUE, BottomEdge, VerticalSnap);
+				 WIN_X(w), WIN_X(w) + WIN_W(w),
+				 TRUE, BottomEdge, VerticalSnap);
 	snapMoveCheckNearestEdge(w, WIN_Y(w) + WIN_H(w),
-							 WIN_X(w), WIN_X(w) + WIN_W(w),
-							 FALSE, TopEdge, VerticalSnap);
+				 WIN_X(w), WIN_X(w) + WIN_W(w),
+				 FALSE, TopEdge, VerticalSnap);
 }
 
 // Edges checking functions (resize) -------------------------------------------
@@ -726,8 +703,8 @@ static void snapResizeCheckEdges(CompWindow * w, int dx, int dy, int dw, int dh)
 
 static Bool
 snapEnableSnapping(CompDisplay * d,
-				   CompAction * action,
-				   CompActionState state, CompOption * option, int nOption)
+		   CompAction * action,
+		   CompActionState state, CompOption * option, int nOption)
 {
 	SNAP_DISPLAY(d);
 	sd->snapping = TRUE;
@@ -736,8 +713,8 @@ snapEnableSnapping(CompDisplay * d,
 
 static Bool
 snapDisableSnapping(CompDisplay * d,
-					CompAction * action,
-					CompActionState state, CompOption * option, int nOption)
+		    CompAction * action,
+		    CompActionState state, CompOption * option, int nOption)
 {
 	SNAP_DISPLAY(d);
 	sd->snapping = FALSE;
@@ -749,13 +726,12 @@ static void snapHandleEvent(CompDisplay * d, XEvent * event)
 {
 	SNAP_DISPLAY(d);
 
-	if (event->type == d->xkbEvent)
-	{
+	if (event->type == d->xkbEvent) {
 		XkbAnyEvent *xkbEvent = (XkbAnyEvent *) event;
 
-		if (xkbEvent->xkb_type == XkbStateNotify)
-		{
-			XkbStateNotifyEvent *stateEvent = (XkbStateNotifyEvent *) event;
+		if (xkbEvent->xkb_type == XkbStateNotify) {
+			XkbStateNotifyEvent *stateEvent =
+			    (XkbStateNotifyEvent *) event;
 			unsigned int mods = 0xffffffff;
 
 			if (sd->avoidSnapMask)
@@ -872,8 +848,7 @@ snapWindowResizeNotify(CompWindow * w, int dx, int dy, int dw, int dh)
 }
 */
 
-static void
-snapWindowMoveNotify(CompWindow * w, int dx, int dy, Bool immediate)
+static void snapWindowMoveNotify(CompWindow * w, int dx, int dy, Bool immediate)
 {
 	SNAP_DISPLAY(w->screen->display);
 	SNAP_SCREEN(w->screen);
@@ -888,45 +863,38 @@ snapWindowMoveNotify(CompWindow * w, int dx, int dy, Bool immediate)
 		return;
 
 	// we have to avoid snapping but there's still some buffered moving
-	if (!sd->snapping && (sw->dx || sw->dy))
-	{
+	if (!sd->snapping && (sw->dx || sw->dy)) {
 		snapMoveWindow(w, sw->dx, sw->dy);
 		sw->dx = sw->dy = 0;
 		return;
 	}
-
 	// avoiding snap, nothing buffered
 	if (!sd->snapping)
 		return;
 
 	// apply edge resistance
-	if (snapGetSnapTypeMask(w->screen) & SnapTypeEdgeResistanceMask)
-	{
+	if (snapGetSnapTypeMask(w->screen) & SnapTypeEdgeResistanceMask) {
 		// If there's horizontal snapping, add dx to current buffered
 		// dx and resist (move by -dx) or release the window and move
 		// by buffered dx - dx
-		if (sw->snapped && sw->snapDirection & HorizontalSnap)
-		{
+		if (sw->snapped && sw->snapDirection & HorizontalSnap) {
 			sw->dx += dx;
 			if (sw->dx < snapGetResistanceDistance(w->screen)
-				&& sw->dx > -snapGetResistanceDistance(w->screen))
+			    && sw->dx > -snapGetResistanceDistance(w->screen))
 				snapMoveWindow(w, -dx, 0);
-			else
-			{
+			else {
 				snapMoveWindow(w, sw->dx - dx, 0);
 				sw->dx = 0;
 				sw->snapDirection &= VerticalSnap;
 			}
 		}
 		// Same for vertical snapping and dy
-		if (sw->snapped && sw->snapDirection & VerticalSnap)
-		{
+		if (sw->snapped && sw->snapDirection & VerticalSnap) {
 			sw->dy += dy;
 			if (sw->dy < snapGetResistanceDistance(w->screen)
-				&& sw->dy > -snapGetResistanceDistance(w->screen))
+			    && sw->dy > -snapGetResistanceDistance(w->screen))
 				snapMoveWindow(w, 0, -dy);
-			else
-			{
+			else {
 				snapMoveWindow(w, 0, sw->dy - dy);
 				sw->dy = 0;
 				sw->snapDirection &= HorizontalSnap;
@@ -947,7 +915,7 @@ snapWindowMoveNotify(CompWindow * w, int dx, int dy, Bool immediate)
  */
 static void
 snapWindowGrabNotify(CompWindow * w,
-					 int x, int y, unsigned int state, unsigned int mask)
+		     int x, int y, unsigned int state, unsigned int mask)
 {
 	SNAP_SCREEN(w->screen);
 	SNAP_WINDOW(w);
@@ -982,13 +950,13 @@ static void snapWindowUngrabNotify(CompWindow * w)
 
 // Internal stuff --------------------------------------------------------------
 
-static void snapDisplayOptionChanged(CompDisplay *d, CompOption *opt, SnapDisplayOptions num)
+static void snapDisplayOptionChanged(CompDisplay * d, CompOption * opt,
+				     SnapDisplayOptions num)
 {
 	SNAP_DISPLAY(d);
 
-	switch (num)
-	{
-		case SnapDisplayOptionAvoidSnap:
+	switch (num) {
+	case SnapDisplayOptionAvoidSnap:
 		{
 			unsigned int mask = snapGetAvoidSnapMask(d);
 			sd->avoidSnapMask = 0;
@@ -1002,8 +970,8 @@ static void snapDisplayOptionChanged(CompDisplay *d, CompOption *opt, SnapDispla
 				sd->avoidSnapMask |= CompMetaMask;
 		}
 
-		default:
-			break;
+	default:
+		break;
 	}
 }
 
@@ -1011,7 +979,7 @@ static Bool snapInitDisplay(CompPlugin * p, CompDisplay * d)
 {
 	SnapDisplay *sd;
 
-	if (!checkPluginABI ("core", CORE_ABIVERSION))
+	if (!checkPluginABI("core", CORE_ABIVERSION))
 		return FALSE;
 
 	sd = malloc(sizeof(SnapDisplay));
@@ -1019,8 +987,7 @@ static Bool snapInitDisplay(CompPlugin * p, CompDisplay * d)
 		return FALSE;
 
 	sd->screenPrivateIndex = allocateScreenPrivateIndex(d);
-	if (sd->screenPrivateIndex < 0)
-	{
+	if (sd->screenPrivateIndex < 0) {
 		free(sd);
 		return FALSE;
 	}
@@ -1059,8 +1026,7 @@ static Bool snapInitScreen(CompPlugin * p, CompScreen * s)
 		return FALSE;
 
 	ss->windowPrivateIndex = allocateWindowPrivateIndex(s);
-	if (ss->windowPrivateIndex < 0)
-	{
+	if (ss->windowPrivateIndex < 0) {
 		free(ss);
 		return FALSE;
 	}
@@ -1126,32 +1092,28 @@ static void snapFiniWindow(CompPlugin * p, CompWindow * w)
 	free(sw);
 }
 
-static CompBool
-snapInitObject (CompPlugin *p,
-		CompObject *o)
+static CompBool snapInitObject(CompPlugin * p, CompObject * o)
 {
 	static InitPluginObjectProc dispTab[] = {
-		(InitPluginObjectProc) 0, /* InitCore */
+		(InitPluginObjectProc) 0,	/* InitCore */
 		(InitPluginObjectProc) snapInitDisplay,
 		(InitPluginObjectProc) snapInitScreen,
 		(InitPluginObjectProc) snapInitWindow
-    };
+	};
 
-    RETURN_DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), TRUE, (p, o));
+	RETURN_DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), TRUE, (p, o));
 }
 
-static void
-snapFiniObject (CompPlugin *p,
-		CompObject *o)
+static void snapFiniObject(CompPlugin * p, CompObject * o)
 {
-    static FiniPluginObjectProc dispTab[] = {
-		(FiniPluginObjectProc) 0, /* FiniCore */
+	static FiniPluginObjectProc dispTab[] = {
+		(FiniPluginObjectProc) 0,	/* FiniCore */
 		(FiniPluginObjectProc) snapFiniDisplay,
 		(FiniPluginObjectProc) snapFiniScreen,
 		(FiniPluginObjectProc) snapFiniWindow
-    };
+	};
 
-    DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), (p, o));
+	DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), (p, o));
 }
 
 static Bool snapInit(CompPlugin * p)

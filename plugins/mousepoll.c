@@ -32,35 +32,34 @@ static int functionsPrivateIndex;
 typedef struct _MousepollClient MousepollClient;
 
 struct _MousepollClient {
-    MousepollClient *next;
-    MousepollClient *prev;
+	MousepollClient *next;
+	MousepollClient *prev;
 
-    PositionPollingHandle id;
-    PositionUpdateProc    update;
+	PositionPollingHandle id;
+	PositionUpdateProc update;
 };
 
-typedef enum _MousepollDisplayOptions
-{
-    MP_DISPLAY_OPTION_ABI,
-    MP_DISPLAY_OPTION_INDEX,
-    MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL,
-    MP_DISPLAY_OPTION_NUM
+typedef enum _MousepollDisplayOptions {
+	MP_DISPLAY_OPTION_ABI,
+	MP_DISPLAY_OPTION_INDEX,
+	MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL,
+	MP_DISPLAY_OPTION_NUM
 } MousepollDisplayOptions;
 
 typedef struct _MousepollDisplay {
-    int	screenPrivateIndex;
+	int screenPrivateIndex;
 
-    CompOption opt[MP_DISPLAY_OPTION_NUM];
+	CompOption opt[MP_DISPLAY_OPTION_NUM];
 } MousepollDisplay;
 
 typedef struct _MousepollScreen {
 
-    MousepollClient       *clients;
-    PositionPollingHandle freeId;
+	MousepollClient *clients;
+	PositionPollingHandle freeId;
 
-    CompTimeoutHandle updateHandle;
-    int posX;
-    int posY;
+	CompTimeoutHandle updateHandle;
+	int posX;
+	int posY;
 
 } MousepollScreen;
 
@@ -78,418 +77,380 @@ typedef struct _MousepollScreen {
 
 #define NUM_OPTIONS(s) (sizeof ((s)->opt) / sizeof (CompOption))
 
-static Bool
-getMousePosition (CompScreen *s)
+static Bool getMousePosition(CompScreen * s)
 {
-    Window       root_return;
-    Window       child_return;
-    int          rootX, rootY;
-    int          winX, winY;
-    unsigned int maskReturn;
-    Bool         status;
+	Window root_return;
+	Window child_return;
+	int rootX, rootY;
+	int winX, winY;
+	unsigned int maskReturn;
+	Bool status;
 
-    MOUSEPOLL_SCREEN (s);
+	MOUSEPOLL_SCREEN(s);
 
-    status = XQueryPointer (s->display->display, s->root,
-			    &root_return, &child_return,
-			    &rootX, &rootY, &winX, &winY, &maskReturn);
+	status = XQueryPointer(s->display->display, s->root,
+			       &root_return, &child_return,
+			       &rootX, &rootY, &winX, &winY, &maskReturn);
 
-    if (!status || rootX > s->width || rootY > s->height ||
-	s->root != root_return)
+	if (!status || rootX > s->width || rootY > s->height ||
+	    s->root != root_return)
+		return FALSE;
+
+	if ((rootX != ms->posX || rootY != ms->posY)) {
+		ms->posX = rootX;
+		ms->posY = rootY;
+		return TRUE;
+	}
 	return FALSE;
-
-    if ((rootX != ms->posX || rootY != ms->posY))
-    {
-	ms->posX = rootX;
-	ms->posY = rootY;
-	return TRUE;
-    }
-    return FALSE;
 }
 
-static Bool
-updatePosition (void *c)
+static Bool updatePosition(void *c)
 {
-    CompScreen      *s = (CompScreen *)c;
-    MousepollClient *mc;
+	CompScreen *s = (CompScreen *) c;
+	MousepollClient *mc;
 
-    MOUSEPOLL_SCREEN (s);
+	MOUSEPOLL_SCREEN(s);
 
-    if (!ms->clients)
-	return FALSE;
+	if (!ms->clients)
+		return FALSE;
 
-    if (getMousePosition (s))
-    {
-	MousepollClient *next;
-	for (mc = ms->clients; mc; mc = next)
-	{
-	    next = mc->next;
-	    if (mc->update)
-		(*mc->update) (s, ms->posX, ms->posY);
+	if (getMousePosition(s)) {
+		MousepollClient *next;
+		for (mc = ms->clients; mc; mc = next) {
+			next = mc->next;
+			if (mc->update)
+				(*mc->update) (s, ms->posX, ms->posY);
+		}
 	}
-    }
 
-    return TRUE;
+	return TRUE;
 }
 
 static PositionPollingHandle
-mousepollAddPositionPolling (CompScreen         *s,
-			     PositionUpdateProc update)
+mousepollAddPositionPolling(CompScreen * s, PositionUpdateProc update)
 {
-    MOUSEPOLL_SCREEN  (s);
-    MOUSEPOLL_DISPLAY (s->display);
+	MOUSEPOLL_SCREEN(s);
+	MOUSEPOLL_DISPLAY(s->display);
 
-    Bool start = FALSE;
+	Bool start = FALSE;
 
-    MousepollClient *mc = malloc (sizeof (MousepollClient));
+	MousepollClient *mc = malloc(sizeof(MousepollClient));
 
-    if (!mc)
-	return -1;
+	if (!mc)
+		return -1;
 
-    if (!ms->clients)
-	start = TRUE;
+	if (!ms->clients)
+		start = TRUE;
 
-    mc->update = update;
-    mc->id     = ms->freeId;
-    ms->freeId++;
+	mc->update = update;
+	mc->id = ms->freeId;
+	ms->freeId++;
 
-    mc->prev = NULL;
-    mc->next = ms->clients;
+	mc->prev = NULL;
+	mc->next = ms->clients;
 
-    if (ms->clients)
-	ms->clients->prev = mc;
-
-    ms->clients = mc;
-
-    if (start)
-    {
-	getMousePosition (s);
-	ms->updateHandle =
-	    compAddTimeout (
-		md->opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].value.i / 2,
-		md->opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].value.i,
-		updatePosition, s);
-    }
-
-    return mc->id;
-}
-
-static void
-mousepollRemovePositionPolling (CompScreen            *s,
-				PositionPollingHandle id)
-{
-    MOUSEPOLL_SCREEN (s);
-
-    MousepollClient *mc = ms->clients;
-
-    if (ms->clients && ms->clients->id == id)
-    {
-	ms->clients = ms->clients->next;
 	if (ms->clients)
-	    ms->clients->prev = NULL;
+		ms->clients->prev = mc;
 
-	free (mc);
-	return;
-    }
+	ms->clients = mc;
 
-    for (mc = ms->clients; mc; mc = mc->next)
-	if (mc->id == id)
-	{
-	    if (mc->next)
-		mc->next->prev = mc->prev;
-	    if (mc->prev)
-		mc->prev->next = mc->next;
-	    free (mc);
-	    return;
+	if (start) {
+		getMousePosition(s);
+		ms->updateHandle =
+		    compAddTimeout(md->
+				   opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].
+				   value.i / 2,
+				   md->
+				   opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].
+				   value.i, updatePosition, s);
 	}
 
-    if (!ms->clients && ms->updateHandle)
-    {
-	compRemoveTimeout (ms->updateHandle);
-	ms->updateHandle = 0;
-    }
+	return mc->id;
 }
 
 static void
-mousepollGetCurrentPosition (CompScreen *s,
-			     int        *x,
-			     int        *y)
+mousepollRemovePositionPolling(CompScreen * s, PositionPollingHandle id)
 {
-    MOUSEPOLL_SCREEN (s);
+	MOUSEPOLL_SCREEN(s);
 
-    if (!ms->clients)
-	getMousePosition (s);
+	MousepollClient *mc = ms->clients;
 
-    if (x)
-	*x = ms->posX;
-    if (y)
-	*y = ms->posY;
+	if (ms->clients && ms->clients->id == id) {
+		ms->clients = ms->clients->next;
+		if (ms->clients)
+			ms->clients->prev = NULL;
+
+		free(mc);
+		return;
+	}
+
+	for (mc = ms->clients; mc; mc = mc->next)
+		if (mc->id == id) {
+			if (mc->next)
+				mc->next->prev = mc->prev;
+			if (mc->prev)
+				mc->prev->next = mc->next;
+			free(mc);
+			return;
+		}
+
+	if (!ms->clients && ms->updateHandle) {
+		compRemoveTimeout(ms->updateHandle);
+		ms->updateHandle = 0;
+	}
+}
+
+static void mousepollGetCurrentPosition(CompScreen * s, int *x, int *y)
+{
+	MOUSEPOLL_SCREEN(s);
+
+	if (!ms->clients)
+		getMousePosition(s);
+
+	if (x)
+		*x = ms->posX;
+	if (y)
+		*y = ms->posY;
 }
 
 static const CompMetadataOptionInfo mousepollDisplayOptionInfo[] = {
-    { "abi", "int", 0, 0, 0 },
-    { "index", "int", 0, 0, 0 },
-    { "mouse_poll_interval", "int", "<min>1</min><max>500</max><default>10</default>", 0, 0 }
+	{"abi", "int", 0, 0, 0},
+	{"index", "int", 0, 0, 0},
+	{"mouse_poll_interval", "int",
+	 "<min>1</min><max>500</max><default>10</default>", 0, 0}
 };
 
-static CompOption *
-mousepollGetDisplayOptions (CompPlugin  *plugin,
-			    CompDisplay *display,
-			    int         *count)
+static CompOption *mousepollGetDisplayOptions(CompPlugin * plugin,
+					      CompDisplay * display, int *count)
 {
-    MOUSEPOLL_DISPLAY (display);
-    *count = NUM_OPTIONS (md);
-    return md->opt;
+	MOUSEPOLL_DISPLAY(display);
+	*count = NUM_OPTIONS(md);
+	return md->opt;
 }
 
 static Bool
-mousepollSetDisplayOption (CompPlugin      *plugin,
-			   CompDisplay     *display,
-			   const char      *name,
-			   CompOptionValue *value)
+mousepollSetDisplayOption(CompPlugin * plugin,
+			  CompDisplay * display,
+			  const char *name, CompOptionValue * value)
 {
-    CompOption      *o;
-    CompScreen      *s;
-    MousepollScreen *ms;
-    int	            index;
-    Bool            status = FALSE;
-    MOUSEPOLL_DISPLAY (display);
-    o = compFindOption (md->opt, NUM_OPTIONS (md), name, &index);
-    if (!o)
-	return FALSE;
+	CompOption *o;
+	CompScreen *s;
+	MousepollScreen *ms;
+	int index;
+	Bool status = FALSE;
+	MOUSEPOLL_DISPLAY(display);
+	o = compFindOption(md->opt, NUM_OPTIONS(md), name, &index);
+	if (!o)
+		return FALSE;
 
-    switch (index) {
-    case MP_DISPLAY_OPTION_ABI:
-    case MP_DISPLAY_OPTION_INDEX:
-        break;
-    case MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL:
-	status = compSetDisplayOption (display, o, value);
-	for (s = display->screens; s; s = s->next)
-	{
-	    ms = GET_MOUSEPOLL_SCREEN (s, md);
-	    if (ms->updateHandle)
-	    {
-		compRemoveTimeout (ms->updateHandle);
-		ms->updateHandle =
-		    compAddTimeout (
-			md->opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].value.i
-			/ 2,
-			md->opt[MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].value.i,
-   			updatePosition, s);
-	    }
+	switch (index) {
+	case MP_DISPLAY_OPTION_ABI:
+	case MP_DISPLAY_OPTION_INDEX:
+		break;
+	case MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL:
+		status = compSetDisplayOption(display, o, value);
+		for (s = display->screens; s; s = s->next) {
+			ms = GET_MOUSEPOLL_SCREEN(s, md);
+			if (ms->updateHandle) {
+				compRemoveTimeout(ms->updateHandle);
+				ms->updateHandle =
+				    compAddTimeout(md->
+						   opt
+						   [MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].
+						   value.i / 2,
+						   md->
+						   opt
+						   [MP_DISPLAY_OPTION_MOUSE_POLL_INTERVAL].
+						   value.i, updatePosition, s);
+			}
+		}
+		return status;
+		break;
+	default:
+		return compSetDisplayOption(display, o, value);
 	}
-	return status;
-	break;
-    default:
-        return compSetDisplayOption (display, o, value);
-    }
 
-    return FALSE;
+	return FALSE;
 }
 
-static MousePollFunc mousepollFunctions =
-{
-    .addPositionPolling    = mousepollAddPositionPolling,
-    .removePositionPolling = mousepollRemovePositionPolling,
-    .getCurrentPosition    = mousepollGetCurrentPosition,
+static MousePollFunc mousepollFunctions = {
+	.addPositionPolling = mousepollAddPositionPolling,
+	.removePositionPolling = mousepollRemovePositionPolling,
+	.getCurrentPosition = mousepollGetCurrentPosition,
 };
 
-static Bool
-mousepollInitDisplay (CompPlugin  *p,
-		      CompDisplay *d)
+static Bool mousepollInitDisplay(CompPlugin * p, CompDisplay * d)
 {
-    MousepollDisplay *md;
+	MousepollDisplay *md;
 
-    if (!checkPluginABI ("core", CORE_ABIVERSION))
-	return FALSE;
+	if (!checkPluginABI("core", CORE_ABIVERSION))
+		return FALSE;
 
-    md = malloc (sizeof (MousepollDisplay));
-    if (!md)
-	return FALSE;
-    if (!compInitDisplayOptionsFromMetadata (d,
-					     &mousepollMetadata,
-					     mousepollDisplayOptionInfo,
-					     md->opt,
-					     MP_DISPLAY_OPTION_NUM))
-    {
-	free (md);
-	return FALSE;
-    }
+	md = malloc(sizeof(MousepollDisplay));
+	if (!md)
+		return FALSE;
+	if (!compInitDisplayOptionsFromMetadata(d,
+						&mousepollMetadata,
+						mousepollDisplayOptionInfo,
+						md->opt,
+						MP_DISPLAY_OPTION_NUM)) {
+		free(md);
+		return FALSE;
+	}
 
-    md->screenPrivateIndex = allocateScreenPrivateIndex (d);
-    if (md->screenPrivateIndex < 0)
-    {
-	compFiniDisplayOptions (d, md->opt, MP_DISPLAY_OPTION_NUM);
-	free (md);
-	return FALSE;
-    }
+	md->screenPrivateIndex = allocateScreenPrivateIndex(d);
+	if (md->screenPrivateIndex < 0) {
+		compFiniDisplayOptions(d, md->opt, MP_DISPLAY_OPTION_NUM);
+		free(md);
+		return FALSE;
+	}
 
-    md->opt[MP_DISPLAY_OPTION_ABI].value.i   = MOUSEPOLL_ABIVERSION;
-    md->opt[MP_DISPLAY_OPTION_INDEX].value.i = functionsPrivateIndex;
+	md->opt[MP_DISPLAY_OPTION_ABI].value.i = MOUSEPOLL_ABIVERSION;
+	md->opt[MP_DISPLAY_OPTION_INDEX].value.i = functionsPrivateIndex;
 
-    d->base.privates[displayPrivateIndex].ptr   = md;
-    d->base.privates[functionsPrivateIndex].ptr = &mousepollFunctions;
-    return TRUE;
+	d->base.privates[displayPrivateIndex].ptr = md;
+	d->base.privates[functionsPrivateIndex].ptr = &mousepollFunctions;
+	return TRUE;
 }
 
-static void
-mousepollFiniDisplay (CompPlugin  *p,
-		 CompDisplay *d)
+static void mousepollFiniDisplay(CompPlugin * p, CompDisplay * d)
 {
-    MOUSEPOLL_DISPLAY (d);
+	MOUSEPOLL_DISPLAY(d);
 
-    compFiniDisplayOptions (d, md->opt, MP_DISPLAY_OPTION_NUM);
-    free (md);
+	compFiniDisplayOptions(d, md->opt, MP_DISPLAY_OPTION_NUM);
+	free(md);
 }
 
-static Bool
-mousepollInitScreen (CompPlugin *p,
-		     CompScreen *s)
+static Bool mousepollInitScreen(CompPlugin * p, CompScreen * s)
 {
-    MousepollScreen *ms;
+	MousepollScreen *ms;
 
-    MOUSEPOLL_DISPLAY (s->display);
+	MOUSEPOLL_DISPLAY(s->display);
 
-    ms = malloc (sizeof (MousepollScreen));
-    if (!ms)
-	return FALSE;
+	ms = malloc(sizeof(MousepollScreen));
+	if (!ms)
+		return FALSE;
 
-    ms->posX = 0;
-    ms->posY = 0;
+	ms->posX = 0;
+	ms->posY = 0;
 
-    ms->clients = NULL;
-    ms->freeId  = 1;
-    
-    ms->updateHandle = 0;
+	ms->clients = NULL;
+	ms->freeId = 1;
 
-    s->base.privates[md->screenPrivateIndex].ptr = ms;
-    return TRUE;
+	ms->updateHandle = 0;
+
+	s->base.privates[md->screenPrivateIndex].ptr = ms;
+	return TRUE;
 }
 
-static void
-mousepollFiniScreen (CompPlugin *p,
-		     CompScreen *s)
+static void mousepollFiniScreen(CompPlugin * p, CompScreen * s)
 {
-    MOUSEPOLL_SCREEN (s);
+	MOUSEPOLL_SCREEN(s);
 
-    if (ms->updateHandle)
-	compRemoveTimeout (ms->updateHandle);
+	if (ms->updateHandle)
+		compRemoveTimeout(ms->updateHandle);
 
-    free (ms);
+	free(ms);
 }
 
-static CompBool
-mousepollInitObject (CompPlugin *p,
-		     CompObject *o)
+static CompBool mousepollInitObject(CompPlugin * p, CompObject * o)
 {
-    static InitPluginObjectProc dispTab[] = {
-	(InitPluginObjectProc) 0, /* InitCore */
-	(InitPluginObjectProc) mousepollInitDisplay,
-	(InitPluginObjectProc) mousepollInitScreen
-    };
+	static InitPluginObjectProc dispTab[] = {
+		(InitPluginObjectProc) 0,	/* InitCore */
+		(InitPluginObjectProc) mousepollInitDisplay,
+		(InitPluginObjectProc) mousepollInitScreen
+	};
 
-    RETURN_DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), TRUE, (p, o));
+	RETURN_DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), TRUE, (p, o));
 }
 
-static void
-mousepollFiniObject (CompPlugin *p,
-		     CompObject *o)
+static void mousepollFiniObject(CompPlugin * p, CompObject * o)
 {
-    static FiniPluginObjectProc dispTab[] = {
-	(FiniPluginObjectProc) 0, /* FiniCore */
-	(FiniPluginObjectProc) mousepollFiniDisplay,
-	(FiniPluginObjectProc) mousepollFiniScreen
-    };
+	static FiniPluginObjectProc dispTab[] = {
+		(FiniPluginObjectProc) 0,	/* FiniCore */
+		(FiniPluginObjectProc) mousepollFiniDisplay,
+		(FiniPluginObjectProc) mousepollFiniScreen
+	};
 
-    DISPATCH (o, dispTab, ARRAY_SIZE (dispTab), (p, o));
+	DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), (p, o));
 }
 
-static Bool
-mousepollInit (CompPlugin *p)
+static Bool mousepollInit(CompPlugin * p)
 {
-    if (!compInitPluginMetadataFromInfo (&mousepollMetadata,
-					 p->vTable->name,
-					 mousepollDisplayOptionInfo,
-					 MP_DISPLAY_OPTION_NUM,
-					 NULL, 0))
-	return FALSE;
+	if (!compInitPluginMetadataFromInfo(&mousepollMetadata,
+					    p->vTable->name,
+					    mousepollDisplayOptionInfo,
+					    MP_DISPLAY_OPTION_NUM, NULL, 0))
+		return FALSE;
 
-    displayPrivateIndex = allocateDisplayPrivateIndex ();
-    if (displayPrivateIndex < 0)
-    {
-	compFiniMetadata (&mousepollMetadata);
-	return FALSE;
-    }
+	displayPrivateIndex = allocateDisplayPrivateIndex();
+	if (displayPrivateIndex < 0) {
+		compFiniMetadata(&mousepollMetadata);
+		return FALSE;
+	}
 
-    functionsPrivateIndex = allocateDisplayPrivateIndex ();
-    if (functionsPrivateIndex < 0)
-    {
-	freeDisplayPrivateIndex (displayPrivateIndex);
-	compFiniMetadata (&mousepollMetadata);
-	return FALSE;
-    }
-    
-    compAddMetadataFromFile (&mousepollMetadata, p->vTable->name);
-    return TRUE;
+	functionsPrivateIndex = allocateDisplayPrivateIndex();
+	if (functionsPrivateIndex < 0) {
+		freeDisplayPrivateIndex(displayPrivateIndex);
+		compFiniMetadata(&mousepollMetadata);
+		return FALSE;
+	}
+
+	compAddMetadataFromFile(&mousepollMetadata, p->vTable->name);
+	return TRUE;
 }
 
-static CompOption *
-mousepollGetObjectOptions (CompPlugin *plugin,
-			   CompObject *object,
-			   int        *count)
+static CompOption *mousepollGetObjectOptions(CompPlugin * plugin,
+					     CompObject * object, int *count)
 {
-    static GetPluginObjectOptionsProc dispTab[] = {
-	(GetPluginObjectOptionsProc) 0, /* GetCoreOptions */
-	(GetPluginObjectOptionsProc) mousepollGetDisplayOptions
-    };
+	static GetPluginObjectOptionsProc dispTab[] = {
+		(GetPluginObjectOptionsProc) 0,	/* GetCoreOptions */
+		(GetPluginObjectOptionsProc) mousepollGetDisplayOptions
+	};
 
-    *count = 0;
-    RETURN_DISPATCH (object, dispTab, ARRAY_SIZE (dispTab),
-		     NULL, (plugin, object, count));
+	*count = 0;
+	RETURN_DISPATCH(object, dispTab, ARRAY_SIZE(dispTab),
+			NULL, (plugin, object, count));
 }
 
 static CompBool
-mousepollSetObjectOption (CompPlugin      *plugin,
-			  CompObject      *object,
-			  const char      *name,
-			  CompOptionValue *value)
+mousepollSetObjectOption(CompPlugin * plugin,
+			 CompObject * object,
+			 const char *name, CompOptionValue * value)
 {
-    static SetPluginObjectOptionProc dispTab[] = {
-	(SetPluginObjectOptionProc) 0, /* SetCoreOption */
-	(SetPluginObjectOptionProc) mousepollSetDisplayOption
-    };
+	static SetPluginObjectOptionProc dispTab[] = {
+		(SetPluginObjectOptionProc) 0,	/* SetCoreOption */
+		(SetPluginObjectOptionProc) mousepollSetDisplayOption
+	};
 
-    RETURN_DISPATCH (object, dispTab, ARRAY_SIZE (dispTab), FALSE,
-		     (plugin, object, name, value));
+	RETURN_DISPATCH(object, dispTab, ARRAY_SIZE(dispTab), FALSE,
+			(plugin, object, name, value));
 }
 
-static void
-mousepollFini (CompPlugin *p)
+static void mousepollFini(CompPlugin * p)
 {
-    freeDisplayPrivateIndex (displayPrivateIndex);
-    freeDisplayPrivateIndex (functionsPrivateIndex);
-    compFiniMetadata (&mousepollMetadata);
+	freeDisplayPrivateIndex(displayPrivateIndex);
+	freeDisplayPrivateIndex(functionsPrivateIndex);
+	compFiniMetadata(&mousepollMetadata);
 }
 
-static CompMetadata *
-mousepollGetMetadata (CompPlugin *plugin)
+static CompMetadata *mousepollGetMetadata(CompPlugin * plugin)
 {
-    return &mousepollMetadata;
+	return &mousepollMetadata;
 }
 
 CompPluginVTable mousepollVTable = {
-    "mousepoll",
-    mousepollGetMetadata,
-    mousepollInit,
-    mousepollFini,
-    mousepollInitObject,
-    mousepollFiniObject,
-    mousepollGetObjectOptions,
-    mousepollSetObjectOption
+	"mousepoll",
+	mousepollGetMetadata,
+	mousepollInit,
+	mousepollFini,
+	mousepollInitObject,
+	mousepollFiniObject,
+	mousepollGetObjectOptions,
+	mousepollSetObjectOption
 };
 
-CompPluginVTable *
-getCompPluginInfo20070830 (void)
+CompPluginVTable *getCompPluginInfo20070830(void)
 {
-    return &mousepollVTable;
+	return &mousepollVTable;
 }

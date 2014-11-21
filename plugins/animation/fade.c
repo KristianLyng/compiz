@@ -38,15 +38,12 @@
 
 // =====================  Effect: Fade  =========================
 
-void
-fxFadeUpdateWindowAttrib(CompWindow * w,
-			 WindowPaintAttrib * wAttrib)
+void fxFadeUpdateWindowAttrib(CompWindow * w, WindowPaintAttrib * wAttrib)
 {
-    ANIM_WINDOW(w);
+	ANIM_WINDOW(w);
 
-    float forwardProgress = defaultAnimProgress (w);
+	float forwardProgress = defaultAnimProgress(w);
 
-    wAttrib->opacity = (GLushort) (aw->com.storedOpacity * (1 - forwardProgress));
+	wAttrib->opacity =
+	    (GLushort) (aw->com.storedOpacity * (1 - forwardProgress));
 }
-
-

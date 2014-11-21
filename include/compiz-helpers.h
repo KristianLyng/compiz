@@ -24,7 +24,6 @@
  *
  */
 
-
 #ifndef COMPIZ_HELPER_H
 #define COMPIZ_HELPER_H
 
@@ -35,7 +34,6 @@
  * end up with some files with and some files without DEBUG set.
  */
 #include "config.h"
-
 
 /*
  * Skip past .'s and /'s in s, to turn 
@@ -87,6 +85,5 @@
 		abort();				    \
 	    }						    \
 	} while(0)
-
 
 #endif

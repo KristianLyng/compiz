@@ -29,32 +29,27 @@
 #include <compiz-core.h>
 
 COMPIZ_BEGIN_DECLS
-
 #define SCALE_ABIVERSION 20081007
-
 #define SCALE_STATE_NONE 0
 #define SCALE_STATE_OUT  1
 #define SCALE_STATE_WAIT 2
 #define SCALE_STATE_IN   3
-
 #define SCALE_ICON_NONE   0
 #define SCALE_ICON_EMBLEM 1
 #define SCALE_ICON_BIG    2
 #define SCALE_ICON_LAST   SCALE_ICON_BIG
-
 #define SCALE_MOMODE_CURRENT 0
 #define SCALE_MOMODE_ALL     1
 #define SCALE_MOMODE_LAST    SCALE_MOMODE_ALL
-
-typedef struct _ScaleSlot {
-    int   x1, y1, x2, y2;
-    int   filled;
-    float scale;
+    typedef struct _ScaleSlot {
+	int x1, y1, x2, y2;
+	int filled;
+	float scale;
 } ScaleSlot;
 
 typedef struct _SlotArea {
-    int        nWindows;
-    XRectangle workArea;
+	int nWindows;
+	XRectangle workArea;
 } SlotArea;
 
 #define SCALE_DISPLAY_OPTION_ABI	            0
@@ -78,19 +73,19 @@ typedef struct _SlotArea {
 #define SCALE_DISPLAY_OPTION_NUM                    18
 
 typedef struct _ScaleDisplay {
-    int		    screenPrivateIndex;
-    HandleEventProc handleEvent;
+	int screenPrivateIndex;
+	HandleEventProc handleEvent;
 
-    CompOption opt[SCALE_DISPLAY_OPTION_NUM];
+	CompOption opt[SCALE_DISPLAY_OPTION_NUM];
 
-    unsigned int lastActiveNum;
-    Window       lastActiveWindow;
+	unsigned int lastActiveNum;
+	Window lastActiveWindow;
 
-    Window       selectedWindow;
-    Window       hoveredWindow;
-    Window       previousActiveWindow;
+	Window selectedWindow;
+	Window hoveredWindow;
+	Window previousActiveWindow;
 
-    KeyCode	 leftKeyCode, rightKeyCode, upKeyCode, downKeyCode;
+	KeyCode leftKeyCode, rightKeyCode, upKeyCode, downKeyCode;
 } ScaleDisplay;
 
 #define SCALE_SCREEN_OPTION_SPACING          0
@@ -105,85 +100,84 @@ typedef struct _ScaleDisplay {
 #define SCALE_SCREEN_OPTION_NUM              9
 
 typedef enum {
-    ScaleTypeNormal = 0,
-    ScaleTypeOutput,
-    ScaleTypeGroup,
-    ScaleTypeAll
+	ScaleTypeNormal = 0,
+	ScaleTypeOutput,
+	ScaleTypeGroup,
+	ScaleTypeAll
 } ScaleType;
 
-typedef Bool (*ScaleLayoutSlotsAndAssignWindowsProc) (CompScreen *s);
+typedef Bool(*ScaleLayoutSlotsAndAssignWindowsProc) (CompScreen * s);
 
-typedef Bool (*ScaleSetScaledPaintAttributesProc) (CompWindow        *w,
-						   WindowPaintAttrib *attrib);
+typedef Bool(*ScaleSetScaledPaintAttributesProc) (CompWindow * w,
+						  WindowPaintAttrib * attrib);
 
-typedef void (*ScalePaintDecorationProc) (CompWindow		  *w,
-					  const WindowPaintAttrib *attrib,
-					  const CompTransform     *transform,
-					  Region		  region,
-					  unsigned int		  mask);
+typedef void (*ScalePaintDecorationProc) (CompWindow * w,
+					  const WindowPaintAttrib * attrib,
+					  const CompTransform * transform,
+					  Region region, unsigned int mask);
 
-typedef void (*ScaleSelectWindowProc) (CompWindow *w);
+typedef void (*ScaleSelectWindowProc) (CompWindow * w);
 
 typedef struct _ScaleScreen {
-    int windowPrivateIndex;
+	int windowPrivateIndex;
 
-    PreparePaintScreenProc preparePaintScreen;
-    DonePaintScreenProc    donePaintScreen;
-    PaintOutputProc        paintOutput;
-    PaintWindowProc        paintWindow;
-    DamageWindowRectProc   damageWindowRect;
+	PreparePaintScreenProc preparePaintScreen;
+	DonePaintScreenProc donePaintScreen;
+	PaintOutputProc paintOutput;
+	PaintWindowProc paintWindow;
+	DamageWindowRectProc damageWindowRect;
 
-    ScaleLayoutSlotsAndAssignWindowsProc layoutSlotsAndAssignWindows;
-    ScaleSetScaledPaintAttributesProc    setScaledPaintAttributes;
-    ScalePaintDecorationProc		 scalePaintDecoration;
-    ScaleSelectWindowProc                selectWindow;
+	ScaleLayoutSlotsAndAssignWindowsProc layoutSlotsAndAssignWindows;
+	ScaleSetScaledPaintAttributesProc setScaledPaintAttributes;
+	ScalePaintDecorationProc scalePaintDecoration;
+	ScaleSelectWindowProc selectWindow;
 
-    CompOption opt[SCALE_SCREEN_OPTION_NUM];
+	CompOption opt[SCALE_SCREEN_OPTION_NUM];
 
-    Bool grab;
-    int  grabIndex;
+	Bool grab;
+	int grabIndex;
 
-    Window dndTarget;
+	Window dndTarget;
 
-    CompTimeoutHandle hoverHandle;
+	CompTimeoutHandle hoverHandle;
 
-    int state;
-    int moreAdjust;
+	int state;
+	int moreAdjust;
 
-    Cursor cursor;
+	Cursor cursor;
 
-    ScaleSlot *slots;
-    int        slotsSize;
-    int        nSlots;
+	ScaleSlot *slots;
+	int slotsSize;
+	int nSlots;
 
-    /* only used for sorting */
-    CompWindow **windows;
-    int        windowsSize;
-    int        nWindows;
+	/* only used for sorting */
+	CompWindow **windows;
+	int windowsSize;
+	int nWindows;
 
-    GLushort opacity;
+	GLushort opacity;
 
-    ScaleType type;
+	ScaleType type;
 
-    Window clientLeader;
+	Window clientLeader;
 
-    CompMatch match;
-    CompMatch *currentMatch;
+	CompMatch match;
+	CompMatch *currentMatch;
 } ScaleScreen;
 
 typedef struct _ScaleWindow {
-    ScaleSlot *slot;
+	ScaleSlot *slot;
 
-    int sid;
-    int distance;
+	int sid;
+	int distance;
 
-    GLfloat xVelocity, yVelocity, scaleVelocity;
-    GLfloat scale;
-    GLfloat tx, ty;
-    float   delta;
-    Bool    adjust;
+	GLfloat xVelocity, yVelocity, scaleVelocity;
+	GLfloat scale;
+	GLfloat tx, ty;
+	float delta;
+	Bool adjust;
 
-    float lastThumbOpacity;
+	float lastThumbOpacity;
 } ScaleWindow;
 
 #define GET_SCALE_DISPLAY(d)						\
@@ -207,5 +201,4 @@ typedef struct _ScaleWindow {
 		      GET_SCALE_DISPLAY (w->screen->display)))
 
 COMPIZ_END_DECLS
-
 #endif

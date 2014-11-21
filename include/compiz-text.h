@@ -41,29 +41,33 @@
  * Input data structure that specifies how the text is to be rendered
  */
 typedef struct _CompTextAttrib {
-    char           *family;    /**< font family */
-    int            size;       /**< font size in points */
-    unsigned short color[4];   /**< font color (RGBA) */
+	char *family;	       /**< font family */
+	int size;	       /**< font size in points */
+	unsigned short color[4];
+			       /**< font color (RGBA) */
 
-    unsigned int   flags;      /**< rendering flags, see above */
+	unsigned int flags;    /**< rendering flags, see above */
 
-    int            maxWidth;   /**< maximum width of the generated pixmap */
-    int            maxHeight;  /**< maximum height of the generated pixmap */
+	int maxWidth;	       /**< maximum width of the generated pixmap */
+	int maxHeight;	       /**< maximum height of the generated pixmap */
 
-    int            bgHMargin;  /**< horizontal margin in pixels
+	int bgHMargin;	       /**< horizontal margin in pixels
 				    (offset of text into background) */
-    int            bgVMargin;  /**< vertical margin */
-    unsigned short bgColor[4]; /**< background color (RGBA) */
+	int bgVMargin;	       /**< vertical margin */
+	unsigned short bgColor[4];
+			       /**< background color (RGBA) */
 } CompTextAttrib;
 
 /**
  * Output data structure that represents the rendered text
  */
 typedef struct _CompTextData {
-    CompTexture  *texture; /**< texture the text pixmap is bound to */
-    Pixmap       pixmap;   /**< text pixmap */
-    unsigned int width;    /**< pixmap width */
-    unsigned int height;   /**< pixmap height */
+	CompTexture *texture;
+			   /**< texture the text pixmap is bound to */
+	Pixmap pixmap;	   /**< text pixmap */
+	unsigned int width;/**< pixmap width */
+	unsigned int height;
+			   /**< pixmap height */
 } CompTextData;
 
 /**
@@ -76,9 +80,8 @@ typedef struct _CompTextData {
  * @return        valid text data on success, NULL on failure
  */
 typedef CompTextData *
-(*RenderTextProc) (CompScreen           *s,
-		   const char           *text,
-		   const CompTextAttrib *attrib);
+    (*RenderTextProc) (CompScreen * s,
+		       const char *text, const CompTextAttrib * attrib);
 
 /**
  * Prototype of window title-to-pixmap rendering function
@@ -92,10 +95,10 @@ typedef CompTextData *
  * @return                    valid text data on success, NULL on failure
  */
 typedef CompTextData *
-(*RenderWindowTitleProc) (CompScreen           *s,
-			  Window               window,
-			  Bool                 withViewportNumber,
-			  const CompTextAttrib *attrib);
+    (*RenderWindowTitleProc) (CompScreen * s,
+			      Window window,
+			      Bool withViewportNumber,
+			      const CompTextAttrib * attrib);
 
 /**
  * Prototype of function drawing text data on screen
@@ -114,11 +117,9 @@ typedef CompTextData *
  * @param y      y position in current OpenGL coordinates
  * @param alpha  opacity for the drawn text (0.0 - transparent, 1.0 - opaque)
  */
-typedef void (*DrawTextProc) (CompScreen         *s,
-			      const CompTextData *data,
-			      float              x,
-			      float              y,
-			      float              alpha);
+typedef void (*DrawTextProc) (CompScreen * s,
+			      const CompTextData * data,
+			      float x, float y, float alpha);
 
 /**
  * Prototype of text data cleanup function
@@ -126,18 +127,17 @@ typedef void (*DrawTextProc) (CompScreen         *s,
  * @param s     screen the data was generated for
  * @param data  data structure
  */
-typedef void (*FiniTextDataProc) (CompScreen   *s,
-				  CompTextData *data);
+typedef void (*FiniTextDataProc) (CompScreen * s, CompTextData * data);
 
 /**
  * Function pointer set that provides access to the
  * above defined functions.
  */
 typedef struct _TextFunc {
-    RenderTextProc        renderText;
-    RenderWindowTitleProc renderWindowTitle;
-    DrawTextProc          drawText;
-    FiniTextDataProc      finiTextData;
+	RenderTextProc renderText;
+	RenderWindowTitleProc renderWindowTitle;
+	DrawTextProc drawText;
+	FiniTextDataProc finiTextData;
 } TextFunc;
 
 #endif

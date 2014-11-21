@@ -28,44 +28,39 @@
 
 #include <compiz.h>
 
-COMPIZ_BEGIN_DECLS
+COMPIZ_BEGIN_DECLS typedef CompBool(*InitPluginProc) (CompPlugin * plugin);
+typedef void (*FiniPluginProc) (CompPlugin * plugin);
 
-typedef CompBool (*InitPluginProc) (CompPlugin *plugin);
-typedef void (*FiniPluginProc) (CompPlugin *plugin);
+typedef CompMetadata *(*GetMetadataProc) (CompPlugin * plugin);
 
-typedef CompMetadata *(*GetMetadataProc) (CompPlugin *plugin);
+typedef CompBool(*InitPluginObjectProc) (CompPlugin * plugin,
+					 CompObject * object);
+typedef void (*FiniPluginObjectProc) (CompPlugin * plugin, CompObject * object);
 
-typedef CompBool (*InitPluginObjectProc) (CompPlugin *plugin,
-					  CompObject *object);
-typedef void (*FiniPluginObjectProc) (CompPlugin  *plugin,
-				      CompObject *object);
-
-typedef CompOption *(*GetPluginObjectOptionsProc) (CompPlugin *plugin,
-						   CompObject *object,
-						   int	      *count);
-typedef CompBool (*SetPluginObjectOptionProc) (CompPlugin      *plugin,
-					       CompObject      *object,
-					       const char      *name,
-					       CompOptionValue *value);
+typedef CompOption *(*GetPluginObjectOptionsProc) (CompPlugin * plugin,
+						   CompObject * object,
+						   int *count);
+typedef CompBool(*SetPluginObjectOptionProc) (CompPlugin * plugin,
+					      CompObject * object,
+					      const char *name,
+					      CompOptionValue * value);
 
 typedef struct _CompPluginVTable {
-    const char *name;
+	const char *name;
 
-    GetMetadataProc getMetadata;
+	GetMetadataProc getMetadata;
 
-    InitPluginProc init;
-    FiniPluginProc fini;
+	InitPluginProc init;
+	FiniPluginProc fini;
 
-    InitPluginObjectProc initObject;
-    FiniPluginObjectProc finiObject;
+	InitPluginObjectProc initObject;
+	FiniPluginObjectProc finiObject;
 
-    GetPluginObjectOptionsProc getObjectOptions;
-    SetPluginObjectOptionProc  setObjectOption;
+	GetPluginObjectOptionsProc getObjectOptions;
+	SetPluginObjectOptionProc setObjectOption;
 } CompPluginVTable;
 
-CompPluginVTable *
-getCompPluginInfo20070830 (void);
+CompPluginVTable *getCompPluginInfo20070830(void);
 
 COMPIZ_END_DECLS
-
 #endif

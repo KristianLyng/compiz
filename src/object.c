@@ -25,123 +25,96 @@
 
 #include <compiz-core.h>
 
-typedef CompBool (*AllocObjectPrivateIndexProc) (CompObject *parent);
+typedef CompBool(*AllocObjectPrivateIndexProc) (CompObject * parent);
 
-typedef void (*FreeObjectPrivateIndexProc) (CompObject *parent,
-					    int	       index);
+typedef void (*FreeObjectPrivateIndexProc) (CompObject * parent, int index);
 
-typedef CompBool (*ForEachObjectProc) (CompObject	  *parent,
-				       ObjectCallBackProc proc,
-				       void		  *closure);
+typedef CompBool(*ForEachObjectProc) (CompObject * parent,
+				      ObjectCallBackProc proc, void *closure);
 
-typedef char *(*NameObjectProc) (CompObject *object);
+typedef char *(*NameObjectProc) (CompObject * object);
 
-typedef CompObject *(*FindObjectProc) (CompObject *parent,
-				       const char *name);
+typedef CompObject *(*FindObjectProc) (CompObject * parent, const char *name);
 
 struct _CompObjectInfo {
-    const char			*name;
-    AllocObjectPrivateIndexProc allocPrivateIndex;
-    FreeObjectPrivateIndexProc  freePrivateIndex;
-    ForEachObjectProc		forEachObject;
-    NameObjectProc		nameObject;
-    FindObjectProc		findObject;
+	const char *name;
+	AllocObjectPrivateIndexProc allocPrivateIndex;
+	FreeObjectPrivateIndexProc freePrivateIndex;
+	ForEachObjectProc forEachObject;
+	NameObjectProc nameObject;
+	FindObjectProc findObject;
 } objectInfo[] = {
-    {
+	{
 	"core",
-	allocCoreObjectPrivateIndex,
-	freeCoreObjectPrivateIndex,
-	forEachCoreObject,
-	nameCoreObject,
-	findCoreObject
-    }, {
+		    allocCoreObjectPrivateIndex,
+		    freeCoreObjectPrivateIndex,
+		    forEachCoreObject, nameCoreObject, findCoreObject}, {
 	"display",
-	allocDisplayObjectPrivateIndex,
-	freeDisplayObjectPrivateIndex,
-	forEachDisplayObject,
-	nameDisplayObject,
-	findDisplayObject
-    }, {
+		    allocDisplayObjectPrivateIndex,
+		    freeDisplayObjectPrivateIndex,
+		    forEachDisplayObject,
+		    nameDisplayObject, findDisplayObject}, {
 	"screen",
-	allocScreenObjectPrivateIndex,
-	freeScreenObjectPrivateIndex,
-	forEachScreenObject,
-	nameScreenObject,
-	findScreenObject
-    }, {
+		    allocScreenObjectPrivateIndex,
+		    freeScreenObjectPrivateIndex,
+		    forEachScreenObject, nameScreenObject, findScreenObject}, {
 	"window",
-	allocWindowObjectPrivateIndex,
-	freeWindowObjectPrivateIndex,
-	forEachWindowObject,
-	nameWindowObject,
-	findWindowObject
-    }
+		    allocWindowObjectPrivateIndex,
+		    freeWindowObjectPrivateIndex,
+		    forEachWindowObject, nameWindowObject, findWindowObject}
 };
 
 void
-compObjectInit (CompObject     *object,
-		CompPrivate    *privates,
-		CompObjectType type)
+compObjectInit(CompObject * object, CompPrivate * privates, CompObjectType type)
 {
-    object->type     = type;
-    object->privates = privates;
-    object->parent   = NULL;
+	object->type = type;
+	object->privates = privates;
+	object->parent = NULL;
 }
 
-int
-compObjectAllocatePrivateIndex (CompObject     *parent,
-				CompObjectType type)
+int compObjectAllocatePrivateIndex(CompObject * parent, CompObjectType type)
 {
-    return (*objectInfo[type].allocPrivateIndex) (parent);
+	return (*objectInfo[type].allocPrivateIndex) (parent);
 }
 
 void
-compObjectFreePrivateIndex (CompObject     *parent,
-			    CompObjectType type,
-			    int	           index)
+compObjectFreePrivateIndex(CompObject * parent, CompObjectType type, int index)
 {
-    (*objectInfo[type].freePrivateIndex) (parent, index);
+	(*objectInfo[type].freePrivateIndex) (parent, index);
 }
 
 CompBool
-compObjectForEach (CompObject	      *parent,
-		   CompObjectType     type,
-		   ObjectCallBackProc proc,
-		   void		      *closure)
+compObjectForEach(CompObject * parent,
+		  CompObjectType type, ObjectCallBackProc proc, void *closure)
 {
-    return (*objectInfo[type].forEachObject) (parent, proc, closure);
+	return (*objectInfo[type].forEachObject) (parent, proc, closure);
 }
 
 CompBool
-compObjectForEachType (CompObject	      *parent,
-		       ObjectTypeCallBackProc proc,
-		       void		      *closure)
+compObjectForEachType(CompObject * parent,
+		      ObjectTypeCallBackProc proc, void *closure)
 {
-    int i;
+	int i;
 
-    for (i = 0; i < sizeof (objectInfo) / sizeof (objectInfo[0]); i++)
-	if (!(*proc) (i, parent, closure))
-	    return FALSE;
+	for (i = 0; i < sizeof(objectInfo) / sizeof(objectInfo[0]); i++)
+		if (!(*proc) (i, parent, closure))
+			return FALSE;
 
-    return TRUE;
+	return TRUE;
 }
 
-const char *
-compObjectTypeName (CompObjectType type)
+const char *compObjectTypeName(CompObjectType type)
 {
-    return objectInfo[type].name;
+	return objectInfo[type].name;
 }
 
-char *
-compObjectName (CompObject *object)
+char *compObjectName(CompObject * object)
 {
-    return (*objectInfo[object->type].nameObject) (object);
+	return (*objectInfo[object->type].nameObject) (object);
 }
 
-CompObject *
-compObjectFind (CompObject     *parent,
-		CompObjectType type,
-		const char     *name)
+CompObject *compObjectFind(CompObject * parent,
+			   CompObjectType type, const char *name)
 {
-    return (*objectInfo[type].findObject) (parent, name);
+	return (*objectInfo[type].findObject) (parent, name);
 }
