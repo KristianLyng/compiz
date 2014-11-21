@@ -51,21 +51,6 @@ struct LolCore {
 	CompTimeoutHandle timeoutHandle;
 };
 
-static Bool lolInitCore(CompPlugin * p, CompCore * c)
-{
-	if (!checkPluginABI("core", CORE_ABIVERSION))
-		return FALSE;
-
-	return TRUE;
-}
-
-static void lolFiniCore(CompPlugin * p, CompCore * c)
-{
-	/*
-	 * FIXME: Cleanup
-	 */
-}
-
 /*
  * Borrowed from ini.c for now (Thanks Mike)
  */
@@ -162,6 +147,7 @@ csvToList(CompDisplay * d, char *csv, CompListValue * list, CompOptionType type)
 /*
  * FIXME: Move to core and make it handle everything
  */
+#if 0
 static void debugOption(CompOption * o)
 {
 	int i;
@@ -193,60 +179,66 @@ static void debugOption(CompOption * o)
 		break;
 	}
 }
+#endif
 
+/*
+ * Set an option for a given plugin.
+ *
+ */
+static CompBool setOption(char *plug, char *strscreen, char *name, char *strvalue)
+{
+	CompDisplay *d;
+	CompOptionValue value;
+	CompBool result;
+	CompObject *obj;
+	int screen;
+
+	if (!strscreen)
+		screen = -1;
+	else if (!*strscreen)
+		screen = -1;
+	else
+		screen = atoi(strscreen);
+
+	d = core.displays;
+	assert(d);
+	assert(plug);
+	assert(name);
+	assert(strvalue);
+	if (screen < 0)
+		obj = &d->base;
+	else
+		obj = &d->screens->base;
+
+
+
+	result = csvToList(d, strvalue, &value.list, CompOptionTypeString);
+	assert(result);
+	value.list.type = CompOptionTypeString;
+	result = (*core.setOptionForPlugin) (obj,
+					     plug, name, &value);
+
+	return result;
+}
 /*
  * Magic, magic I tell you.
  */
 static CompBool handleTimeout(void *closure)
 {
-	CompDisplay *d;
-	CompOption *o;
-	int index;
-	CompOptionValue value;
 	CompBool result;
 
+#if 0	
 	d = core.displays;
 	o = compFindOption(d->opt, NUM_OPTIONS(d), "active_plugins", &index);
 	if (o)
 		debugOption(o);
 	else
 		compLog("... vat");
-	assert(csvToList
-	       (d,
-		"staticswitcher,png,move,mousepoll,ezoom,cube,rotate,lolconf,decoration,core",
-		&value.list, CompOptionTypeString));
-	value.list.type = CompOptionTypeString;
-	result = (*core.setOptionForPlugin) (&d->base,
-					     "core", "active_plugins", &value);
+#endif
+	result = setOption("core", "", "active_plugins", "staticswitcher,png,move,mousepoll,ezoom,cube,rotate,lolconf,decoration,core");
 	compLog("%s", result ? "TRUE" : "FALSE");
 
-	o = compFindOption(d->opt, NUM_OPTIONS(d), "active_plugins", &index);
-	if (o)
-		debugOption(o);
-	else
-		compLog("... vat");
 	return FALSE;
-}
-
-static CompBool lolInitObject(CompPlugin * p, CompObject * o)
-{
-
-	static InitPluginObjectProc dispTab[] = {
-		(InitPluginObjectProc) lolInitCore,
-		(InitPluginObjectProc) 0,
-		(InitPluginObjectProc) 0
-	};
-
-	RETURN_DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), TRUE, (p, o));
-}
-
-static void lolFiniObject(CompPlugin * p, CompObject * o)
-{
-	static FiniPluginObjectProc dispTab[] = {
-		(FiniPluginObjectProc) lolFiniCore
-	};
-
-	DISPATCH(o, dispTab, ARRAY_SIZE(dispTab), (p, o));
 }
 
 static Bool lolInit(CompPlugin * p)
@@ -271,6 +263,11 @@ static Bool lolInit(CompPlugin * p)
 
 static void lolFini(CompPlugin * p)
 {
+	struct LolCore *lc;
+	assert(corePrivateIndex >= 0);
+	lc = core.base.privates[corePrivateIndex].ptr;
+	assert(lc);
+	free(lc);
 	freeCorePrivateIndex(corePrivateIndex);
 }
 
@@ -284,8 +281,8 @@ CompPluginVTable lolVTable = {
 	lolGetMetadata,
 	lolInit,
 	lolFini,
-	lolInitObject,
-	lolFiniObject,
+	0,
+	0,
 	0,			/* GetObjectOptions */
 	0			/* SetObjectOption */
 };
