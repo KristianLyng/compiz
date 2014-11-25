@@ -1,13 +1,5 @@
 moduledir = $(DESTDIR)$(windowsettingslibdir)/window-manager-settings
 
-if USE_GNOME
-libcompiz_la_LDFLAGS = -export-dynamic -avoid-version -rpath $(moduledir)
-libcompiz_la_LIBADD  = @GNOME_WINDOW_SETTINGS_LIBS@
-libcompiz_la_SOURCES = 		\
-	compiz-window-manager.c	\
-	compiz-window-manager.h
-libcompiz_module     = libcompiz.la
-
 desktopfilesdir	      = $(DESTDIR)$(datadir)/applications
 desktopfiles_in_files = compiz.desktop.in
 desktopfiles_files    = $(desktopfiles_in_files:.desktop.in=.desktop)
@@ -16,13 +8,21 @@ wmpropertiesdir	      = $(DESTDIR)$(windowsettingsdatadir)/gnome/wm-properties
 wmproperties_in_files = compiz-wm.desktop.in
 wmproperties_files    = $(wmproperties_in_files:.desktop.in=.desktop)
 
-@INTLTOOL_DESKTOP_RULE@
-
-if USE_GNOME_KEYBINDINGS
-
 xmldir       = $(DESTDIR)$(keybindingsdir)
 xml_in_files = 50-compiz-desktop-key.xml.in 50-compiz-key.xml.in
 xml_files    = $(xml_in_files:.xml.in=.xml)
+
+if USE_GNOME
+libcompiz_la_LDFLAGS = -export-dynamic -avoid-version -rpath $(moduledir)
+libcompiz_la_LIBADD  = @GNOME_WINDOW_SETTINGS_LIBS@
+libcompiz_la_SOURCES = 		\
+	compiz-window-manager.c	\
+	compiz-window-manager.h
+libcompiz_module     = libcompiz.la
+
+@INTLTOOL_DESKTOP_RULE@
+
+if USE_GNOME_KEYBINDINGS
 
 @INTLTOOL_XML_NOMERGE_RULE@
 
@@ -83,10 +83,18 @@ AM_CPPFLAGS = @GNOME_WINDOW_SETTINGS_CFLAGS@			   \
 noinst_LTLIBRARIES = \
 	$(libcompiz_module)
 
+if USE_GNOME
+if USE_GNOME_KEYBINDINGS
 noinst_DATA =		      \
 	$(desktopfiles_files) \
 	$(wmproperties_files) \
 	$(xml_files)
+else
+noinst_DATA =		      \
+	$(desktopfiles_files) \
+	$(wmproperties_files)
+endif
+endif
 
 EXTRA_DIST =			 \
 	$(desktopfiles_in_files) \

@@ -12,14 +12,16 @@ compizconfig.pb.cc: compizconfig.proto
 
 compizconfig.pb.h: compizconfig.pb.cc
 
-compiz.cpp: compizconfig.pb.h Makefile
+nodist_libcompizconfig_la_SOURCES =	\
+	compizconfig.pb.cc		\
+	compizconfig.pb.h
 
-nodist_libcompizconfig_la_SOURCES = \
-	compizconfig.pb.cc
+BUILT_SOURCES =				\
+	compizconfig.pb.cc		\
+	compizconfig.pb.h
 
-clean-local:
-	rm -f compizconfig.pb.cc compizconfig.pb.h
-
+CLEANFILES =	\
+	$(nodist_libcompizconfig_la_SOURCES)
 endif
 cc_srcdir = $(top_srcdir)/compizconfig/libcompizconfig
 EXTRA_DIST = compizconfig.proto

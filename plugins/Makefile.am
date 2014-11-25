@@ -212,6 +212,7 @@ BUILT_SOURCES = \
 	$(nodist_libring_la_SOURCES)		\
 	$(nodist_libvpswitch_la_SOURCES)	\
 	$(nodist_libkdecompat_la_SOURCES)	\
+	$(nodist_libtext_la_SOURCES)		\
 	$(libwall_built_sources)
 
 CLEANFILES = *_options.c *_options.h

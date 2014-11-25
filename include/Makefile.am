@@ -1,15 +1,19 @@
 compizincludedir = $(includedir)/compiz
-compizinclude_HEADERS = \
-	compiz.h	\
-	compiz-plugin.h	\
-	compiz-core.h	\
-	compiz-cube.h   \
-	compiz-scale.h	\
-	compiz-mousepoll.h \
+compizinclude_HEADERS =		\
+	compiz.h		\
+	compiz-plugin.h		\
+	compiz-core.h		\
+	compiz-cube.h		\
+	compiz-scale.h		\
+	compiz-mousepoll.h	\
+	compiz-helpers.h	\
+	compiz-text.h		\
 	decoration.h
 
-nodist_compizinclude_HEADERS = \
-	compiz-common.h		\
+nodist_compizinclude_HEADERS =	\
+	compiz-common.h
+
+nobase_noinst_HEADERS = \
 	compiz-version.h
 
 BUILT_SOURCES = compiz-version.h compiz-common.h
@@ -53,5 +57,6 @@ compiz-version.h: FORCE
 		fi \
 	fi
 DISTCLEANFILES = compiz-common.h
+CLEANFILES = compiz-version.h
 
 FORCE:
