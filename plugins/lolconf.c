@@ -235,7 +235,7 @@ static CompBool handleTimeout(void *closure)
 	else
 		compLog("... vat");
 #endif
-	result = setOption("core", "", "active_plugins", "staticswitcher,png,move,mousepoll,ezoom,cube,rotate,lolconf,decoration,core");
+	result = setOption("core", "", "active_plugins", "png,move,mousepoll,ezoom,staticswitcher,resize,cube,rotate,lolconf,decoration,core");
 	compLog("%s", result ? "TRUE" : "FALSE");
 
 	return FALSE;
