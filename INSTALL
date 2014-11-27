@@ -1,12 +1,19 @@
-compiz uses libstartup-notification which is available at
-ftp://ftp.gnome.org/pub/GNOME/sources/startup-notification/
-
 compiz uses automake, in order to generate the Makefiles for compiz use:
 
-	$ autogen.sh
+	$ ./autogen.sh
 
 After that, standard build procedures apply:
 
+	$ ./configure
 	$ make
 	# make install
+
+To build out-of-tree, run:
+
+	$ ./autogen.sh
+	$ mkdir build
+	$ cd build
+	$ ../configure
+
+(Or any other directory than build/, of course).
 
