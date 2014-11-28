@@ -1021,8 +1021,7 @@ static Bool thumbInitDisplay(CompPlugin * p, CompDisplay * d)
 	    getPluginDisplayIndex(d, "text", &index)) {
 		td->textFunc = d->base.privates[index].ptr;
 	} else {
-		compLogMessage("thumbnail", CompLogLevelWarn,
-			       "No compatible text plugin found.");
+		compWarn("No compatible text plugin found.");
 		td->textFunc = NULL;
 	}
 

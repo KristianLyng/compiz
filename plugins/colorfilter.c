@@ -163,18 +163,15 @@ static void colorFilterSwitchFilter(CompScreen * s)
 	/* % (count + 1) because of the cumulative filters mode */
 	cfs->currentFilter = (cfs->currentFilter + 1) % (cfs->filtersCount + 1);
 	if (cfs->currentFilter == 0)
-		compLogMessage("colorfilter", CompLogLevelInfo,
-			       "Cumulative filters mode");
+		compLog("Cumulative filters mode");
 	else {
 		id = cfs->filtersFunctions[cfs->currentFilter - 1];
 		if (id) {
 			function = findFragmentFunction(s, id);
-			compLogMessage("colorfilter", CompLogLevelInfo,
-				       "Single filter mode (using %s filter)",
-				       function->name);
+			compLog("Single filter mode (using %s filter)",
+				function->name);
 		} else {
-			compLogMessage("colorfilter", CompLogLevelInfo,
-				       "Single filter mode (filter loading failure)");
+			compLog("Single filter mode (filter loading failure)");
 		}
 	}
 
@@ -316,9 +313,8 @@ static int loadFilters(CompScreen * s, CompTexture * texture)
 			continue;
 		}
 
-		compLogMessage("colorfilter", CompLogLevelInfo,
-			       "Loading filter %s (item %s).", name,
-			       filters->value[i].s);
+		compLog("Loading filter %s (item %s).", name,
+			filters->value[i].s);
 		function =
 		    loadFragmentProgram(filters->value[i].s, name, s, target);
 		free(name);
@@ -329,9 +325,8 @@ static int loadFilters(CompScreen * s, CompTexture * texture)
 
 	/* Warn if there was at least one loading failure */
 	if (loaded < count)
-		compLogMessage("colorfilter", CompLogLevelWarn,
-			       "Tried to load %d filter(s), %d succeeded.",
-			       count, loaded);
+		compWarn("Tried to load %d filter(s), %d succeeded.",
+			 count, loaded);
 
 	if (!loaded)
 		cfs->filtersCount = 0;
@@ -578,14 +573,15 @@ static Bool colorFilterInitScreen(CompPlugin * p, CompScreen * s)
 	FILTER_DISPLAY(s->display);
 
 	if (!s->fragmentProgram) {
-		compLogMessage("colorfilter", CompLogLevelFatal,
-			       "Fragment program support missing.");
+		compWarn("Fragment program support missing.");
+		/*
+		 * FIXME: Why TRUE?
+		 */
 		return TRUE;
 	}
 
 	cfs = malloc(sizeof(ColorFilterScreen));
-	if (!cfs)
-		return FALSE;
+	assert(cfs);
 
 	cfs->windowPrivateIndex = allocateWindowPrivateIndex(s);
 	if (cfs->windowPrivateIndex < 0) {

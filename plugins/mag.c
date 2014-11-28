@@ -154,8 +154,7 @@ static Bool loadFragmentProgram(CompScreen * s)
 
 	glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
 	if (glGetError() != GL_NO_ERROR || errorPos != -1) {
-		compLogMessage("mag", CompLogLevelError,
-			       "failed to fisheye program");
+		compWarn("failed to fisheye program");
 
 		(*s->deletePrograms) (1, &ms->program);
 		ms->program = 0;
@@ -180,9 +179,8 @@ static Bool loadImages(CompScreen * s)
 						&ms->overlay.height);
 
 	if (!ms->overlay.loaded) {
-		compLogMessage("mag", CompLogLevelWarn,
-			       "Could not load magnifier overlay image \"%s\"!",
-			       magGetOverlay(s));
+		compWarn("Could not load magnifier overlay image \"%s\"!",
+			 magGetOverlay(s));
 		return FALSE;
 	}
 
@@ -191,9 +189,8 @@ static Bool loadImages(CompScreen * s)
 					     &ms->mask.width, &ms->mask.height);
 
 	if (!ms->mask.loaded) {
-		compLogMessage("mag", CompLogLevelWarn,
-			       "Could not load magnifier mask image \"%s\"!",
-			       magGetOverlay(s));
+		compWarn("Could not load magnifier mask image \"%s\"!",
+			 magGetOverlay(s));
 		ms->overlay.loaded = FALSE;
 		finiTexture(s, &ms->overlay.tex);
 		initTexture(s, &ms->overlay.tex);
@@ -202,8 +199,7 @@ static Bool loadImages(CompScreen * s)
 
 	if (ms->overlay.width != ms->mask.width ||
 	    ms->overlay.height != ms->mask.height) {
-		compLogMessage("mag", CompLogLevelWarn,
-			       "Image dimensions do not match!");
+		compWarn("Image dimensions do not match!");
 		ms->overlay.loaded = FALSE;
 		finiTexture(s, &ms->overlay.tex);
 		initTexture(s, &ms->overlay.tex);
@@ -1069,9 +1065,8 @@ static Bool magInitScreen(CompPlugin * p, CompScreen * s)
 	}
 
 	if (!s->fragmentProgram)
-		compLogMessage("mag", CompLogLevelWarn,
-			       "GL_ARB_fragment_program not supported. "
-			       "Fisheye mode will not work.");
+		compWarn("GL_ARB_fragment_program not supported. "
+			 "Fisheye mode will not work.");
 
 	return TRUE;
 }

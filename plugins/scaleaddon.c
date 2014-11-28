@@ -1126,8 +1126,7 @@ static Bool scaleaddonInitDisplay(CompPlugin * p, CompDisplay * d)
 	    getPluginDisplayIndex(d, "text", &index)) {
 		ad->textFunc = d->base.privates[index].ptr;
 	} else {
-		compLogMessage("scaleaddon", CompLogLevelWarn,
-			       "No compatible text plugin found.");
+		compWarn("No compatible text plugin found.");
 		ad->textFunc = NULL;
 	}
 

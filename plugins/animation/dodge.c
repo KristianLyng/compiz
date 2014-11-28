@@ -277,12 +277,13 @@ void fxDodgePostPreparePaintScreen(CompWindow * w)
 				wDodgeChainAbove = adw->dodgeChainPrev;
 			else
 				wDodgeChainAbove = aw->restackInfo->wOldAbove;
-
-			if (!wDodgeChainAbove)
-				compLogMessage("animation", CompLogLevelError,
-					       "%s: error at line %d", __FILE__,
-					       __LINE__);
-			else if (aw->winThisIsPaintedBefore != wDodgeChainAbove)	// w's host is changing
+		
+			/*
+			 * FIXME: What ? This was a generic "ERROR ON LINE"
+			 * previously, but that's not good enough...
+			 */	
+			assert(wDodgeChainAbove);
+			if (aw->winThisIsPaintedBefore != wDodgeChainAbove)	// w's host is changing
 			{
 				AnimWindow *adw2 =
 				    GET_ANIM_WINDOW(wDodgeChainAbove, as);

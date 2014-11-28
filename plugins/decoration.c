@@ -396,11 +396,10 @@ static Decoration *decorCreateDecoration(CompScreen * screen,
 	prop = (long *)data;
 
 	if (decor_property_get_version(prop) != decor_version()) {
-		compLogMessage("decoration", CompLogLevelWarn,
-			       "Property ignored because "
-			       "version is %d and decoration plugin version is %d\n",
-			       decor_property_get_version(prop),
-			       decor_version());
+		compWarn("Property ignored because "
+			 "version is %d and decoration plugin version is %d\n",
+			 decor_property_get_version(prop),
+			 decor_version());
 
 		XFree(data);
 		return NULL;

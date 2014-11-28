@@ -1494,8 +1494,7 @@ static Bool ringInitDisplay(CompPlugin * p, CompDisplay * d)
 	    getPluginDisplayIndex(d, "text", &index)) {
 		rd->textFunc = d->base.privates[index].ptr;
 	} else {
-		compLogMessage("ring", CompLogLevelWarn,
-			       "No compatible text plugin found.");
+		compWarn("No compatible text plugin found.");
 		rd->textFunc = NULL;
 	}
 

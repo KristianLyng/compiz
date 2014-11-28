@@ -2207,8 +2207,7 @@ static Bool dbusInitCore(CompPlugin * p, CompCore * c)
 
 	dc->connection = dbus_bus_get(DBUS_BUS_SESSION, &error);
 	if (dbus_error_is_set(&error)) {
-		compLogMessage("dbus", CompLogLevelError,
-			       "dbus_bus_get error: %s", error.message);
+		compWarn("dbus_bus_get error: %s", error.message);
 
 		dbus_error_free(&error);
 		free(dc);
@@ -2222,9 +2221,8 @@ static Bool dbusInitCore(CompPlugin * p, CompCore * c)
 				    DBUS_NAME_FLAG_ALLOW_REPLACEMENT, &error);
 
 	if (dbus_error_is_set(&error)) {
-		compLogMessage("dbus", CompLogLevelError,
-			       "dbus_bus_request_name error: %s",
-			       error.message);
+		compWarn("dbus_bus_request_name error: %s",
+			 error.message);
 
 		/* dbus_connection_unref (dc->connection); */
 		dbus_error_free(&error);
@@ -2236,8 +2234,7 @@ static Bool dbusInitCore(CompPlugin * p, CompCore * c)
 	dbus_error_free(&error);
 
 	if (ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER) {
-		compLogMessage("dbus", CompLogLevelError,
-			       "dbus_bus_request_name reply is not primary owner");
+		compWarn("dbus_bus_request_name reply is not primary owner");
 
 		/* dbus_connection_unref (dc->connection); */
 		free(dc);
@@ -2247,8 +2244,7 @@ static Bool dbusInitCore(CompPlugin * p, CompCore * c)
 
 	status = dbus_connection_get_unix_fd(dc->connection, &fd);
 	if (!status) {
-		compLogMessage("dbus", CompLogLevelError,
-			       "dbus_connection_get_unix_fd failed");
+		compWarn("dbus_connection_get_unix_fd failed");
 
 		/* dbus_connection_unref (dc->connection); */
 		free(dc);

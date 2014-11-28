@@ -347,13 +347,15 @@ shotPaintScreen(CompScreen * s,
 						    value.s;
 						/* FIXME:
 						 * Err, need to add path here I suppose.
+						 * FIXME 2: No, you need to
+						 * fix that there are
+						 * 102012 layers of
+						 * indentation.
 						 */
 						if (!writeImageToFile
 						    (s->display, name, "png", w,
 						     h, buffer)) {
-							compLogMessage
-							    ("screenshot",
-							     CompLogLevelError,
+							compWarn(
 							     "failed to write screenshot image");
 						} else if (*app != '\0') {
 							char *command;

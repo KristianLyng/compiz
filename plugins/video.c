@@ -786,8 +786,7 @@ static void videoWindowUpdate(CompWindow * w)
 
 	if (i < IMAGE_FORMAT_NUM) {
 		if (!vs->imageFormat[i]) {
-			compLogMessage("video", CompLogLevelWarn,
-				       "Image format not supported");
+			compWarn("Image format not supported");
 			i = IMAGE_FORMAT_NUM;
 		}
 	}
@@ -795,8 +794,7 @@ static void videoWindowUpdate(CompWindow * w)
 	if (i < IMAGE_FORMAT_NUM) {
 		texture = videoGetTexture(w->screen, pixmap);
 		if (!texture) {
-			compLogMessage("video", CompLogLevelWarn,
-				       "Bad pixmap 0x%x", (int)pixmap);
+			compWarn("Bad pixmap 0x%x", (int)pixmap);
 		}
 	}
 
@@ -1071,9 +1069,8 @@ static Bool videoInitScreen(CompPlugin * p, CompScreen * s)
 		if (s->glxPixmapFBConfigs[8].fbConfig) {
 			vs->imageFormat[IMAGE_FORMAT_YV12] = TRUE;
 		} else {
-			compLogMessage("video", CompLogLevelWarn,
-				       "No 8 bit GLX pixmap format, "
-				       "disabling YV12 image format");
+			compWarn("No 8 bit GLX pixmap format, "
+				 "disabling YV12 image format");
 		}
 	}
 

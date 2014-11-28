@@ -206,9 +206,8 @@ regexMatchInitExp(CompDisplay * d, CompMatchExp * exp, const char *value)
 				char errMsg[1024];
 
 				regerror(status, preg, errMsg, sizeof(errMsg));
-
-				compLogMessage("regex", CompLogLevelWarn,
-					       "%s = %s", errMsg, value);
+				
+				compWarn("%s = %s", errMsg, value);
 
 				regfree(preg);
 				free(preg);

@@ -128,12 +128,11 @@ static void dimWindow(CompWindow * w)
 	OPACIFY_SCREEN(w->screen);
 
 	if (os->passiveNum >= MAX_WINDOWS - 1) {
-		compLogMessage("opacify", CompLogLevelWarn,
-			       "Trying to store information "
-			       "about too many windows, or you hit a bug.\nIf "
-			       "you don't have around %d windows blocking the "
-			       "currently targeted window, please report this.",
-			       MAX_WINDOWS);
+		compWarn("Trying to store information "
+			 "about too many windows, or you hit a bug.\nIf "
+			 "you don't have around %d windows blocking the "
+			 "currently targeted window, please report this.",
+			 MAX_WINDOWS);
 		return;
 	}
 

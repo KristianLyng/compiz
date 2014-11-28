@@ -787,9 +787,8 @@ static void kdecompatPresentWindowGroup(CompWindow * w)
 		return;
 
 	if (!kd->scaleHandle) {
-		compLogMessage("kdecompat", CompLogLevelWarn,
-			       "Scale plugin not loaded, present windows "
-			       "effect not available!");
+		compWarn("Scale plugin not loaded, present windows "
+			 "effect not available!");
 		return;
 	}
 

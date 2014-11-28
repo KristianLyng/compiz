@@ -345,17 +345,15 @@ csvToList(CompDisplay * d, char *csv, CompListValue * list, CompOptionType type)
 					strncpy(item, splitStart, itemLength);
 					item[itemLength] = 0;
 				}
-			} else	// last value
-			{
+			} else {
 				item = strdup(splitStart);
 			}
-
-			if (!item) {
-				compLogMessage("ini", CompLogLevelError,
-					       "Not enough memory");
-				list->nValue = 0;
-				return FALSE;
-			}
+			/*
+			 * XXX: This used to be "handled" by a log message,
+			 * but seriously, that's just silly. If we can't
+			 * malloc, we're dead anyway.
+			 */
+			assert(item);
 
 			switch (type) {
 			case CompOptionTypeString:
@@ -415,8 +413,7 @@ static Bool iniMakeDirectories(void)
 
 		return TRUE;
 	} else {
-		compLogMessage("ini", CompLogLevelWarn,
-			       "Could not get HOME environmental variable");
+		compWarn("Could not get HOME environmental variable");
 		return FALSE;
 	}
 }
@@ -436,9 +433,8 @@ iniLoadOptionsFromFile(FILE * optionFile,
 	if (plugin) {
 		p = findActivePlugin(plugin);
 		if (!p) {
-			compLogMessage("ini", CompLogLevelWarn,
-				       "Could not find running plugin "
-				       "%s (iniLoadOptionsFromFile)", plugin);
+			compWarn("Could not find running plugin "
+				 "%s (iniLoadOptionsFromFile)", plugin);
 			return FALSE;
 		}
 	} else {
@@ -452,8 +448,7 @@ iniLoadOptionsFromFile(FILE * optionFile,
 		status = FALSE;
 
 		if (!iniParseLine(tmp, &optionName, &optionValue)) {
-			compLogMessage("ini", CompLogLevelWarn,
-				       "Ignoring line '%s' in %s", tmp, plugin);
+			compWarn("Ignoring line '%s' in %s", tmp, plugin);
 			continue;
 		}
 
@@ -529,11 +524,9 @@ iniLoadOptionsFromFile(FILE * optionFile,
 									optionName,
 									&value);
 					if (!status)
-						compLogMessage("ini",
-							       CompLogLevelWarn,
-							       "Failed setting option %s for plugin %s",
-							       optionName,
-							       plugin);
+						compWarn("Failed setting option %s for plugin %s",
+							  optionName,
+							  plugin);
 
 					if (o->type == CompOptionTypeMatch) {
 						matchFini(&value.match);
@@ -608,9 +601,8 @@ static Bool iniSaveOptions(CompObject * object, const char *plugin)
 		optionFile = fopen(fullPath, "w");
 
 	if (!optionFile) {
-		compLogMessage("ini", CompLogLevelError,
-			       "Failed to write to %s, check you "
-			       "have the correct permissions", fullPath);
+		compWarn("Failed to write to %s, check you "
+			 "have the correct permissions", fullPath);
 		free(filename);
 		free(directory);
 		free(fullPath);
@@ -697,11 +689,9 @@ static Bool iniSaveOptions(CompObject * object, const char *plugin)
 					break;
 				}
 			default:
-				compLogMessage("ini", CompLogLevelWarn,
-					       "Unknown list option type %d, %s\n",
-					       option->value.list.type,
-					       optionTypeToString(option->value.
-								  list.type));
+				compWarn("Unknown list option type %d, %s\n",
+					 option->value.list.type,
+					 optionTypeToString(option->value.list.type));
 				break;
 			}
 			break;
@@ -786,12 +776,10 @@ static Bool iniLoadOptions(CompObject * object, const char *plugin)
 
 			value.list.type = CompOptionTypeString;
 
-			compLogMessage("ini", CompLogLevelWarn,
-				       "Could not open main display config file %s",
-				       fullPath);
-			compLogMessage("ini", CompLogLevelWarn,
-				       "Loading default plugins (%s)",
-				       DEFAULT_PLUGINS);
+			compWarn("Could not open main display config file %s",
+				 fullPath);
+			compWarn("Loading default plugins (%s)",
+				 DEFAULT_PLUGINS);
 
 			(*core.setOptionForPlugin) (object,
 						    "core", "active_plugins",
@@ -814,10 +802,9 @@ static Bool iniLoadOptions(CompObject * object, const char *plugin)
 				return FALSE;
 			}
 		} else {
-			compLogMessage("ini", CompLogLevelWarn,
-				       "Could not open config file %s - "
-				       "using defaults for %s",
-				       fullPath, plugin ? plugin : "core");
+			compWarn("Could not open config file %s - "
+				  "using defaults for %s",
+				  fullPath, plugin ? plugin : "core");
 
 			fileData->blockWrites = FALSE;
 

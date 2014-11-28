@@ -2297,8 +2297,7 @@ static Bool shiftInitDisplay(CompPlugin * p, CompDisplay * d)
 	    getPluginDisplayIndex(d, "text", &index)) {
 		sd->textFunc = d->base.privates[index].ptr;
 	} else {
-		compLogMessage("shift", CompLogLevelWarn,
-			       "No compatible text plugin loaded.");
+		compWarn("No compatible text plugin loaded.");
 		sd->textFunc = NULL;
 	}
 

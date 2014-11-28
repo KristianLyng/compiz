@@ -405,8 +405,7 @@ static void wallSetupCairoContext(CompScreen * s, WallCairoContext * context)
 
 	if (!bindPixmapToTexture(s, &context->texture, context->pixmap,
 				 width, height, 32)) {
-		compLogMessage("wall", CompLogLevelError,
-			       "Couldn't create cairo context for switcher");
+		compWarn("Couldn't create cairo context for switcher");
 	}
 
 	context->surface =
