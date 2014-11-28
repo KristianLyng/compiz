@@ -120,31 +120,7 @@ compLogMessage(const char *componentName,
 void
 logMessage(const char *componentName, CompLogLevel level, const char *message)
 {
-	if (!debugOutput && level >= CompLogLevelDebug)
-		return;
-
-	fprintf(stderr, "%s (%s) - %s: %s\n",
-		programName, componentName, logLevelToString(level), message);
-}
-
-const char *logLevelToString(CompLogLevel level)
-{
-	switch (level) {
-	case CompLogLevelFatal:
-		return "Fatal";
-	case CompLogLevelError:
-		return "Error";
-	case CompLogLevelWarn:
-		return "Warn";
-	case CompLogLevelInfo:
-		return "Info";
-	case CompLogLevelDebug:
-		return "Debug";
-	default:
-		break;
-	}
-
-	return "Unknown";
+	compLog("%s using old log functions. Message: %s", componentName, message);
 }
 
 static void signalHandler(int sig)

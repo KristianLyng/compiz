@@ -1763,11 +1763,9 @@ aquireSelection(CompDisplay * d,
 	XSetSelectionOwner(dpy, selection, owner, timestamp);
 
 	if (XGetSelectionOwner(dpy, selection) != owner) {
-		compLogMessage("core", CompLogLevelError,
-			       "Could not acquire %s manager "
-			       "selection on screen %d display \"%s\"",
-			       name, screen, DisplayString(dpy));
-
+		compWarn("Could not acquire %s manager selection "
+			 "on screen %d display \"%s\"",
+			 name, screen, DisplayString(dpy));
 		return FALSE;
 	}
 
@@ -1861,8 +1859,7 @@ Bool addDisplay(const char *name)
 
 	d->display = dpy = XOpenDisplay(name);
 	if (!d->display) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't open display %s", XDisplayName(name));
+		compWarn("Failed to open display %s", XDisplayName(name));
 		return FALSE;
 	}
 
@@ -2063,31 +2060,28 @@ Bool addDisplay(const char *name)
 			     COMPOSITE_NAME,
 			     &d->compositeOpcode,
 			     &d->compositeEvent, &d->compositeError)) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "No composite extension");
+		compWarn("No composite extension");
 		return FALSE;
 	}
 
 	XCompositeQueryVersion(dpy, &compositeMajor, &compositeMinor);
 	if (compositeMajor == 0 && compositeMinor < 2) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Old composite extension");
+		compWarn("Old composite extension");
 		return FALSE;
 	}
 
 	if (!XDamageQueryExtension(dpy, &d->damageEvent, &d->damageError)) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "No damage extension");
+		compWarn("No damage extension");
 		return FALSE;
 	}
 
 	if (!XSyncQueryExtension(dpy, &d->syncEvent, &d->syncError)) {
-		compLogMessage("core", CompLogLevelFatal, "No sync extension");
+		compWarn("No sync extension");
 		return FALSE;
 	}
 
 	if (!XFixesQueryExtension(dpy, &d->fixesEvent, &d->fixesError)) {
-		compLogMessage("core", CompLogLevelFatal, "No fixes extension");
+		compWarn("No fixes extension");
 		return FALSE;
 	}
 
@@ -2110,8 +2104,7 @@ Bool addDisplay(const char *name)
 				XkbBellNotifyMask | XkbStateNotifyMask,
 				XkbAllEventsMask);
 	} else {
-		compLogMessage("core", CompLogLevelFatal, "No XKB extension");
-
+		compWarn("No XKB extension");
 		d->xkbEvent = d->xkbError = -1;
 	}
 
@@ -2162,12 +2155,11 @@ Bool addDisplay(const char *name)
 
 		if (currentWmSnOwner != None) {
 			if (!replaceCurrentWm) {
-				compLogMessage("core", CompLogLevelError,
-					       "Screen %d on display \"%s\" already "
-					       "has a window manager; try using the "
-					       "--replace option to replace the current "
-					       "window manager.",
-					       i, DisplayString(dpy));
+				compWarn("Screen %d on display \"%s\" already "
+					 "has a window manager; try using the "
+					 "--replace option to replace the current "
+					 "window manager.",
+					 i, DisplayString(dpy));
 
 				continue;
 			}
@@ -2183,12 +2175,15 @@ Bool addDisplay(const char *name)
 
 		if (currentCmSnOwner != None) {
 			if (!replaceCurrentWm) {
-				compLogMessage("core", CompLogLevelError,
-					       "Screen %d on display \"%s\" already "
-					       "has a compositing manager; try using the "
-					       "--replace option to replace the current "
-					       "compositing manager.",
-					       i, DisplayString(dpy));
+				/*
+				 * FIXME: Isn't this wrong? Didn't we just
+				 * try to replace it? Need to double check.
+				 */
+				compWarn("Screen %d on display \"%s\" already "
+					 "has a compositing manager; try using the "
+					 "--replace option to replace the current "
+					 "compositing manager.",
+					 i, DisplayString(dpy));
 
 				continue;
 			}
@@ -2236,9 +2231,8 @@ Bool addDisplay(const char *name)
 					     CompositeRedirectManual);
 
 		if (compCheckForError(dpy)) {
-			compLogMessage("core", CompLogLevelError,
-				       "Another composite manager is already "
-				       "running on screen: %d", i);
+			compWarn("Another composite manager is already "
+				 "running on screen: %d", i);
 
 			continue;
 		}
@@ -2264,17 +2258,16 @@ Bool addDisplay(const char *name)
 			     FocusChangeMask | ExposureMask);
 
 		if (compCheckForError(dpy)) {
-			compLogMessage("core", CompLogLevelError,
-				       "Another window manager is "
-				       "already running on screen: %d", i);
+			compWarn("Another window manager is "
+				 "already running on screen: %d", i);
 
 			XUngrabServer(dpy);
 			continue;
 		}
 
 		if (!addScreen(d, i, newWmSnOwner, wmSnAtom, wmSnTimestamp)) {
-			compLogMessage("core", CompLogLevelError,
-				       "Failed to manage screen: %d", i);
+			compWarn("Failed to manage screen: %d", i);
+			assert("Failed to manage screen" != NULL);
 		}
 
 		if (XQueryPointer(dpy, XRootWindow(dpy, i),
@@ -2288,9 +2281,8 @@ Bool addDisplay(const char *name)
 	}
 
 	if (!d->screens) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "No manageable screens found on display %s",
-			       XDisplayName(name));
+		compWarn("No manageable screens found on display %s",
+			 XDisplayName(name));
 		return FALSE;
 	}
 

@@ -183,9 +183,7 @@ textInitCairo(CompScreen * s, TextSurfaceData * data, int width, int height)
 	data->height = height;
 
 	if (!data->pixmap) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't create %d x %d pixmap.", width,
-			       height);
+		compWarn("Couldn't create %d x %d pixmap.", width, height);
 		return FALSE;
 	}
 
@@ -199,15 +197,13 @@ textInitCairo(CompScreen * s, TextSurfaceData * data, int width, int height)
 								      width,
 								      height);
 	if (cairo_surface_status(data->surface) != CAIRO_STATUS_SUCCESS) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't create surface.");
+		compWarn("Couldn't create surface.");
 		return FALSE;
 	}
 
 	data->cr = cairo_create(data->surface);
 	if (cairo_status(data->cr) != CAIRO_STATUS_SUCCESS) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't create cairo context.");
+		compWarn("Couldn't create cairo context.");
 		return FALSE;
 	}
 
@@ -220,15 +216,13 @@ static Bool textInitSurface(CompScreen * s, TextSurfaceData * data)
 
 	data->screen = ScreenOfDisplay(dpy, s->screenNum);
 	if (!data->screen) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't get screen for %d.", s->screenNum);
+		compWarn("Couldn't get screen for %d.", s->screenNum);
 		return FALSE;
 	}
 
 	data->format = XRenderFindStandardFormat(dpy, PictStandardARGB32);
 	if (!data->format) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't get format.");
+		compWarn("Couldn't get format.");
 		return FALSE;
 	}
 
@@ -238,15 +232,13 @@ static Bool textInitSurface(CompScreen * s, TextSurfaceData * data)
 	/* init pango */
 	data->layout = pango_cairo_create_layout(data->cr);
 	if (!data->layout) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't create pango layout.");
+		compWarn("Couldn't create pango layout.");
 		return FALSE;
 	}
 
 	data->font = pango_font_description_new();
 	if (!data->font) {
-		compLogMessage("text", CompLogLevelError,
-			       "Couldn't create font description.");
+		compWarn("Couldn't create font description.");
 		return FALSE;
 	}
 
@@ -395,9 +387,7 @@ static CompTextData *textRenderText(CompScreen * s,
 				if (!bindPixmapToTexture
 				    (s, retval->texture, retval->pixmap,
 				     retval->width, retval->height, 32)) {
-					compLogMessage("text",
-						       CompLogLevelError,
-						       "Failed to bind text pixmap to texture.");
+					compWarn("Failed to bind text pixmap to texture.");
 					free(retval->texture);
 					free(retval);
 					retval = NULL;

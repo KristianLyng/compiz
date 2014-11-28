@@ -1354,9 +1354,8 @@ Bool bindWindow(CompWindow * w)
 
 	if (!bindPixmapToTexture(w->screen, w->texture, w->pixmap,
 				 w->width, w->height, w->attrib.depth)) {
-		compLogMessage("core", CompLogLevelInfo,
-			       "Couldn't bind redirected window 0x%x to "
-			       "texture\n", (int)w->id);
+		compWarn("Couldn't bind redirected window 0x%x to "
+			 "texture\n", (int)w->id);
 	}
 
 	setWindowMatrix(w);

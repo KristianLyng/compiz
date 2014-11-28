@@ -152,9 +152,8 @@ Bool compAddMetadataFromFile(CompMetadata * metadata, const char *file)
 
 	status |= addMetadataFromFilename(metadata, METADATADIR, file);
 	if (!status) {
-		compLogMessage("core", CompLogLevelWarn,
-			       "Unable to parse XML metadata from file \"%s%s\"",
-			       file, EXTENSION);
+		compWarn("Unable to parse XML metadata from file \"%s%s\"",
+			 file, EXTENSION);
 
 		return FALSE;
 	}
@@ -168,9 +167,7 @@ Bool compAddMetadataFromString(CompMetadata * metadata, const char *string)
 
 	doc = xmlReadMemory(string, strlen(string), NULL, NULL, 0);
 	if (!doc) {
-		compLogMessage("core", CompLogLevelWarn,
-			       "Unable to parse XML metadata");
-
+		compWarn("Unable to parse XML metadata");
 		return FALSE;
 	}
 
@@ -195,9 +192,7 @@ compAddMetadataFromIO(CompMetadata * metadata,
 
 	doc = xmlReadIO(ioread, ioclose, ioctx, NULL, NULL, 0);
 	if (!doc) {
-		compLogMessage("core", CompLogLevelWarn,
-			       "Unable to parse XML metadata");
-
+		compWarn("Unable to parse XML metadata");
 		return FALSE;
 	}
 

@@ -117,9 +117,8 @@ static cairo_t *annoCairoContext(CompScreen * s)
 		    XCreatePixmap(s->display->display, s->root, w, h, 32);
 
 		if (!bindPixmapToTexture(s, &as->texture, as->pixmap, w, h, 32)) {
-			compLogMessage("annotate", CompLogLevelError,
-				       "Couldn't bind pixmap 0x%x to texture",
-				       (int)as->pixmap);
+			compWarn("Couldn't bind pixmap 0x%x to texture",
+				 (int)as->pixmap);
 
 			XFreePixmap(s->display->display, as->pixmap);
 

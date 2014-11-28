@@ -170,14 +170,12 @@ CompBool initCore(void)
 
 	corePlugin = loadPlugin("core");
 	if (!corePlugin) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't load core plugin");
+		compWarn("Couldn't load core plugin");
 		return FALSE;
 	}
 
 	if (!pushPlugin(corePlugin)) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't activate core plugin");
+		compWarn("Couldn't activate core plugin");
 		return FALSE;
 	}
 

@@ -155,9 +155,8 @@ dlloaderLoadPlugin(CompPlugin * p, const char *path, const char *name)
 
 	if (stat(file, &fileInfo) != 0) {
 		/* file likely not present */
-		compLogMessage("core", CompLogLevelDebug,
-			       "Could not stat() file %s : %s",
-			       file, strerror(errno));
+		compWarn("Could not stat() file %s : %s",
+			 file, strerror(errno));
 		free(file);
 		return FALSE;
 	}
@@ -174,18 +173,15 @@ dlloaderLoadPlugin(CompPlugin * p, const char *path, const char *name)
 
 		error = dlerror();
 		if (error) {
-			compLogMessage("core", CompLogLevelError, "dlsym: %s",
-				       error);
-
+			compWarn("dlsym: %s", error);
 			getInfo = 0;
 		}
 
 		if (getInfo) {
 			p->vTable = (*getInfo) ();
 			if (!p->vTable) {
-				compLogMessage("core", CompLogLevelError,
-					       "Couldn't get vtable from '%s' plugin",
-					       file);
+				compWarn("Couldn't get vtable from "
+					 "'%s' plugin", file);
 			} else {
 				p->devPrivate.ptr = dlhand;
 				p->devType = "dlloader";
@@ -193,9 +189,7 @@ dlloaderLoadPlugin(CompPlugin * p, const char *path, const char *name)
 			}
 		}
 	} else {
-		compLogMessage("core", CompLogLevelError,
-			       "Couldn't load plugin '%s' : %s", file,
-			       dlerror());
+		compWarn("Couldn't load plugin '%s' : %s", file, dlerror());
 	}
 
 	free(file);
@@ -339,8 +333,7 @@ static CompBool initObjectTree(CompObject * object, void *closure)
 
 	if (p->vTable->initObject) {
 		if (!(*p->vTable->initObject) (p, object)) {
-			compLogMessage(p->vTable->name, CompLogLevelError,
-				       "InitObject failed");
+			compWarn("InitObject failed");
 			return FALSE;
 		}
 	}
@@ -400,8 +393,7 @@ static Bool initPlugin(CompPlugin * p)
 	InitObjectContext ctx;
 
 	if (!(*p->vTable->init) (p)) {
-		compLogMessage("core", CompLogLevelError,
-			       "InitPlugin '%s' failed", p->vTable->name);
+		compWarn("InitPlugin '%s' failed", p->vTable->name);
 		return FALSE;
 	}
 
@@ -527,9 +519,8 @@ CompPlugin *loadPlugin(const char *name)
 	status = (*loaderLoadPlugin) (p, NULL, name);
 	if (status)
 		return p;
-
-	compLogMessage("core", CompLogLevelError,
-		       "Couldn't load plugin '%s'", name);
+	
+	compWarn("Couldn't load plugin '%s'", name);
 
 	free(p);
 
@@ -539,8 +530,7 @@ CompPlugin *loadPlugin(const char *name)
 Bool pushPlugin(CompPlugin * p)
 {
 	if (findActivePlugin(p->vTable->name)) {
-		compLogMessage("core", CompLogLevelWarn,
-			       "Plugin '%s' already active", p->vTable->name);
+		compWarn("Plugin '%s' already active", p->vTable->name);
 
 		return FALSE;
 	}
@@ -549,9 +539,7 @@ Bool pushPlugin(CompPlugin * p)
 	plugins = p;
 
 	if (!initPlugin(p)) {
-		compLogMessage("core", CompLogLevelError,
-			       "Couldn't activate plugin '%s'",
-			       p->vTable->name);
+		compWarn("Couldn't activate plugin '%s'", p->vTable->name);
 		plugins = p->next;
 
 		return FALSE;

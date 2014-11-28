@@ -944,10 +944,9 @@ static void reshape(CompScreen * s, int w, int h)
 	s->fullscreenOutput.workArea.height = h;
 
 	if (w > s->maxTextureSize || h > s->maxTextureSize)
-		compLogMessage("core", CompLogLevelWarn,
-			       "Screen size %d x %d exceeds maximum texture size (%d),"
-			       " expect rendering problems of e.g. desktop windows.",
-			       w, h, s->maxTextureSize);
+		compWarn("Screen size %d x %d exceeds maximum texture size (%d),"
+			 " expect rendering problems of e.g. desktop windows.",
+			 w, h, s->maxTextureSize);
 
 	updateScreenEdges(s);
 }
@@ -1044,9 +1043,8 @@ void updateScreenBackground(CompScreen * screen, CompTexture * texture)
 
 		if (!bindPixmapToTexture(screen, texture, pixmap,
 					 width, height, depth)) {
-			compLogMessage("core", CompLogLevelWarn,
-				       "Couldn't bind background pixmap 0x%x to "
-				       "texture", (int)pixmap);
+			compWarn("Couldn't bind background pixmap 0x%x to "
+				 "texture", (int)pixmap);
 		}
 	} else {
 		finiTexture(screen, texture);
@@ -1792,8 +1790,7 @@ addScreen(CompDisplay * display,
 
 	visinfo = XGetVisualInfo(dpy, VisualIDMask, &templ, &nvisinfo);
 	if (!nvisinfo) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't get visual info for default visual");
+		compWarn("Couldn't get visual info for default visual");
 		return FALSE;
 	}
 
@@ -1802,16 +1799,14 @@ addScreen(CompDisplay * display,
 	black.red = black.green = black.blue = 0;
 
 	if (!XAllocColor(dpy, s->colormap, &black)) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't allocate color");
+		compWarn("Couldn't allocate color");
 		XFree(visinfo);
 		return FALSE;
 	}
 
 	bitmap = XCreateBitmapFromData(dpy, s->root, &data, 1, 1);
 	if (!bitmap) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't create bitmap");
+		compWarn("Couldn't create bitmap");
 		XFree(visinfo);
 		return FALSE;
 	}
@@ -1819,8 +1814,7 @@ addScreen(CompDisplay * display,
 	s->invisibleCursor = XCreatePixmapCursor(dpy, bitmap, bitmap,
 						 &black, &black, 0, 0);
 	if (!s->invisibleCursor) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Couldn't create invisible cursor");
+		compWarn("Couldn't create invisible cursor");
 		XFree(visinfo);
 		return FALSE;
 	}
@@ -1830,24 +1824,21 @@ addScreen(CompDisplay * display,
 
 	glXGetConfig(dpy, visinfo, GLX_USE_GL, &value);
 	if (!value) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Root visual is not a GL visual");
+		compWarn("Root visual is not a GL visual");
 		XFree(visinfo);
 		return FALSE;
 	}
 
 	glXGetConfig(dpy, visinfo, GLX_DOUBLEBUFFER, &value);
 	if (!value) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Root visual is not a double buffered GL visual");
+		compWarn("Root visual is not a double buffered GL visual");
 		XFree(visinfo);
 		return FALSE;
 	}
 
 	s->ctx = glXCreateContext(dpy, visinfo, NULL, !indirectRendering);
 	if (!s->ctx) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "glXCreateContext failed");
+		compWarn("glXCreateContext failed");
 		XFree(visinfo);
 
 		return FALSE;
@@ -1855,8 +1846,7 @@ addScreen(CompDisplay * display,
 
 	glxExtensions = glXQueryExtensionsString(dpy, screenNum);
 	if (!strstr(glxExtensions, "GLX_EXT_texture_from_pixmap")) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "GLX_EXT_texture_from_pixmap is missing");
+		compWarn("GLX_EXT_texture_from_pixmap is missing");
 		XFree(visinfo);
 
 		return FALSE;
@@ -1865,8 +1855,7 @@ addScreen(CompDisplay * display,
 	XFree(visinfo);
 
 	if (!strstr(glxExtensions, "GLX_SGIX_fbconfig")) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "GLX_SGIX_fbconfig is missing");
+		compWarn("GLX_SGIX_fbconfig is missing");
 		return FALSE;
 	}
 
@@ -1888,22 +1877,19 @@ addScreen(CompDisplay * display,
 	    getProcAddress(s, "glXDestroyPixmap");
 
 	if (!s->bindTexImage) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "glXBindTexImageEXT is missing");
+		compWarn("glXBindTexImageEXT is missing");
 		return FALSE;
 	}
 
 	if (!s->releaseTexImage) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "glXReleaseTexImageEXT is missing");
+		compWarn("glXReleaseTexImageEXT is missing");
 		return FALSE;
 	}
 
 	if (!s->queryDrawable ||
 	    !s->getFBConfigs ||
 	    !s->getFBConfigAttrib || !s->createPixmap || !s->destroyPixmap) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "fbconfig functions missing");
+		compWarn("fbconfig functions missing");
 		return FALSE;
 	}
 
@@ -1927,8 +1913,7 @@ addScreen(CompDisplay * display,
 
 	glExtensions = (const char *)glGetString(GL_EXTENSIONS);
 	if (!glExtensions) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "No valid GL extensions string found.");
+		compWarn("No valid GL extensions string found.");
 		return FALSE;
 	}
 
@@ -1955,8 +1940,7 @@ addScreen(CompDisplay * display,
 	}
 
 	if (!(s->textureRectangle || s->textureNonPowerOfTwo)) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "Support for non power of two textures missing");
+		compWarn("Support for non power of two textures missing");
 		return FALSE;
 	}
 
@@ -2191,9 +2175,8 @@ addScreen(CompDisplay * display,
 		XFree(fbConfigs);
 
 	if (!s->glxPixmapFBConfigs[defaultDepth].fbConfig) {
-		compLogMessage("core", CompLogLevelFatal,
-			       "No GLXFBConfig for default depth, "
-			       "this isn't going to work.");
+		compWarn("No GLXFBConfig for default depth, "
+			 "this isn't going to work.");
 		return FALSE;
 	}
 
@@ -3041,8 +3024,7 @@ computeWorkareaForBox(CompScreen * s, BoxPtr pBox, XRectangle * area)
 	}
 
 	if (XEmptyRegion(region)) {
-		compLogMessage("core", CompLogLevelWarn,
-			       "Empty box after applying struts, ignoring struts");
+		compWarn("Empty box after applying struts, ignoring struts");
 		region->extents = *pBox;
 	}
 
