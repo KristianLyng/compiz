@@ -90,11 +90,7 @@ Bool fxMagicLampInit(CompWindow * w)
 	if (!(aw->magicLampWaves)) {
 		aw->magicLampWaves =
 		    calloc(aw->magicLampWaveCount, sizeof(WaveParam));
-		if (!aw->magicLampWaves) {
-			compLogMessage("animation", CompLogLevelError,
-				       "Not enough memory");
-			return FALSE;
-		}
+		assert(aw->magicLampWaves);
 	}
 	// Compute wave parameters
 

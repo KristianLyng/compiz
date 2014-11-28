@@ -118,14 +118,7 @@ updateOptionSet(CompScreen * s, OptionSet * os, char *optNamesValuesOrig)
 	if (os->pairs)
 		free(os->pairs);
 	os->pairs = calloc(nPairs, sizeof(IdValuePair));
-	if (!os->pairs) {
-		os->nPairs = 0;
-		free(optNamesValues);
-		free(nameTrimmed);
-		compLogMessage("animation", CompLogLevelError,
-			       "Not enough memory");
-		return;
-	}
+	assert(os->pairs);
 	os->nPairs = nPairs;
 
 	// Tokenize pairs
@@ -215,11 +208,7 @@ updateOptionSet(CompScreen * s, OptionSet * os, char *optNamesValuesOrig)
 			break;
 		case CompOptionTypeString:
 			v.s = calloc(strlen(valueStr) + 1, 1);	// TODO: not freed
-			if (!v.s) {
-				compLogMessage("animation", CompLogLevelError,
-					       "Not enough memory");
-				return;
-			}
+			assert(v.s);
 			strcpy(v.s, valueStr);
 			valueRead = 1;
 			break;
@@ -256,30 +245,25 @@ updateOptionSet(CompScreen * s, OptionSet * os, char *optNamesValuesOrig)
 		switch (errorNo) {
 		case -1:
 		case 2:
-			compLogMessage("animation", CompLogLevelError,
-				       "Option name missing in \"%s\"",
-				       optNamesValuesOrig);
+			compWarn("Option name missing in \"%s\"",
+				 optNamesValuesOrig);
 			break;
 		case 1:
 		case 3:
-			compLogMessage("animation", CompLogLevelError,
-				       "Option value missing in \"%s\"",
-				       optNamesValuesOrig);
+			compWarn("Option value missing in \"%s\"",
+				 optNamesValuesOrig);
 			break;
 		case 4:
-			compLogMessage("animation", CompLogLevelError,
-				       "Unknown option \"%s\" in \"%s\"",
-				       nameTrimmed, optNamesValuesOrig);
+			compWarn("Unknown option \"%s\" in \"%s\"",
+				 nameTrimmed, optNamesValuesOrig);
 			break;
 		case 6:
-			compLogMessage("animation", CompLogLevelError,
-				       "Invalid value \"%s\" in \"%s\"",
-				       valueStr, optNamesValuesOrig);
+			compWarn("Invalid value \"%s\" in \"%s\"",
+				 valueStr, optNamesValuesOrig);
 			break;
 		case 7:
-			compLogMessage("animation", CompLogLevelError,
-				       "Value \"%s\" out of range in \"%s\"",
-				       valueStr, optNamesValuesOrig);
+			compWarn("Value \"%s\" out of range in \"%s\"",
+				 valueStr, optNamesValuesOrig);
 			break;
 		default:
 			break;
@@ -304,11 +288,7 @@ void updateOptionSets(CompScreen * s, AnimEvent e)
 		freeSingleEventOptionSets(oss);
 
 	oss->sets = calloc(n, sizeof(OptionSet));
-	if (!oss->sets) {
-		compLogMessage("animation", CompLogLevelError,
-			       "Not enough memory");
-		return;
-	}
+	assert(oss->sets);
 	oss->nSets = n;
 
 	int i;

@@ -157,11 +157,7 @@ static void updateEventEffects(CompScreen * s, AnimEvent e, Bool forRandom)
 	if (effectSet->effects)
 		free(effectSet->effects);
 	effectSet->effects = calloc(n, sizeof(AnimEffect));
-	if (!effectSet->effects) {
-		compLogMessage("animation", CompLogLevelError,
-			       "Not enough memory");
-		return;
-	}
+	assert(effectSet->effects);
 	effectSet->n = n;
 
 	int nEventEffectsAllowed = as->nEventEffectsAllowed[e];
@@ -222,11 +218,7 @@ animAddExtension(CompScreen * s, ExtensionPluginInfo * extensionPluginInfo)
 		    realloc(as->extensionPlugins,
 			    (as->maxExtensionPlugins + EXTENSION_INCREMENT) *
 			    sizeof(ExtensionPluginInfo *));
-		if (!newExtensionPlugins) {
-			compLogMessage("animation", CompLogLevelError,
-				       "Not enough memory");
-			return;
-		}
+		assert(newExtensionPlugins);
 		as->extensionPlugins = newExtensionPlugins;
 		as->maxExtensionPlugins += EXTENSION_INCREMENT;
 	}
@@ -247,11 +239,7 @@ animAddExtension(CompScreen * s, ExtensionPluginInfo * extensionPluginInfo)
 			AnimEffect *newEventEfffects =
 			    realloc(as->eventEffectsAllowed[e],
 				    newNum * sizeof(AnimEffect));
-			if (!newEventEfffects) {
-				compLogMessage("animation", CompLogLevelError,
-					       "Not enough memory");
-				return;
-			}
+			assert(newEventEfffects);
 			as->eventEffectsAllowed[e] = newEventEfffects;
 			as->maxEventEffectsAllowed[e] = newNum;
 		}
@@ -438,9 +426,8 @@ getMatchingAnimSelection(CompWindow * w, AnimEvent e, int *duration)
 	if (nRows != eventEffects->n ||
 	    nRows != valDuration->list.nValue ||
 	    nRows != valCustomOptions->list.nValue) {
-		compLogMessage("animation", CompLogLevelError,
-			       "Animation settings mismatch in \"Animation "
-			       "Selection\" list for %s event.", eventNames[e]);
+		compWarn("Animation settings mismatch in \"Animation "
+			 "Selection\" list for %s event.", eventNames[e]);
 		return AnimEffectNone;
 	}
 	// Find the first row that matches this window for this event
@@ -1305,22 +1292,13 @@ static Model *createModel(CompWindow * w,
 	Model *model;
 
 	model = calloc(1, sizeof(Model));
-	if (!model) {
-		compLogMessage("animation", CompLogLevelError,
-			       "Not enough memory");
-		return 0;
-	}
+	assert(model);
 
 	model->gridWidth = gridWidth;
 	model->gridHeight = gridHeight;
 	model->numObjects = gridWidth * gridHeight;
 	model->objects = calloc(model->numObjects, sizeof(Object));
-	if (!model->objects) {
-		compLogMessage("animation", CompLogLevelError,
-			       "Not enough memory");
-		free(model);
-		return 0;
-	}
+	assert(model->objects);
 	// Store win. size to check later
 	model->winWidth = width;
 	model->winHeight = height;
